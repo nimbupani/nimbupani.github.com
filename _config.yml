@@ -2,10 +2,10 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://yoursite.com
-title: My Octopress Blog
-subtitle: A blogging framework for hackers.
-author: Your Name
+url: http://nimbupani.github.com/blog
+title: Divya Manian
+subtitle: Web Development Lemonade
+author: Divya Manian
 simple_search: http://google.com/search
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
@@ -14,7 +14,7 @@ simple_search: http://google.com/search
 date_format: "ordinal"
 
 # RSS / Email (optional) subscription links (change if using something like Feedburner)
-subscribe_rss: /atom.xml
+subscribe_rss: http://feeds.feedburner.com/nimbupani
 subscribe_email:
 # RSS feeds can list your email address if you like
 email:
@@ -24,22 +24,21 @@ email:
 # ----------------------- #
 
 # If publishing to a subdirectory as in http://site.com/project set 'root: /project'
-root: /
-permalink: /blog/:year/:month/:day/:title/
+root: /blog
+permalink: /:title.html
 source: source
-destination: public
+destination: public/blog
 plugins: plugins
 code_dir: downloads/code
-category_dir: blog/categories
+category_dir: categories
+category_title_prefix: ""
 markdown: rdiscount
 pygments: false # default python pygments have been replaced by pygments.rb
 
-paginate: 10          # Posts per page on the blog index
-pagination_dir: blog  # Directory base for pagination URLs eg. /blog/page/2/
+paginate: 30         # Posts per page on the blog index
+pagination_dir: /blog  # Directory base for pagination URLs eg. /blog/page/2/
 recent_posts: 5       # Posts in the sidebar Recent Posts section
 excerpt_link: "Read on &rarr;"  # "Continue reading" link text at the bottom of excerpted articles
-
-titlecase: true       # Converts page and post titles to tilecase
 
 # list each of the sidebar modules you want to include, in the order you want them to appear.
 # To add custom asides, create files in /source/_includes/custom/asides/ and add them to the list like 'custom/asides/custom_aside_name.html'
@@ -62,7 +61,7 @@ github_show_profile_link: true
 github_skip_forks: true
 
 # Twitter
-twitter_user:
+twitter_user: divya
 twitter_tweet_count: 4
 twitter_show_replies: false
 twitter_follow_button: true
@@ -70,7 +69,7 @@ twitter_show_follower_count: false
 twitter_tweet_button: true
 
 # Google +1
-google_plus_one: true
+google_plus_one: false
 google_plus_one_size: medium
 
 # Google Plus Profile
@@ -83,15 +82,15 @@ pinboard_user:
 pinboard_count: 3
 
 # Delicious
-delicious_user:
+delicious_user: 
 delicious_count: 3
 
 # Disqus Comments
-disqus_short_name:
-disqus_show_comment_count: false
+disqus_short_name: nimbublog
+disqus_show_comment_count: true
 
 # Google Analytics
 google_analytics_tracking_id:
    
 # Facebook Like
-facebook_like: true   
+facebook_like: false   
