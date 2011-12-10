@@ -1,0 +1,23 @@
+// ALL VARIABLES DEFINED HERE
+
+//Backgrounds
+$noise-bg: image-url('noise.png') top left;
+$html-bg: image-url('little_pluses.png') #eee top left;
+
+
+//Base Colors
+$text-color: adjust-color(#4f3232, $lightness: 20%, $saturation: -20%);
+
+
+// Main Link Colors
+$link-color: darken(#91b9c3, 20%) !default;
+$link-color-hover: adjust-color($link-color, $lightness: 10, $saturation: 25) !default;
+$link-color-visited: $link-color;
+$link-color-active: adjust-color($link-color-hover, $lightness: -15) !default;
+
+// FONTS
+$sans: "PT Sans", "Helvetica Neue", Arial, sans-serif !default;
+$serif: "PT Serif", Georgia, Times, "Times New Roman", serif !default;
+$mono: Menlo, Monaco, "Andale Mono", "lucida console", "Courier New", monospace !default;
+$heading-title-font-family: "OstrichBold", sans-serif;
+$heading-font-family: "OstrichBlack", sans-serif;

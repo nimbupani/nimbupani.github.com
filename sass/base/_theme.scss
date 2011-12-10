@@ -1,0 +1,206 @@
+* { box-sizing: border-box; }
+
+body { color: $text-color; background: adjust-color($text-color, $lightness: -30%, $saturation: 20%); }
+
+a {
+  @include link-colors($link-color, $hover: $link-color-hover, $focus: $link-color-hover, $visited: $link-color-visited, $active: $link-color-active);
+  text-decoration: none;
+}
+
+li { margin-bottom: 1em; }
+
+.content, 
+#articles,
+footer[role="contentinfo"] { @extend .default-width; }
+
+.container { background: image-url('bgnoise_lg.png'); padding-bottom: 3em; }
+
+body header[role="banner"] h1,
+body header[role="banner"] h2 {
+  @extend .title; 
+  @extend .zeropaddingmargin;
+  @extend .inline-block;
+  vertical-align: middle;   
+}
+
+body header[role="banner"] h2 { margin-left: 0.5em; }
+
+body header[role="banner"] h2 a {
+  &:nth-child(2) { background-color: #90a935; }
+
+  &:nth-child(3) { background-color: #d24739; }  
+}
+
+
+.twitter { @extend .icons; background-image: image-url('twitter.png'); }
+.youtube { @extend .icons; background-image: image-url('youtube.png'); }
+.rss { @extend .icons; background-image: image-url('rss.png'); background-size: 10px 10px; }
+
+
+.sitenav form { @extend .hidden; }
+
+.sitenav { text-align: right; margin: 0 0 10em 0; padding-top: 2em; }
+
+.sitenav a { 
+  @extend .less-focus; 
+  margin: 0 0.5em; 
+}
+
+header[role="banner"] { float: left; margin-top: 4em; }
+
+
+nav.article {
+  white-space: nowrap;
+  a.next,
+  a.previous {
+    @extend .inline-block;    
+    font-size: 4em;
+    line-height: 1;
+    cursor: pointer;
+    width: 1em;
+    text-align: left; 
+  }
+}
+
+
+  
+article > header { margin-bottom: 4em; }
+
+article > header time,
+article > header h1 { @extend .zeropaddingmargin; }
+
+article > header time { 
+  @extend .least-focus; 
+  line-height: 1.4; 
+  width: 6em; 
+  text-transform: uppercase; 
+}
+
+article > header time::before,
+.blog-archives article time::before { 
+  content: "⢷⡾";
+  letter-spacing: -2px; 
+  margin-right: 0.5em; 
+}
+
+article > header .archive-title { padding-top: 0.46em; }
+
+article .entry-content > p:first-child { @extend .larger-focus; }
+
+article footer { 
+  @extend .less-focus; 
+  margin: 3em auto 5em;
+}
+
+// FOOTER ARTICLES
+#articles { margin-top: 3em; }
+
+#articles li { 
+  @extend .less-focus; 
+  @extend .zeropaddingmargin;   
+  @extend .ellipsis;
+  @extend .inline-block;  
+  list-style: none; 
+  line-height: 1.5; 
+  padding: 0.5em 0.2em;  
+  width: 100%;   
+  vertical-align: top; 
+  border-bottom: 1px dotted;
+} 
+
+#articles li:last-child {
+  overflow: visible;
+  padding-bottom: 0;
+  
+  &:hover {
+    background: -o-linear-gradient(to right, rgba( #d58742, 0),  rgba( #d58742, 1));
+    background: -webkit-linear-gradient(to right, rgba( #d58742, 0),  rgba( #d58742, 1));  
+    background: -moz-linear-gradient(to right, rgba( #d58742, 0),  rgba( #d58742, 1));  
+    background: -ms-linear-gradient(to right, rgba( #d58742, 0),  rgba( #d58742, 1));      
+    
+     .btn::after {
+      position: absolute;
+      top: -0.3em; right: -0.9em;
+      width: 0; height: 0;
+      border-top: 0.8em solid transparent;
+      border-bottom: 0.8em solid transparent;
+      border-left: 0.8em solid rgba( #d58742, 1);
+      content: "";
+      display: block;    
+    }
+  }
+}
+
+#articles .btn {
+  @extend .inline-block;
+  width: 100%; 
+  line-height: 1.3;
+  text-align: right;   
+  position: relative;
+  height: 100%;
+  
+}
+
+
+footer[role="contentinfo"] { 
+  @extend .least-focus; 
+  margin-top: 3em; 
+  margin-bottom: 3em; 
+}
+
+// ARCHIVES
+
+.blog-archives article { padding: 1em 0 0 0; }
+
+.blog-archives article h2 { 
+  @extend .zeropaddingmargin;
+  @extend .ellipsis;  
+  padding-bottom: 0.5em; 
+  border-bottom: 1px dotted;  
+}
+
+.blog-archives article time { @extend .least-focus; text-transform: uppercase; }
+.blog-archives h2 + article h2 { margin-top: 0; }
+.blog-archives > h2 { margin-top: 2em; }
+
+
+@media (min-width: 800px) {
+  nav.article {
+    width: 48em;
+    position: fixed;
+    height: 8em;
+    margin: 1em 0 0 0;
+    z-index: -1;
+  }
+  
+  .content {
+    position: relative;
+    z-index: 2;
+  }
+  
+  nav.article a.previous,
+  nav.article a.next {  
+    height: 100%;
+    width: 50%;
+    margin: 0 0.4em 0 -1em; 
+    text-align: left;         
+  }
+  
+  nav.article a.next {
+    margin: 0;
+    text-align: right;     
+  }
+  
+  nav.article a:only-child { width: 100%; }  
+  nav.article a.next:only-child { padding-left: 1em; }
+  
+  #articles li { width: 33.33%; }
+  
+  .blog-archives article time { 
+    @extend .inline-block;
+    width: 9em; 
+    float: left; 
+    line-height: 3em; 
+  }
+  
+}

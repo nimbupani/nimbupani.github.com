@@ -1,0 +1,35 @@
+#dsq-content .dsq-avatar {
+  left: 10px !important;
+  z-index: 2 !important;  
+}
+#dsq-content .dsq-avatar img {
+  border-radius: 50em !important;
+  border: 3px solid $text-color !important;
+  box-sizing: margin-box !important;
+}
+
+
+.dsq-comment-header {
+  border: 0 !important;
+  background: #eee !important;
+  position: relative !important;
+  padding-left: 1em !important; 
+  border-radius: 0 10em 10em 0 !important;
+}
+
+.dsq-comment-body,
+#dsq-footer  {
+  padding-left: 36px !important;
+}
+
+#dsq-content .dsq-comment-meta li, 
+#dsq-content .dsq-comment-actions li,
+#dsq-sort-by select,
+#dsq-footer {
+  font-size: 0.8em !important; //ideally @extend .least-focus but we need !important
+}
+
+#dsq-sort-by { margin-top: 0.3em !important; }
+.dsq-collapse-toggle { right: 16px !important; }
+
+.dsq-is-liked .dsq-like-thumb { vertical-align: top !important; }

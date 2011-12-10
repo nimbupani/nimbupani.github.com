@@ -1,0 +1,14 @@
+//----------------------------------------------------------------------------------------
+// Base Folder: base
+// Variables: _vars.scss          - anything used more than twice, goes here as a var
+// Extends: _extends.scss         - add new extends here
+// Fonts: _typography.scss        - use existing extends/vars
+// Everything else: _theme.scss
+//----------------------------------------------------------------------------------------
+
+@import "base/vars";
+@import "base/extends";
+@import "base/solarized";
+@import "base/typography";
+@import "base/theme";
+@import "base/disqus";

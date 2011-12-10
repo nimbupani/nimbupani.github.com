@@ -1,0 +1,62 @@
+// ALL CLASSES THAT EXIST ONLY FOR EXTENDING
+
+// Fonts
+.heading {
+  font-family: $heading-font-family;
+  font-weight: normal;  
+}
+
+.default {
+  line-height: 1.8;
+  font-size: inherit;  
+}
+
+.sans { font-family: $sans; }
+.serif { font-family: $serif; }
+.mono { font-family: $mono; }
+
+.title {
+  font-family: $heading-font-family;
+  font-weight: normal;
+  font-size: 1.5em;
+}
+
+// Focus
+.less-focus { font-size: 0.9em; }
+.least-focus { font-size: 0.7em; color:  darken(#8fa237, 20%); }
+.large-focus { font-size: 1.2em; }
+.larger-focus { font-size: 1.5em; }
+
+// Reset Margin & Padding
+.zeropaddingmargin { margin: 0; padding: 0; }
+
+
+// DISPLAYS
+.inline-block { display: inline-block; }
+
+// ICONS ICONS DIRTY ICONS
+.icons { 
+  @extend .ir; 
+  @extend .inline-block;  
+  width: 24px; 
+  height: 24px; 
+  background-position: center center; 
+  background-color: #d58742; 
+  border-radius: 10em; 
+  background-size: 12px 12px;
+  vertical-align: middle;
+}
+
+// ELLIPSIS
+.ellipsis {
+  text-overflow: ellipsis; 
+  white-space: nowrap; 
+  overflow: hidden;   
+}
+
+// Default central widths
+.default-width {
+  padding: 0 3em;
+  max-width: 48em; 
+  margin: 0 auto;   
+}
