@@ -1,0 +1,24 @@
+{% capture root_url %}{{ site.root | strip_slash }}{% endcapture %}
+{% include head.html %}
+{% assign disqus_url = '' %}
+<body {% if page.body_id %} id="{{ page.body_id }}" {% endif %}>
+  <div class="container">
+    <div class="content">
+      <header role="banner">{% include header.html %}</header>
+      <nav class="sitenav">{% include navigation.html %}</nav>    
+      {{ content | expand_urls: root_url }}      
+    </div>
+  </div>
+  <aside id="articles">
+    <h2>Posts on Web Development</h2>
+    <ul>
+      {% for post in site.categories['Web Development'] limit:20 %}        
+        <li><a href="{{ root_url }}{{ post.url }}">{{ post.title }}</a></li>
+      {% endfor %}              
+      <li><a class="btn" href="{{ root_url }}/categories/web-development/">More</a></li>
+    </ul>
+  </aside>
+  <footer role="contentinfo">{% include footer.html %}</footer>
+  {% include after_footer.html %}
+</body>
+</html>

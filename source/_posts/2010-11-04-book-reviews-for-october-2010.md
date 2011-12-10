@@ -1,0 +1,16 @@
+--- 
+layout: post
+title: Book Reviews for October 2010
+created: 1288895379
+---
+<p>October was a month of traveling and being nervous about <a href="http://nimbupani.com/active-web-development.html">my talk at Web Directions South</a>, which meant I managed to read very little. But, it was the first time I read Kindle books &mdash; Alice&rsquo;s Adventures in Wonderland and The Girl Who Kicked the Hornet&rsquo;s Nest &mdash; both on the train from Darwin to Adelaide. A review of the Kindle is pending, and hopefully I should put it out soon!</p>
+<p>Meanwhile, here are the reviews!</p>
+<h3>Alice&rsquo;s Adventures in Wonderland</h3>
+<p>I find it so annoying that most books on Kindle cost at least USD10. Luckily, there is a list of popular free books and deservedly <a href="http://www.amazon.com/gp/product/1936594064?ie=UTF8&amp;tag=nimbupani-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=1936594064">Alice&rsquo;s Adventures in Wonderland</a> is listed among the top books. I am amazed this book was popular at the time it was written. I suspect it became so because it was catalogued as a &ldquo;Children&rsquo;s book&rdquo;. It certainly is not just for kids! It is written so well, and Lewis Carroll had a very lively imagination.</p> 
+<h3>The Fourth Bear: A Nursery Crime</h3>
+<p>I loved Jasper Fforde&rsquo;s first Thursday Next novel, and <a href="http://www.amazon.com/gp/product/0670037729?ie=UTF8&amp;tag=nimbupani-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0670037729">The Fourth Bear: A Nursery Crime</a> is adorable too! It is quite silly a story, but has lots of word play and metaphors that delight. If you love funny puns, and metaphors, you should read Jasper Fforde&rsquo;s books!</p>
+<h3>The Girl Who Kicked the Hornet&rsquo;s Nest</h3>
+<p><a href="http://www.amazon.com/gp/product/030726999X?ie=UTF8&amp;tag=nimbupani-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=030726999X">The Girl Who Kicked the Hornet&rsquo;s Nest</a> was the first (and so far the only) book I have purchased on the Kindle. I don&rsquo;t know why, but the idea of reading Steig Larsson on the train crossing the Australian desert seemed irresistable. I enjoyed reading the first two, this was no different. It all ends quite happily much to my satisfaction. I only wish he was alive to write more books!</p>
+<h3>Tailor of Panama</h3>
+<p>Moral of the story for <a href="http://www.amazon.com/gp/product/034093770X?ie=UTF8&amp;tag=nimbupani-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=034093770X">The Tailor of Panama</a> is, Secret Service agents always look for an excuse for conspiracy even when there is none. It is a riveting read, mainly because most of the book rings true (especially when you read declassified information from U.S. or U.K.)</p> 
+<p>My productivity went for a toss after I discovered <a href="http://www.quora.com/Divya-Manian">Quora</a>, and especially <a href="http://www.quora.com/What-are-the-best-science-fiction-novels">this question</a>. Now I have more books to read &mdash; but that should not stop you from suggesting books you found interesting this month in the comments!</p>

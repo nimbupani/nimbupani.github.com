@@ -1,0 +1,21 @@
+<article>
+  <nav class="article">
+    {% if page.previous.url %}
+      <a class="previous" href="{{page.previous.url}}" title="{{page.previous.title}}">❬</a>      
+    {% endif %}
+    {% if page.next.url %}
+      <a class="next" href="{{page.next.url}}" title="{{page.next.title}}">❭</a>              
+    {%endif %} 
+    {% if post.previous.url %}
+      <a class="previous" href="{{post.previous.url}}" title="{{post.previous.title}}">❬</a>      
+    {% endif %}
+    {% if post.next.url %}
+      <a class="next" href="{{post.next.url}}" title="{{post.next.title}}">❭</a>              
+    {%endif %}           
+  </nav>
+  {% include article.html %}
+  <footer>
+    <p class="meta">This post was posted by {% include post/author.html %} on {% include post/date.html %}{{ time }} in {% include post/categories.html %} {% if site.disqus_short_name and post.comments != false and site.disqus_show_comment_count == true and post.url %}with  <a href="{{ root_url }}{{ post.url }}#disqus_thread" data-disqus-identifier="http://nimbupani.com{{ post.url }}">Comments</a>{% endif %}.       
+    </p>
+  </footer>
+</article>

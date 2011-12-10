@@ -1,0 +1,8 @@
+--- 
+layout: post
+title: " Educate the Mind First"
+created: 1087544775
+---
+I had met <a href="http://prayatna.typepad.com/education/">Satya</a> a week back and had a fruitful discussion about Education System in India. Comparing it to the model followed in Singapore, I could not help but think how Asian universities have a long way to go compared to the American Universities, specifically in the flexibility of taking up any course as the student wishes. My university has only recently introduced a limited form of flexibility in taking up different types of Minors. I also came to know that The Times of India runs a School for Marketing where the toppers get absorbed in the Times Group. Similarly, Kiroskar runs a management school on the same principle. As Satya said, Education in India is changing in a small way. But there are several things that must be changed to let the choose seep through to the maximum number of colleges and universities. 
+
+I particularly would like to complain about the non-educational and hostile atmosphere in Tamil Nadu colleges where men and women are treated as belonging to different species whose mixing would lead to a catastrophe. What really is the idea? Is co-education the cause of sexual explitation of women or the idea of separating and making each look to the other as a strange species the reason for such ills? Creating the virtual separation and preventing a healthy interaction and providing an overdose of ideas through revolting and MCP movies is precisely the reason for eve-teasing and the like. I just hope the colleges in Tamil Nadu become equal to those in Bangalore for a start. We can think about changing education later, the changes in mental outlook has to come first.

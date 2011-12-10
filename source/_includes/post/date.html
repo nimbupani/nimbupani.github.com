@@ -1,0 +1,7 @@
+{% capture date %}{{ page.date }}{{ post.date }}{% endcapture %}
+{% capture date_formatted %}{{ page.date | date: "<span class='month'>%b</span> <span class='day'>%d</span> <span class='year'>%Y</span>" }}{{ post.date | date: "<span class='month'>%b</span> <span class='day'>%d</span> <span class='year'>%Y</span>" }}{% endcapture %}
+{% capture has_date %}{{ date | size }}{% endcapture %}
+
+{% if has_date != '0' %}
+  {% capture time %}<time datetime="{{ date | datetime | date_to_xmlschema }}" pubdate>{{ date_formatted }}</time>{% endcapture %}
+{% endif %}

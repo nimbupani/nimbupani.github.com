@@ -1,0 +1,7 @@
+--- 
+layout: post
+title: Being over enthusiastic about accessibility
+created: 1226725856
+category: "Web Development"
+---
+<p>Sometimes as an accessibility newbie, whenever I am &ldquo;forced&rdquo; to use tables for layout, I use these attributes &ldquo;summary&rdquo;, &ldquo;headers&rdquo;, &ldquo;scope&rdquo; considering them the necessary ingredients for an accessible layout. But reading the <a href="http://www.w3.org/TR/2008/WD-WCAG20-TECHS-20080430/F46.html">Techniques for WCAG 2.0</a>, I realise that it is a mistake to do it that way.</p> <p>From the technique description:</p><blockquote><p>When a table is used for layout purposes the th element should not be used. Since the table is not presenting data there is no need to mark any cells as column or row headers.</p> <p>Likewise, there is no need for an additional description of a table which is only used to layout content. Do not include a summary attribute and do not use the summary attribute to describe the table as, for instance, &ldquo;layout table&rdquo;. When spoken, this information does not provide value and will only distract users navigating the content via a screen reader. Empty summary attributes are acceptable on layout tables, but not recommended.</p></blockquote><p>Be wise, and don&rsquo;t use tables for layout if you can help it. But if you have no choice, then dont use the full suite of accessible tables because it will only hinder the navigation for those using screen readers.</p> 

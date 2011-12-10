@@ -1,0 +1,12 @@
+--- 
+layout: post
+title: " What a Wonderful Life"
+created: 1091804855
+---
+I do not muse upon life in general. I find it too complex to understand and would rather take it as it comes. But I do get into exceptional philosophical moods when I am in an open space (>=0.5 meters) with only the sky for company. Remember that open space is a luxury that a few of the Singapore' s richest can afford. But I did stumble upon such a spot beside the Yio Chu Kang MRT station. What's more, there are three ice cream sellers at the same spot trying to make money by selling the same types and brands of ice cream(some people never get it, do they?). Obviously, its my favourite spot where my mind is at peace and it tunes into the philosophical questions that grey cells produce occasionally.
+
+Today, with a slab of ice cream between wafers, I watched the stream of people walking past me- some, oblivious to my presence and some wishing they could afford the intellectual stimulation of an ice cream and an open space. I was just thinking how all their lives are instances of a mega reality T.V. Show (someone, with great foresight called life a  "drama" in an age without the benefits of Reality T.V.). I was very curious about how each of them lived, their experiences and what they were thinking at that moment. And I realised this is precisely the reason why I watch Reality T.V., to see something that is not staged, to experience the emotions that the participants went through and knowing that it was not a simulated and dreaming of my behaviour if I were in his/her place. For me, the thought that it isn't something that is unreal and staged is comforting. It numbs my brain a bit . But I no longer complain of the "story line" and no longer say "this is not true!". Perhaps Reality T.V. has made me think "its not bad after all y'know! its a wonderful life!!". 
+
+Being a maniac for drawing parallels, I tried to replace "Reality T.V." with blogs and "watching" with "reading" and it made perfect sense. I read blogs to gain an insight into the author's life/style/work. I also gain tremendous information in that process, no doubt. I read some blogs for the sake of reading. For the sake of curiosity of how the blogger lives/works. This curiosity leads to interaction and most of the times, friendship. I am wowed by some of the bloggers, but many of them who seem to be "god-like" to the public are many times more human in their blogs. This in turn comforts me. 
+
+Why do you follow blogs?
