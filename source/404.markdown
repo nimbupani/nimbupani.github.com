@@ -1,0 +1,11 @@
+---
+layout: page
+title: "Page not found"
+comments: false
+sharing: false
+footer: false
+---
+
+I have misplaced the page that you were eager to visit, sorry about that :( 
+
+You most likely came here to see something about [web development](/categories/web-development/) or [something random](/archives/).
