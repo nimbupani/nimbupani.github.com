@@ -10,7 +10,7 @@ I will be attending my first ever [CSS](http://lists.w3.org/Archives/Public/www-
 
 You could probably look out for updates on the meeting [@csswg](http://twitter.com/csswg)
 
-<h3>[CSS Regions](http://dev.w3.org/csswg/css3-regions/)</h3>
+<h3><a href="http://dev.w3.org/csswg/css3-regions/">CSS Regions</a></h3>
 
 This spec, from my understanding, is a way to define how content flows like in Adobe InDesign or Illustrator. Basically you can take content from a set of elements (by using the property <code>flow: &lt;nameoftheregion></code>) and make that render on a set of other elements (called  <em>regions</em>) which act as a container for that content using the <code>content: from-flow()</code>. If the container have content, those will be replaced by the content set using the  <code>content</code> property. This is controlled by using what is called as <em>named flow</em>. You control which elements belong to a flow using the <code>flow</code> property.
 
