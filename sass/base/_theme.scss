@@ -13,7 +13,7 @@ li { margin-bottom: 1em; }
 #articles,
 footer[role="contentinfo"] { @extend .default-width; }
 
-.container { background: image-url('bgnoise_lg.png'); padding-bottom: 3em; }
+.container { background-color:  #eee; background: image-url('bgnoise_lg.png'); padding-bottom: 3em; }
 
 .twitter { @extend .icons; background-image: image-url('twitter.png'); }
 .youtube { @extend .icons; background-image: image-url('youtube.png'); }
