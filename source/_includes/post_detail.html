@@ -1,3 +1,15 @@
+{% if page.url %}
+  {% capture article_url %}{{ page.url }}{% endcapture %}
+{% endif %}
+{% if post.url %}
+  {% capture article_url %}{{ post.url }}{% endcapture %}
+{% endif %}
+{% if page.date %}
+  {% capture article_date %}{{ page.date }}{% endcapture %}
+{% endif %}
+{% if post.date %}
+  {% capture article_date %}{{ post.date }}{% endcapture %}
+{% endif %}
 <article>
   <nav class="article">
     {% if page.previous.url %}
@@ -15,7 +27,7 @@
   </nav>
   {% include article.html %}
   <footer>
-    <p class="meta">This post was posted by {% include post/author.html %} on {% include post/date.html %}{{ time }} in {% include post/categories.html %} {% if site.disqus_short_name and post.comments != false and site.disqus_show_comment_count == true and post.url %}with  <a href="{{ root_url }}{{ post.url }}#disqus_thread" data-disqus-identifier="http://nimbupani.com{{ post.url }}">Comments</a>{% endif %}.       
+    <p class="meta">This post was posted by {% include post/author.html %} on {% include post/date.html %}{{ time }} in {% include post/categories.html %}{% if site.disqus_short_name and post.comments != false and site.disqus_show_comment_count == true and post.url %} with  <a href="{{ root_url }}{{ post.url }}#disqus_thread" data-disqus-identifier="http://nimbupani.com{{ post.url }}">Comments</a>{% endif %}. {% if article_date %} If you would like to update this post, <a href="{{site.githuburl}}/{{article_date | date: '%Y-%m-%d'}}-{{article_url | remove_first: '/', | replace_first: '.html','.md' }}">please send a pull request</a>.{% endif %}       
     </p>
   </footer>
 </article>

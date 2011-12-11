@@ -15,6 +15,18 @@ footer[role="contentinfo"] { @extend .default-width; }
 
 .container { background: image-url('bgnoise_lg.png'); padding-bottom: 3em; }
 
+.twitter { @extend .icons; background-image: image-url('twitter.png'); }
+.youtube { @extend .icons; background-image: image-url('youtube.png'); }
+.rss { @extend .icons; background-image: image-url('rss.png'); background-size: 10px 10px; }
+
+
+.sitenav { margin: 0 0 2em 0; padding-top: 2em; }
+
+.sitenav a { 
+  @extend .less-focus; 
+  margin: 0 0.5em; 
+}
+
 body header[role="banner"] h1,
 body header[role="banner"] h2 {
   @extend .title; 
@@ -32,22 +44,6 @@ body header[role="banner"] h2 a {
 }
 
 
-.twitter { @extend .icons; background-image: image-url('twitter.png'); }
-.youtube { @extend .icons; background-image: image-url('youtube.png'); }
-.rss { @extend .icons; background-image: image-url('rss.png'); background-size: 10px 10px; }
-
-
-.sitenav form { @extend .hidden; }
-
-.sitenav { text-align: right; margin: 0 0 10em 0; padding-top: 2em; }
-
-.sitenav a { 
-  @extend .less-focus; 
-  margin: 0 0.5em; 
-}
-
-header[role="banner"] { float: left; margin-top: 4em; }
-
 
 nav.article {
   white-space: nowrap;
@@ -59,6 +55,7 @@ nav.article {
     cursor: pointer;
     width: 1em;
     text-align: left; 
+    font-family: menlo, sans-serif;
   }
 }
 
@@ -95,6 +92,14 @@ article footer {
 // FOOTER ARTICLES
 #articles { margin-top: 3em; }
 
+#articles > p { @extend .less-focus; margin-bottom: 2em; }
+
+#articles .avatar { 
+  margin-right: 0.5em; 
+  border-radius: 10em;
+  box-shadow: 0 0 1em darken($text-color, 40%);
+}
+
 #articles li { 
   @extend .less-focus; 
   @extend .zeropaddingmargin;   
@@ -118,6 +123,7 @@ article footer {
     background: -moz-linear-gradient(to right, rgba( #d58742, 0),  rgba( #d58742, 1));  
     background: -ms-linear-gradient(to right, rgba( #d58742, 0),  rgba( #d58742, 1));      
     
+     .btn { color: adjust-color($link-color, $lightness: 60%, $saturation: -20%); }
      .btn::after {
       position: absolute;
       top: -0.3em; right: -0.9em;
@@ -165,6 +171,16 @@ footer[role="contentinfo"] {
 
 
 @media (min-width: 800px) {
+  header[role="banner"] { 
+    float: left; 
+    margin-top: 4em;     
+  }
+  
+  .sitenav { 
+    text-align: right;     
+    margin: 0 0 10em 0; 
+  }
+  
   nav.article {
     width: 48em;
     position: fixed;
@@ -173,7 +189,8 @@ footer[role="contentinfo"] {
     z-index: -1;
   }
   
-  .content {
+  .content,
+  #articles {
     position: relative;
     z-index: 2;
   }
