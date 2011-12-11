@@ -3,7 +3,7 @@ layout: post
 title: "Summary of various exciting CSS drafts and proposals"
 date: 2011-12-10 18:51
 comments: true
-categories: "Web Development"
+category: "Web Development"
 ---
 
 I will be attending my first ever [CSS](http://lists.w3.org/Archives/Public/www-style/2011Jun/0593.html) Working Group Face to Face Meeting starting this Sunday, and I wanted to be at least up-to-speed on all the drafts that will be up for discussion. So, in the interest of not letting a few hours spent understanding some of them go to waste, here is a brief summary of each of these drafts and some of the concerns that will be discussed during the meeting.

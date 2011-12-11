@@ -21,13 +21,13 @@
     doc[addEvent](type, fix, true);
   }
   
-  window.onkeypress = function(e) {
+  window.onkeyup = function(e) {
     if(e.keyCode == 37 && previousLink) {
-      previousLink.click();
+      window.location = previousLink.href;
     }
     
     if(e.keyCode == 39 && nextLink) {
-      nextLink.click();
+      window.location = nextLink.href;      
     }
   };
 }(document));

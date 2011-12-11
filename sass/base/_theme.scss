@@ -7,6 +7,7 @@ a {
   text-decoration: none;
 }
 
+code { @extend .less-focus; color: darken($text-color, 30%); }
 li { margin-bottom: 1em; }
 
 .content, 
@@ -17,14 +18,19 @@ footer[role="contentinfo"] { @extend .default-width; }
 
 .twitter { @extend .icons; background-image: image-url('twitter.png'); }
 .youtube { @extend .icons; background-image: image-url('youtube.png'); }
+.github { @extend .icons; background-image: image-url('github.png');  background-size: 16px 16px; }
 .rss { @extend .icons; background-image: image-url('rss.png'); background-size: 10px 10px; }
 
 
-.sitenav { margin: 0 0 2em 0; padding-top: 2em; }
+.sitenav { 
+  margin: 0 0 2em 0; 
+  clear: both;  
+}
 
 .sitenav a { 
-  @extend .less-focus; 
-  margin: 0 0.5em; 
+  @extend .least-focus; 
+  margin: 0 1em 0 0;
+  text-transform: uppercase 
 }
 
 body header[role="banner"] h1,
@@ -41,6 +47,8 @@ body header[role="banner"] h2 a {
   &:nth-child(2) { background-color: #90a935; }
 
   &:nth-child(3) { background-color: #d24739; }  
+  
+  &:nth-child(4) { background-color: saturate($link-color, 20%); }    
 }
 
 
@@ -61,7 +69,7 @@ nav.article {
 
 
   
-article > header { margin-bottom: 4em; }
+article > header { margin-bottom: 2em; }
 
 article > header time,
 article > header h1 { @extend .zeropaddingmargin; }
@@ -176,10 +184,7 @@ footer[role="contentinfo"] {
     margin-top: 4em;     
   }
   
-  .sitenav { 
-    text-align: right;     
-    margin: 0 0 10em 0; 
-  }
+  .sitenav { margin: 0 0 8em 0; }
   
   nav.article {
     width: 48em;
