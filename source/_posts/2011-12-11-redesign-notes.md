@@ -68,7 +68,7 @@ I was happy with the architecture of the older design, which is why nothing has 
 Lack of PHP and MySQL has made this page render in about 1s compared to 2.6s previously. I also don't have frivolous resources loading which makes it better. 
 
 ### Complaints
-I am overall very satisfied with Octopress, and am so glad [Brandon Mathis](imathis.com) created it. Only niggling complaint I have is that the rake deployment script takes _years_ to run. You could use `rake isolate[filename]` and subsequent `rake integrate` to make this faster. But I wish it were the case automatically. 
+I am overall very satisfied with Octopress, and am so glad [Brandon Mathis](http://imathis.com) created it. Only niggling complaint I have is that the rake deployment script takes _years_ to run. You could use `rake isolate[filename]` and subsequent `rake integrate` to make this faster. But I wish it were the case automatically. 
 
 Creating a new post is easy, but finding it in the 100s of posts I have to write it is a pain. I suspect I could add a `mate <filename>` to the `rake new_post` script which would make that easier.  
 
