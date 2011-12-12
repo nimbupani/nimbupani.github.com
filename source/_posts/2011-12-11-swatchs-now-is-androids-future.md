@@ -21,7 +21,7 @@ As I was reading the article, it became really hard for me not to draw the compa
 
 Clearly he has not heard of Android. 
 
-I am not suggesting Google will do this, just that there are very obvious incentives to do so, yet so many mobile manufacturers are turning a blind eye to the risk it involves. As one ex-Swatch executive said:
+I am not suggesting Google will do this, just that there are very obvious incentives to do so. What I would like to know is how mobile manufacturers are hedging their risks. As one ex-Swatch executive said:
 
 > “This whole battle is the result of people completely underestimating the risk that at some stage Swatch could cut off rivals, which is a legitimate decision to make in a free market,”
 

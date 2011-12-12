@@ -12,12 +12,7 @@
   <aside id="articles">
     <p><img class="avatar" src="{{ root_url }}/assets/divya.png" height=50> <a href="http://twitter.com/divya">Divya Manian</a> is a Web Developer in Seattle. <a href="{{ root_url}}/about.html">More about me ❭</a></p>
     <h2>Posts on Web Development</h2>
-    <ul>
-      {% for post in site.categories['Web Development'] limit:20 %}        
-        <li><a href="{{ root_url }}{{ post.url }}">{{ post.title }}</a></li>
-      {% endfor %}              
-      <li><a class="btn" href="{{ root_url }}/categories/web-development/">More</a></li>
-    </ul>
+    <ul>{% for post in site.categories['Web Development'] limit:20 %}<li><a href="{{ root_url }}{{ post.url }}">{{ post.title }}</a></li>{% endfor %}<li><a class="btn" href="{{ root_url }}/categories/web-development/">More</a></li></ul>
   </aside>
   <footer role="contentinfo">{% include footer.html %}</footer>
   {% include after_footer.html %}

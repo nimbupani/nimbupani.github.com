@@ -65,21 +65,14 @@ ol { list-style-type: decimal;
 ul, ol { &, ul, ol { margin-left: 0; padding-left: 0; }}
 
 blockquote {
-  $bq-margin: 1.2em;
-  font-style: italic;
   position: relative;
-  font-size: 1.2em;
-  line-height: 1.5em;
+  font-style: italic;
   padding-left: 1em;
   border-left: 4px solid;
   cite {
     font-style: italic;
     a { word-wrap: break-word; }
     &:before { content: '\2014'; padding:{right: .3em; left: .3em;} }
-  }
-  @media only screen and (min-width: 992px) {
-    padding-left: 1.5em;
-    border-left-width: 4px;
   }
 }
 

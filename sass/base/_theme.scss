@@ -67,10 +67,6 @@ nav.article {
   }
 }
 
-
-  
-article > header { margin-bottom: 2em; }
-
 article > header time,
 article > header h1 { @extend .zeropaddingmargin; }
 
@@ -90,7 +86,11 @@ article > header time::before,
 
 article > header .archive-title { padding-top: 0.46em; }
 
-article .entry-content > p:first-child { @extend .larger-focus; }
+article .entry-content > p:first-child { 
+  @extend .larger-focus; 
+  line-height: 1.2;
+  margin-bottom: 1em;  
+}
 
 article footer { 
   @extend .less-focus; 
@@ -181,10 +181,10 @@ footer[role="contentinfo"] {
 @media (min-width: 800px) {
   header[role="banner"] { 
     float: left; 
-    margin-top: 4em;     
+    margin-top: 2em;     
   }
   
-  .sitenav { margin: 0 0 8em 0; }
+  .sitenav { margin: 0 0 6em 0; }
   
   nav.article {
     width: 48em;
