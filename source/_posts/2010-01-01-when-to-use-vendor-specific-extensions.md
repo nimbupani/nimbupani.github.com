@@ -20,7 +20,7 @@ category: "Web Development"
 <p>For example, <code>-border-radius</code> is a popular vendor-specific extension, and by not using it, there is not a significant loss to readers of your website. In contrast, <code>-multiple-column-width</code>, when not supported, will render your text in only one column which might hinder usability of the website on browsers that do not support that extension.</p>	
 </li>	                                                      
 <li><p><strong>If it is being discussed to be supported in future versions of CSS.</strong></p>
-<p>Use vendor-specific extensions only if the property exists in a W3C Recommendation or a Working Draft as a supported property (though not necessary if your website needs to work on only one browser). Declare it before any vendor-specific extensions so that, when it becomes a standard, your website will work seamlessly on all browsers that support it.</p></li> 
+<p>Use vendor-specific extensions only if the property exists in a W3C Recommendation or a Working Draft as a supported property (though not necessary if your website needs to work on only one browser). </p></li> 
 </ul>                          
 
 <p>For graceful degradation, you can use <a href="http://www.modernizr.com/" title="Modernizr">Modernizr</a> which outputs a list of supported properties as multiple classes on the body element. You can then use these class selectors and declare vendor-specific extensions for them in your CSS file. </p>
