@@ -12,15 +12,24 @@ You could probably look out for updates on the meeting [@csswg](http://twitter.c
 
 <h3><a href="http://dev.w3.org/csswg/css3-regions/">CSS Regions</a></h3>
 
-This spec, from my understanding, is a way to define how content flows like in Adobe InDesign or Illustrator. Basically you can take content from a set of elements (by using the property <code>flow: &lt;nameoftheregion></code>) and make that render on a set of other elements (called  <em>regions</em>) which act as a container for that content using the <code>content: from-flow()</code>. If the container have content, those will be replaced by the content set using the  <code>content</code> property. This is controlled by using what is called as <em>named flow</em>. You control which elements belong to a flow using the <code>flow</code> property.
+This spec, from my understanding, is a way to define how content flows like in Adobe InDesign or Illustrator. Basically you can extract the content from a set of elements by using the property <code>flow-into: &lt;nameoftheflow&gt;</code>. Then you can make that render on another set of elements (called  <em>regions</em>) which act as a containers for that content using <code>flow-from: &lt;nameoftheflow&gt;</code>. If the containers have content, it will be replaced by the content set using the  <code>flow-from</code> property. This is controlled by using what is called as <em>named flow</em>. You control which elements belong to a flow using the <code>flow-into</code> property on them.
 
-    .contentthatflows { flow: newspaper-region; }
+    .contentthatflows { flow-into: newspaper-flow; }
 
-    .region1-1, .region1-2 { content: from-flow(newspaper-region); }
+    .region1-1, .region1-2 { flow-from: newspaper-flow; }
 
-The content rendered within <code>.region1-1</code> and <code>.region1-2</code> will render with styles specified for <code>.region1-1</code> and <code>.region1-2</code> and will not use the styles of the element they belong to.
+The content rendered within <code>.region1-1</code> and <code>.region1-2</code> will render with styles originally defined on the elements which belong to the <code>newspaper-flow</code>.
+Properties defined on <code>.region1-1</code> or <code>.region1-2</code> will not trickle down to the content that flows into them.
 
-Sometimes, content can straddle two or more such regions within the same flow. There is no clear way to adjust the styles of such content belonging to a single flow, so we use a pseudo-element called <code>::region-lines</code> . This property has been much debated and would be the subject of the debate at the CSS Face-to-face too.
+Sometimes, content can straddle two or more such regions within the same flow. You can overwrite styles to elements which fall into a particular region using a [region-styling](http://www.w3.org/TR/css3-regions/#region-styling) block, similar in notation to media queries.
+
+    @region .region1-1 { 
+        p {
+            color: red;
+        }
+    }
+
+This means that the text of all paragraphs which fall into the <code>.region1-1</code> region will be colored red. Paragraphs which fall outside this region will have their originally defined color.
 
 There is also a skeletal interface to access which region an element is part of which might be fleshed out further in the Face-to-face meeting. 
 
