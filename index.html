@@ -77,7 +77,7 @@
 
 <p><img src="http://cache.gyazo.com/64c191910d79e1ec04e253caa7a74482.png" alt="" /></p>
 
-<p>The intention was that within organizations web developers work to keep an updated list of html5 features that they would adopt or not. However, Paul Irish and I thought it would be useful if there were a global set of recommendations that web developers could consult and tap on when they are deciding on how to use features. This was the seed for the creation of <a href="http://html5please.us">HTML5 Please</a>.</p>
+<p>The intention was that within organizations web developers would work to keep an updated list of html5 features that they would adopt or not. However, <a href="http://paulirish.com">Paul Irish</a> and I thought it would be useful if there were a global set of recommendations that web developers could consult and tap on when they are deciding on how to use features. This was the seed for the creation of <a href="http://html5please.us">HTML5 Please</a>.</p>
 
 <p><a href="http://caniuse.com">When can I use</a> and <a href="http://modernizr.com">Modernizr</a> do a great job in informing the users of available features and how to feature detect them. The <a href="https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-browser-Polyfills">Modernizr polyfill wikipage</a> also does a good job of listing all the available polyfills. What we felt missing was the glue that bound all this information together, to tell the user what the best tool for the job was: either on its own, or with a polyfill or a sensible fallback.</p>
 
@@ -85,7 +85,7 @@
 
 <h3>The Setup</h3>
 
-<p>Initially, this data was in JSON file that was manipulated in node to generate the static html. Soon, it became obvious that JSON would be a big pile of mess when many people <em>manually</em> update it.  Also, it was clear we needed a build system, which is where <a href="http://twitter.com/tbranyen">Tim Branyen</a> stepped in to help creating one using node and backbone that would combine markdown posts into a single HTML page.</p>
+<p>Initially, this data was in a JSON file that was manipulated in node to generate the static html. Soon, it became obvious that JSON would be a big pile of mess when many people <em>manually</em> update it.  Also, it was clear we needed a build system, which is where <a href="http://twitter.com/tbranyen">Tim Branyen</a> stepped in to help creating one using node and backbone that would combine markdown posts into a single HTML page.</p>
 
 <p>It was also obvious that we needed a good system to create these markdown posts so that each of the tags that are used in the &#8216;Explore features&#8217; section are not created accidentally (e.g. prevent creating a tag called <code>polyfill</code> instead of <code>polyfills</code>). To do this, <a href="http://twitter.com/vyom">Deepak Jois</a> created a simple shell script that accepts a feature name, its associated tags, its kind, and then creates a markdown file with these details and opens it in your editor.</p>
 
@@ -93,7 +93,7 @@
 
 <h3>The Front End</h3>
 
-<p>I was unsure of how to proceed with the design. This is how it looked like at the beginning:</p>
+<p>I was unsure of how to proceed with the design. This is how it appeared in the beginning:</p>
 
 <p><img src="http://cache.gyazo.com/4e9fa43b13017085aa1647e1955a36d6.png" alt="" /></p>
 
