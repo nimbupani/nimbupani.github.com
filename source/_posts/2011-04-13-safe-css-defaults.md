@@ -294,4 +294,8 @@ category: "Web Development"
     </tr>
   </tbody>
 </table>
+
+_Update:_ [Pete](
+http://the-echoplex.net) links to this [list of initial values](https://github.com/peteboere/css-crush/blob/master/misc/initial-values.ini) he has compiled. 
+
 <p><small>Thanks to <a href="http://css-tricks.com">Chris Coyier</a>, <a href="http://www.xanthir.com/blog/">Tab Atkins</a>, <a href="http://leaverou.me">Lea Verou</a>, and <a href="http://nicolasgallagher.com">Nicolas Gallagher</a> for feedback on this post!</small></p>
