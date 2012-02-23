@@ -17,7 +17,7 @@ Here is my list of products I consider desirable:
 - [Teenage Engineering](http://www.teenageengineering.com/)'s products 
 - Kindle
 - Dieter Rams's designed products
-- [Singgih Kartono's radios](http://cache.gyazo.com/998ce69d9f4c1ea58cf6c3cccb0f897c.png)
+- [Singgih Kartono's radios](http://www.areaware.com/proddetail.asp?prod=sskmr&CatID=155)
 - Volkswogen Beetle/Camper
 - Pixar movies
 
