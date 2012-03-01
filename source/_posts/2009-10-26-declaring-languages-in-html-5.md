@@ -19,7 +19,7 @@ category: "Web Development"
 
 <h3>Language processing</h3>
 <p>In HTML 5, there are 3 ways to declare the language of a HTML document:</p>
-<ul><li>As a pragma directive e.g. <code>&lt;meta http-equiv=&quot;content-language&quot; content=&quot;en&quot;&gt;</code></li>
+<ul><li><del>As a pragma directive e.g. <code>&lt;meta http-equiv=&quot;content-language&quot; content=&quot;en&quot;&gt;</code></del> (<a href="http://www.w3.org/TR/2011/WD-html-markup-20110113/meta.http-equiv.content-language.html">obsolete</a>)</li>
 	<li><p>As part of header in HTTP response, e.g. below:</p>
 <pre>
 HTTP/1.1 200 OK
@@ -47,15 +47,15 @@ Content-Language: en
 <ul>
 	<li>Search Engines use this for determining which document to include in search results (e.g. it will not show a document with content-language set as Chinese if a search is looking for english documents, but most search engines use more than these two to determine which documents to show).</li>
 	<li><a href="http://httpd.apache.org/docs/2.0/content-negotiation.html">Content negotiation</a> by Apache servers based on the language preference set by the users on their browsers.</li> 
-	<li>Identify the <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/elements.html#attr-lang">default language of a document</a> This concept is new in HTML 5. If you specify only one language using the above two methods (i.e.<code>&lt;meta http-equiv=&quot;content-language&quot; content=&quot;en&quot;&gt;</code> instead of <code>&lt;meta http-equiv=&quot;content-language&quot; content=&quot;en, fr&quot;&gt;</code> ), then the text of the entire document is processed as that language (except for the text that is contained in an element which has a <code>lang</code> attribute, which is processed as the language tag value in <code>lang</code> attribute). </li> 
+	<li>Identify the <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/elements.html#attr-lang">default language of a document</a> This concept is new in HTML 5. If you specify only one language using the above two methods (i.e. <code>&lt;html lang=&quot;en&quot;&gt;</code> instead of <code>&lt;meta http-equiv=&quot;content-language&quot; content=&quot;en, fr&quot;&gt;</code>), then the text of the entire document is processed as that language (except for the text that is contained in an element which has another <code>lang</code> attribute, which is processed as the language tag value in <code>lang</code> attribute). </li> 
 </ul>
 <p>The last method is to explicitly declare a language to be used for text processing by the user agent. Use the <code>lang</code> attribute if you want the browser to process the text in that HTML element in a specific language.</p> 
-<p>The language code that comes after <code>Content-Language</code> or content in <code>meta http-equiv</code> or in <code>lang</code> attribute need to be from subtags in the IANA language subtag registry. You can read more on <a href="http://www.w3.org/TR/i18n-html-tech-lang/#ri20030218.131140352">choosing language values here</a></p>
+<p>The language code that comes after <del><code>Content-Language</code> or</del> content in <code>meta http-equiv</code> or in <code>lang</code> attribute need to be from subtags in the IANA language subtag registry. You can read more on <a href="http://www.w3.org/TR/i18n-html-tech-lang/#ri20030218.131140352">choosing language values here</a></p>
 <h3>Default Language of a Document</h3>
 <p>Unless you explicitly use the lang attribute to define the language of the document, HTML 5 specifies the following inheritance rules to <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/elements.html#the-lang-and-xml:lang-attributes">determine the language of a HTML element</a>: 
 	<p>The HTML element has a <code>lang</code> attribute (e.g. <code>&lt;span lang=&quot;en&quot;&gt;</code>), if not &mdash;</p>
 	<p>The nearest parent of that element has a lang attribute, if not &mdash;</p>	
-	<p>The document has a single language tag set through pragma directive (e.g. <code>&lt;meta http-equiv=&quot;content-language&quot; content=&quot;en&quot;&gt;</code>), if not &mdash;
+	<p><del>The document has a single language tag set through pragma directive (e.g. <code>&lt;meta http-equiv=&quot;content-language&quot; content=&quot;en&quot;&gt;</code>), if not</del> &mdash;
 	</p>
 	<p>The HTTP header Content-Language contains a single language tag, if not &mdash;</p>
 	<p>The document is treated as that of an unknown language.</p>  
