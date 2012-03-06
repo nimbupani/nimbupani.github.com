@@ -19,7 +19,7 @@ category: "Web Development"
 
 <h3>Language processing</h3>
 <p>In HTML 5, there are 3 ways to declare the language of a HTML document:</p>
-<ul><li><del>As a pragma directive e.g. <code>&lt;meta http-equiv=&quot;content-language&quot; content=&quot;en&quot;&gt;</code></del> (<a href="http://www.w3.org/TR/2011/WD-html-markup-20110113/meta.http-equiv.content-language.html">obsolete</a>)</li>
+<ul><li><del>As a pragma directive e.g. <code>&lt;meta http-equiv=&quot;content-language&quot; content=&quot;en&quot;&gt;</code></del> (W3C's HTML5 validator now reports the following error: "Using the meta element to specify the document-wide default language is <a href="http://www.w3.org/TR/2011/WD-html-markup-20110113/meta.http-equiv.content-language.html">obsolete</a>. Consider specifying the language on the root element instead.")</li>
 	<li><p>As part of header in HTTP response, e.g. below:</p>
 <pre>
 HTTP/1.1 200 OK
