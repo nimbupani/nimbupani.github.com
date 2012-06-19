@@ -6,7 +6,7 @@ comments: true
 category: "Web Development"
 ---
 
-Until [Test the Web Forward](http://testthewebforward.org) I had just a vague idea of what CSS Object Model does. So, it was awesome to hear from and learn about the CSS OM from the spec co-editor [Glenn Adams](https://twitter.com/gasubic/). 
+Until [Test the Web Forward](http://testthewebforward.org) I had just a vague idea of what CSS Object Model does. So, it was awesome to hear from and learn about the [CSS Object Model](http://dev.w3.org/csswg/cssom/) from the spec co-editor [Glenn Adams](https://twitter.com/gasubic/). 
 
 ## What it is
 
