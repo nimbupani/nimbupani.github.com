@@ -31,9 +31,9 @@ The `getComputedStyle` method retuns what is known as a `CSSStyleDeclaration` ob
 
 - `document.getOverrideStyle` (unimplemented in most browsers, but would be useful for [getting/setting hover, and other pseudo-classes](http://stackoverflow.com/questions/9798210/is-there-any-way-to-reset-after-before-css-rules-for-an-element)).
 
-- `getComputedStyle`
+- `window.getComputedStyle`
  
-The returned object itself can be changed (it is _mutable_ which means you can set a style property like `Element.style.margin = "20px"`) in all cases except the last. If you try to change a property of the object returned by `getComputedStyle(Element)`, you would get an exception. 
+The returned object itself can be changed (it is _mutable_ which means you can set a style property like `Element.style.margin = "20px"`) in all cases except the last. If you try to change a property of the object returned by `window.getComputedStyle(Element)`, you would get an exception. 
 
 
 ## CSS Rules
