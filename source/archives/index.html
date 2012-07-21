@@ -5,12 +5,12 @@ footer: false
 ---
 <nav class="article">
   {% if paginator.next_page %}
-    <a class="previous" href="{{paginator.next_page}}" title="Older Archives">❬</a>
+    <a class="previous" href="{{paginator.next_page}}" title="Older Archives">〈</a>
   {% endif %}
   {% if paginator.previous_page %}
-    <a class="next" href="{{paginator.previous_page}}" title="Newer Archives">❭</a>
+    <a class="next" href="{{paginator.previous_page}}" title="Newer Archives">〉</a>
   {% endif %}
-</nav>  
+</nav>
 <header>
   <h1 class="archive-title">Archives</h1>
 </header>
@@ -21,7 +21,7 @@ footer: false
   {% unless year == this_year %}
     {% assign year = this_year %}
     <h2>{{ year }}</h2>
-  {% endunless %}  
+  {% endunless %}
     <article>
       {% include archive_post.html %}
     </article>
