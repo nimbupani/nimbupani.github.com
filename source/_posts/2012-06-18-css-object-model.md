@@ -25,7 +25,7 @@ The APIs from the specification that have been implemented so far offer the abil
 
 The `getComputedStyle` method retuns what is known as a `CSSStyleDeclaration` object. It enumerates all style properties (& values). This is the object that is returned whenever you query for style information using:
 
-- `document.styleSheet[0].cssRules[0].style`
+- `document.styleSheets[0].cssRules[0].style`
 
 - `Element.style`
 
