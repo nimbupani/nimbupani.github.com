@@ -1,0 +1,338 @@
+
+<!doctype html>
+<!--[if lt IE 9]> <html class="no-js oldie" lang="en"> <![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  
+  <title>Blogging with Drupal - Part 1 | Divya Manian</title>  
+  <meta name="author" content="Divya Manian">
+  
+  <meta name="description" content="Drupal is a Content Management System - which means blogging is just a small cog of the big wheel of Drupal. This does make Drupal harder to use for &hellip;">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://nimbupani.github.com/blogging-with-drupal-part-1.html">
+  <link href="/stylesheets/screen.css" rel="stylesheet">
+  <link href="http://feeds.feedburner.com/nimbupani" rel="alternate" title="Subscribe" type="application/atom+xml">
+  <link href="http://feeds.feedburner.com/nimbu" rel="alternate" title="Subscribe to Web Development updates" type="application/atom+xml">    
+  
+</head>
+
+
+<body  >
+  <div class="container">
+    <div class="content">
+      <header role="banner">  <h1><a href="/">Divya Manian</a></h1>
+  
+  <h2><a class="twitter" href="https://twitter.com/divya">twitter</a> <a class="rss" href="http://feeds.feedburner.com/nimbupani">RSS Feed</a> <a class="youtube" href="http://youtube.com/nimbupani">Youtube Channel</a> <a class="github" href="https://github.com/nimbupani">Github</a></h2>
+  
+</header>
+      <nav class="sitenav"><a href="/">Home</a>
+<a href="/archives">Archives</a>
+<a href="/about.html">About</a>
+</nav>    
+      
+  
+
+
+
+  
+
+
+<article>
+  <nav class="article">
+    
+      <a class="previous" href="/freelancing-for-dummies.html" title="Freelancing for Dummies">&#x276C;</a>      
+    
+    
+      <a class="next" href="/blogging-with-drupal-part-2.html" title="Blogging with Drupal - Part 2">&#x276D;</a>              
+     
+    
+               
+  </nav>
+    <header>
+    
+
+
+
+
+  
+
+<time datetime="2007-12-08T00:00:00-08:00" pubdate><span class='month'>Dec</span> <span class='day'>08</span> <span class='year'>2007</span></time>    
+    
+      <h1 class="entry-title"><a href="/blogging-with-drupal-part-1.html">Blogging with Drupal - Part 1</a></h1>
+    
+    
+    
+    
+  </header>
+<div class="entry-content"><p>Drupal is a Content Management System - which means blogging is just a small cog of the big wheel of Drupal. This does make Drupal harder to use for blogging (as compared to <a href="http://wordpress.org/">Wordpress</a>), but with these modules and settings Drupal can be a very good blog workhorse. In fact, it runs this blog too!</p>
+
+<h3>Install Drupal</h3>
+
+
+<p>Download and set up Drupal 5.0 while following the <a href="http://drupal.org/getting-started/5">installation instructions</a>.</p>
+
+<h3>Change Settings</h3>
+
+
+<p>Change the settings of Drupal by logging in to your administrative dashboard (http://&lt; path to drupal website >/?q=admin).</p>
+
+<h3>Take the site offline</h3>
+
+
+<p><strong>URL:</strong> http://&lt; path to drupal website >/?q=admin/settings/site-maintenance</p>
+
+
+<p>When people are visiting your site, instead of being shown an incomplete and an under construction site, you can take your site offline, this means only the admin can have access to the site and the site will not be visible to anyone else. We will come back to this page once we are done with all the set ups.</p>
+
+
+<h3>Site Information</h3>
+
+
+<p><strong>URL:</strong> http://&lt; path to drupal website >/?q=admin/settings/site-information</p>
+
+
+<p> Change the site name, slogan, mission etc. These can be made to appear on your blog based on the theme you select.
+</p>
+
+
+<p>Also set the <strong>default front page</strong> to &#8220;blog/1&#8221; so that your blog becomes the index page.</p>
+
+
+<p></p>
+
+<h3>Administration Theme</h3>
+
+
+<p><strong>URL:</strong> http://&lt; path to drupal website >/?q=admin/settings/admin</p>
+
+
+<p>Change the administration theme to one of <strong>Garland</strong>. It is a robust theme that works with any kind of Drupal administrative interface. This means whenever you visit the admin section of your site, the site will be styled like this theme.</p>
+
+
+<h3>Install a blog theme</h3>
+
+
+<p><strong>URL:</strong> http://&lt; path to drupal website >/?q=admin/build/themes</p>
+
+
+<p>Download a theme from <a href="http://drupal.org/project/Themes">Drupal.org Themes page</a> and upload it to the &#8220;themes&#8221; folder of your Drupal installation. You can preview themes at the <a href="http://themegarden.org/drupal50/">Drupal Themes Garden page</a> - it is like <a href="http://csszengarden">CSS Zen Garden</a>, but for Drupal themes (and a lot more clunky!). 
+</p>
+
+
+<p>Once you have uploaded the theme, go to the URL mentioned above and select the theme you have uploaded and make that your default theme. Remember, your theme will not be applied to your blog unless you set it as &#8220;default&#8221; theme.</p>
+
+
+<h3>Confirm Modules are Running</h3>
+
+
+<p><strong>URL: </strong> http://&lt; path to drupal website >/?q=admin/build/modules</p>
+
+
+<p>Make sure the following modules are selected:</p>
+
+
+<ul>
+    <li>Blog</li>
+    <li>Blog API</li>
+    <li>Comment</li>
+    <li>Contact</li>        
+    <li>Path</li>
+    <li>Menu</li>
+    <li>Search</li>
+    <li>Statistics</li>
+    <li>Taxonomy</li>
+</ul>
+
+
+<p>We will come back to this page in <a href="http://www.nimbupani.com/blog/blogging-with-drupal-part-2.html">part 2</a> to install other modules, once the basic setup is done.</p>
+
+
+<h3>Settings for your blog</h3>
+
+
+<p><strong>URL: </strong> http://&lt; path to drupal website >/?q=admin/content/types/blog</p>
+
+
+<p>You can set in this page whether you want to enable or disable comments for your blog entries.</p>
+
+
+<p><strong>URL: </strong> http://&lt; path to drupal website >/?q=admin/content/node-settings</p>
+
+
+<p>Set the number of blog posts you want to be displayed and the length of excerpts for each blog post to be displayed. By default it displays 10 blog posts on the front page and an except that is 600 characters long (you can set it to &#8220;unlimited&#8221; which effectively displays the whole post).</p>
+
+
+<h3>Settings for Comments</h3>
+
+
+<p><strong>URL: </strong> http://&lt; path to drupal website >/?q=admin/content/comment/settings</p>
+
+
+<p>This is where you setup comments to minimize spam (or remove spam altogether for most bloggers!). In the <strong>Posting Settings</strong>, make sure &#8220;Anonymous posters must leave their contact information&#8221; is selected, &#8220;Preview Commenting&#8221; is set to &#8220;required&#8221;. You can also set where you want the comment submission form to be displayed, and how you want the comments to be displayed. </p>
+
+
+<h3>Setting up Menus</h3>
+
+
+<p><strong>URL: </strong> http://&lt; path to drupal website >/?q=admin/build/menu</p>
+
+
+<p>If you would like to put links to other sites, or your contact page, this is the place to create them. Read up on <a href="http://drupal.org/handbook/modules/menu">how to setup and administer menus</a></p>
+
+
+<h3>Setting up your Contact Page</h3>
+
+
+<p><strong>URL: </strong> http://&lt; path to drupal website >/?q=admin/build/menu</p>
+
+
+<p>First, go to http://&lt; path to drupal website >/?q=admin/build/contact/add and add a category for your contact form. Then, click on &#8220;Settings&#8221; to set what should be shown above the form and set a threshold on how many times the same person can ping you (to prevent spam).</p>
+
+
+<h3>Setup Categories</h3>
+
+
+<p><strong>URL: </strong> http://&lt; path to drupal website >/?q=admin/content/comment/settings</p>
+
+
+<p></p>
+
+<p>If you have imported your blog from elsewhere, you will already see a &#8220;vocabulary&#8221;. Otherwise, click on &#8220;Add Vocabulary&#8221;, to start creating a container for your blog categories. Even if your &#8220;vocabulary&#8221; is setup, you can look at the following screenshot, to make your categories behave like tags. If you don’t want your categories like that, just uncheck &#8220;Free tagging&#8221;, and set the hierarchy to &#8220;Single/Multiple&#8221;.</p>
+
+
+<p> <img src="http://nimbupani.com/blog/files/drupal_category.gif" alt="Drupal Category Configuration" title="Drupal Category Configuration" />
+</p>
+
+
+<p><strong>URL: </strong> http://&lt; path to drupal website >/?q=admin/content/taxonomy</p>
+
+
+<p></p>
+
+<p>If you need to add categories, click on &#8220;add terms&#8221; next to the &#8220;vocabulary&#8221; that has been setup for your blog in the previous step. If you have set up your vocabulary as &#8220;free tagging&#8221;, then you can create these categories on the fly when you are typing your blog post.</p>
+
+
+<p></p>
+
+<p>The intention of this is to show the categories listed in the sidebar, which we will be covering in <a href="http://www.nimbupani.com/blog/blogging-with-drupal-part-2.html">part 2</a>.</p>
+
+
+<h3>Setup Menus</h3>
+
+
+<p><strong>URL: </strong> http://&lt; path to drupal website >/?q=admin/build/menu</p>
+
+
+<p></p>
+
+<p>Apart from your usual links to posts belonging to certain categories, you would also like to have links to other pages (e.h. contact page) or other websites you like. You can set all of them up in a menu. A menu is a set of links. Once you set up a menu, you can display them as <strong>blocks</strong> (covered below)</p>
+
+
+<h3>Setup Blocks</h3>
+
+
+<p><strong>URL: </strong> http://&lt; path to drupal website >/?q=admin/build/block</p>
+
+
+<p></p>
+
+<p>Blocks are sets of content in the sidebars of your blog. An example of a block would be a menu list of websites you visit daily. You can select which blocks you want displayed and choose where (left/right sidebar) here. </p>
+
+
+<p><strong>URL: </strong> http://&lt; path to drupal website >/?q=admin/build/block/add</p>
+
+
+<p>You can add blocks to your blog (e.g. you want to add your <a href="http://twitter.com/badges/html">twitter widget</a> or Feedburner chicklets). Drupal website has a <a href="http://drupal.org/node/21867">set of snippets you can use to create new blocks</a>.</p>
+
+
+<p>There ends the first part, we have learned to customize the basics of a Drupal install for blogging, and in <a href="http://www.nimbupani.com/blog/blogging-with-drupal-part-2.html">part 2</a> we shall cover some kick-ass Drupal modules that make blogging with Drupal a breeze. </p>
+
+</div>
+
+  <footer>
+    <p class="meta">This post was posted by 
+  
+
+<a href="/about.html">Divya Manian</a>
+ on 
+
+
+
+
+  
+
+<time datetime="2007-12-08T00:00:00-08:00" pubdate><span class='month'>Dec</span> <span class='day'>08</span> <span class='year'>2007</span></time> in 
+
+<span class="categories">
+  
+    <a class='category' href='/categories/web-development/'>Web Development</a>
+  
+</span>
+
+.  If you would like to update this post, <a href="https://github.com/nimbupani/nimbupani.github.com/blob/source/source/_posts/2007-12-08-blogging-with-drupal-part-1.md">please send a pull request</a>.       
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+      
+    </div>
+  </div>
+  <aside id="articles">
+    <p><img class="avatar"
+    src="http://a2.twimg.com/profile_images/1696865113/me_normal"
+    height=48> <a href="http://twitter.com/divya">Divya Manian</a> is a Web Developer in Seattle. <a href="/about.html">More about me ❭</a></p>
+    <h2>Posts on Web Development</h2>
+    <ul><li><a href="/some-updates.html">Some Updates</a></li><li><a href="/css-object-model.html">CSS Object Model</a></li><li><a href="/fake-bolding-of-web-fonts.html">Fake Bolding of Web Fonts</a></li><li><a href="/html5please-api.html">Html5please API</a></li><li><a href="/html5please.html">html5please</a></li><li><a href="/mustache.html">mustache, hogan, handlebars</a></li><li><a href="/redesign-notes.html">Redesign Notes</a></li><li><a href="/summary-of-various-exciting-css-drafts-and-proposals.html">Summary of various exciting CSS drafts and proposals</a></li><li><a href="/this-revolution-needs-new-revolutionaries.html">This revolution needs new revolutionaries</a></li><li><a href="/some-css-transition-hacks.html">Some CSS Transition hacks</a></li><li><a href="/safe-css-defaults.html">Safe CSS Defaults</a></li><li><a href="/unplugged-2011.html">Unplugged 2011</a></li><li><a href="/bokeh-with-css3-gradients.html">Bokeh with CSS3 Gradients</a></li><li><a href="/making-pure-css3-demos-better.html">Making "Pure CSS3" demos better</a></li><li><a href="/web-opener-at-opera.html">Web Opener at Opera</a></li><li><a href="/current-color-in-css.html">Current Color in CSS</a></li><li><a href="/css-vocabulary.html">CSS Vocabulary</a></li><li><a href="/active-web-development.html">Active Web Development</a></li><li><a href="/sexy-css3-buttons.html">Sexy CSS3 Buttons</a></li><li><a href="/accessible-css-barcharts.html">Accessible CSS Barcharts</a></li><li><a class="btn" href="/categories/web-development/">More</a></li></ul>
+  </aside>
+  <footer role="contentinfo"><p>
+  Copy to your heart’s content 2012 - Divya Manian -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>  
+</p>
+
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'nimbublog';
+      var disqus_developer = 1;        
+      
+      
+        var disqus_url = 'http://nimbupani.com/blogging-with-drupal-part-1.html';
+        var disqus_identifier = 'http://nimbupani.com/blogging-with-drupal-part-1.html';                
+      
+        
+        
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+<script src="/javascripts/octopress.js"></script>
+
+  <script>
+    var _gaq=[['_setAccount','UA-97188-1'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+
+
+
+
+</body>
+</html>

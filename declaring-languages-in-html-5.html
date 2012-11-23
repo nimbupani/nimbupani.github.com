@@ -1,0 +1,247 @@
+
+<!doctype html>
+<!--[if lt IE 9]> <html class="no-js oldie" lang="en"> <![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  
+  <title>Declaring Languages in HTML 5 | Divya Manian</title>  
+  <meta name="author" content="Divya Manian">
+  
+  <meta name="description" content="Web Development is infinitely more troublesome when you have documents in languages other than American English. The onus is on us web developers and &hellip;">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://nimbupani.github.com/declaring-languages-in-html-5.html">
+  <link href="/stylesheets/screen.css" rel="stylesheet">
+  <link href="http://feeds.feedburner.com/nimbupani" rel="alternate" title="Subscribe" type="application/atom+xml">
+  <link href="http://feeds.feedburner.com/nimbu" rel="alternate" title="Subscribe to Web Development updates" type="application/atom+xml">    
+  
+</head>
+
+
+<body  >
+  <div class="container">
+    <div class="content">
+      <header role="banner">  <h1><a href="/">Divya Manian</a></h1>
+  
+  <h2><a class="twitter" href="https://twitter.com/divya">twitter</a> <a class="rss" href="http://feeds.feedburner.com/nimbupani">RSS Feed</a> <a class="youtube" href="http://youtube.com/nimbupani">Youtube Channel</a> <a class="github" href="https://github.com/nimbupani">Github</a></h2>
+  
+</header>
+      <nav class="sitenav"><a href="/">Home</a>
+<a href="/archives">Archives</a>
+<a href="/about.html">About</a>
+</nav>    
+      
+  
+
+
+
+  
+
+
+<article>
+  <nav class="article">
+    
+      <a class="previous" href="/book-reviews-for-october-2009.html" title="Book Reviews for October 2009">&#x276C;</a>      
+    
+    
+      <a class="next" href="/book-reviews-for-november-2009-part-1.html" title="Book Reviews for November 2009 â Part 1">&#x276D;</a>              
+     
+    
+               
+  </nav>
+    <header>
+    
+
+
+
+
+  
+
+<time datetime="2009-10-26T00:00:00-07:00" pubdate><span class='month'>Oct</span> <span class='day'>26</span> <span class='year'>2009</span></time>    
+    
+      <h1 class="entry-title"><a href="/declaring-languages-in-html-5.html">Declaring Languages in HTML 5</a></h1>
+    
+    
+    
+    
+  </header>
+<div class="entry-content"><p>Web Development is infinitely more troublesome when you have documents in languages other than American English. The onus is on us web developers and server administrators to make sure browsers and search engines can detect the right language. Here is how you can declare the language of your document in HTML 5.</p>
+
+
+<p></p>
+
+<h3>What is language declaration?</h3>
+
+
+<p>This is a way to specify what language a HTML document or a snippet of HTML text is in. Language declaration does not provide information on <a href="http://www.w3.org/TR/i18n-html-tech-lang/#ri20050208.093646470">character encoding and the text direction</a> (right to left or left to right). Those need to be declared separately.</p>
+
+
+<p></p>
+
+<h3>Why specify a language?</h3>
+
+
+<p>Language information can be used for:</p>
+
+
+<ul><li>Text to speech converters (e.g. speak Canadian french rather than french)</li>
+        <li>Selecting the right fonts for display (e.g. use  traditional chinese script instead of the simplified one)</li>
+        <li>Selecting the right dictionary for browser spell-checks in forms (use UK English rather than US English)</li>
+        <li>Rendering the page correctly — in short deliver the document in its most natural language as possible.</li>
+</ul>
+
+
+
+
+<h3>Language processing</h3>
+
+
+<p>In HTML 5, there are 3 ways to declare the language of a HTML document:</p>
+
+
+<ul><li><del>As a pragma directive e.g. <code>&lt;meta http-equiv=&quot;content-language&quot; content=&quot;en&quot;&gt;</code></del> (W3C&#8217;s HTML5 validator now reports the following error: &#8220;Using the meta element to specify the document-wide default language is <a href="http://www.w3.org/TR/2011/WD-html-markup-20110113/meta.http-equiv.content-language.html">obsolete</a>. Consider specifying the language on the root element instead.&#8221;)</li>
+    <li><p>As part of header in HTTP response, e.g. below:</p>
+<pre>
+HTTP/1.1 200 OK
+Date: Wed, 05 Nov 2003 10:46:04 GMT
+Server: Apache/1.3.28 (Unix) PHP/4.2.3
+Content-Location: CSS2-REC.en.html
+Vary: negotiate,accept-language,accept-charset
+TCN: choice
+P3P: policyref=http://www.w3.org/2001/05/P3P/p3p.xml
+Cache-Control: max-age=21600
+Expires: Wed, 05 Nov 2003 16:46:04 GMT
+Last-Modified: Tue, 12 May 1998 22:18:49 GMT
+ETag: "3558cac9;36f99e2b"
+Accept-Ranges: bytes
+Content-Length: 10734
+Connection: close
+Content-Type: text/html; charset=iso-8859-1
+Content-Language: en            
+</pre>
+    <small>Example from W3C article on <a href="http://www.w3.org/TR/i18n-html-tech-lang/#ri20040808.101452727">Internationalization Best Practices</a></small>
+    </li>
+<li>As <code>lang</code> attribute on a HTML element e.g. <code>&lt;div lang=&quot;fr&quot;&gt;</code>, or a <code>xml:lang</code> attribute on XML documents like MathML and SVG.</li> </ul>
+
+
+
+
+<p>The first two ways of specifying language is used to identify <a href="http://www.w3.org/TR/i18n-html-tech-lang/#ri20040808.101452727">the intended audience</a> of the HTML document. This information is used in the following ways:</p>
+
+
+<ul>
+    <li>Search Engines use this for determining which document to include in search results (e.g. it will not show a document with content-language set as Chinese if a search is looking for english documents, but most search engines use more than these two to determine which documents to show).</li>
+    <li><a href="http://httpd.apache.org/docs/2.0/content-negotiation.html">Content negotiation</a> by Apache servers based on the language preference set by the users on their browsers.</li> 
+    <li>Identify the <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/elements.html#attr-lang">default language of a document</a> This concept is new in HTML 5. If you specify only one language using the above two methods (i.e. <code>&lt;html lang=&quot;en&quot;&gt;</code> instead of <code>&lt;meta http-equiv=&quot;content-language&quot; content=&quot;en, fr&quot;&gt;</code>), then the text of the entire document is processed as that language (except for the text that is contained in an element which has another <code>lang</code> attribute, which is processed as the language tag value in <code>lang</code> attribute). </li> 
+</ul>
+
+
+<p>The last method is to explicitly declare a language to be used for text processing by the user agent. Use the <code>lang</code> attribute if you want the browser to process the text in that HTML element in a specific language.</p>
+
+
+<p></p>
+
+<p>The language code that comes after <del><code>Content-Language</code> or</del> content in <code>meta http-equiv</code> or in <code>lang</code> attribute need to be from subtags in the IANA language subtag registry. You can read more on <a href="http://www.w3.org/TR/i18n-html-tech-lang/#ri20030218.131140352">choosing language values here</a></p>
+
+
+<h3>Default Language of a Document</h3>
+
+
+<p>Unless you explicitly use the lang attribute to define the language of the document, HTML 5 specifies the following inheritance rules to <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/elements.html#the-lang-and-xml:lang-attributes">determine the language of a HTML element</a>: 
+    <p>The HTML element has a <code>lang</code> attribute (e.g. <code>&lt;span lang=&quot;en&quot;&gt;</code>), if not &mdash;</p>
+    <p>The nearest parent of that element has a lang attribute, if not &mdash;</p>  
+    <p><del>The document has a single language tag set through pragma directive (e.g. <code>&lt;meta http-equiv=&quot;content-language&quot; content=&quot;en&quot;&gt;</code>), if not</del> &mdash;
+    </p>
+    <p>The HTTP header Content-Language contains a single language tag, if not &mdash;</p>
+    <p>The document is treated as that of an unknown language.</p>  
+<h3>Bottomline</h3> 
+<p>This is not the last word on detecting the language of a document, but for the time being, if your document has content that is mostly not English, use the <code>lang</code> attribute on the <code>&lt;html&gt;</code> element to specify the language. If there are elements of the document which use language other than the one specified for the whole document, use <code>lang</code> attribute for each such element.</p>
+
+</div>
+
+  <footer>
+    <p class="meta">This post was posted by 
+  
+
+<a href="/about.html">Divya Manian</a>
+ on 
+
+
+
+
+  
+
+<time datetime="2009-10-26T00:00:00-07:00" pubdate><span class='month'>Oct</span> <span class='day'>26</span> <span class='year'>2009</span></time> in 
+
+<span class="categories">
+  
+    <a class='category' href='/categories/web-development/'>Web Development</a>
+  
+</span>
+
+.  If you would like to update this post, <a href="https://github.com/nimbupani/nimbupani.github.com/blob/source/source/_posts/2009-10-26-declaring-languages-in-html-5.md">please send a pull request</a>.       
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+      
+    </div>
+  </div>
+  <aside id="articles">
+    <p><img class="avatar"
+    src="http://a2.twimg.com/profile_images/1696865113/me_normal"
+    height=48> <a href="http://twitter.com/divya">Divya Manian</a> is a Web Developer in Seattle. <a href="/about.html">More about me ❭</a></p>
+    <h2>Posts on Web Development</h2>
+    <ul><li><a href="/some-updates.html">Some Updates</a></li><li><a href="/css-object-model.html">CSS Object Model</a></li><li><a href="/fake-bolding-of-web-fonts.html">Fake Bolding of Web Fonts</a></li><li><a href="/html5please-api.html">Html5please API</a></li><li><a href="/html5please.html">html5please</a></li><li><a href="/mustache.html">mustache, hogan, handlebars</a></li><li><a href="/redesign-notes.html">Redesign Notes</a></li><li><a href="/summary-of-various-exciting-css-drafts-and-proposals.html">Summary of various exciting CSS drafts and proposals</a></li><li><a href="/this-revolution-needs-new-revolutionaries.html">This revolution needs new revolutionaries</a></li><li><a href="/some-css-transition-hacks.html">Some CSS Transition hacks</a></li><li><a href="/safe-css-defaults.html">Safe CSS Defaults</a></li><li><a href="/unplugged-2011.html">Unplugged 2011</a></li><li><a href="/bokeh-with-css3-gradients.html">Bokeh with CSS3 Gradients</a></li><li><a href="/making-pure-css3-demos-better.html">Making "Pure CSS3" demos better</a></li><li><a href="/web-opener-at-opera.html">Web Opener at Opera</a></li><li><a href="/current-color-in-css.html">Current Color in CSS</a></li><li><a href="/css-vocabulary.html">CSS Vocabulary</a></li><li><a href="/active-web-development.html">Active Web Development</a></li><li><a href="/sexy-css3-buttons.html">Sexy CSS3 Buttons</a></li><li><a href="/accessible-css-barcharts.html">Accessible CSS Barcharts</a></li><li><a class="btn" href="/categories/web-development/">More</a></li></ul>
+  </aside>
+  <footer role="contentinfo"><p>
+  Copy to your heart’s content 2012 - Divya Manian -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>  
+</p>
+
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'nimbublog';
+      var disqus_developer = 1;        
+      
+      
+        var disqus_url = 'http://nimbupani.com/declaring-languages-in-html-5.html';
+        var disqus_identifier = 'http://nimbupani.com/declaring-languages-in-html-5.html';                
+      
+        
+        
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+<script src="/javascripts/octopress.js"></script>
+
+  <script>
+    var _gaq=[['_setAccount','UA-97188-1'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+
+
+
+
+</body>
+</html>

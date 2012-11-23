@@ -1,0 +1,247 @@
+
+<!doctype html>
+<!--[if lt IE 9]> <html class="no-js oldie" lang="en"> <![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  
+  <title>Content Models in HTML | Divya Manian</title>  
+  <meta name="author" content="Divya Manian">
+  
+  <meta name="description" content="So, in the spirit of being the ferret for jargon I don&#8217;t understand, I went on a quest to understand what the phrase &#8220;Content Models&# &hellip;">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://nimbupani.github.com/content-models-in-html.html">
+  <link href="/stylesheets/screen.css" rel="stylesheet">
+  <link href="http://feeds.feedburner.com/nimbupani" rel="alternate" title="Subscribe" type="application/atom+xml">
+  <link href="http://feeds.feedburner.com/nimbu" rel="alternate" title="Subscribe to Web Development updates" type="application/atom+xml">    
+  
+</head>
+
+
+<body  >
+  <div class="container">
+    <div class="content">
+      <header role="banner">  <h1><a href="/">Divya Manian</a></h1>
+  
+  <h2><a class="twitter" href="https://twitter.com/divya">twitter</a> <a class="rss" href="http://feeds.feedburner.com/nimbupani">RSS Feed</a> <a class="youtube" href="http://youtube.com/nimbupani">Youtube Channel</a> <a class="github" href="https://github.com/nimbupani">Github</a></h2>
+  
+</header>
+      <nav class="sitenav"><a href="/">Home</a>
+<a href="/archives">Archives</a>
+<a href="/about.html">About</a>
+</nav>    
+      
+  
+
+
+
+  
+
+
+<article>
+  <nav class="article">
+    
+      <a class="previous" href="/illustration-friday-dip.html" title="Illustration Friday - Dip">&#x276C;</a>      
+    
+    
+      <a class="next" href="/notes-from-html5-readiness-hacking.html" title="Notes from HTML5 Readiness Hacking">&#x276D;</a>              
+     
+    
+               
+  </nav>
+    <header>
+    
+
+
+
+
+  
+
+<time datetime="2010-04-05T00:00:00-07:00" pubdate><span class='month'>Apr</span> <span class='day'>05</span> <span class='year'>2010</span></time>    
+    
+      <h1 class="entry-title"><a href="/content-models-in-html.html">Content Models in HTML</a></h1>
+    
+    
+    
+    
+  </header>
+<div class="entry-content"><p>So, in the spirit of being the <a href="http://nimbupani.com/font-in-your-face.html">ferret for jargon I don&#8217;t understand</a>, I went on a quest to understand what the phrase &#8220;Content Models&#8221; mean. </p>
+
+
+
+
+<h3>WTF are &#8220;Content Models&#8221;?</h3>
+
+
+<p>You will regret asking that question, as it is a rabbit hole. But fear not as this post can be your summary of the excitement that awaits you. In short, Content Models are used to define the kind of content that can be found within an element in HTML. Historically, this is defined in the <a href="http://en.wikipedia.org/wiki/Document_Type_Definition">DTD</a> for a SGML-derived language (like XML and HTML 4.01).</p>
+
+
+
+
+<h3>The Story so Far</h3>
+
+
+<p>In HTML 4.01 specification, every element needs to be defined and contain a content model. For example, a <code>ul</code> element can only contain one or more <code>li</code> elements. An <code>img</code> cannot contain any element within it, so its content model is empty.</p>
+
+
+
+
+<p>Several elements are categorized in HTML 4.01 into <em>block</em> and <em>inline</em>. This is declared in the <a href="http://www.w3.org/TR/REC-html40/sgml/dtd.html#block">HTML 4.01  DTD</a>:</p>
+
+
+
+
+<pre>&lt;!ENTITY % block &quot;P | %heading; | %list; | %preformatted; | DL | DIV | NOSCRIPT | BLOCKQUOTE | FORM | HR | TABLE | FIELDSET | ADDRESS&quot;&gt;and&lt;!ENTITY % inline &quot;#PCDATA | %fontstyle; | %phrase; | %special; | %formctrl;&quot;&gt;</pre>
+
+
+
+
+<p>Each element is then defined in the DTD with what kind of content they can contain. For example, while <code>p</code> is a block element, it can contain only inline elements according to the <a href="http://www.w3.org/TR/REC-html40/struct/text.html#edef-P">DTD</a>:</p>
+
+
+
+
+<pre>&lt;!ELEMENT P - O (%inline;)*            -- paragraph --&gt;</pre>
+
+
+
+
+<p>Some elements (like <a href="http://www.w3.org/TR/REC-html40/struct/text.html#edef-ins"><code>ins</code> or <code>del</code></a>) can function either as block level or inline elements depending on how they are used. </p>
+
+
+
+
+<p>HTML 4.01 defines the content models within a DTD, which is referenced by the Doctype declaration at the beginning of a HTML page. In HTML5, the content models are defined within the spec and not in a DTD (this also means you do not have to specify a Doctype, but not doing so will trigger quirks mode in some browsers, so you are recommended to use the HTML5 Doctype <code>&lt;!doctype html&gt;</code>).</p>
+
+
+
+
+<h3>What&#8217;s new in HTML5?</h3>
+
+
+
+
+<p>HTML5 does away with block and inline categorization of content. There are now <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/content-models.html#content-models">several categories</a>:</p>
+
+
+
+
+<ul>
+<li>Metadata content</li>
+<li>Flow content</li>
+<li>Sectioning content</li>
+<li>Heading content</li>
+<li>Phrasing content</li>
+<li>Embedded content</li>
+<li>Interactive content</li>
+</ul>
+
+
+
+
+<p>Each element can belong to one or more categories, and can behave one way or the other depending on the context. Each of them has an expected list of contents. Here is <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/section-index.html#element-content-categories">a summary of which elements belong to which categories</a></p>
+
+
+
+
+<h3>Why is this good to know?</h3>
+
+
+<p>There is an experimental<a href="http://www.iandevlin.com/blog/2010/01/html5/enabling-the-html5-parser-in-firefox-3-6"> HTML5 parser available on Firefox 3.6</a> onwards and <a href="http://www.opera.com/docs/specs/presto25/#html5">basic HTML 5 parsing available for Opera Presto 2.5 rendering engine</a>. Suffice to say, when all browsers start parsing HTML5, it will be relevant to know which content is being rendered in what context for writing more semantic code.</p>
+
+
+<p>Browsers have, for long, worked around incorrect implementations of the HTML specification, so the more rigorous/semantic we are with our markup, the easier it is for the browser to render!</p>
+
+
+<p>Or, you can use this knowledge to wisely nod your head when you are trying to parse the messages in the <a href="http://www.whatwg.org/mailing-list">WHATWG mailing list</a>!</p>
+
+
+<p></p>
+</div>
+
+  <footer>
+    <p class="meta">This post was posted by 
+  
+
+<a href="/about.html">Divya Manian</a>
+ on 
+
+
+
+
+  
+
+<time datetime="2010-04-05T00:00:00-07:00" pubdate><span class='month'>Apr</span> <span class='day'>05</span> <span class='year'>2010</span></time> in 
+
+<span class="categories">
+  
+    <a class='category' href='/categories/web-development/'>Web Development</a>
+  
+</span>
+
+.  If you would like to update this post, <a href="https://github.com/nimbupani/nimbupani.github.com/blob/source/source/_posts/2010-04-05-content-models-in-html.md">please send a pull request</a>.       
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+      
+    </div>
+  </div>
+  <aside id="articles">
+    <p><img class="avatar"
+    src="http://a2.twimg.com/profile_images/1696865113/me_normal"
+    height=48> <a href="http://twitter.com/divya">Divya Manian</a> is a Web Developer in Seattle. <a href="/about.html">More about me ❭</a></p>
+    <h2>Posts on Web Development</h2>
+    <ul><li><a href="/some-updates.html">Some Updates</a></li><li><a href="/css-object-model.html">CSS Object Model</a></li><li><a href="/fake-bolding-of-web-fonts.html">Fake Bolding of Web Fonts</a></li><li><a href="/html5please-api.html">Html5please API</a></li><li><a href="/html5please.html">html5please</a></li><li><a href="/mustache.html">mustache, hogan, handlebars</a></li><li><a href="/redesign-notes.html">Redesign Notes</a></li><li><a href="/summary-of-various-exciting-css-drafts-and-proposals.html">Summary of various exciting CSS drafts and proposals</a></li><li><a href="/this-revolution-needs-new-revolutionaries.html">This revolution needs new revolutionaries</a></li><li><a href="/some-css-transition-hacks.html">Some CSS Transition hacks</a></li><li><a href="/safe-css-defaults.html">Safe CSS Defaults</a></li><li><a href="/unplugged-2011.html">Unplugged 2011</a></li><li><a href="/bokeh-with-css3-gradients.html">Bokeh with CSS3 Gradients</a></li><li><a href="/making-pure-css3-demos-better.html">Making "Pure CSS3" demos better</a></li><li><a href="/web-opener-at-opera.html">Web Opener at Opera</a></li><li><a href="/current-color-in-css.html">Current Color in CSS</a></li><li><a href="/css-vocabulary.html">CSS Vocabulary</a></li><li><a href="/active-web-development.html">Active Web Development</a></li><li><a href="/sexy-css3-buttons.html">Sexy CSS3 Buttons</a></li><li><a href="/accessible-css-barcharts.html">Accessible CSS Barcharts</a></li><li><a class="btn" href="/categories/web-development/">More</a></li></ul>
+  </aside>
+  <footer role="contentinfo"><p>
+  Copy to your heart’s content 2012 - Divya Manian -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>  
+</p>
+
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'nimbublog';
+      var disqus_developer = 1;        
+      
+      
+        var disqus_url = 'http://nimbupani.com/content-models-in-html.html';
+        var disqus_identifier = 'http://nimbupani.com/content-models-in-html.html';                
+      
+        
+        
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+<script src="/javascripts/octopress.js"></script>
+
+  <script>
+    var _gaq=[['_setAccount','UA-97188-1'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+
+
+
+
+</body>
+</html>

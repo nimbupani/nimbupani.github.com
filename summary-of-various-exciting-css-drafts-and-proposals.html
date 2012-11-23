@@ -1,0 +1,247 @@
+
+<!doctype html>
+<!--[if lt IE 9]> <html class="no-js oldie" lang="en"> <![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  
+  <title>Summary of various exciting CSS drafts and proposals | Divya Manian</title>  
+  <meta name="author" content="Divya Manian">
+  
+  <meta name="description" content="I will be attending my first ever CSS Working Group Face to Face Meeting starting this Sunday, and I wanted to be at least up-to-speed on all the &hellip;">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://nimbupani.github.com/summary-of-various-exciting-css-drafts-and-proposals.html">
+  <link href="/stylesheets/screen.css" rel="stylesheet">
+  <link href="http://feeds.feedburner.com/nimbupani" rel="alternate" title="Subscribe" type="application/atom+xml">
+  <link href="http://feeds.feedburner.com/nimbu" rel="alternate" title="Subscribe to Web Development updates" type="application/atom+xml">    
+  
+</head>
+
+
+<body  >
+  <div class="container">
+    <div class="content">
+      <header role="banner">  <h1><a href="/">Divya Manian</a></h1>
+  
+  <h2><a class="twitter" href="https://twitter.com/divya">twitter</a> <a class="rss" href="http://feeds.feedburner.com/nimbupani">RSS Feed</a> <a class="youtube" href="http://youtube.com/nimbupani">Youtube Channel</a> <a class="github" href="https://github.com/nimbupani">Github</a></h2>
+  
+</header>
+      <nav class="sitenav"><a href="/">Home</a>
+<a href="/archives">Archives</a>
+<a href="/about.html">About</a>
+</nav>    
+      
+  
+
+
+
+  
+
+
+<article>
+  <nav class="article">
+    
+      <a class="previous" href="/this-revolution-needs-new-revolutionaries.html" title="This revolution needs new revolutionaries">&#x276C;</a>      
+    
+    
+      <a class="next" href="/redesign-notes.html" title="Redesign Notes">&#x276D;</a>              
+     
+    
+               
+  </nav>
+    <header>
+    
+
+
+
+
+  
+
+<time datetime="2011-12-10T18:51:00-08:00" pubdate><span class='month'>Dec</span> <span class='day'>10</span> <span class='year'>2011</span></time>    
+    
+      <h1 class="entry-title"><a href="/summary-of-various-exciting-css-drafts-and-proposals.html">Summary of various exciting CSS drafts and proposals</a></h1>
+    
+    
+    
+    
+  </header>
+<div class="entry-content"><p>I will be attending my first ever <a href="http://lists.w3.org/Archives/Public/www-style/2011Jun/0593.html">CSS</a> Working Group Face to Face Meeting starting this Sunday, and I wanted to be at least up-to-speed on all the drafts that will be up for discussion. So, in the interest of not letting a few hours spent understanding some of them go to waste, here is a brief summary of each of these drafts and some of the concerns that will be discussed during the meeting.</p>
+
+<p>You could probably look out for updates on the meeting <a href="http://twitter.com/csswg">@csswg</a></p>
+
+<h3><a href="http://dev.w3.org/csswg/css3-regions/">CSS Regions</a></h3>
+
+
+<p>This spec, from my understanding, is a way to define how content flows like in Adobe InDesign or Illustrator. Basically you can extract the content from a set of elements by using the property <code>flow-into: &lt;nameoftheflow&gt;</code>. Then you can make that render on another set of elements (called  <em>regions</em>) which act as a containers for that content using <code>flow-from: &lt;nameoftheflow&gt;</code>. If the containers have content, it will be replaced by the content set using the  <code>flow-from</code> property. This is controlled by using what is called as <em>named flow</em>. You control which elements belong to a flow using the <code>flow-into</code> property on them.</p>
+
+<pre><code>.contentthatflows { flow-into: newspaper-flow; }
+
+.region1-1, .region1-2 { flow-from: newspaper-flow; }
+</code></pre>
+
+<p>The content rendered within <code>.region1-1</code> and <code>.region1-2</code> will render with styles originally defined on the elements which belong to the <code>newspaper-flow</code>.
+Properties defined on <code>.region1-1</code> or <code>.region1-2</code> will not trickle down to the content that flows into them.</p>
+
+<p>Sometimes, content can straddle two or more such regions within the same flow. You can overwrite styles to elements which fall into a particular region using a <a href="http://www.w3.org/TR/css3-regions/#region-styling">region-styling</a> block, similar in notation to media queries.</p>
+
+<pre><code>@region .region1-1 { 
+    p {
+        color: red;
+    }
+}
+</code></pre>
+
+<p>This means that the text of all paragraphs which fall into the <code>.region1-1</code> region will be colored red. Paragraphs which fall outside this region will have their originally defined color.</p>
+
+<p>There is also a skeletal interface to access which region an element is part of which might be fleshed out further in the Face-to-face meeting.</p>
+
+<h3><a href="http://www.interoperabilitybridges.com/css3-floats/"> <span class="caps">CSS3</span> Floats </a></h3>
+
+
+<p></p>
+
+<p> Expands on floats to make float possible with positioning and wrap text content around the positioned element. However this conflates floats with positioning (if you want wrapping on elements, you need to set <code>float: positioned</code> and use <code>top</code> , <code>left</code> , <code>position</code> to control the location of the wrapped element) </p>
+
+
+<p> <p> The properties for controlling the wrapping is similar to those in the <span class="caps">CSS</span> Exclusions proposal - <code>wrap-type</code> (vs <code>wrap-shape-mode</code> ), <code>wrap-shape</code> (same), <code>wrap-image</code> (vs <code>wrap-shape-image</code> ), <code>wrap-image-threshold</code> (vs <code>wrap-shape-image-threshold</code> ), <code>wrap-margin</code> (vs <code>wrap-shape-margin</code> ), <code>wrap-padding</code> (vs <code>wrap-shape-padding</code> ). It seems to me that these two proposals need to be merged or the scope of one of them changed significantly so there are no conflicts. From the <a href="http://wiki.csswg.org/ideas/css3-floats-use-cases">Wrap use cases</a> , personally I like the approach of <span class="caps">CSS</span> Exclusions which seems cleaner for all the use cases mentioned. </p></p>
+
+<h3> <a href="http://dev.w3.org/csswg/css3-exclusions/"> <span class="caps">CSS3</span> Exclusions </a> </h3>
+
+
+<p></p>
+
+<p> This has been initially proposed by Adobe (along with <span class="caps">CSS3</span> Regions). The case for wrapping is separate from positioning or floats, and wrapping can occur on any box independent of where they are located or rendered. In addition you can also specify how each wrapping shape interacts with each other (depending on what you set for wrap-shape-order, you can set which wrapping shape will clip the other when they interact). </p>
+
+
+<p> <p> I like this better than <span class="caps">CSS3</span> Floats because this is not related to how an element is positioned but merely impacts the wrapping. </p></p>
+
+<p> Both <span class="caps">CSS3</span> Exclusions and <span class="caps">CSS3</span> Floats accept <a href="http://www.w3.org/TR/2010/WD-SVG11-20100622/shapes.html"> basic <span class="caps">SVG</span> shapes </a> as values for <code>wrap-image-shape</code> ( <code>wrap-image</code> ). Both specs have equivalent properties to the background property for the wrap image, which means you can have repeating image patterns that you can use for creating your wrap shape. </p>
+
+
+<p> <p>Both specs also specify an interesting alpha channel threshold which can be used to determine the shape that needs to be generated from the wrap-image specified. </p> <h3> <a href="http://dev.w3.org/csswg/css3-flexbox/"> <span class="caps">CSS3</span> Flexbox </a> </h3> <p> This has been entirely re-written and is significantly different from current implementations. What it aims to do is to provide you with flexible layout of child elements and the space around them within a parent element that has a flexbox layout. You get started by specifying <code>display: flexbox</code> on the parent element and then specifying the order in which you want the child elements to be laid out (using flex-direction). All child elements (with display set to inline or anything) will follow this direction if nothing more is specified for each of them. You can also determine how the white-space that is left after following the order should be allocated (using flex-pack). </p></p>
+
+<p>You can also specify the order in which the child elements should occur using flex-order. Each of these child elements can have widths or heights as a function called flex(), which takes in 3 values - the amount it can expand to, the amount it can contract to, the preferred length it should have. Browsers need to follow the free space allocation algorithm to make sure each of these element’s width/height match the values provided.</p>
+
+
+<p> <p>This would be very useful for mobile apps where device diversity makes creating flexible but usable designs almost mandatory. Cant wait to see this implemented across all browsers!</p></p>
+
+<h3> <a href="http://dev.w3.org/csswg/css3-grid-align/"> <span class="caps">CSS3</span> Grid Layout </a> </h3>
+
+
+<p></p>
+
+<p> This spec would allow authors to have complete control over placement of each element on the page in a grid. It introduces completely new properties to aligning elements and like flexbox layout you use a <code>display: grid</code> on the parent element to make all the child elements be part of a grid. So, you cannot have an element that can be both a flexbox or a grid at the same time (clearly makes no sense). Do note that only block elements can take part in a grid layout and be part of a grid. </p>
+
+
+<p></p>
+
+<p>The Grid layout lets you set complicated grids of elements. The flexbox merely allows you to set how flexible the element can be and where it can be placed within the parent element, but the grid layout lets you set which elements can be part of a grid cell (each grid is made up of grid cells, grid rows, and grid columns), and where within the grid cell should each element be placed (the layer order, and if they should span multiple grid cells), and how elements should be laid out when you do not specify which grid cells they belong to. </p>
+
+
+<p> <p> The Grid layout can also be used in combination with <span class="caps">CSS</span> Regions such that grid cells that are selected to be part of a region can have text flowing through them (from another grid cell). Grid cells can be selected using ::grid-cell(‘cellname’) pseudo-element selector. </p></p>
+
+<p> This spec is pretty well-defined, which is not surprising given <a href="http://msdn.microsoft.com/en-us/ie/hh272902#_CSSGrid"> we already have an implementation in <span class="caps">IE10</span> </a> . My only concern is the redefinition of the <code>fr</code> unit which has also been used to define a flex tuple in the CSS3 Flexbox spec which will discussed at the CSS Face-to-face. </p>
+
+
+<p> <h3> <a href="http://dev.w3.org/csswg/css3-images/#gradients">Gradients</a> </h3> <p> While gradients are more or less determined, there is still a big discussion on how to render gradients with keywords (using <code>top left</code> , etc). Another concern with gradients has been the interpolation of colors (which currently results in ugly blackish interpolation such as this one on the left when you have one of the color stops as <code>transparent</code> ). </p></p>
+
+<p> <img src="http://gyazo.com/9f995e0e98ba6c0dfbf71930dce4fb66.png"> <br> ( <a href="http://jsfiddle.net/nimbu/rK9Pd/">source</a> ) </p>
+
+
+<p> <p> The meaning of premultiplied color spaces <a href="http://dev.w3.org/csswg/css3-images/#color-stop-syntax">has been clarified</a> (Opera already implements this - see the gradient on the right). </p></p>
+
+<h3> <a href="http://dev.w3.org/csswg/cssom/"> <span class="caps">CSSOM</span> </a> </h3>
+
+
+<p> <span class="caps">CSSOM</span> is the Document Object Model for <span class="caps">CSS</span> . It is an <span class="caps">API</span> thats allows you to access style rules, selectors, media queries, and the <span class="caps">CSS</span> used to render the styles on a page. This has previously not been specced which meant each browser could implement its own APIs for accessing stylesheets (and they did). Now, we have a comprehensive set of interfaces to access the styles from JavaScript. </p>
+
+
+<p> <p> We already have parts of <span class="caps">CSSOM</span> implemented in various browsers (Opera 11.5+, <span class="caps">IE10</span> , Chrome, <span class="caps">FF5</span> ) though! </p> <p>Any questions you have that I can ask the Working Group about?</p></p>
+</div>
+
+  <footer>
+    <p class="meta">This post was posted by 
+  
+
+<a href="/about.html">Divya Manian</a>
+ on 
+
+
+
+
+  
+
+<time datetime="2011-12-10T18:51:00-08:00" pubdate><span class='month'>Dec</span> <span class='day'>10</span> <span class='year'>2011</span></time> in 
+
+<span class="categories">
+  
+    <a class='category' href='/categories/web-development/'>Web Development</a>
+  
+</span>
+
+.  If you would like to update this post, <a href="https://github.com/nimbupani/nimbupani.github.com/blob/source/source/_posts/2011-12-10-summary-of-various-exciting-css-drafts-and-proposals.md">please send a pull request</a>.       
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+      
+    </div>
+  </div>
+  <aside id="articles">
+    <p><img class="avatar"
+    src="http://a2.twimg.com/profile_images/1696865113/me_normal"
+    height=48> <a href="http://twitter.com/divya">Divya Manian</a> is a Web Developer in Seattle. <a href="/about.html">More about me ❭</a></p>
+    <h2>Posts on Web Development</h2>
+    <ul><li><a href="/some-updates.html">Some Updates</a></li><li><a href="/css-object-model.html">CSS Object Model</a></li><li><a href="/fake-bolding-of-web-fonts.html">Fake Bolding of Web Fonts</a></li><li><a href="/html5please-api.html">Html5please API</a></li><li><a href="/html5please.html">html5please</a></li><li><a href="/mustache.html">mustache, hogan, handlebars</a></li><li><a href="/redesign-notes.html">Redesign Notes</a></li><li><a href="/summary-of-various-exciting-css-drafts-and-proposals.html">Summary of various exciting CSS drafts and proposals</a></li><li><a href="/this-revolution-needs-new-revolutionaries.html">This revolution needs new revolutionaries</a></li><li><a href="/some-css-transition-hacks.html">Some CSS Transition hacks</a></li><li><a href="/safe-css-defaults.html">Safe CSS Defaults</a></li><li><a href="/unplugged-2011.html">Unplugged 2011</a></li><li><a href="/bokeh-with-css3-gradients.html">Bokeh with CSS3 Gradients</a></li><li><a href="/making-pure-css3-demos-better.html">Making "Pure CSS3" demos better</a></li><li><a href="/web-opener-at-opera.html">Web Opener at Opera</a></li><li><a href="/current-color-in-css.html">Current Color in CSS</a></li><li><a href="/css-vocabulary.html">CSS Vocabulary</a></li><li><a href="/active-web-development.html">Active Web Development</a></li><li><a href="/sexy-css3-buttons.html">Sexy CSS3 Buttons</a></li><li><a href="/accessible-css-barcharts.html">Accessible CSS Barcharts</a></li><li><a class="btn" href="/categories/web-development/">More</a></li></ul>
+  </aside>
+  <footer role="contentinfo"><p>
+  Copy to your heart’s content 2012 - Divya Manian -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>  
+</p>
+
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'nimbublog';
+      var disqus_developer = 1;        
+      
+      
+        var disqus_url = 'http://nimbupani.com/summary-of-various-exciting-css-drafts-and-proposals.html';
+        var disqus_identifier = 'http://nimbupani.com/summary-of-various-exciting-css-drafts-and-proposals.html';                
+      
+        
+        
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+<script src="/javascripts/octopress.js"></script>
+
+  <script>
+    var _gaq=[['_setAccount','UA-97188-1'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+
+
+
+
+</body>
+</html>

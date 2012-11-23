@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[viz | Divya Manian]]></title>
+  <link href="http://nimbupani.github.com/categories/viz/atom.xml" rel="self"/>
+  <link href="http://nimbupani.github.com/"/>
+  <updated>2012-11-22T18:25:39-08:00</updated>
+  <id>http://nimbupani.github.com/</id>
+  <author>
+    <name><![CDATA[Divya Manian]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Twittering with D3]]></title>
+    <link href="http://nimbupani.github.com/twittering-with-d3.html"/>
+    <updated>2011-12-23T20:08:00-08:00</updated>
+    <id>http://nimbupani.github.com/twittering-with-d3</id>
+    <content type="html"><![CDATA[<p>What you see above is something I had been thinking of doing since the obsession of a redesign hit my head: rendering visual snippets of my latest tracked actions as pretty and useless graphics. Hopefully this is the first of many.</p>
+
+<p>My very first data mapping project was my <a href="http://j.mp/divyaieee">Final Year Project</a> where I had to render XML data from the server on to a J2ME application. I have since not wanted to recreate that horrific experience again and have stayed well out of the way of such complicated mappings. But, last year, I wrote a bit on using <a href="http://www.netmagazine.com/tutorials/build-tweet-map-svg">Polymaps for mapping tweets</a> and discovered that <a href="http://bost.ocks.org/mike/">Mike Bostock</a> has since created a new library for data visualization called <a href="http://mbostock.github.com/d3/">D3</a>. I finally got a chance to play with it.</p>
+
+<h3>Idea</h3>
+
+<p>The bar chart shows a timeline of the last 10 tweets starting with the earliest tweet. Each bar represents a tweet and grows darker across the timeline based on how many retweets occur. The darkest bar represents a tweet that was retweeted the most. Clicking on each bar gives you the tweet itself and the actual number of retweets that has occurred.</p>
+
+<p>I originally started with the idea of only plotting tweets created over the last 24 hours and the ebb and flow of each of their retweets. But, then, it became harder to visualize how I would treat retweets that occurred beyond a day. It seemed simpler to just switch over to plotting the graph for the latest few tweets.</p>
+
+<h3>Design</h3>
+
+<p>I had in my mind a graded bar chart that would animate across time and change in color values based on when and how many retweets occurred. I wanted to include axes in the design, but they looked very noisy when I got around to doing them, so they were <em>axed</em> :)</p>
+
+<h3>Implementation</h3>
+
+<p>This project was primarily a vehicle to learn <a href="http://mbostock.github.com/d3/">D3</a> and <a href="http://nodejs.org/">node.js</a> and I must say I did learn quite a bit of both while using them. Not having much of a data visualization background, understanding <code>scale</code>, <code>transition</code>, and <code>data</code> took a while, but it became more intuitive as I grasped how these worked.</p>
+
+<p>The binding of <code>data</code> to each SVG/DOM object using <code>selectAll('&lt;node&gt;').data()</code> is really awesome. It makes it easy to add/remove nodes depending on the data that you are dealing with, though, it does require you to think carefully about your data object (I spent many sleepless hours on this). D3's handy <a href="https://github.com/mbostock/d3/wiki/Transitions#wiki-d3_interpolate">interpolators</a> are useful for interpolating between arbitrary set of values. The variety of <a href="https://github.com/mbostock/d3/wiki/Scales">mappings of domains to ranges</a> that is available is also impressive.</p>
+
+<p>I used <a href="https://github.com/AvianFlu/ntwitter">nTwitter</a> to make requests to the Twitter REST API and write the results to a JSON file. Node’s async callbacks threw me in a loop but <a href="http://deepak.jois.name">Deepak</a> used <a href="https://github.com/caolan/async">Async</a> to make it all seamless (while also helping me out with a major rework of the code).</p>
+
+<p><a href="http://momentjs.com/">moment.js</a> was quite handy both server-side and client-side to parse and compare dates for tweets and retweets.</p>
+
+<h3>Play!</h3>
+
+<p>The code is in the <a href="https://github.com/nimbupani/viz">Viz</a> folder to which I should be adding more such pointless data art. Please do suggest improvements or feel free to use this in your own obsessive experiments :)</p>
+]]></content>
+  </entry>
+  
+</feed>

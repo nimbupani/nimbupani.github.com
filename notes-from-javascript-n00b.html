@@ -1,0 +1,280 @@
+
+<!doctype html>
+<!--[if lt IE 9]> <html class="no-js oldie" lang="en"> <![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  
+  <title>Notes from a JavaScript n00b | Divya Manian</title>  
+  <meta name="author" content="Divya Manian">
+  
+  <meta name="description" content="So, apparently I have been sleeping while all designers worth their salt have been diving into JavaScript like it is 2012. While I have been a very &hellip;">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://nimbupani.github.com/notes-from-javascript-n00b.html">
+  <link href="/stylesheets/screen.css" rel="stylesheet">
+  <link href="http://feeds.feedburner.com/nimbupani" rel="alternate" title="Subscribe" type="application/atom+xml">
+  <link href="http://feeds.feedburner.com/nimbu" rel="alternate" title="Subscribe to Web Development updates" type="application/atom+xml">    
+  
+</head>
+
+
+<body  >
+  <div class="container">
+    <div class="content">
+      <header role="banner">  <h1><a href="/">Divya Manian</a></h1>
+  
+  <h2><a class="twitter" href="https://twitter.com/divya">twitter</a> <a class="rss" href="http://feeds.feedburner.com/nimbupani">RSS Feed</a> <a class="youtube" href="http://youtube.com/nimbupani">Youtube Channel</a> <a class="github" href="https://github.com/nimbupani">Github</a></h2>
+  
+</header>
+      <nav class="sitenav"><a href="/">Home</a>
+<a href="/archives">Archives</a>
+<a href="/about.html">About</a>
+</nav>    
+      
+  
+
+
+
+  
+
+
+<article>
+  <nav class="article">
+    
+      <a class="previous" href="/spacing-out-on-css-namespaces.html" title="Spacing Out on CSS Namespaces">&#x276C;</a>      
+    
+    
+      <a class="next" href="/belief.html" title="Belief">&#x276D;</a>              
+     
+    
+               
+  </nav>
+    <header>
+    
+
+
+
+
+  
+
+<time datetime="2010-05-10T00:00:00-07:00" pubdate><span class='month'>May</span> <span class='day'>10</span> <span class='year'>2010</span></time>    
+    
+      <h1 class="entry-title"><a href="/notes-from-javascript-n00b.html">Notes from a JavaScript n00b</a></h1>
+    
+    
+    
+    
+  </header>
+<div class="entry-content"><p>So, apparently I have been sleeping while all designers worth their salt have been diving into JavaScript like it is <a href="http://en.wikipedia.org/wiki/2012_phenomenon">2012</a>. While I have been a very early evangelist of jQuery, I knew only enough to get me a solution but nothing in depth of whats, ifs, and whys of JavsScript. So, a month ago, I decided to spend a Saturday watching the <a href="http://video.yahoo.com/watch/111593/1710507">JavaScript, the programming language lectures by Douglas Crockford</a>. If you are in the same boat as I am and want to be able to write JavaScript (or even if you are using jQuery or other frameworks), this will be the best 6 hours you will spend.</p>
+
+
+<p></p>
+
+<h3>Caveats</h3>
+
+
+
+
+<p>You need to know the jargon of a programming language (not HTML), e.g. type, objects, arrays, etc. I think you might have a hard time understanding JavaScript if you are used to Java, or PHP. Thankfully, I don&#8217;t remember my life as a programmer, so it made understanding the lectures easy.</p>
+
+
+
+
+<p>The lectures are actually only 1.5 hours long. I mentioned 6 hours because, I (thanks to prodding from <a href="http://deepak.jois.name">Deepak</a>) paused the video every minute to try out what Douglas was talking about on Firebug Console, and trying out other &#8220;what-if&#8221; cases that he did not mention.</p>
+
+
+<p></p>
+
+<h3>Are you ready?</h3>
+
+
+
+
+<p>These notes might sound a lot like the <a href="http://neverseenlost.wordpress.com/">description of Lost by someone who has never seen it</a>, which means, it might at least be entertaining. From what I have learnt, it seems <a href="http://nimbupani.com/dom-ecmascript-and-other-puzzles.html">JavaScript</a> is an irrational language much like you and me, which causes much grief to programmers.</p>
+
+
+<p></p>
+
+<p>Without further ado, here are my notes on JavaScript:</p>
+
+
+
+
+<ol>
+    <li>There is only one type for a number, and that is a double.</li>
+    <li>There is only one String type, and does not have a type of Char like some other languages (Java)</li>
+    <li><code>Math.floor()</code> and <code>parseInt()</code> do almost the same thing, which is to return an integer value based on what gets passed into them, but <code>Math.floor("10f")</code> returns <code>NaN</code> (&#8220;Not a Number&#8221;) but <code>parseInt("10f")</code> will return <code>10</code>.</li>    
+    <li>JavaScript Strings are UCS-2 encoded which is almost all of UTF-8 (but excludes some new characters, and something called <a href="http://msdn.microsoft.com/en-us/library/ew7hbz7k(VS.71).aspx">surrogate pairs</a>).
+    </li>
+    <li>JavaScript has many &#8220;unknown&#8221; values: <code>NaN</code>, <code>null</code>, <code>undefined</code>. </li>
+    <li><code>NaN</code> cannot be compared with or equated to. E.g. the comparison <code>NaN === NaN</code> evaluatesto <code>false</code>. </li>  
+    <li><code>null</code> is an object (one of the schizophrenic aspects of JavaScript).
+    </li>     
+    <li><code>undefined</code> is the default value of any variable that has not yet been assigned a value (as you would have realised when you bang your keyboard in frustration at &#8220;Object undefined&#8221; errors).
+    </li>                                               
+    <li>Setting any variable to <code>undefined</code> is equivalent to deleting it.</li>
+    <li>JavaScript statements can be &#8220;truthy&#8221; or &#8220;falsy&#8221;</li>
+    <li>&#8220;falsy&#8221; statements are those that evaluate to <code>null</code>/<code>undefined</code>/<code>NaN</code>/<code>""</code>/<code>false</code> (bool)/<code>0</code> (int)
+    </li>                               
+    <li>Rest of the statements are true including those that evaluate to <code>"0"</code> (string)/ <code>"false"</code> (string).
+    </li>
+    <li><p>The easiest way to convert a string to number is to put a &#8220;+&#8221; (unary operator) before it. E.g.</p> 
+<pre><code>a = +"42" 
+b = a + 5 // b = 47
+
+a = "42"
+b = a + 5 // b = 425
+</code></pre>
+    </li>
+    <li><p>The comparison operators <code>==</code> and <code>===</code> are different. <code>==</code> can do type coercion which means if the two values being compared are of different types (e.g. String and Int), it can convert one to the other (I am not clear on what gets converted to what), and compare the values. <code>===</code> does not do that. E.g.</p>
+    <pre><code>43 == "43" // evaluates to true
+43 === "43" // evaluates to false</code></pre>
+    </li>
+    <li><p><code>!</code> returns boolean true, if the associated expression is falsy. e.g.</p> <pre><code>(!(43 === "43")) // true</code></pre> 
+    </li>                   
+    <li><p><code>!!</code> returns the boolean equivalent of the truthy/falsy nature of the expression associated with it. e.g.</p> <pre><code>!!(43 === "43") // false</code></pre> 
+    <p>So, in this way, even if your expression evaluates to <code>null</code>, <code>undefined</code> or <code>NaN</code>, you can use this operator to only use the boolean equivalent than these unknown values.</p>
+    </li>
+    <li>
+        Switch statements use &#8220;===&#8221; comparison 
+    </li>                                    
+    <li>Declare a variable with <code>var</code> before it (e.g. <code>var variablename</code>), so that its scope is local to where it was declared. Otherwise the variable will be available globally (and susceptible to accidental modifications)</li>  
+    <li>A variable declared in a function is available throughout the function and not just within blocks (e.g. a variable declared in if/switch statements of a function is also available for other operations in the same function).
+    </li>                                                                    
+    <li><p>You can define a function in two ways:</p>
+        <pre><code>1. var a = function() {} 
+2. var a = new function() {} 
+</code></pre>
+        <p>#1 implies the function returns undefined value unless there is a return statement.</p>
+        <p>#2 implies the function returns an object if there is no return statement (so it acts as a <a href="http://en.wikipedia.org/wiki/Constructor_(object-oriented_programming)">constructor</a>).</p>        
+    </li>              
+    <li>An object contains &#8220;name: value&#8221; pairs, the value can be another object. The value is referred using <code>object.name</code> or <code>object[name]</code>. The name can contain any character but, if you use a name like <code>sd#</code> you cannot refer to its value in this manner <code>a.sd#</code> you can only use <code>a["sd#"]</code> </li>                                                                         
+    <li><p>Objects are passed by reference, so they cannot be compared to check if they contain same name/value pairs. E.g. </p>
+<pre><code>a = {b:1, c:2};
+p = {b:1, c:2};
+
+a == p; // false
+
+p = a;  // name: value pairs of p lost, p points to a
+
+ a == p; // true</code>
+</pre>
+    <p>So, when you compare two objects, you really are comparing if they are both pointing to the same location.</p>
+    </li>
+    <li>Arrays inherit from Objects but have additional properties and functions.</li>
+    <li>Array length property returns the largest integer index + 1 e.g:
+<pre><code>a[0] = "bobo"; 
+a[5] = "dada"; 
+console.log(a.length); // results in 6 not 2
+</code></pre>       
+</li>
+<li><p>Arrays can have functions too: </p>
+<pre><code>var a = [0, 1, 2];
+a.functioname = function() {}       
+</code>
+</pre>
+    </li>      
+    <li>
+<p>If you delete an item from an array, it does not alter the length of the array.</p>      
+    </li>   
+    <li>
+<code>typeOf(variableName)</code> returns Object as the type for an array (so you cannot confirm if that variable points to an array), use <code>variableName.constructor === Array</code> to check if the variable is an array.        
+    </li>
+</ol>
+
+
+<p></p>
+
+<p>I am pretty sure I must have passed out at this stage after all this knowledge gain. Nevertheless, I am very curious about JavaScript and hoping to learn more from the <a href="http://video.yahoo.com/watch/111585/1027823">messiah</a>. </p>
+
+
+<p>P.S. I am sorry if it was not as entertaining as the Never Seen Lost blog posts.</p>
+
+</div>
+
+  <footer>
+    <p class="meta">This post was posted by 
+  
+
+<a href="/about.html">Divya Manian</a>
+ on 
+
+
+
+
+  
+
+<time datetime="2010-05-10T00:00:00-07:00" pubdate><span class='month'>May</span> <span class='day'>10</span> <span class='year'>2010</span></time> in 
+
+<span class="categories">
+  
+    <a class='category' href='/categories/web-development/'>Web Development</a>
+  
+</span>
+
+.  If you would like to update this post, <a href="https://github.com/nimbupani/nimbupani.github.com/blob/source/source/_posts/2010-05-10-notes-from-javascript-n00b.md">please send a pull request</a>.       
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+      
+    </div>
+  </div>
+  <aside id="articles">
+    <p><img class="avatar"
+    src="http://a2.twimg.com/profile_images/1696865113/me_normal"
+    height=48> <a href="http://twitter.com/divya">Divya Manian</a> is a Web Developer in Seattle. <a href="/about.html">More about me ❭</a></p>
+    <h2>Posts on Web Development</h2>
+    <ul><li><a href="/some-updates.html">Some Updates</a></li><li><a href="/css-object-model.html">CSS Object Model</a></li><li><a href="/fake-bolding-of-web-fonts.html">Fake Bolding of Web Fonts</a></li><li><a href="/html5please-api.html">Html5please API</a></li><li><a href="/html5please.html">html5please</a></li><li><a href="/mustache.html">mustache, hogan, handlebars</a></li><li><a href="/redesign-notes.html">Redesign Notes</a></li><li><a href="/summary-of-various-exciting-css-drafts-and-proposals.html">Summary of various exciting CSS drafts and proposals</a></li><li><a href="/this-revolution-needs-new-revolutionaries.html">This revolution needs new revolutionaries</a></li><li><a href="/some-css-transition-hacks.html">Some CSS Transition hacks</a></li><li><a href="/safe-css-defaults.html">Safe CSS Defaults</a></li><li><a href="/unplugged-2011.html">Unplugged 2011</a></li><li><a href="/bokeh-with-css3-gradients.html">Bokeh with CSS3 Gradients</a></li><li><a href="/making-pure-css3-demos-better.html">Making "Pure CSS3" demos better</a></li><li><a href="/web-opener-at-opera.html">Web Opener at Opera</a></li><li><a href="/current-color-in-css.html">Current Color in CSS</a></li><li><a href="/css-vocabulary.html">CSS Vocabulary</a></li><li><a href="/active-web-development.html">Active Web Development</a></li><li><a href="/sexy-css3-buttons.html">Sexy CSS3 Buttons</a></li><li><a href="/accessible-css-barcharts.html">Accessible CSS Barcharts</a></li><li><a class="btn" href="/categories/web-development/">More</a></li></ul>
+  </aside>
+  <footer role="contentinfo"><p>
+  Copy to your heart’s content 2012 - Divya Manian -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>  
+</p>
+
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'nimbublog';
+      var disqus_developer = 1;        
+      
+      
+        var disqus_url = 'http://nimbupani.com/notes-from-javascript-n00b.html';
+        var disqus_identifier = 'http://nimbupani.com/notes-from-javascript-n00b.html';                
+      
+        
+        
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+<script src="/javascripts/octopress.js"></script>
+
+  <script>
+    var _gaq=[['_setAccount','UA-97188-1'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+
+
+
+
+</body>
+</html>

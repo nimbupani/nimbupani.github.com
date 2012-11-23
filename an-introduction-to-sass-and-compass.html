@@ -1,0 +1,248 @@
+
+<!doctype html>
+<!--[if lt IE 9]> <html class="no-js oldie" lang="en"> <![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  
+  <title>An Introduction to Sass and Compass | Divya Manian</title>  
+  <meta name="author" content="Divya Manian">
+  
+  <meta name="description" content="This is paraphrased from my presentation at Refresh Seattle on March 25th. You can view the presentation or download the slides from Github. I &hellip;">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://nimbupani.github.com/an-introduction-to-sass-and-compass.html">
+  <link href="/stylesheets/screen.css" rel="stylesheet">
+  <link href="http://feeds.feedburner.com/nimbupani" rel="alternate" title="Subscribe" type="application/atom+xml">
+  <link href="http://feeds.feedburner.com/nimbu" rel="alternate" title="Subscribe to Web Development updates" type="application/atom+xml">    
+  
+</head>
+
+
+<body  >
+  <div class="container">
+    <div class="content">
+      <header role="banner">  <h1><a href="/">Divya Manian</a></h1>
+  
+  <h2><a class="twitter" href="https://twitter.com/divya">twitter</a> <a class="rss" href="http://feeds.feedburner.com/nimbupani">RSS Feed</a> <a class="youtube" href="http://youtube.com/nimbupani">Youtube Channel</a> <a class="github" href="https://github.com/nimbupani">Github</a></h2>
+  
+</header>
+      <nav class="sitenav"><a href="/">Home</a>
+<a href="/archives">Archives</a>
+<a href="/about.html">About</a>
+</nav>    
+      
+  
+
+
+
+  
+
+
+<article>
+  <nav class="article">
+    
+      <a class="previous" href="/dom-ecmascript-and-other-puzzles.html" title="DOM, ECMAScript and other puzzles">&#x276C;</a>      
+    
+    
+      <a class="next" href="/book-reviews-for-mar-2010.html" title="Book Reviews for Mar 2010">&#x276D;</a>              
+     
+    
+               
+  </nav>
+    <header>
+    
+
+
+
+
+  
+
+<time datetime="2010-03-28T00:00:00-07:00" pubdate><span class='month'>Mar</span> <span class='day'>28</span> <span class='year'>2010</span></time>    
+    
+      <h1 class="entry-title"><a href="/an-introduction-to-sass-and-compass.html">An Introduction to Sass and Compass</a></h1>
+    
+    
+    
+    
+  </header>
+<div class="entry-content"><p><em>This is paraphrased from my presentation at <a href="http://refreshseattle.org">Refresh Seattle</a> on March 25th. You can <a href="/refresh-seattle/">view the presentation</a> or download the <a href="http://github.com/nimbupani/refresh-seattle/">slides from Github</a>.</em></p>
+
+
+<p></p>
+
+<p>I stumbled onto Sass last January, when I was struggling with  large style sheets of several websites in various states of development.</p>
+
+
+<p></p>
+
+<p>I work on large, high-traffic websites mostly and maintain at least 10 such sites at any given time. A website that I have not worked on for 2 years or more would suddenly require updates, and I would have to re-learn (what I consider) atrocious coding practices of my old self. Sometimes, these websites acquire new designs based on seasonal promotions. It did not help that most of these websites had more than 5000 lines of CSS.</p>
+
+
+
+
+<p>I started looking for solutions to my CSS maintenance woes. I briefly considered <a href="http://en.wikipedia.org/wiki/CSS_framework">CSS frameworks</a>, but these dump a set of properties irrespective of their usage. I also looked at <a href="http://lesscss.org/">LessCSS</a> whose every-rule-is-a-reusable-snippet looked like an even worse maintenance nightmare. Sass looked most promising. I took a chance and am glad to have done so. </p>
+
+
+
+
+<p>Sass stands for Syntactically Awesome Stylesheets. It is written in ruby and has command line tools to convert Sass to CSS, or CSS to Sass. It also includes a “watch” utility that watches a certain folder which contains the Sass files for any changes and automatically compiles updated Sass files to their respective CSS files. </p>
+
+
+
+
+<p>Sass has a different syntax as compared to CSS. Here is a sample Sass file:</p>
+
+
+<pre>!bordercolor = #000
+div.content
+  border = 1px "solid" !bordercolor
+  h2
+     padding: 1px</pre>
+
+
+
+
+<p>This is how the generated CSS looks:</p>
+
+
+
+
+<pre><code>div.content { border: 1px solid #000; }
+div.content h2 { padding: 1px; }</code></pre>
+
+
+
+
+<p>Sass is not white-space agnostic, and you need to be careful with the indentation as that decides which parent selector the child selector belongs to. If you would like to learn how to use this in detail, head over to the <a href="http://sass-lang.com/tutorial.html">Official Sass tutorial</a>.</p>
+
+
+
+
+<p>Sass has lots of features, most of which can be found in <a href="http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html">the  reference documentation</a>. My favourite elements of Sass are: <a href="http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#mixins">Mixins</a>, <a href="http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#variables_">Variables</a>, <a href="http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#sass_comments_">Sass comments</a>, <a href="http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#import">@import directive</a>, <a href="http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#functions">Functions</a>, <a href="http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#control_directives">If/For/While directives</a>, and <a href="http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#output_style">Output Style formatting</a>.  Several more are undocumented, or are better explained in the <a href="http://groups.google.com/group/haml">mailing list</a>.</p>
+
+
+
+
+<p><a href="http://compass-style.org">Compass</a> is a framework built on Sass that makes it easier to use it stand alone on non-ruby projects. Several features that have made into the latest releases of Sass were first created in Compass by <a href="http://chriseppstein.github.com/">Chris Eppstein</a>. Compass makes available many <a href="http://wiki.github.com/chriseppstein/compass/supported-frameworks">CSS Frameworks</a> like Blueprint, YUI, and <a href="http://oddbird.net/susy">Susy</a> for use in your Sass files. There is an <a href="http://wiki.github.com/chriseppstein/compass/">hour-long introduction to Compass</a> which is definitely worth your time if you are looking to use Sass/Compass in the long-term.</p>
+
+
+
+
+<p>Recently, <a href="http://nex-3.com">Nathan Weizenbaum</a>, the maintainer of Sass, has released <a href="http://nex-3.com/posts/92-firesass-bridges-the-gap-between-sass-and-firebug">FireSass</a>, a firebug plugin that renders the line number and the Sass filename from which a selected HTML element gains its properties instead of the line number and the CSS filename. This makes debugging your stylesheet lot easier if you use Sass primarily.</p>
+
+
+<p></p>
+
+<p>Nathan is also working on getting Sass 3 beta version out live. It will include a new format called <a href="http://groups.google.com/group/compass-users/browse_thread/thread/a935eda5b860a350">SCSS</a> which replicates the CSS syntax (like LessCSS).</p>
+
+
+<p></p>
+
+<p>While Sass has a lot of tools, and is quite powerful, it is not necessary that you have to use it. I would recommend you use it only if you:</p>
+
+
+<ul>
+    <li>Have large CSS files that you intend to maintain over a long period of time (in which case, converting them to multiple Sass files is a good idea).
+    </li>
+    <li>Deal with several websites with markedly different style sheets but would like to create a common library of styles that you can invoke when necessary without writing additional code.</li>
+    <li>Write CSS for a living.</li>
+</ul>
+
+
+
+
+<p>Sass is not <em>the</em> answer for your CSS ills. You still need to know how to write CSS and your Sass file can be a noodlesoup of unmaintainable nested selectors if you are not mindful. </p>
+
+
+
+
+<p>If you use Textmate, there is a <a href="http://github.com/charlesr/ruby-sass-tmbundle">Ruby Sass Textmate bundle</a> to make it easier to type Sass syntax. There is also a <a href="http://github.com/dougochris/Compass.tmbundle">Compass bundle</a> that lets you look up mixins available in Compass. </p>
+
+</div>
+
+  <footer>
+    <p class="meta">This post was posted by 
+  
+
+<a href="/about.html">Divya Manian</a>
+ on 
+
+
+
+
+  
+
+<time datetime="2010-03-28T00:00:00-07:00" pubdate><span class='month'>Mar</span> <span class='day'>28</span> <span class='year'>2010</span></time> in 
+
+<span class="categories">
+  
+    <a class='category' href='/categories/web-development/'>Web Development</a>
+  
+</span>
+
+.  If you would like to update this post, <a href="https://github.com/nimbupani/nimbupani.github.com/blob/source/source/_posts/2010-03-28-an-introduction-to-sass-and-compass.md">please send a pull request</a>.       
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+      
+    </div>
+  </div>
+  <aside id="articles">
+    <p><img class="avatar"
+    src="http://a2.twimg.com/profile_images/1696865113/me_normal"
+    height=48> <a href="http://twitter.com/divya">Divya Manian</a> is a Web Developer in Seattle. <a href="/about.html">More about me ❭</a></p>
+    <h2>Posts on Web Development</h2>
+    <ul><li><a href="/some-updates.html">Some Updates</a></li><li><a href="/css-object-model.html">CSS Object Model</a></li><li><a href="/fake-bolding-of-web-fonts.html">Fake Bolding of Web Fonts</a></li><li><a href="/html5please-api.html">Html5please API</a></li><li><a href="/html5please.html">html5please</a></li><li><a href="/mustache.html">mustache, hogan, handlebars</a></li><li><a href="/redesign-notes.html">Redesign Notes</a></li><li><a href="/summary-of-various-exciting-css-drafts-and-proposals.html">Summary of various exciting CSS drafts and proposals</a></li><li><a href="/this-revolution-needs-new-revolutionaries.html">This revolution needs new revolutionaries</a></li><li><a href="/some-css-transition-hacks.html">Some CSS Transition hacks</a></li><li><a href="/safe-css-defaults.html">Safe CSS Defaults</a></li><li><a href="/unplugged-2011.html">Unplugged 2011</a></li><li><a href="/bokeh-with-css3-gradients.html">Bokeh with CSS3 Gradients</a></li><li><a href="/making-pure-css3-demos-better.html">Making "Pure CSS3" demos better</a></li><li><a href="/web-opener-at-opera.html">Web Opener at Opera</a></li><li><a href="/current-color-in-css.html">Current Color in CSS</a></li><li><a href="/css-vocabulary.html">CSS Vocabulary</a></li><li><a href="/active-web-development.html">Active Web Development</a></li><li><a href="/sexy-css3-buttons.html">Sexy CSS3 Buttons</a></li><li><a href="/accessible-css-barcharts.html">Accessible CSS Barcharts</a></li><li><a class="btn" href="/categories/web-development/">More</a></li></ul>
+  </aside>
+  <footer role="contentinfo"><p>
+  Copy to your heart’s content 2012 - Divya Manian -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>  
+</p>
+
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'nimbublog';
+      var disqus_developer = 1;        
+      
+      
+        var disqus_url = 'http://nimbupani.com/an-introduction-to-sass-and-compass.html';
+        var disqus_identifier = 'http://nimbupani.com/an-introduction-to-sass-and-compass.html';                
+      
+        
+        
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+<script src="/javascripts/octopress.js"></script>
+
+  <script>
+    var _gaq=[['_setAccount','UA-97188-1'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+
+
+
+
+</body>
+</html>

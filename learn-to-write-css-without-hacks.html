@@ -1,0 +1,207 @@
+
+<!doctype html>
+<!--[if lt IE 9]> <html class="no-js oldie" lang="en"> <![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  
+  <title>Learn to write CSS without hacks | Divya Manian</title>  
+  <meta name="author" content="Divya Manian">
+  
+  <meta name="description" content="Mike Davidson has written about his design signature which has inspired me to write about the elements of my web design signature. As he had &hellip;">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://nimbupani.github.com/learn-to-write-css-without-hacks.html">
+  <link href="/stylesheets/screen.css" rel="stylesheet">
+  <link href="http://feeds.feedburner.com/nimbupani" rel="alternate" title="Subscribe" type="application/atom+xml">
+  <link href="http://feeds.feedburner.com/nimbu" rel="alternate" title="Subscribe to Web Development updates" type="application/atom+xml">    
+  
+</head>
+
+
+<body  >
+  <div class="container">
+    <div class="content">
+      <header role="banner">  <h1><a href="/">Divya Manian</a></h1>
+  
+  <h2><a class="twitter" href="https://twitter.com/divya">twitter</a> <a class="rss" href="http://feeds.feedburner.com/nimbupani">RSS Feed</a> <a class="youtube" href="http://youtube.com/nimbupani">Youtube Channel</a> <a class="github" href="https://github.com/nimbupani">Github</a></h2>
+  
+</header>
+      <nav class="sitenav"><a href="/">Home</a>
+<a href="/archives">Archives</a>
+<a href="/about.html">About</a>
+</nav>    
+      
+  
+
+
+
+  
+
+
+<article>
+  <nav class="article">
+    
+      <a class="previous" href="/new-drupal-modules-you-need-to-know.html" title="New Drupal Modules you need to know">&#x276C;</a>      
+    
+    
+      <a class="next" href="/innovative-economics-at-work-in-india.html" title="Innovative Economics at Work in India">&#x276D;</a>              
+     
+    
+               
+  </nav>
+    <header>
+    
+
+
+
+
+  
+
+<time datetime="2008-08-25T00:00:00-07:00" pubdate><span class='month'>Aug</span> <span class='day'>25</span> <span class='year'>2008</span></time>    
+    
+      <h1 class="entry-title"><a href="/learn-to-write-css-without-hacks.html">Learn to write CSS without hacks</a></h1>
+    
+    
+    
+    
+  </header>
+<div class="entry-content"><p>Mike Davidson has written about his <a href="http://www.mikeindustries.com/blog/archive/2008/08/design-signatures">design signature</a> which has inspired me to write about the elements of my web design signature. As he had mentioned, it seems following my signature leads to no or negligible use for IE specific style sheets.</p>
+
+
+<p><strong>Update:</strong> There is another informative article on <a href="http://anthonyshort.com.au/blog/comments/how-to-get-cross-browser-compatibility-everytime/">getting cross-browser compatibility every time</a>.</p>
+
+
+<ol>
+    <li>
+    <h3>Use only Classes</h3>
+    <p>I use ids only if there are javascripts that require one. Makes my styles a lot more re-usable and I don&rsquo;t have to remember whether I used an id or a Class in the HTML when I write my CSS code.</p>
+    </li>
+    <li>
+    <h3>Use Reset CSS</h3>
+    <p><a href="http://meyerweb.com/eric/thoughts/2007/05/01/reset-reloaded/">Eric Meyer&rsquo;s Reset CSS</a> with the <code>vertical-align:baseline</code> commented out works well for me. <code>vertical-align:baseline</code> does not allow HTML elements with set &#8220;align&#8221; attributes, to display correctly aligned in IE (and plays havoc with widgets that use inline styles and attributes).</p>
+    </li>
+    <li>
+    <h3>Using a clear &lt;div&gt;</h3>
+    <p>I use <code>&lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;</code> and define in the CSS <code>div.clear { clear:both; }</code> to clear floats. Read more <a href="http://www.quirksmode.org/css/clearing.html">about clearing floats</a>.</p>
+    </li>
+    <li>
+        <h3>Use a fixed width layout</h3>
+        <p>I use a fixed width layout with a center align on the <code>body</code> and left align for the child <code>&lt;div&gt;</code> (with margins set to auto). I use floats rather than position for layouts and for anything whose position is fixed (e.g. the header navigation section), I use absolute positioning.</p>
+    </li>
+    <li>
+        <h3>Use starting and closing comment tags</h3>
+        <p>I use Textmate&rsquo;s snippets to automatically add a comment that states <code>&lt;!--START CLASS &lt;name&gt;--&gt;</code> next to each <code>&lt;div&gt;</code> and at the closing tag <code>&lt;/div&gt;</code> adds the comment <code>&lt;!--END CLASS &lt;name&gt;--&gt;</code> &mdash; where <code>&lt;name&gt;</code> is the name of the class assigned to the <code>&lt;div&gt;</code></p>
+        <p>The snippet I use is:</p>
+        <pre>
+<code>&lt;div class=&quot;${1:name}&quot;&gt;&lt;!--START CLASS ${1:name}--&gt;
+  ${0:$TM_SELECTED_TEXT}
+&lt;/div&gt;&lt;!--END CLASS ${1:name}--&gt;</code></pre>
+    </li>
+    <li><h3>Use <code>display:inline</code> for all floated elements</h3><p>This takes care of the double margin bug for IE.</p></li>
+    <li><h3>Use the png-fix</h3>
+    <p>Most of the designs I work on, have some element of transparency - which require the use of the <a href="    http://www.twinhelix.com/css/iepngfix/">png-fix</a>.</p>
+    </li>
+    <li>
+        <h3>Use a conditional IE CSS</h3>
+        <p>I use a conditional IE-6 and IE-7 CSS stylesheet. Mostly they contain less than 2 or 3 lines. But it is better to keep them separate from modern CSS without using hacks for individual browsers.</p>        
+    </li>
+    <li><h3>Use margins rather than padding</h3>
+    <p>I rarely use padding (and am very careful with borders) on elements with width specified. This is because of the <a href="http://en.wikipedia.org/wiki/Internet_Explorer_box_model_bug">Box Model Bug</a> in IE as compared to other modern browsers.</p>
+    </li>
+    <li>
+        <h3>Use <code>vertical-align:middle</code></h3>
+        <p>For aligning inline <code>img</code> with any other inline element &mdash; especially images which are longer rather than wider. <a href="http://phrogz.net/CSS/vertical-align/index.html">Read more about Vertical Aligning</a> (update: <a href="http://www.maxdesign.com.au/2008/10/05/vertical-align/">another great article on vertical align</a>).</p>
+
+    </li>
+</ol>
+
+
+
+</div>
+
+  <footer>
+    <p class="meta">This post was posted by 
+  
+
+<a href="/about.html">Divya Manian</a>
+ on 
+
+
+
+
+  
+
+<time datetime="2008-08-25T00:00:00-07:00" pubdate><span class='month'>Aug</span> <span class='day'>25</span> <span class='year'>2008</span></time> in 
+
+<span class="categories">
+  
+    <a class='category' href='/categories/web-development/'>Web Development</a>
+  
+</span>
+
+.  If you would like to update this post, <a href="https://github.com/nimbupani/nimbupani.github.com/blob/source/source/_posts/2008-08-25-learn-to-write-css-without-hacks.md">please send a pull request</a>.       
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+      
+    </div>
+  </div>
+  <aside id="articles">
+    <p><img class="avatar"
+    src="http://a2.twimg.com/profile_images/1696865113/me_normal"
+    height=48> <a href="http://twitter.com/divya">Divya Manian</a> is a Web Developer in Seattle. <a href="/about.html">More about me ❭</a></p>
+    <h2>Posts on Web Development</h2>
+    <ul><li><a href="/some-updates.html">Some Updates</a></li><li><a href="/css-object-model.html">CSS Object Model</a></li><li><a href="/fake-bolding-of-web-fonts.html">Fake Bolding of Web Fonts</a></li><li><a href="/html5please-api.html">Html5please API</a></li><li><a href="/html5please.html">html5please</a></li><li><a href="/mustache.html">mustache, hogan, handlebars</a></li><li><a href="/redesign-notes.html">Redesign Notes</a></li><li><a href="/summary-of-various-exciting-css-drafts-and-proposals.html">Summary of various exciting CSS drafts and proposals</a></li><li><a href="/this-revolution-needs-new-revolutionaries.html">This revolution needs new revolutionaries</a></li><li><a href="/some-css-transition-hacks.html">Some CSS Transition hacks</a></li><li><a href="/safe-css-defaults.html">Safe CSS Defaults</a></li><li><a href="/unplugged-2011.html">Unplugged 2011</a></li><li><a href="/bokeh-with-css3-gradients.html">Bokeh with CSS3 Gradients</a></li><li><a href="/making-pure-css3-demos-better.html">Making "Pure CSS3" demos better</a></li><li><a href="/web-opener-at-opera.html">Web Opener at Opera</a></li><li><a href="/current-color-in-css.html">Current Color in CSS</a></li><li><a href="/css-vocabulary.html">CSS Vocabulary</a></li><li><a href="/active-web-development.html">Active Web Development</a></li><li><a href="/sexy-css3-buttons.html">Sexy CSS3 Buttons</a></li><li><a href="/accessible-css-barcharts.html">Accessible CSS Barcharts</a></li><li><a class="btn" href="/categories/web-development/">More</a></li></ul>
+  </aside>
+  <footer role="contentinfo"><p>
+  Copy to your heart’s content 2012 - Divya Manian -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>  
+</p>
+
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'nimbublog';
+      var disqus_developer = 1;        
+      
+      
+        var disqus_url = 'http://nimbupani.com/learn-to-write-css-without-hacks.html';
+        var disqus_identifier = 'http://nimbupani.com/learn-to-write-css-without-hacks.html';                
+      
+        
+        
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+<script src="/javascripts/octopress.js"></script>
+
+  <script>
+    var _gaq=[['_setAccount','UA-97188-1'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+	<title>Word Like Counters with CSS3</title>
+	<meta name="author" content="Divya">
+	<!-- Date: 2010-01-04 -->
+	<style type="text/css" media="screen">
+		ol {
+			list-style-type:none;
+			counter-reset:section;      						
+		} 
+		
+	  ol li {
+			counter-increment: section;
+		}                            
+		ol li:before {                      			
+			content: counters(section, ".")" ";
+		}
+		
+		           
+
+		ol li:nth-child(4n)		
+ 		{
+			counter-reset:section;
+		}
+		
+	</style>
+</head>
+<body>
+   <ol>
+   	<li>an item
+		<ol>
+			<li>apple</li>
+			<li>mango</li>
+			<li>tart</li>
+		</ol>
+		</li>
+		<li>banana</li> 
+   	<li>cat</li>
+		<li>horse 			<ol><li>rat</li><li>task</li></ol></li>
+   	<li>dump
+		</li>
+		<li>ball</li>	
+		<li>kitten</li>				
+   </ol>
+</body>
+</html>

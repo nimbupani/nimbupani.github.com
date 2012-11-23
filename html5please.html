@@ -1,0 +1,184 @@
+
+<!doctype html>
+<!--[if lt IE 9]> <html class="no-js oldie" lang="en"> <![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  
+  <title>html5please | Divya Manian</title>  
+  <meta name="author" content="Divya Manian">
+  
+  <meta name="description" content="More than a year ago, in my very first talk at Web Directions on Active Web Development, I had this slide: The intention was that within &hellip;">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://nimbupani.github.com/html5please.html">
+  <link href="/stylesheets/screen.css" rel="stylesheet">
+  <link href="http://feeds.feedburner.com/nimbupani" rel="alternate" title="Subscribe" type="application/atom+xml">
+  <link href="http://feeds.feedburner.com/nimbu" rel="alternate" title="Subscribe to Web Development updates" type="application/atom+xml">    
+  
+</head>
+
+
+<body  >
+  <div class="container">
+    <div class="content">
+      <header role="banner">  <h1><a href="/">Divya Manian</a></h1>
+  
+  <h2><a class="twitter" href="https://twitter.com/divya">twitter</a> <a class="rss" href="http://feeds.feedburner.com/nimbupani">RSS Feed</a> <a class="youtube" href="http://youtube.com/nimbupani">Youtube Channel</a> <a class="github" href="https://github.com/nimbupani">Github</a></h2>
+  
+</header>
+      <nav class="sitenav"><a href="/">Home</a>
+<a href="/archives">Archives</a>
+<a href="/about.html">About</a>
+</nav>    
+      
+  
+
+
+
+  
+
+
+<article>
+  <nav class="article">
+    
+      <a class="previous" href="/desirable.html" title="desirable">&#x276C;</a>      
+    
+    
+      <a class="next" href="/html5please-api.html" title="Html5please API">&#x276D;</a>              
+     
+    
+               
+  </nav>
+    <header>
+    
+
+
+
+
+  
+
+<time datetime="2012-01-22T17:11:00-08:00" pubdate><span class='month'>Jan</span> <span class='day'>22</span> <span class='year'>2012</span></time>    
+    
+      <h1 class="entry-title"><a href="/html5please.html">html5please</a></h1>
+    
+    
+    
+    
+  </header>
+<div class="entry-content"><p><a href="http://html5please.us"><img src="http://cache.gyazo.com/c5d6f648394681c59d93c487b8347cf5.png" alt="" /></a></p>
+
+<p>More than a year ago, in my very first talk at Web Directions on <a href="http://www.slideshare.net/nimbupani/active-web-development">Active Web Development</a>, I had this slide:</p>
+
+<p><img src="http://cache.gyazo.com/64c191910d79e1ec04e253caa7a74482.png" alt="" /></p>
+
+<p>The intention was that within organizations web developers would work to keep an updated list of html5 features that they would adopt or not. However, <a href="http://paulirish.com">Paul Irish</a> and I thought it would be useful if there were a global set of recommendations that web developers could consult and tap on when they are deciding on how to use features. This was the seed for the creation of <a href="http://html5please.us">HTML5 Please</a>.</p>
+
+<p><a href="http://caniuse.com">When can I use</a> and <a href="http://modernizr.com">Modernizr</a> do a great job in informing the users of available features and how to feature detect them. The <a href="https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-browser-Polyfills">Modernizr polyfill wikipage</a> also does a good job of listing all the available polyfills. What we felt missing was the glue that bound all this information together, to tell the user what the best tool for the job was: either on its own, or with a polyfill or a sensible fallback.</p>
+
+<p>With HTML5 Please, you can just search for a feature that you are looking to use and find out how to do so. If you think our recommendation is incorrect, you can edit the recommendation for each feature and send a pull request (like this <a href="https://github.com/h5bp/html5please/blob/master/posts/border-image.md">example</a>).</p>
+
+<h3>The Setup</h3>
+
+<p>Initially, this data was in a JSON file that was manipulated in node to generate the static html. Soon, it became obvious that JSON would be a big pile of mess when many people <em>manually</em> update it.  Also, it was clear we needed a build system, which is where <a href="http://twitter.com/tbranyen">Tim Branyen</a> stepped in to help creating one using node and backbone that would combine markdown posts into a single HTML page.</p>
+
+<p>It was also obvious that we needed a good system to create these markdown posts so that each of the tags that are used in the &#8216;Explore features&#8217; section are not created accidentally (e.g. prevent creating a tag called <code>polyfill</code> instead of <code>polyfills</code>). To do this, <a href="http://twitter.com/vyom">Deepak Jois</a> created a simple shell script that accepts a feature name, its associated tags, its kind, and then creates a markdown file with these details and opens it in your editor.</p>
+
+<p>We also wanted a way for users to help us make the content better. I added a link to the markdown source on github for each feature which the reader only needs to fork, edit and send pull request for (all over in two clicks!).</p>
+
+<h3>The Front End</h3>
+
+<p>I was unsure of how to proceed with the design. This is how it appeared in the beginning:</p>
+
+<p><img src="http://cache.gyazo.com/4e9fa43b13017085aa1647e1955a36d6.png" alt="" /></p>
+
+<p>Over the last month, I tweaked the design majorly to more or less match what you see today. I also wanted to use Sass more, which is why the source stylesheet is all Sass.</p>
+
+<p>It was awesome to work with Paul, Tim, Deepak, <a href="http://twitter.com/connor">Connor</a>, <a href="http://twitter.com/brianblakely">Brian Blakely</a>, <a href="http://twitter.com/addyosmani">Addy Osmani</a> &amp; <a href="https://github.com/h5bp/html5please/contributors">many more</a> to create this site. Please <a href="https://github.com/h5bp/html5please/issues/">let us know on Github</a> if you find issues or if you have ideas on how it could be better!</p>
+</div>
+
+  <footer>
+    <p class="meta">This post was posted by 
+  
+
+<a href="/about.html">Divya Manian</a>
+ on 
+
+
+
+
+  
+
+<time datetime="2012-01-22T17:11:00-08:00" pubdate><span class='month'>Jan</span> <span class='day'>22</span> <span class='year'>2012</span></time> in 
+
+<span class="categories">
+  
+    <a class='category' href='/categories/web-development/'>Web Development</a>
+  
+</span>
+
+.  If you would like to update this post, <a href="https://github.com/nimbupani/nimbupani.github.com/blob/source/source/_posts/2012-01-22-html5please.md">please send a pull request</a>.       
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+      
+    </div>
+  </div>
+  <aside id="articles">
+    <p><img class="avatar"
+    src="http://a2.twimg.com/profile_images/1696865113/me_normal"
+    height=48> <a href="http://twitter.com/divya">Divya Manian</a> is a Web Developer in Seattle. <a href="/about.html">More about me ❭</a></p>
+    <h2>Posts on Web Development</h2>
+    <ul><li><a href="/some-updates.html">Some Updates</a></li><li><a href="/css-object-model.html">CSS Object Model</a></li><li><a href="/fake-bolding-of-web-fonts.html">Fake Bolding of Web Fonts</a></li><li><a href="/html5please-api.html">Html5please API</a></li><li><a href="/html5please.html">html5please</a></li><li><a href="/mustache.html">mustache, hogan, handlebars</a></li><li><a href="/redesign-notes.html">Redesign Notes</a></li><li><a href="/summary-of-various-exciting-css-drafts-and-proposals.html">Summary of various exciting CSS drafts and proposals</a></li><li><a href="/this-revolution-needs-new-revolutionaries.html">This revolution needs new revolutionaries</a></li><li><a href="/some-css-transition-hacks.html">Some CSS Transition hacks</a></li><li><a href="/safe-css-defaults.html">Safe CSS Defaults</a></li><li><a href="/unplugged-2011.html">Unplugged 2011</a></li><li><a href="/bokeh-with-css3-gradients.html">Bokeh with CSS3 Gradients</a></li><li><a href="/making-pure-css3-demos-better.html">Making "Pure CSS3" demos better</a></li><li><a href="/web-opener-at-opera.html">Web Opener at Opera</a></li><li><a href="/current-color-in-css.html">Current Color in CSS</a></li><li><a href="/css-vocabulary.html">CSS Vocabulary</a></li><li><a href="/active-web-development.html">Active Web Development</a></li><li><a href="/sexy-css3-buttons.html">Sexy CSS3 Buttons</a></li><li><a href="/accessible-css-barcharts.html">Accessible CSS Barcharts</a></li><li><a class="btn" href="/categories/web-development/">More</a></li></ul>
+  </aside>
+  <footer role="contentinfo"><p>
+  Copy to your heart’s content 2012 - Divya Manian -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>  
+</p>
+
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'nimbublog';
+      var disqus_developer = 1;        
+      
+      
+        var disqus_url = 'http://nimbupani.com/html5please.html';
+        var disqus_identifier = 'http://nimbupani.com/html5please.html';                
+      
+        
+        
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+<script src="/javascripts/octopress.js"></script>
+
+  <script>
+    var _gaq=[['_setAccount','UA-97188-1'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+
+
+
+
+</body>
+</html>

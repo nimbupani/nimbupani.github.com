@@ -1,0 +1,160 @@
+<!doctype html>  
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>CSS Vocabulary Demo</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css" media="screen">
+  
+  <style media=screen>
+    html { background: hsl(65, 22%, 77%); paddig-bottom: 2em; }
+
+  	header {
+  		width: 100%;
+  		background: hsl(231, 24%, 16%);
+  		color: #fff; 
+  		padding: 1em 0;
+  	}
+	              
+	
+  	header p, #container > div {
+  		min-width: 600px;
+  		width: 70%;
+  		margin: 0 auto;        
+  	}
+  	
+	  
+  	header a {
+  		color: #aaa;
+  		text-decoration: none;
+  	}                      
+	
+    header a:hover {
+  		text-decoration: underline;
+  		color: #aaa;
+  	}
+    
+    h2 { font-size: 1.5em; margin-bottom: 0.75em; }
+    
+    #container div { margin-top: 2em; padding: 1em; } 
+    #container div:target { background: hsl(65, 22%, 87%); }
+    p { margin-bottom: 1em; } 
+    
+    pre { position: relative; line-height: 1.5em; background: hsl(4, 62%, 40%); color: #fff; cursor: pointer; }
+    
+    pre b, pre i, pre u, pre em { font-style: normal; font-weight: normal; text-decoration: none; }
+	      
+    pre span { display: none; } 
+    
+    pre:hover { background: hsl(4, 62%, 70%); }
+    
+
+    pre .selector:hover > span,
+    pre i:hover > span,
+    pre i:hover em:hover > span,  
+    pre i:hover u:hover > span,
+    pre b:hover > span,
+    b.selector:hover i:hover span     
+    {  
+      display: block;
+      position: absolute; 
+      top: 0;
+      right: 0; 
+      width: 30%;
+      height: 92%;      
+      padding: 0.5%;
+      background: hsl(4, 62%, 40%);
+    } 
+    
+    b.selector:hover i:hover span,
+    i:hover em:hover span,
+    i:hover u:hover span
+    {
+      z-index: 2;
+    }  
+    b.selector:hover { background: hsl(231, 24%, 16%); font-weight: bold; }
+    b.selector:hover i:hover { background: hsl(4, 62%, 15%); }
+    b.declaration-block:hover, b.declaration-block:hover ~ i, b.declaration-block:hover ~ b.declaration-block {
+      background: hsl(4, 62%, 40%);  
+      font-weight: bold;
+    } 
+    
+    pre i:hover { background: hsl(210, 24%, 30%); }
+    pre em:hover { background: hsl(65, 22%, 30%); } 
+    pre u:hover { background: hsl(4, 62%, 30%); }
+     
+    #pseudo-classes article:first-child { color: hsl(4, 62%, 40%); } 
+    #pseudo-classes article:last-child { color: hsl(65, 22%, 40%); font-weight: bold; }
+    
+    #pseudo-elements p::first-line { color: hsl(4, 62%, 40%); }
+    #pseudo-elements p::after { content: "This is generated content. This means the CSS has inserted this into the HTML. Try to select it and you can’t. OMG."; color: hsl(65, 22%, 40%); } 
+    
+    #combinators > div { margin-left: 10em; }  
+
+
+    #combinators div ~ p { color: hsl(4, 62%, 40%); }
+    #combinators div + p { color: hsl(231, 24%, 30%); }  
+    
+    #vendor-specific p:nth-child(3) { outline: 1px dotted hsl(4, 62%, 60%); -moz-outline-radius: 1em; padding: 1em; }                            
+    #vendor-specific p:nth-child(4) { -webkit-text-fill-color: hsl(231, 24%, 60%); -webkit-text-stroke: 1px hsl(65, 22%, 90%); font-size: 2em; }
+    #vendor-specific p:nth-child(5):hover { -ms-zoom: 200%;}    
+  </style>
+</head>
+
+<body>
+  <div id="container">    
+    <header>
+      <p>This is a demo for <a href="http://nimbupani.com/css-vocabulary.html">CSS Vocabulary</a> You would need modern browsers to view it best (But webkit browsers have <a href="http://webk.it/18027">a major bug</a>). Read more at <a href="http://nimbupani.com/css-vocabulary.html">CSS Vocabulary</a>.</p>
+    </header>
+    <div id="main"> 
+      <div id="vocabulary"><!--START ID vocabulary-->
+        <p>Hover on each of the lines and terms to see what they are called.</p>
+        <pre>
+          <b class=selector>#lovelyweather<i>:first-child <span>Pseudo Class</span></i>, .clear<i>::after <span>Pseudo Element</span></i> <span>Selectors</span></b>
+          <b class='declaration-block'>{ <span>A Declaration Block</span></b>
+        	<i><em>clear: <span>CSS Property</span></em> <u>both <span>Keyword</span></u>; <span>A Declaration</span></i>
+        	<i><em>color: <span>CSS Property</span></em><u>#fff <span>Value</span></u>; <span>A Declaration</span></i>
+          <b class="declaration-block">} <span>A Declaration Block</span></b> <span>Rule Set</span>
+        </pre>
+      </div><!--END ID vocabulary-->     
+      <div id="pseudo-classes"><!--START ID pseudo-classes-->
+        <h2>Pseudo Class Test</h2>
+        <article>This should be in red, but it is not, as the first child is the <code>h2</code> not <code>article</code>.</article>
+        <article>But this is in green, because it is the last child.</article>      
+      </div><!--END ID pseudo-classes-->
+      <div id="pseudo-elements"><!--START ID pseudo-elements-->
+        <h2>Pseudo Elements Test</h2>
+        <p>This is the first line. With Pseudo-elements, the first line gets assigned its own element in the document tree. This is unheard of using CSS to modify the HTML content.</p>
+        
+      </div><!--END ID pseudo-elements--> 
+      <div id="combinators"><!--START ID combinators-->
+        <h2>Combinators</h2>
+        <div>This is selected with a child combinator with the parent <code>#combinators</code>, so it has a 10em indent. <div><p>This text is wrapped in a <code>div</code> within. So it doesn’t get an additional offset (which it would if a child selector was used).</p></div></div>
+        <p>This gets selected with the immediate sibling combinator. This is why it looks dark blue.</p>
+        <p>This gets selected with the general sibling combinator with the <code>div</code>. Hence, it is red.</p>
+      </div><!--END ID combinators-->      
+      <div id="vendor-specific"><!--START ID vendor-specific-->
+         <h2>Vendor Prefixes</h2>
+         <p>Not all vendor prefixes are part of web standards. Here are a few examples of those that are not:</p>
+         <p>This will have rounded cornered outline in Firefox. </p>
+         <p>This will have a text color and even a text stroke in Webkit-based browsers (Chrome and Safari).</p>
+         <p>This will become twice as large when you hover in IE9.</p>
+      </div><!--END ID vendor-specific-->
+    </div>           
+  </div> <!--! end of #container -->
+  <script>
+   var _gaq = [['_setAccount', 'UA-97188-1'], ['_trackPageview']];
+   (function(d, t) {
+    var g = d.createElement(t),
+        s = d.getElementsByTagName(t)[0];
+    g.async = true;
+    g.src = ('https:' == location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g, s);
+   })(document, 'script');
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,214 @@
+
+<!doctype html>
+<!--[if lt IE 9]> <html class="no-js oldie" lang="en"> <![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  
+  <title>Notes from HTML5 Readiness Hacking | Divya Manian</title>  
+  <meta name="author" content="Divya Manian">
+  
+  <meta name="description" content="Update: HTML5 Readiness now shows how HTML5 support has evolved since 2008. Click away to see the spurt of growth in 2010! Paul Irish pinged me on &hellip;">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://nimbupani.github.com/notes-from-html5-readiness-hacking.html">
+  <link href="/stylesheets/screen.css" rel="stylesheet">
+  <link href="http://feeds.feedburner.com/nimbupani" rel="alternate" title="Subscribe" type="application/atom+xml">
+  <link href="http://feeds.feedburner.com/nimbu" rel="alternate" title="Subscribe to Web Development updates" type="application/atom+xml">    
+  
+</head>
+
+
+<body  >
+  <div class="container">
+    <div class="content">
+      <header role="banner">  <h1><a href="/">Divya Manian</a></h1>
+  
+  <h2><a class="twitter" href="https://twitter.com/divya">twitter</a> <a class="rss" href="http://feeds.feedburner.com/nimbupani">RSS Feed</a> <a class="youtube" href="http://youtube.com/nimbupani">Youtube Channel</a> <a class="github" href="https://github.com/nimbupani">Github</a></h2>
+  
+</header>
+      <nav class="sitenav"><a href="/">Home</a>
+<a href="/archives">Archives</a>
+<a href="/about.html">About</a>
+</nav>    
+      
+  
+
+
+
+  
+
+
+<article>
+  <nav class="article">
+    
+      <a class="previous" href="/content-models-in-html.html" title="Content Models in HTML">&#x276C;</a>      
+    
+    
+      <a class="next" href="/book-reviews-for-april-2010.html" title="Book Reviews for April 2010">&#x276D;</a>              
+     
+    
+               
+  </nav>
+    <header>
+    
+
+
+
+
+  
+
+<time datetime="2010-04-17T00:00:00-07:00" pubdate><span class='month'>Apr</span> <span class='day'>17</span> <span class='year'>2010</span></time>    
+    
+      <h1 class="entry-title"><a href="/notes-from-html5-readiness-hacking.html">Notes from HTML5 Readiness Hacking</a></h1>
+    
+    
+    
+    
+  </header>
+<div class="entry-content"><p><em>Update:</em> <a href="http://html5readiness.com">HTML5 Readiness</a> now shows how HTML5 support has evolved since 2008. Click away to see the spurt of growth in 2010!</p>
+
+
+
+
+<p><a href="http://paulirish.com">Paul Irish</a> pinged me on Thursday evening wondering about visualizing browser support per HTML5/CSS3 feature for <a href="http://jsconf.us/2010/schedule.html">his presentation at JSConf</a> on April 17th. I thought it would be a fun exercise in creating it with the &#8220;cool&#8221; features of CSS3. Soon, Paul had registered the domain and <a href="http://html5readiness.com">HTML5 Readiness</a> was born. Here are some of the design and implementation notes from that process.</p>
+
+
+
+
+<h3>Design</h3>
+
+
+
+
+<p>The intention of the visualization is to show how much support exists for each new HTML/CSS feature. I remembered the graphic showing the <a href="http://www.good.is/post/transparency-america-s-wealthiest-religions">distribution of wealth among religious Americans</a> and I thought a similar structure would work for this one too and I really liked this <a href="http://www.flickr.com/photos/eriknitsche/476093355/in/set-72157600143976187/">ad for General Dynamics by Erik Nitsche</a>.</p>
+
+
+
+
+<p>Paul wanted to show support for 8 browsers (IE 7, 8, 9, Opera 10.10, Safari 4, Chrome 4, Firefox 3.5, and Firefox 3.7). The browsers are grouped into color schemes based on their underlying rendering engine - e.g. all Firefox versions are shades of blue, Chrome/Safari - yellow, IE - pink. Each ray also has a different background color if it is a CSS3 feature.</p>
+
+
+
+
+<p>Each browser is represented with a tile on the bar and gets an equal width of space, so if you see a bar that is full, that means that feature has universal support among all the 8 browsers.</p>
+
+
+
+
+<p><img src="http://nimbupani.com/files/html5readiness.png" alt="html5readiness.png" border="0" width="600" height="612" ></p>
+
+
+
+
+<h3>Sass to rescue</h3>
+
+
+
+
+<p>There was not enough time to spend working on a photoshop mockup and then implementing the design. I am also more comfortable working on a design in the browser (with all the CSS3 bells & whistles), so I dived in to HTML/Sass. <a href="http://sass-lang.com">Sass</a> is a life-saver. The transforms (for each ray on the semi-circle), which result in about 114 lines of CSS (when compacted and with vendor-prefixes), are actually a result of just 4 lines of Sass:</p>
+
+
+
+
+<pre><code>@for $i from 1 through 28
+ .ray-#{$i}
+   +transform((-6.7deg*($i - 1)), 0%, 50%)
+  
+  i
+    +transform((6.7deg*($i - 1)), 50%, 50%)</code></pre>
+
+
+
+
+<p>The odd angle multiplier (6.7) is because each ray (except the first) is transformed so that they fit into the 180 degree arc with equal angular space between each (0, 50% sets the axis for rotation). You can see <a href="http://github.com/paulirish/html5readiness.com/blob/master/src/style.sass">the full Sass file on Github</a>.<p>
+
+<p>That&#8217;s it! Most of the work was done Thursday night / Friday morning. It was great fun dealing with 2D graphics after 8 years, and I loved working on it!</p>
+
+</div>
+
+  <footer>
+    <p class="meta">This post was posted by 
+  
+
+<a href="/about.html">Divya Manian</a>
+ on 
+
+
+
+
+  
+
+<time datetime="2010-04-17T00:00:00-07:00" pubdate><span class='month'>Apr</span> <span class='day'>17</span> <span class='year'>2010</span></time> in 
+
+<span class="categories">
+  
+    <a class='category' href='/categories/web-development/'>Web Development</a>
+  
+</span>
+
+.  If you would like to update this post, <a href="https://github.com/nimbupani/nimbupani.github.com/blob/source/source/_posts/2010-04-17-notes-from-html5-readiness-hacking.md">please send a pull request</a>.       
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+      
+    </div>
+  </div>
+  <aside id="articles">
+    <p><img class="avatar"
+    src="http://a2.twimg.com/profile_images/1696865113/me_normal"
+    height=48> <a href="http://twitter.com/divya">Divya Manian</a> is a Web Developer in Seattle. <a href="/about.html">More about me ❭</a></p>
+    <h2>Posts on Web Development</h2>
+    <ul><li><a href="/some-updates.html">Some Updates</a></li><li><a href="/css-object-model.html">CSS Object Model</a></li><li><a href="/fake-bolding-of-web-fonts.html">Fake Bolding of Web Fonts</a></li><li><a href="/html5please-api.html">Html5please API</a></li><li><a href="/html5please.html">html5please</a></li><li><a href="/mustache.html">mustache, hogan, handlebars</a></li><li><a href="/redesign-notes.html">Redesign Notes</a></li><li><a href="/summary-of-various-exciting-css-drafts-and-proposals.html">Summary of various exciting CSS drafts and proposals</a></li><li><a href="/this-revolution-needs-new-revolutionaries.html">This revolution needs new revolutionaries</a></li><li><a href="/some-css-transition-hacks.html">Some CSS Transition hacks</a></li><li><a href="/safe-css-defaults.html">Safe CSS Defaults</a></li><li><a href="/unplugged-2011.html">Unplugged 2011</a></li><li><a href="/bokeh-with-css3-gradients.html">Bokeh with CSS3 Gradients</a></li><li><a href="/making-pure-css3-demos-better.html">Making "Pure CSS3" demos better</a></li><li><a href="/web-opener-at-opera.html">Web Opener at Opera</a></li><li><a href="/current-color-in-css.html">Current Color in CSS</a></li><li><a href="/css-vocabulary.html">CSS Vocabulary</a></li><li><a href="/active-web-development.html">Active Web Development</a></li><li><a href="/sexy-css3-buttons.html">Sexy CSS3 Buttons</a></li><li><a href="/accessible-css-barcharts.html">Accessible CSS Barcharts</a></li><li><a class="btn" href="/categories/web-development/">More</a></li></ul>
+  </aside>
+  <footer role="contentinfo"><p>
+  Copy to your heart’s content 2012 - Divya Manian -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>  
+</p>
+
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'nimbublog';
+      var disqus_developer = 1;        
+      
+      
+        var disqus_url = 'http://nimbupani.com/notes-from-html5-readiness-hacking.html';
+        var disqus_identifier = 'http://nimbupani.com/notes-from-html5-readiness-hacking.html';                
+      
+        
+        
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+<script src="/javascripts/octopress.js"></script>
+
+  <script>
+    var _gaq=[['_setAccount','UA-97188-1'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,182 @@
+
+<!doctype html>
+<!--[if lt IE 9]> <html class="no-js oldie" lang="en"> <![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  
+  <title>Twittering with D3 | Divya Manian</title>  
+  <meta name="author" content="Divya Manian">
+  
+  <meta name="description" content="What you see above is something I had been thinking of doing since the obsession of a redesign hit my head: rendering visual snippets of my latest &hellip;">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://nimbupani.github.com/twittering-with-d3.html">
+  <link href="/stylesheets/screen.css" rel="stylesheet">
+  <link href="http://feeds.feedburner.com/nimbupani" rel="alternate" title="Subscribe" type="application/atom+xml">
+  <link href="http://feeds.feedburner.com/nimbu" rel="alternate" title="Subscribe to Web Development updates" type="application/atom+xml">    
+  
+</head>
+
+
+<body   class="viz" >
+  <div class="container">
+    <div class="content">
+      <header role="banner">  <h1><a href="/">Divya Manian</a></h1>
+  
+  <h2><a class="twitter" href="https://twitter.com/divya">twitter</a> <a class="rss" href="http://feeds.feedburner.com/nimbupani">RSS Feed</a> <a class="youtube" href="http://youtube.com/nimbupani">Youtube Channel</a> <a class="github" href="https://github.com/nimbupani">Github</a></h2>
+  
+</header>
+      <nav class="sitenav"><a href="/">Home</a>
+<a href="/archives">Archives</a>
+<a href="/about.html">About</a>
+</nav>    
+      
+  
+
+
+
+  
+
+
+<article>
+  <nav class="article">
+    
+      <a class="previous" href="/swatchs-now-is-androids-future.html" title="Swatch’s Now is Android’s Future?">&#x276C;</a>      
+    
+    
+      <a class="next" href="/mustache.html" title="mustache, hogan, handlebars">&#x276D;</a>              
+     
+    
+               
+  </nav>
+    <header>
+    
+
+
+
+
+  
+
+<time datetime="2011-12-23T20:08:00-08:00" pubdate><span class='month'>Dec</span> <span class='day'>23</span> <span class='year'>2011</span></time>    
+    
+      <h1 class="entry-title"><a href="/twittering-with-d3.html">Twittering with D3</a></h1>
+    
+    
+    
+    
+  </header>
+<div class="entry-content"><p>What you see above is something I had been thinking of doing since the obsession of a redesign hit my head: rendering visual snippets of my latest tracked actions as pretty and useless graphics. Hopefully this is the first of many.</p>
+
+<p>My very first data mapping project was my <a href="http://j.mp/divyaieee">Final Year Project</a> where I had to render XML data from the server on to a J2ME application. I have since not wanted to recreate that horrific experience again and have stayed well out of the way of such complicated mappings. But, last year, I wrote a bit on using <a href="http://www.netmagazine.com/tutorials/build-tweet-map-svg">Polymaps for mapping tweets</a> and discovered that <a href="http://bost.ocks.org/mike/">Mike Bostock</a> has since created a new library for data visualization called <a href="http://mbostock.github.com/d3/">D3</a>. I finally got a chance to play with it.</p>
+
+<h3>Idea</h3>
+
+<p>The bar chart shows a timeline of the last 10 tweets starting with the earliest tweet. Each bar represents a tweet and grows darker across the timeline based on how many retweets occur. The darkest bar represents a tweet that was retweeted the most. Clicking on each bar gives you the tweet itself and the actual number of retweets that has occurred.</p>
+
+<p>I originally started with the idea of only plotting tweets created over the last 24 hours and the ebb and flow of each of their retweets. But, then, it became harder to visualize how I would treat retweets that occurred beyond a day. It seemed simpler to just switch over to plotting the graph for the latest few tweets.</p>
+
+<h3>Design</h3>
+
+<p>I had in my mind a graded bar chart that would animate across time and change in color values based on when and how many retweets occurred. I wanted to include axes in the design, but they looked very noisy when I got around to doing them, so they were <em>axed</em> :)</p>
+
+<h3>Implementation</h3>
+
+<p>This project was primarily a vehicle to learn <a href="http://mbostock.github.com/d3/">D3</a> and <a href="http://nodejs.org/">node.js</a> and I must say I did learn quite a bit of both while using them. Not having much of a data visualization background, understanding <code>scale</code>, <code>transition</code>, and <code>data</code> took a while, but it became more intuitive as I grasped how these worked.</p>
+
+<p>The binding of <code>data</code> to each SVG/DOM object using <code>selectAll('&lt;node&gt;').data()</code> is really awesome. It makes it easy to add/remove nodes depending on the data that you are dealing with, though, it does require you to think carefully about your data object (I spent many sleepless hours on this). D3&#8217;s handy <a href="https://github.com/mbostock/d3/wiki/Transitions#wiki-d3_interpolate">interpolators</a> are useful for interpolating between arbitrary set of values. The variety of <a href="https://github.com/mbostock/d3/wiki/Scales">mappings of domains to ranges</a> that is available is also impressive.</p>
+
+<p>I used <a href="https://github.com/AvianFlu/ntwitter">nTwitter</a> to make requests to the Twitter REST API and write the results to a JSON file. Node’s async callbacks threw me in a loop but <a href="http://deepak.jois.name">Deepak</a> used <a href="https://github.com/caolan/async">Async</a> to make it all seamless (while also helping me out with a major rework of the code).</p>
+
+<p><a href="http://momentjs.com/">moment.js</a> was quite handy both server-side and client-side to parse and compare dates for tweets and retweets.</p>
+
+<h3>Play!</h3>
+
+<p>The code is in the <a href="https://github.com/nimbupani/viz">Viz</a> folder to which I should be adding more such pointless data art. Please do suggest improvements or feel free to use this in your own obsessive experiments :)</p>
+</div>
+
+  <footer>
+    <p class="meta">This post was posted by 
+  
+
+<a href="/about.html">Divya Manian</a>
+ on 
+
+
+
+
+  
+
+<time datetime="2011-12-23T20:08:00-08:00" pubdate><span class='month'>Dec</span> <span class='day'>23</span> <span class='year'>2011</span></time> in 
+
+<span class="categories">
+  
+    <a class='category' href='/categories/viz/'>viz</a>
+  
+</span>
+
+.  If you would like to update this post, <a href="https://github.com/nimbupani/nimbupani.github.com/blob/source/source/_posts/2011-12-23-twittering-with-d3.md">please send a pull request</a>.       
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+      
+    </div>
+  </div>
+  <aside id="articles">
+    <p><img class="avatar"
+    src="http://a2.twimg.com/profile_images/1696865113/me_normal"
+    height=48> <a href="http://twitter.com/divya">Divya Manian</a> is a Web Developer in Seattle. <a href="/about.html">More about me ❭</a></p>
+    <h2>Posts on Web Development</h2>
+    <ul><li><a href="/some-updates.html">Some Updates</a></li><li><a href="/css-object-model.html">CSS Object Model</a></li><li><a href="/fake-bolding-of-web-fonts.html">Fake Bolding of Web Fonts</a></li><li><a href="/html5please-api.html">Html5please API</a></li><li><a href="/html5please.html">html5please</a></li><li><a href="/mustache.html">mustache, hogan, handlebars</a></li><li><a href="/redesign-notes.html">Redesign Notes</a></li><li><a href="/summary-of-various-exciting-css-drafts-and-proposals.html">Summary of various exciting CSS drafts and proposals</a></li><li><a href="/this-revolution-needs-new-revolutionaries.html">This revolution needs new revolutionaries</a></li><li><a href="/some-css-transition-hacks.html">Some CSS Transition hacks</a></li><li><a href="/safe-css-defaults.html">Safe CSS Defaults</a></li><li><a href="/unplugged-2011.html">Unplugged 2011</a></li><li><a href="/bokeh-with-css3-gradients.html">Bokeh with CSS3 Gradients</a></li><li><a href="/making-pure-css3-demos-better.html">Making "Pure CSS3" demos better</a></li><li><a href="/web-opener-at-opera.html">Web Opener at Opera</a></li><li><a href="/current-color-in-css.html">Current Color in CSS</a></li><li><a href="/css-vocabulary.html">CSS Vocabulary</a></li><li><a href="/active-web-development.html">Active Web Development</a></li><li><a href="/sexy-css3-buttons.html">Sexy CSS3 Buttons</a></li><li><a href="/accessible-css-barcharts.html">Accessible CSS Barcharts</a></li><li><a class="btn" href="/categories/web-development/">More</a></li></ul>
+  </aside>
+  <footer role="contentinfo"><p>
+  Copy to your heart’s content 2012 - Divya Manian -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>  
+</p>
+
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'nimbublog';
+      var disqus_developer = 1;        
+      
+      
+        var disqus_url = 'http://nimbupani.com/twittering-with-d3.html';
+        var disqus_identifier = 'http://nimbupani.com/twittering-with-d3.html';                
+      
+        
+        
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+<script src="/javascripts/octopress.js"></script>
+
+  <script>
+    var _gaq=[['_setAccount','UA-97188-1'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+
+
+
+
+</body>
+</html>

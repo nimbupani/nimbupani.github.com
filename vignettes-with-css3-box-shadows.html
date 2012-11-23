@@ -1,0 +1,213 @@
+
+<!doctype html>
+<!--[if lt IE 9]> <html class="no-js oldie" lang="en"> <![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  
+  <title>Vignettes with CSS3 Box Shadows | Divya Manian</title>  
+  <meta name="author" content="Divya Manian">
+  
+  <meta name="description" content="Paul Irish (why nobody else sends me such awesome stuff beats me), showed me yet another CSS3/HTML5 website. What is interesting is, the site author &hellip;">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://nimbupani.github.com/vignettes-with-css3-box-shadows.html">
+  <link href="/stylesheets/screen.css" rel="stylesheet">
+  <link href="http://feeds.feedburner.com/nimbupani" rel="alternate" title="Subscribe" type="application/atom+xml">
+  <link href="http://feeds.feedburner.com/nimbu" rel="alternate" title="Subscribe to Web Development updates" type="application/atom+xml">    
+  
+</head>
+
+
+<body  >
+  <div class="container">
+    <div class="content">
+      <header role="banner">  <h1><a href="/">Divya Manian</a></h1>
+  
+  <h2><a class="twitter" href="https://twitter.com/divya">twitter</a> <a class="rss" href="http://feeds.feedburner.com/nimbupani">RSS Feed</a> <a class="youtube" href="http://youtube.com/nimbupani">Youtube Channel</a> <a class="github" href="https://github.com/nimbupani">Github</a></h2>
+  
+</header>
+      <nav class="sitenav"><a href="/">Home</a>
+<a href="/archives">Archives</a>
+<a href="/about.html">About</a>
+</nav>    
+      
+  
+
+
+
+  
+
+
+<article>
+  <nav class="article">
+    
+      <a class="previous" href="/book-reviews-for-july-2010-part-1.html" title="Book Reviews for July 2010 - Part 1">&#x276C;</a>      
+    
+    
+      <a class="next" href="/wee-marquee.html" title="Wee! Marquee">&#x276D;</a>              
+     
+    
+               
+  </nav>
+    <header>
+    
+
+
+
+
+  
+
+<time datetime="2010-07-12T00:00:00-07:00" pubdate><span class='month'>Jul</span> <span class='day'>12</span> <span class='year'>2010</span></time>    
+    
+      <h1 class="entry-title"><a href="/vignettes-with-css3-box-shadows.html">Vignettes with CSS3 Box Shadows</a></h1>
+    
+    
+    
+    
+  </header>
+<div class="entry-content"><p><a href="http://nimbupani.com/demo/css3vignettes/"><img src="http://nimbupani.com/files/vignette.png" alt="vignette.png" border="0" width="604" height="331"> </a></p>
+
+<p><a href="http://paulirish.com">Paul Irish</a> (why nobody else sends me such awesome stuff beats me), showed me yet another <a href="http://chris-armstrong.com/">CSS3/HTML5 website</a>.</p>
+
+
+<p></p>
+
+<p>What is interesting is, the site author uses 4 empty divs to create the vignetting effect on the four corners of the viewport. I thought it would be a good use of box-shadow property to recreate the same effect, minus the 3 extra divs (<a href="http://sickdesigner.com/index.php/2010/html-css/css3-vignette-a-wicked-cool-technique/#comment-231">I am not the first to think of it</a>).</p>
+
+
+
+
+<p>The caveat is, the CSS3 <code>box-shadow</code> property slows down webkit browsers considerably. So, until <a href="https://bugs.webkit.org/show_bug.cgi?id=22102">this bug is resolved</a> this demo will only work on non-webkit browsers like Opera 10.5x, Firefox 3.5+ (IE 9 Platform Preview claims <code>box-shadow</code> support, but this demo does not render box-shadows there).</p>
+
+
+<p></p>
+
+<p>You could use the same technique to add vignetting to images. Here is how: </p>
+
+
+
+
+<ol>
+    <li><p>In your HTML document, add a wrapper element to the image, I have this: </p>
+        <pre><code>&lt;p class=&quot;vignette&quot;&gt;&lt;img src=&quot;image.jpg&quot;&gt;&lt;/p&gt;</code></pre>
+    </li>
+    <li><p>In your CSS file, add this:</p>
+
+    <pre><code>p.vignette {
+  position: relative;
+}
+p.vignette img {
+ display: block;
+}
+p.vignette:after {
+ -moz-box-shadow: inset 0 0 10em #666;  
+ -webkit-box-shadow: inset 0 0 10em #666;   
+ box-shadow: inset 0 0 10em #666;
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100%;
+ z-index: 2;
+ content: "";
+}</code></pre>
+<p>The <code>content: ""</code> is essential to <a href="http://www.w3.org/TR/CSS2/generate.html#content">make sure the pseudo-element is generated</a>. <code>z-index</code> positions the pseudo-element above the image.</p> 
+</li>
+<li>
+    <em>Die Ende!</em>
+</li>
+</ol>
+
+
+<p>Yes, I do wish webkit would hurry up and fix those horrible box-shadow bugs. Till then, you can indulge with me in this fantasy and <a href="http://nimbupani.com/demo/css3vignettes/">view the demo</a> :) </p>
+
+
+
+</div>
+
+  <footer>
+    <p class="meta">This post was posted by 
+  
+
+<a href="/about.html">Divya Manian</a>
+ on 
+
+
+
+
+  
+
+<time datetime="2010-07-12T00:00:00-07:00" pubdate><span class='month'>Jul</span> <span class='day'>12</span> <span class='year'>2010</span></time> in 
+
+<span class="categories">
+  
+    <a class='category' href='/categories/web-development/'>Web Development</a>
+  
+</span>
+
+.  If you would like to update this post, <a href="https://github.com/nimbupani/nimbupani.github.com/blob/source/source/_posts/2010-07-12-vignettes-with-css3-box-shadows.md">please send a pull request</a>.       
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+      
+    </div>
+  </div>
+  <aside id="articles">
+    <p><img class="avatar"
+    src="http://a2.twimg.com/profile_images/1696865113/me_normal"
+    height=48> <a href="http://twitter.com/divya">Divya Manian</a> is a Web Developer in Seattle. <a href="/about.html">More about me ❭</a></p>
+    <h2>Posts on Web Development</h2>
+    <ul><li><a href="/some-updates.html">Some Updates</a></li><li><a href="/css-object-model.html">CSS Object Model</a></li><li><a href="/fake-bolding-of-web-fonts.html">Fake Bolding of Web Fonts</a></li><li><a href="/html5please-api.html">Html5please API</a></li><li><a href="/html5please.html">html5please</a></li><li><a href="/mustache.html">mustache, hogan, handlebars</a></li><li><a href="/redesign-notes.html">Redesign Notes</a></li><li><a href="/summary-of-various-exciting-css-drafts-and-proposals.html">Summary of various exciting CSS drafts and proposals</a></li><li><a href="/this-revolution-needs-new-revolutionaries.html">This revolution needs new revolutionaries</a></li><li><a href="/some-css-transition-hacks.html">Some CSS Transition hacks</a></li><li><a href="/safe-css-defaults.html">Safe CSS Defaults</a></li><li><a href="/unplugged-2011.html">Unplugged 2011</a></li><li><a href="/bokeh-with-css3-gradients.html">Bokeh with CSS3 Gradients</a></li><li><a href="/making-pure-css3-demos-better.html">Making "Pure CSS3" demos better</a></li><li><a href="/web-opener-at-opera.html">Web Opener at Opera</a></li><li><a href="/current-color-in-css.html">Current Color in CSS</a></li><li><a href="/css-vocabulary.html">CSS Vocabulary</a></li><li><a href="/active-web-development.html">Active Web Development</a></li><li><a href="/sexy-css3-buttons.html">Sexy CSS3 Buttons</a></li><li><a href="/accessible-css-barcharts.html">Accessible CSS Barcharts</a></li><li><a class="btn" href="/categories/web-development/">More</a></li></ul>
+  </aside>
+  <footer role="contentinfo"><p>
+  Copy to your heart’s content 2012 - Divya Manian -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>  
+</p>
+
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'nimbublog';
+      var disqus_developer = 1;        
+      
+      
+        var disqus_url = 'http://nimbupani.com/vignettes-with-css3-box-shadows.html';
+        var disqus_identifier = 'http://nimbupani.com/vignettes-with-css3-box-shadows.html';                
+      
+        
+        
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+<script src="/javascripts/octopress.js"></script>
+
+  <script>
+    var _gaq=[['_setAccount','UA-97188-1'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+
+
+
+
+</body>
+</html>

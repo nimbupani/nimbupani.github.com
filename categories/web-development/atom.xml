@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Web Development | Divya Manian]]></title>
+  <link href="http://nimbupani.github.com/categories/web-development/atom.xml" rel="self"/>
+  <link href="http://nimbupani.github.com/"/>
+  <updated>2012-11-22T18:25:39-08:00</updated>
+  <id>http://nimbupani.github.com/</id>
+  <author>
+    <name><![CDATA[Divya Manian]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Some Updates]]></title>
+    <link href="http://nimbupani.github.com/some-updates.html"/>
+    <updated>2012-11-22T17:43:00-08:00</updated>
+    <id>http://nimbupani.github.com/some-updates</id>
+    <content type="html"><![CDATA[<p>While this website has been lying dormant, I have been doing many things that are more actively tracked on <a href="http://twitter.com/divya">twitter</a>. Here are some of the highlights of what I have been up to.</p>
+
+<h2>Adobe</h2>
+
+<p>Some of you know I now work at Adobe. But I have since June been the Product Manager for the Web Engine team! I had not previously lived a life of a Product Manager, but for every programmer out there who thinks it is a better life, think again! I find it easier to program than to convince humans.</p>
+
+<h2>Fripfrap</h2>
+
+<p>So <a href="http://twitter.com/garannm">Garann</a> and I have a regular podcast/video stream going on. We didn't speak about it much because we were not sure if we really wanted to do it. But, after recording 3 episodes, I think it is worth your while to spend 20 minutes of your life on :) <a href="http://fripfrap.io">Check it out</a>!</p>
+
+<h2>Book</h2>
+
+<p>I have also been up to my gills writing a book on HTML5 Boilerplate. The toughest part of writing a technical book is how often code changes. <a href="http://twitter.com/necolas">Nicolas Gallagher</a> has been doing such an excellent job of maintaining <a href="http://html5boilerplate.com">HTML5 Boilerplate</a> that it was many times I had to rewrite a lot of chapters based on newer updates. Nevertheless, I <strong>still</strong> need to write more errata as there are already updates while the book went out to print!</p>
+
+<p>You can <a href="http://www.packtpub.com/html5-boilerplate-web-development/book">purchase the book at Packt</a> or get a <a href="http://www.amazon.com/HTML5-Boilerplate-Web-Development-ebook/dp/B009RR0IFE">Kindle version on Amazon</a>. If you have already got your copy, please let me know if you have any feedback!</p>
+
+<p>The money I earn on this book goes to <a href="http://www.givewell.org/international/top-charities/AMF">Against Malaria Foundation</a> which consistantly is lauded for its effective aid programmes.</p>
+
+<h2>Talks</h2>
+
+<p>I have been giving several talks over the few months in Australia, New Zealand, France, Germany, UK and in US. I thought I would round up the major topic areas and link to videos of the talks as they exist:</p>
+
+<h3>Designing in the browser</h3>
+
+<iframe width="560" height="315" src="http://www.youtube.com/embed/h52uumn3sZc?rel=0" frameborder="0" allowfullscreen></iframe>
+
+
+<p>I posit that modern web technologies require designers to use the medium to design for it. <a href="http://nimbu.in/codemelb">Slides for Designing in the Browser</a></p>
+
+<h3>Pushing the cutting edge forward</h3>
+
+<iframe src="http://player.vimeo.com/video/49730056?badge=0" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+
+
+<p>A talk on what standards are, how they are created and how to effectively contribute to shaping how standards evolve without losing your mind. I gave the same talk @ SF HTML5 Meetup, which has the more up to date content. <a href="http://nimbu.in/sfhtml5/">Slides for Pushing the Cutting Edge Forward</a></p>
+
+<h3>Web Components with your favourite CSS Specs</h3>
+
+<iframe width="560" height="315" src="http://www.youtube.com/embed/FO3hTypPB1U?rel=0" frameborder="0" allowfullscreen></iframe>
+
+
+<p>A talk on how to use the Shadow DOM with some new exciting CSS Specifications along with some important things to note while using these specs in tandem. <a href="http://nimbu.in/jsconfeu/">Slides for Web Components with your favourite CSS Specs</a></p>
+
+<p>I will be giving a talk on what's next for CSS at <a href="http://jscamp.asia">jscamp.asia</a>. There is a good mix of interesting people coming by, so if you are in that region, please do come to the conference!</p>
+
+<h2>Dotfiles</h2>
+
+<p>I finally found the time to customize my dotfiles! I started with <a href="https://github.com/mathiasbynens/dotfiles">Mathias Bynens's dotfiles</a> as was recommended on <a href="http://dotfiles.github.com">Github</a> and then went over to the others. But finally ended up on <a href="http://github.com/necolas/dotfiles">Nicolas Gallagher's dotfiles</a> as they were most well-organized &amp; written. I added an AWS CLI as I upload my screen captures to AWS S3 bucket and some other tiny aliases that I thought was useful. <a href="http://github.com/nimbupani/dotfiles">Here are my dotfiles</a>.</p>
+
+<p>I hope to spend my vacation writing my own website generator as one is bound to do and get rid of Octopress monolith! I hope you have a great holiday season!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[CSS Object Model]]></title>
+    <link href="http://nimbupani.github.com/css-object-model.html"/>
+    <updated>2012-06-18T10:48:00-07:00</updated>
+    <id>http://nimbupani.github.com/css-object-model</id>
+    <content type="html"><![CDATA[<p>Until <a href="http://testthewebforward.org">Test the Web Forward</a> I had just a vague idea of what CSS Object Model does. So, it was awesome to hear from and learn about the <a href="http://dev.w3.org/csswg/cssom/">CSS Object Model</a> from the spec co-editor <a href="https://twitter.com/gasubic/">Glenn Adams</a>.</p>
+
+<h2>What it is</h2>
+
+<p>The CSS Object Model specification provides APIs that allow you to query and manipulate styles once the browser reads and understands the stylesheets and inline styles that are used on the page that is being rendered. An older specification that standardizes this was called DOM Level 2 Style Specification. It was the first specification that provided ability to access and manipulate styles via JavaScript using the DOM API.</p>
+
+<p>The fragmented history of the web sadly means most of these APIs do not quite work the way they are intended to in many browsers. Glenn wrote in to state what the goals of the current specs are, which include:</p>
+
+<ul>
+<li>Fully specify behavior that was left unstated, vague, or ambiguous in DOM-2 Style spec.</li>
+<li>Remove functionality specified in DOM-2 Style that is not widely implemented and not perceived as necessary.</li>
+<li>Add functionality not specified in DOM-2 Style that has been widely implemented and is viewed as sufficiently important.</li>
+</ul>
+
+
+<p>The APIs from the specification that have been implemented so far offer the abilitiy to query rules specified in the stylesheets or a text representation of the styles in a stylesheet or the inline styles of an element within the rendered page. For example, you can get the value of <code>margin</code> of an element by using <code>getComputedStyle('element,optional pseudoElement').margin</code>. You can also get the full style declaration that applies to an element as a string by using <code>getComputedStyle('element,optional pseudoElement').cssText</code>.</p>
+
+<h2>The <code>CSSStyleDeclaration</code> Object</h2>
+
+<p>The <code>getComputedStyle</code> method retuns what is known as a <code>CSSStyleDeclaration</code> object. It enumerates all style properties (&amp; values). This is the object that is returned whenever you query for style information using:</p>
+
+<ul>
+<li><p><code>document.styleSheets[0].cssRules[0].style</code></p></li>
+<li><p><code>Element.style</code></p></li>
+<li><p><code>document.getOverrideStyle</code> (unimplemented in most browsers, but would be useful for <a href="http://stackoverflow.com/questions/9798210/is-there-any-way-to-reset-after-before-css-rules-for-an-element">getting/setting hover, and other pseudo-classes</a>).</p></li>
+<li><p><code>window.getComputedStyle</code></p></li>
+</ul>
+
+
+<p>The returned object itself can be changed (it is <em>mutable</em> which means you can set a style property like <code>Element.style.margin = "20px"</code>) in all cases except the last. If you try to change a property of the object returned by <code>window.getComputedStyle(Element)</code>, you would get an exception.</p>
+
+<h2>CSS Rules</h2>
+
+<p>Rules within stylesheets have an object model too. There are 6 kinds of <a href="http://nimbupani.com/css-vocabulary.html">CSS rules</a> that could apply:</p>
+
+<ul>
+<li>Style rules (e.g <code>h1 {}</code> or <code>#main a {color: red; }</code>)</li>
+<li>@import rules (e.g. <code>@import url(main.css)</code>)</li>
+<li>Page rules (e.g. <code>@page :first {color: red; }</code>)</li>
+<li>@font-face rules (e.g. <code>@font-face {}</code>)</li>
+<li>Namespace rules (e.g. <code>@namespace svg http://svg.org</code>)</li>
+<li>Media rules (e.g. <code>@media (min-width: 200px)</code>)</li>
+</ul>
+
+
+<p>Not only that but you can even access the individual selectors that you specified in your style sheet. The values for properties in selectors are also serialised. How these values are serialised has also been documented in the specification. For example, if an element has a style property set (inline or set from within a stylesheet) like so <code>margin: 20px 20px 20px 20px;</code>, the specification states that when you access the style using <code>cssText</code> it should return <code>margin: 20px;</code>.</p>
+
+<h2>Testing CSS Values</h2>
+
+<p>The above serialization of CSS values seemed trivial and I thought would be a good test to start with. So, I wrote a <a href="https://dl.dropbox.com/u/952/ttwf/index.html">small test</a>. The results were interesting:</p>
+
+<ul>
+<li>Firefox &amp; IE 9 were the only browsers that returned the expected value of <code>"margin: 20px"</code></li>
+<li>Chrome returned <code>"margin: 20px; "</code> (note the whitespace after the semi-colon)</li>
+<li>Opera bizarrely returns <code>"margin-top: 20px; margin-bottom: 20px; margin-left: 20px; margin-right: 20px"</code> (also note the missing last semi-colon).</li>
+<li>Safari returned <code>"margin-top: 20px; margin-right: 20px; margin-bottom: 20px; margin-left: 20px; "</code> (note the space after the last semi-colon).</li>
+</ul>
+
+
+<p>Imagine the frustration of someone trying to write a CSS Style editor and wanting to show CSS style rules correctly! Glenn tells me that radical differences like these exist because the original DOM 2 Style spec did not document the serialization rules (he also pointed to this <a href="http://lists.w3.org/Archives/Public/www-style/2012Jan/1122.html">thread that discusses which properties get serialized or not</a>).</p>
+
+<p>Hopefully, because of Test the Web Forward, we can have more such tests in the future to ensure all browsers implement these APIs and specifications correctly. There are many other APIs available in the CSS OM. Interestingly, I was made aware of the longest property name (proprietary though) in existence: <del><code>-webkit-match-nearest-mail-blockquote-color</code></del> (thanks to <a href="http://twitter.com/awesomekling">Andreas Kling</a> this is <a href="http://trac.webkit.org/changeset/120735">no longer the case</a>, it is now <code>-webkit-border-bottom-right-radius</code>) (I wonder what is the shortest?).</p>
+
+<p>If you are interested in writing and contributing CSS tests, first <a href="https://test.csswg.org/shepherd/register/">make an account</a> (please do make sure to check the box for 'Request Repository Write Access') and then follow along with <a href="http://adobe.github.com/web-platform/presentations/test-the-web-forward-tutorial/index.html">this presentation</a> by <a href="http://twitter.com/JacobG415">Jacob Goldstein</a> &amp; <a href="http://twitter.com/RebeccaHauck">Rebecca Hauck</a>.</p>
+
+<p><em>Many thanks to Glenn Adams &amp; Paul Irish for reviewing this post.</em></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Fake Bolding of Web Fonts]]></title>
+    <link href="http://nimbupani.github.com/fake-bolding-of-web-fonts.html"/>
+    <updated>2012-03-02T11:26:00-08:00</updated>
+    <id>http://nimbupani.github.com/fake-bolding-of-web-fonts</id>
+    <content type="html"><![CDATA[<p>If you are like me, you would have been (ab)using <a href="">Google Web Fonts</a> for your custom font needs. In which case, you most certainly would have tripped on this problem: Faux Font bolding.</p>
+
+<p>Most browsers synthesize the bold weights of fonts that do not posses a bold weight. For example, the font 'Helvetica Neue Light' does not have a bold version available. If you use <code>font-weight: bold</code> with that font, browsers will artificially create a bold weight and <a href="http://jsfiddle.net/nimbu/jaRYQ/">render it like this</a></p>
+
+<p><img src="http://cache.gyazo.com/c0ed78dbdef07d27ce6bdf3319507f1c.png" alt="Rendering of fake bold on helvetica neue light" /></p>
+
+<h2>The Problem</h2>
+
+<p>Now, this problem is exarcerbated when used with web fonts, especially the free open source fonts that are served from a service. Google Web Fonts, for example, <a href="http://www.google.com/webfonts#QuickUsePlace:quickUse/Family:Erica+One">serves slab fonts</a> like so:</p>
+
+<pre>@font-face {
+  font-family: 'Erica One';
+  font-style: normal;
+  <b>font-weight: normal;</b>
+  src: local('Erica One'), local('EricaOne-Regular'), url(&lt;font url>) format('woff');
+}</pre>
+
+
+<p>What this code declares to a browser is: "Hey, this is the <strong>least weight available</strong> for this font called Erica One. So, if anyone wants a heavier weight, you need to synthesize it just like you would do it to local fonts."</p>
+
+<p>Now, the problem occurs if you only want to use this font for your headings. By default, browsers apply <code>font-weight: bold</code> to all headings. But the browsers need to obey the <code>font-weight</code> descriptor that is used in the <code>@font-face</code> rule above! This means, they will try to fake the bold weight of the already-heavy weight Erica One. Alas, the method used for synthetically generating the bold weight is not specced, so each browser does its own magic! Here is the normal weight of a typical slab web font(Google Web Font Ultra) overlaid on top of the synthetic bold generated out of it (<a href="http://jsfiddle.net/nimbu/wcBmD/">here is the code used to generate this graphic</a>):</p>
+
+<p><img src="http://cache.gyazo.com/9bddfbf3f0fd2ead41c22c593239b051.png" alt="Image of the synthetic font" /></p>
+
+<h2>How to solve this?</h2>
+
+<p>There are two ways to resolve this:</p>
+
+<h3>If you are in control of the @font-face rule</h3>
+
+<p>Then the trivial solution is to add a <code>font-weight: bold</code> declaration which tells the browser "This font is a heavy slab font intended only to be rendered as a bold. Dont create synthetic bold versions for this". This would <a href="http://jsfiddle.net/nimbu/Kxk5s/">work universally across any selectors irrespective of what the <code>font-weight</code> value is for them</a>. <strong>This is the recommended solution</strong>.</p>
+
+<p>Unfortunately, this won't quite work if you are using one of the recommended options of Google Web Fonts, as you have no control over the <code>font-weight</code> descriptor in the <code>@font-face</code> rule that Google outputs. So we now move to Option 2.</p>
+
+<h3>Set font-weight: normal to all selectors using the slab font</h3>
+
+<p>This is the trivial solution if you are using font services whose <code>@font-face</code> rule you do not have control over. The way I would do this, in Sass is to define it in this manner:</p>
+
+<pre>.slab-serif {
+  font-family: 'Ultra', serif;
+  font-weight: normal;
+} 
+
+h1 {
+  @extend .slab-serif;
+}</pre>
+
+
+<p>If you are using just CSS, then ensure everytime you set the <code>font-family</code> to be that slab web font you use a font-weight: normal declaration. Aha, this is actually what Google Fonts recommend in the sneaky little box to the right.</p>
+
+<p>In any case, if you can avoid exposing your users to horrific fake bolding, you should. And that is the point of this post: to remind myself to never ever have browsers fake the weights of web fonts.</p>
+
+<p>Note: <a href="http://css-tricks.com/watch-your-font-weight/">Here is Chris Coyier's take on it</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Html5please API]]></title>
+    <link href="http://nimbupani.github.com/html5please-api.html"/>
+    <updated>2012-02-26T17:24:00-08:00</updated>
+    <id>http://nimbupani.github.com/html5please-api</id>
+    <content type="html"><![CDATA[<p><a href="http://api.html5please.com"><img src="http://cache.gyazo.com/88b8a0680005a6f09584510034f2b847.png" alt="" /></a></p>
+
+<p>Some time ago, I noticed that many <a href="http://static.echonest.com/MidemMusicMachine/index.html">webGL demos</a> had a nice browser prompt:</p>
+
+<p><img src="http://cache.gyazo.com/57a9e37c0c425c458978f0ce335bd18f.png" alt="" /></p>
+
+<p>If your browser did not support webGL, you got a little link to <a href="http://get.webgl.org">get.webgl.org</a> which uses UA detection to tell you what browser to view webGL with. If there was a newer version of your browser that supported webGL, then it would link to that browser. If not, it would link to all the other browsers that support webGL:</p>
+
+<p><img src="http://cache.gyazo.com/f0a80983ca4e1a8e1cebb72a66077b33.png" alt="getWebGL messaging" /></p>
+
+<p>Instead of forcing people to choose a browser arbitrarily due to a developer's whims and fancies, it provides you with an optimal recommendation based on your (viewer's) defaults.</p>
+
+<p>I wanted to see if we could do so with all the other HTML5 features. This way, there would be less of "download webkit browsers now" and more smart browser recommendations based on actual feature support.</p>
+
+<p>You also won't have to see antiquated messaging like "Download Opera 9.5" or "Download Chrome 8", but get an up-to-date browser support information depending on the features that are requested:</p>
+
+<p><img src="http://cache.gyazo.com/f49245b9418ab7069cf754436b079ea3.png" alt="Screenshot of browser support message" /></p>
+
+<p>If a newer version of your browser supports the required features, it would ask you to view the page in that browser and not in random other browsers:</p>
+
+<p><img src="http://cache.gyazo.com/45d07becc1f74d9c9544a120821652cd.png" alt="Screenshow of newer browser message" /></p>
+
+<p>I broached the idea <a href="https://github.com/paulirish/lazyweb-requests/issues/39">here</a> and then less than a month ago, <a href="http://twitter.com/jon_neal">Jonathan Neal</a> produced a full working implementation of how such a service would look like. I worked with Jon, <a href="http://twitter.com/fyrd">Alexis Deveria</a>, <a href="http://twitter.com/paul_irish">Paul Irish</a>, <a href="http://twitter.com/drublic">Hans Christian Reinl</a>, <a href="http://twitter.com/aaronlayton">Aaron Layton</a> and <a href="https://github.com/h5bp/html5please-api/contributors">many more</a> to create what is now <a href="http://api.html5please.com">HTML5Please API</a>.</p>
+
+<p>In brief, this service looks up the data used to render <a href="http://caniuse.com">When can I use</a> tables and match it to the user's UA. Depending on the match, and the required features, it would either tell the user that they have a browser that is missing critical features required on the page or it would get out of the way and not render anything.</p>
+
+<p>Here is how it looks like on a browser that supports all the required features:
+<img src="http://h5bp.github.com/html5please-api/site/with-support.png" alt="A page on a browser supporting Drag and Drop" /></p>
+
+<p>Here is how it looks like when a browser does not:
+<img src="http://h5bp.github.com/html5please-api/site/without-support.png" alt="A page on a browser that does not support Drag and Drop" /></p>
+
+<p>Even if the service fails to return anything (say network failure), there is no terrible disruption, the user can use the site as it is.</p>
+
+<p>Ideally, you would want to provide all critical actions on the user's browser based on what is available. If you absolutely must need certain features to enhance the experience, you can use this service to let the user know which browsers would offer that.</p>
+
+<p><a href="http://twitter.com/simurai">Simurai</a> has some creative uses of this service in his projects <a href="http://lab.simurai.com/carveme/">Carveme</a> and <a href="http://lab.simurai.com/flashlight/">Flash Light</a>. What more, this API has even been <a href="https://github.com/gf3/protobot/blob/master/protobot.js#L447">integrated into an IRC bot</a>!</p>
+
+<p>The <a href="https://github.com/h5bp/html5please-api/wiki/">Wiki pages</a> have much more in-depth information on all the possible options you can use with this API.</p>
+
+<p>Let us know your suggestions and bug reports on the <a href="http://github.com/h5bp/html5please-api/issues/">Github Issue Tracker</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[html5please]]></title>
+    <link href="http://nimbupani.github.com/html5please.html"/>
+    <updated>2012-01-22T17:11:00-08:00</updated>
+    <id>http://nimbupani.github.com/html5please</id>
+    <content type="html"><![CDATA[<p><a href="http://html5please.us"><img src="http://cache.gyazo.com/c5d6f648394681c59d93c487b8347cf5.png" alt="" /></a></p>
+
+<p>More than a year ago, in my very first talk at Web Directions on <a href="http://www.slideshare.net/nimbupani/active-web-development">Active Web Development</a>, I had this slide:</p>
+
+<p><img src="http://cache.gyazo.com/64c191910d79e1ec04e253caa7a74482.png" alt="" /></p>
+
+<p>The intention was that within organizations web developers would work to keep an updated list of html5 features that they would adopt or not. However, <a href="http://paulirish.com">Paul Irish</a> and I thought it would be useful if there were a global set of recommendations that web developers could consult and tap on when they are deciding on how to use features. This was the seed for the creation of <a href="http://html5please.us">HTML5 Please</a>.</p>
+
+<p><a href="http://caniuse.com">When can I use</a> and <a href="http://modernizr.com">Modernizr</a> do a great job in informing the users of available features and how to feature detect them. The <a href="https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-browser-Polyfills">Modernizr polyfill wikipage</a> also does a good job of listing all the available polyfills. What we felt missing was the glue that bound all this information together, to tell the user what the best tool for the job was: either on its own, or with a polyfill or a sensible fallback.</p>
+
+<p>With HTML5 Please, you can just search for a feature that you are looking to use and find out how to do so. If you think our recommendation is incorrect, you can edit the recommendation for each feature and send a pull request (like this <a href="https://github.com/h5bp/html5please/blob/master/posts/border-image.md">example</a>).</p>
+
+<h3>The Setup</h3>
+
+<p>Initially, this data was in a JSON file that was manipulated in node to generate the static html. Soon, it became obvious that JSON would be a big pile of mess when many people <em>manually</em> update it.  Also, it was clear we needed a build system, which is where <a href="http://twitter.com/tbranyen">Tim Branyen</a> stepped in to help creating one using node and backbone that would combine markdown posts into a single HTML page.</p>
+
+<p>It was also obvious that we needed a good system to create these markdown posts so that each of the tags that are used in the 'Explore features' section are not created accidentally (e.g. prevent creating a tag called <code>polyfill</code> instead of <code>polyfills</code>). To do this, <a href="http://twitter.com/vyom">Deepak Jois</a> created a simple shell script that accepts a feature name, its associated tags, its kind, and then creates a markdown file with these details and opens it in your editor.</p>
+
+<p>We also wanted a way for users to help us make the content better. I added a link to the markdown source on github for each feature which the reader only needs to fork, edit and send pull request for (all over in two clicks!).</p>
+
+<h3>The Front End</h3>
+
+<p>I was unsure of how to proceed with the design. This is how it appeared in the beginning:</p>
+
+<p><img src="http://cache.gyazo.com/4e9fa43b13017085aa1647e1955a36d6.png" alt="" /></p>
+
+<p>Over the last month, I tweaked the design majorly to more or less match what you see today. I also wanted to use Sass more, which is why the source stylesheet is all Sass.</p>
+
+<p>It was awesome to work with Paul, Tim, Deepak, <a href="http://twitter.com/connor">Connor</a>, <a href="http://twitter.com/brianblakely">Brian Blakely</a>, <a href="http://twitter.com/addyosmani">Addy Osmani</a> &amp; <a href="https://github.com/h5bp/html5please/contributors">many more</a> to create this site. Please <a href="https://github.com/h5bp/html5please/issues/">let us know on Github</a> if you find issues or if you have ideas on how it could be better!</p>
+]]></content>
+  </entry>
+  
+</feed>

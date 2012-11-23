@@ -1,0 +1,196 @@
+
+<!doctype html>
+<!--[if lt IE 9]> <html class="no-js oldie" lang="en"> <![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  
+  <title>Html5please API | Divya Manian</title>  
+  <meta name="author" content="Divya Manian">
+  
+  <meta name="description" content="Some time ago, I noticed that many webGL demos had a nice browser prompt: If your browser did not support webGL, you got a little link to get.webgl. &hellip;">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://nimbupani.github.com/html5please-api.html">
+  <link href="/stylesheets/screen.css" rel="stylesheet">
+  <link href="http://feeds.feedburner.com/nimbupani" rel="alternate" title="Subscribe" type="application/atom+xml">
+  <link href="http://feeds.feedburner.com/nimbu" rel="alternate" title="Subscribe to Web Development updates" type="application/atom+xml">    
+  
+</head>
+
+
+<body  >
+  <div class="container">
+    <div class="content">
+      <header role="banner">  <h1><a href="/">Divya Manian</a></h1>
+  
+  <h2><a class="twitter" href="https://twitter.com/divya">twitter</a> <a class="rss" href="http://feeds.feedburner.com/nimbupani">RSS Feed</a> <a class="youtube" href="http://youtube.com/nimbupani">Youtube Channel</a> <a class="github" href="https://github.com/nimbupani">Github</a></h2>
+  
+</header>
+      <nav class="sitenav"><a href="/">Home</a>
+<a href="/archives">Archives</a>
+<a href="/about.html">About</a>
+</nav>    
+      
+  
+
+
+
+  
+
+
+<article>
+  <nav class="article">
+    
+      <a class="previous" href="/html5please.html" title="html5please">&#x276C;</a>      
+    
+    
+      <a class="next" href="/fake-bolding-of-web-fonts.html" title="Fake Bolding of Web Fonts">&#x276D;</a>              
+     
+    
+               
+  </nav>
+    <header>
+    
+
+
+
+
+  
+
+<time datetime="2012-02-26T17:24:00-08:00" pubdate><span class='month'>Feb</span> <span class='day'>26</span> <span class='year'>2012</span></time>    
+    
+      <h1 class="entry-title"><a href="/html5please-api.html">Html5please API</a></h1>
+    
+    
+    
+    
+  </header>
+<div class="entry-content"><p><a href="http://api.html5please.com"><img src="http://cache.gyazo.com/88b8a0680005a6f09584510034f2b847.png" alt="" /></a></p>
+
+<p>Some time ago, I noticed that many <a href="http://static.echonest.com/MidemMusicMachine/index.html">webGL demos</a> had a nice browser prompt:</p>
+
+<p><img src="http://cache.gyazo.com/57a9e37c0c425c458978f0ce335bd18f.png" alt="" /></p>
+
+<p>If your browser did not support webGL, you got a little link to <a href="http://get.webgl.org">get.webgl.org</a> which uses UA detection to tell you what browser to view webGL with. If there was a newer version of your browser that supported webGL, then it would link to that browser. If not, it would link to all the other browsers that support webGL:</p>
+
+<p><img src="http://cache.gyazo.com/f0a80983ca4e1a8e1cebb72a66077b33.png" alt="getWebGL messaging" /></p>
+
+<p>Instead of forcing people to choose a browser arbitrarily due to a developer&#8217;s whims and fancies, it provides you with an optimal recommendation based on your (viewer&#8217;s) defaults.</p>
+
+<p>I wanted to see if we could do so with all the other HTML5 features. This way, there would be less of &#8220;download webkit browsers now&#8221; and more smart browser recommendations based on actual feature support.</p>
+
+<p>You also won&#8217;t have to see antiquated messaging like &#8220;Download Opera 9.5&#8221; or &#8220;Download Chrome 8&#8221;, but get an up-to-date browser support information depending on the features that are requested:</p>
+
+<p><img src="http://cache.gyazo.com/f49245b9418ab7069cf754436b079ea3.png" alt="Screenshot of browser support message" /></p>
+
+<p>If a newer version of your browser supports the required features, it would ask you to view the page in that browser and not in random other browsers:</p>
+
+<p><img src="http://cache.gyazo.com/45d07becc1f74d9c9544a120821652cd.png" alt="Screenshow of newer browser message" /></p>
+
+<p>I broached the idea <a href="https://github.com/paulirish/lazyweb-requests/issues/39">here</a> and then less than a month ago, <a href="http://twitter.com/jon_neal">Jonathan Neal</a> produced a full working implementation of how such a service would look like. I worked with Jon, <a href="http://twitter.com/fyrd">Alexis Deveria</a>, <a href="http://twitter.com/paul_irish">Paul Irish</a>, <a href="http://twitter.com/drublic">Hans Christian Reinl</a>, <a href="http://twitter.com/aaronlayton">Aaron Layton</a> and <a href="https://github.com/h5bp/html5please-api/contributors">many more</a> to create what is now <a href="http://api.html5please.com">HTML5Please API</a>.</p>
+
+<p>In brief, this service looks up the data used to render <a href="http://caniuse.com">When can I use</a> tables and match it to the user&#8217;s UA. Depending on the match, and the required features, it would either tell the user that they have a browser that is missing critical features required on the page or it would get out of the way and not render anything.</p>
+
+<p>Here is how it looks like on a browser that supports all the required features:
+<img src="http://h5bp.github.com/html5please-api/site/with-support.png" alt="A page on a browser supporting Drag and Drop" /></p>
+
+<p>Here is how it looks like when a browser does not:
+<img src="http://h5bp.github.com/html5please-api/site/without-support.png" alt="A page on a browser that does not support Drag and Drop" /></p>
+
+<p>Even if the service fails to return anything (say network failure), there is no terrible disruption, the user can use the site as it is.</p>
+
+<p>Ideally, you would want to provide all critical actions on the user&#8217;s browser based on what is available. If you absolutely must need certain features to enhance the experience, you can use this service to let the user know which browsers would offer that.</p>
+
+<p><a href="http://twitter.com/simurai">Simurai</a> has some creative uses of this service in his projects <a href="http://lab.simurai.com/carveme/">Carveme</a> and <a href="http://lab.simurai.com/flashlight/">Flash Light</a>. What more, this API has even been <a href="https://github.com/gf3/protobot/blob/master/protobot.js#L447">integrated into an IRC bot</a>!</p>
+
+<p>The <a href="https://github.com/h5bp/html5please-api/wiki/">Wiki pages</a> have much more in-depth information on all the possible options you can use with this API.</p>
+
+<p>Let us know your suggestions and bug reports on the <a href="http://github.com/h5bp/html5please-api/issues/">Github Issue Tracker</a>.</p>
+</div>
+
+  <footer>
+    <p class="meta">This post was posted by 
+  
+
+<a href="/about.html">Divya Manian</a>
+ on 
+
+
+
+
+  
+
+<time datetime="2012-02-26T17:24:00-08:00" pubdate><span class='month'>Feb</span> <span class='day'>26</span> <span class='year'>2012</span></time> in 
+
+<span class="categories">
+  
+    <a class='category' href='/categories/web-development/'>Web Development</a>
+  
+</span>
+
+.  If you would like to update this post, <a href="https://github.com/nimbupani/nimbupani.github.com/blob/source/source/_posts/2012-02-26-html5please-api.md">please send a pull request</a>.       
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+      
+    </div>
+  </div>
+  <aside id="articles">
+    <p><img class="avatar"
+    src="http://a2.twimg.com/profile_images/1696865113/me_normal"
+    height=48> <a href="http://twitter.com/divya">Divya Manian</a> is a Web Developer in Seattle. <a href="/about.html">More about me ❭</a></p>
+    <h2>Posts on Web Development</h2>
+    <ul><li><a href="/some-updates.html">Some Updates</a></li><li><a href="/css-object-model.html">CSS Object Model</a></li><li><a href="/fake-bolding-of-web-fonts.html">Fake Bolding of Web Fonts</a></li><li><a href="/html5please-api.html">Html5please API</a></li><li><a href="/html5please.html">html5please</a></li><li><a href="/mustache.html">mustache, hogan, handlebars</a></li><li><a href="/redesign-notes.html">Redesign Notes</a></li><li><a href="/summary-of-various-exciting-css-drafts-and-proposals.html">Summary of various exciting CSS drafts and proposals</a></li><li><a href="/this-revolution-needs-new-revolutionaries.html">This revolution needs new revolutionaries</a></li><li><a href="/some-css-transition-hacks.html">Some CSS Transition hacks</a></li><li><a href="/safe-css-defaults.html">Safe CSS Defaults</a></li><li><a href="/unplugged-2011.html">Unplugged 2011</a></li><li><a href="/bokeh-with-css3-gradients.html">Bokeh with CSS3 Gradients</a></li><li><a href="/making-pure-css3-demos-better.html">Making "Pure CSS3" demos better</a></li><li><a href="/web-opener-at-opera.html">Web Opener at Opera</a></li><li><a href="/current-color-in-css.html">Current Color in CSS</a></li><li><a href="/css-vocabulary.html">CSS Vocabulary</a></li><li><a href="/active-web-development.html">Active Web Development</a></li><li><a href="/sexy-css3-buttons.html">Sexy CSS3 Buttons</a></li><li><a href="/accessible-css-barcharts.html">Accessible CSS Barcharts</a></li><li><a class="btn" href="/categories/web-development/">More</a></li></ul>
+  </aside>
+  <footer role="contentinfo"><p>
+  Copy to your heart’s content 2012 - Divya Manian -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>  
+</p>
+
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'nimbublog';
+      var disqus_developer = 1;        
+      
+      
+        var disqus_url = 'http://nimbupani.com/html5please-api.html';
+        var disqus_identifier = 'http://nimbupani.com/html5please-api.html';                
+      
+        
+        
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+<script src="/javascripts/octopress.js"></script>
+
+  <script>
+    var _gaq=[['_setAccount','UA-97188-1'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+
+
+
+
+</body>
+</html>

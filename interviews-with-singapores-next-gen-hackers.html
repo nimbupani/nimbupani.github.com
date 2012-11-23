@@ -1,0 +1,221 @@
+
+<!doctype html>
+<!--[if lt IE 9]> <html class="no-js oldie" lang="en"> <![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  
+  <title> Interviews with Singapore's Next Gen Hackers | Divya Manian</title>  
+  <meta name="author" content="Divya Manian">
+  
+  <meta name="description" content="Starting this week, I plan to host an email interview with the developers of cool software from Singapore. This week, I had a conversation with &hellip;">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://nimbupani.github.com/interviews-with-singapores-next-gen-hackers.html">
+  <link href="/stylesheets/screen.css" rel="stylesheet">
+  <link href="http://feeds.feedburner.com/nimbupani" rel="alternate" title="Subscribe" type="application/atom+xml">
+  <link href="http://feeds.feedburner.com/nimbu" rel="alternate" title="Subscribe to Web Development updates" type="application/atom+xml">    
+  
+</head>
+
+
+<body  >
+  <div class="container">
+    <div class="content">
+      <header role="banner">  <h1><a href="/">Divya Manian</a></h1>
+  
+  <h2><a class="twitter" href="https://twitter.com/divya">twitter</a> <a class="rss" href="http://feeds.feedburner.com/nimbupani">RSS Feed</a> <a class="youtube" href="http://youtube.com/nimbupani">Youtube Channel</a> <a class="github" href="https://github.com/nimbupani">Github</a></h2>
+  
+</header>
+      <nav class="sitenav"><a href="/">Home</a>
+<a href="/archives">Archives</a>
+<a href="/about.html">About</a>
+</nav>    
+      
+  
+
+
+
+  
+
+
+<article>
+  <nav class="article">
+    
+      <a class="previous" href="/my-illustration-on-the-word-it-book.html" title=" My Illustration on The Word It Book">&#x276C;</a>      
+    
+    
+      <a class="next" href="/giant-robot.html" title=" Giant Robot">&#x276D;</a>              
+     
+    
+               
+  </nav>
+    <header>
+    
+
+
+
+
+  
+
+<time datetime="2007-04-30T00:00:00-07:00" pubdate><span class='month'>Apr</span> <span class='day'>30</span> <span class='year'>2007</span></time>    
+    
+      <h1 class="entry-title"><a href="/interviews-with-singapores-next-gen-hackers.html"> Interviews with Singapore's Next Gen Hackers</a></h1>
+    
+    
+    
+    
+  </header>
+<div class="entry-content"><p><em>Starting this week, I plan to host an email interview with the developers of cool software from Singapore. This week, I had a conversation with <a href="http://blog.yanime.org/">Choonkeat</a>.  Choonkeat is an action oriented geek who has developed two useful and popular &#8220;web 2.0&#8221; services: <a href="http://rssfwd.com">rssfwd</a> and more recently, <a href="http://sharedcopy.com">sharedcopy</a>. I emailed Choonkeat to ask some questions on what makes him release projects one after the other and each in a different territory of web 2.0. Here are his answers.</em></p>
+
+<h3>First you created the <a href="http://rssfwd.com">RSS to email service</a> and now <a href="http://sharedcopy.com">SharedCopy</a>. What makes you create such services? </h3>
+
+
+<p>Identifying that something is lacking in a program/software, finding a simple solution for it and realising that I can actually do it. This is one of my primary joys as a programmer - that I can fire up a text editor just go do something instead of having to wait for somebody else to make it happen.</p>
+
+<p>RssFwd started as a tool that I used until <a href="http://www.meereffect.nl/">Taco Oosterkamp</a> contributed with a support request and dropped me a list of constructive suggestions on how I can improve it. Traffic picked up right after that. Yeah, my &#8220;helpdesk&#8221; literally turned my &#8220;business&#8221; around!</p>
+
+<h3>How much time do you devote to either of them?</h3>
+
+
+<p>On average of 3 days a week out of my weekday evenings and weekends.</p>
+
+<h3>What technologies are you using on sharedcopy, rssfwd? </h3>
+
+
+<p><a href="http://blog.yanime.org/articles/2004/11/11/rssfwd-v0-1a">RssFwd was originally written in Perl</a> - the primary scripting language I knew then.  But <a href="http://blog.yanime.org/articles/2004/11/14/rssfwd-v0-2">re-written in Rails 3 days later</a> because I needed the availability of a Web UI but was not able to get Perl running in Apache (one of those days when you can&#8217;t get anything to work!) and then Rails was there whispering, beckoning me, &#8220;script/server&#8230; script/server&#8230;&#8221;. Got me at my moment of weakness. I caved in. (&#8220;script/server&#8221; refers to the built-in ruby web server that comes with Rails and &#8220;just works&#8221;)</p>
+
+<p>RssFwd consumes various feed formats (RSS, Atom), OPML format for subscriptions, XSLT for transforming that OPML to a neat webpage, processes multi-part emails and various languages. Along the way I learnt some voodoo tricks to ensure HTML emails work in obscure e-mail clients, and also how not to be blacklisted as a spam service. As it happens, the Rails way of handling emails is the easiest I&#8217;ve seen, so that&#8217;s a bonus.</p>
+
+<p>SharedCopy on the other hand is a lot of Javascript (DOM and CSS). It is not exactly an AJAX application and I&#8217;m only using simpler mechanisms to get things done. e.g. I use bookmarklet and cross-site scripting (XSS) which is something that is more often associated with phishing and other evil activities. Firebug has been spectacularly helpful&#8230; and oh, SharedCopy happens to be running on Rails, but that&#8217;s the nondescript part of it ;-)</p>
+
+<p>I&#8217;m using <a href="http://tech.rufy.com/2006/08/mapreduce-for-ruby-ridiculously-easy.html ">Starfish</a> to power my API callbacks feature</p>
+
+<p>All code gets written using either <a href="http://www.vim.org/">vim</a> or <a href="http://www.eclipse.org/">Eclipse</a>. The projects use <a href="http://subversion.tigris.org/">Subversion</a> for version control and <a href="http://www.mysql.com/">MySQL</a> for databases. The services are VPS hosted on <a href="http://www.spry.com/">Spry</a> and <a href="http://rimuhosting.com/">Rimuhosting</a>.</p>
+
+<p>Primary testing browser is <a href="http://getfirefox.com">Firefox</a>. <a href="http://www.vmware.com/mac">VMWare Fusion</a> is used to test with IE6 and IE7.</p>
+
+<h3>How long does it take to get a project off the ground?</h3>
+
+
+<p>Getting things to work from scratch is pretty exhilarating and is usually completed in matter of hours. If it takes any longer, I would&#8217;ve been too lazy to do it anyway.</p>
+
+<p>But after that, a lot of time goes into learning from actual usage (usually my usage) and evolving the product along. Another big time drainer is the visual aesthetics. I&#8217;m not at the stage where apps looks good right off the bat, but I&#8217;m working on getting there. For SharedCopy, other than browser compatibility checking, I also had to do something not usually required a webapp - website compatibility checking.</p>
+
+<h3>How many people currently use sharedcopy, rssfwd?</h3>
+
+
+<p>SharedCopy is pretty young, so she only has a handful of people kicking tires. RssFwd has about 29k unique and active users.</p>
+
+<h3>What are the plans for the future for sharedcopy or rssfwd?</h3>
+
+
+<p>No real plans for both other than &#8220;be useful&#8221;</p>
+
+<p>For <a href="http://rssfwd.com">Rssfwd</a>, features for the end-users has kinda been frozen for a while now. She does as-advertised - nothing more - and a lot of people love her for that. She could improve in performance and monitoring statistics though. And also she&#8217;ll continue to be my playground simply because there is real data and traffic to try things out with.</p>
+
+<p><a href="http://sharedcopy.com">SharedCopy</a> is more flexible and can probably serve a bigger variety of needs, e.g. as an online bookmark, collaborating tool, quick and dirty diagraming, bug reporting, etc. Still at the stage of evolving her character now.</p>
+
+<p><a href="http://sharedcopy.com/public/api">API for callbacks has been just been released, with Basecamp and Twitter</a> being &#8220;bundled&#8221; as examples with source code, so let&#8217;s see what uses come out of it.</p>
+
+<h3>What challenges do you face in developing for sharedcopy or rssfwd.</h3>
+
+
+<p>A unique challenge of SharedCopy is that the script is hosted in &#8220;hostile environment&#8221;. i.e. the javascript needs to run in somebody else&#8217;s web page (with their javascript). Usually, as Javascript or CSS authors we can pick our HTML doctype (or at least know for certain) and know how it&#8217;ll affect the rendering engine - but in this case, I don&#8217;t have that luxury.</p>
+
+<p>There is not a lot of literature on getting Javascript working in such an environment, hence a lot of the learning is by fire.</p>
+
+<h3>Looking back, is there anything you would have done different with rssfwd - given the new technologies you are able to access now? </h3>
+
+
+<p>Polling of content takes up a lot of bandwidth and resources. Adopting a more distributed nature would definitely help, especially if it allows a more casual participation of those resources. How? I don&#8217;t know yet.</p>
+
+<h3>What do you think you would be doing next? Wat do you see as you develop for the web?</h3>
+
+
+<p>I don&#8217;t know. There&#8217;s not a lack of ideas, but most of them will not be executed simply because I won&#8217;t have a need for them. I&#8217;m very easily distracted, so I only create applications that I need  as that would at least make me complete the project!</p>
+
+<p>Predictions? I&#8217;m not good at it.</p>
+
+<p>Technorati Tags: <a class="performancingtags" href="http://technorati.com/tag/web 2.0" rel="tag">web 2.0</a>, <a class="performancingtags" href="http://technorati.com/tag/singapore" rel="tag">singapore</a>, <a class="performancingtags" href="http://technorati.com/tag/sharedcopy" rel="tag">sharedcopy</a>, <a class="performancingtags" href="http://technorati.com/tag/rssfwd" rel="tag">rssfwd</a></p>
+</div>
+
+  <footer>
+    <p class="meta">This post was posted by 
+  
+
+<a href="/about.html">Divya Manian</a>
+ on 
+
+
+
+
+  
+
+<time datetime="2007-04-30T00:00:00-07:00" pubdate><span class='month'>Apr</span> <span class='day'>30</span> <span class='year'>2007</span></time> in 
+
+.  If you would like to update this post, <a href="https://github.com/nimbupani/nimbupani.github.com/blob/source/source/_posts/2007-04-30-interviews-with-singapores-next-gen-hackers.md">please send a pull request</a>.       
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+      
+    </div>
+  </div>
+  <aside id="articles">
+    <p><img class="avatar"
+    src="http://a2.twimg.com/profile_images/1696865113/me_normal"
+    height=48> <a href="http://twitter.com/divya">Divya Manian</a> is a Web Developer in Seattle. <a href="/about.html">More about me ❭</a></p>
+    <h2>Posts on Web Development</h2>
+    <ul><li><a href="/some-updates.html">Some Updates</a></li><li><a href="/css-object-model.html">CSS Object Model</a></li><li><a href="/fake-bolding-of-web-fonts.html">Fake Bolding of Web Fonts</a></li><li><a href="/html5please-api.html">Html5please API</a></li><li><a href="/html5please.html">html5please</a></li><li><a href="/mustache.html">mustache, hogan, handlebars</a></li><li><a href="/redesign-notes.html">Redesign Notes</a></li><li><a href="/summary-of-various-exciting-css-drafts-and-proposals.html">Summary of various exciting CSS drafts and proposals</a></li><li><a href="/this-revolution-needs-new-revolutionaries.html">This revolution needs new revolutionaries</a></li><li><a href="/some-css-transition-hacks.html">Some CSS Transition hacks</a></li><li><a href="/safe-css-defaults.html">Safe CSS Defaults</a></li><li><a href="/unplugged-2011.html">Unplugged 2011</a></li><li><a href="/bokeh-with-css3-gradients.html">Bokeh with CSS3 Gradients</a></li><li><a href="/making-pure-css3-demos-better.html">Making "Pure CSS3" demos better</a></li><li><a href="/web-opener-at-opera.html">Web Opener at Opera</a></li><li><a href="/current-color-in-css.html">Current Color in CSS</a></li><li><a href="/css-vocabulary.html">CSS Vocabulary</a></li><li><a href="/active-web-development.html">Active Web Development</a></li><li><a href="/sexy-css3-buttons.html">Sexy CSS3 Buttons</a></li><li><a href="/accessible-css-barcharts.html">Accessible CSS Barcharts</a></li><li><a class="btn" href="/categories/web-development/">More</a></li></ul>
+  </aside>
+  <footer role="contentinfo"><p>
+  Copy to your heart’s content 2012 - Divya Manian -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>  
+</p>
+
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'nimbublog';
+      var disqus_developer = 1;        
+      
+      
+        var disqus_url = 'http://nimbupani.com/interviews-with-singapores-next-gen-hackers.html';
+        var disqus_identifier = 'http://nimbupani.com/interviews-with-singapores-next-gen-hackers.html';                
+      
+        
+        
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+<script src="/javascripts/octopress.js"></script>
+
+  <script>
+    var _gaq=[['_setAccount','UA-97188-1'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+
+
+
+
+</body>
+</html>

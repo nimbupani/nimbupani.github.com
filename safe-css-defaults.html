@@ -1,0 +1,482 @@
+
+<!doctype html>
+<!--[if lt IE 9]> <html class="no-js oldie" lang="en"> <![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  
+  <title>Safe CSS Defaults | Divya Manian</title>  
+  <meta name="author" content="Divya Manian">
+  
+  <meta name="description" content="You know those nights when you race towards a deadline, banging out the CSS as fast as you can, there comes a moment when you pause…wondering what &hellip;">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://nimbupani.github.com/safe-css-defaults.html">
+  <link href="/stylesheets/screen.css" rel="stylesheet">
+  <link href="http://feeds.feedburner.com/nimbupani" rel="alternate" title="Subscribe" type="application/atom+xml">
+  <link href="http://feeds.feedburner.com/nimbu" rel="alternate" title="Subscribe to Web Development updates" type="application/atom+xml">    
+  
+</head>
+
+
+<body  >
+  <div class="container">
+    <div class="content">
+      <header role="banner">  <h1><a href="/">Divya Manian</a></h1>
+  
+  <h2><a class="twitter" href="https://twitter.com/divya">twitter</a> <a class="rss" href="http://feeds.feedburner.com/nimbupani">RSS Feed</a> <a class="youtube" href="http://youtube.com/nimbupani">Youtube Channel</a> <a class="github" href="https://github.com/nimbupani">Github</a></h2>
+  
+</header>
+      <nav class="sitenav"><a href="/">Home</a>
+<a href="/archives">Archives</a>
+<a href="/about.html">About</a>
+</nav>    
+      
+  
+
+
+
+  
+
+
+<article>
+  <nav class="article">
+    
+      <a class="previous" href="/unplugged-2011.html" title="Unplugged 2011">&#x276C;</a>      
+    
+    
+      <a class="next" href="/some-css-transition-hacks.html" title="Some CSS Transition hacks">&#x276D;</a>              
+     
+    
+               
+  </nav>
+    <header>
+    
+
+
+
+
+  
+
+<time datetime="2011-04-13T00:00:00-07:00" pubdate><span class='month'>Apr</span> <span class='day'>13</span> <span class='year'>2011</span></time>    
+    
+      <h1 class="entry-title"><a href="/safe-css-defaults.html">Safe CSS Defaults</a></h1>
+    
+    
+    
+    
+  </header>
+<div class="entry-content"><p>You know those nights when you race towards a deadline, banging out the CSS as fast as you can, there comes a moment when you pause…wondering what keyword would get rid of that z-index on that anchor, then you make the best guess you can, and type:</p>
+
+
+
+
+<pre><code>z-index: none;</code></pre>
+
+
+
+
+<p>Then go on in life, as it “renders” like you wanted it, it works, no big deal. </p>
+
+
+
+
+<p>But it is. Specifying incorrect values might inject behaviour that you did not expect. It is quite possible that the currently incorrect value might be, in the future, used for a valid value which would distort the design you so carefully did (and how often do we revisit a client’s website to update? :).</p>
+
+
+
+
+<h3>Initial Values</h3>
+
+
+<p>The spec defines a value that will be the <em>initial</em> value for a property when it is not declared in any stylesheets - either the user agent stylesheet (look at <a href="http://www.iecss.com/">iecss.com</a> for stylesheets of IE, <a href="http://www.iecss.com/opera-10.51.css">Opera</a>, <a href="http://www.iecss.com/firefox-3.6.3.css">Firefox</a>, <a href="http://www.iecss.com/webkit-r61376.css">Webkit</a>) or the ones you write.</p>
+
+
+
+
+<p>Now, user agents assign values to CSS properties too. For example, when you do not declare margins on <code>h1</code>, the user agents have an initial value for margins. IE sets this to be <code>14pt</code>, Firefox, Opera sets this to <code>0.67em</code>, etc. This is not defined by the specifications and there is no keyword to obtain the values set by user agents.</p>
+
+
+
+
+<p>Initial values are different from inherited values. All properties accept a keyword <code>inherit</code>. When you use the keyword <code>inherit</code> on a property, the browser applies the value that it finds on its parent element. On <code>html</code> element if you use the value <code>inherit</code>, it applies the initial value. </p>
+
+
+
+
+<h3>Good News!</h3>
+
+
+<p><a href="http://leaverou.me">Lea Verou</a> alerted me to the CSS3 keyword <a href="http://www.w3.org/TR/css3-values/#keywords"><code>initial</code> which will set the CSS3 property to the initial value as defined in the spec</a>. Sadly, the only browsers that supports this seems to be <a href="http://jsfiddle.net/nimbu/CgRAZ/10/show/">Firefox</a> (with a <code>-moz-</code> prefix) and Webkit&#8217;s Safari and Chrome (yay!).</p>
+
+
+
+
+<p>So until full support lands on all browsers for this amazing keyword and we don&#8217;t have to support browsers that do not recognize that keyword, here are some of the ways you can reset some CSS properties to their initial values:</p>
+
+
+
+
+<table>
+  <thead>
+    <tr>
+      <th>
+        Property
+      </th>
+      <th>
+        Value
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <a href="http://www.w3.org/TR/css3-background/#background">background</a>
+      </td>
+      <td>
+        transparent (<code>transparent</code> stands for <a href="http://www.w3.org/TR/css3-color/#transparent-def">rgba(0, 0, 0, 0)</a>) or <code>none</code> or <code>0 0</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="http://www.w3.org/TR/css3-background/#ltborder-widthgt">border</a>
+      </td>
+      <td>
+        none or 0
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="http://www.w3.org/TR/css3-background/#border-image-source">border-image</a>
+      </td>
+      <td>
+        none
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="http://www.w3.org/TR/css3-background/#the-border-radius">border-radius</a>
+      </td>
+      <td>
+        0
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="http://www.w3.org/TR/css3-background/#the-box-shadow">box-shadow</a>
+      </td>
+      <td>
+       none
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="http://www.w3.org/TR/css3-box/#clear">clear</a>
+      </td>
+      <td>
+        none
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="http://www.w3.org/TR/css3-color/#foreground">color</a>
+      </td>
+      <td>
+        No value, so best option is to use <code>inherit</code> to cascade from a parent element&#8217;s color value.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="http://www.w3.org/TR/css3-content/#content">content</a>
+      </td>
+      <td>
+        normal
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="http://www.w3.org/TR/css3-box/#display">display</a>
+      </td>
+      <td>
+        inline
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="http://www.w3.org/TR/css3-box/#the-lsquo1">float</a>
+      </td>
+      <td>
+        none
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="http://www.w3.org/TR/2011/WD-css3-fonts-20110324/#descdef-font-style">font</a>
+      </td>
+      <td>
+        normal
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="http://www.w3.org/TR/css3-box/#height">height</a>
+      </td>
+      <td>
+        auto
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="http://www.w3.org/TR/2011/WD-css3-text-20110215/#letter-spacing0">letter-spacing</a>
+      </td>
+      <td>
+        normal
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="http://www.w3.org/TR/css3-linebox/#InlineBoxHeight">line-height</a>
+      </td>
+      <td>
+        normal
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="http://www.w3.org/TR/css3-box/#max-width">max-width</a>
+      </td>
+      <td>
+        none
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="http://www.w3.org/TR/css3-box/#max-width">max-height</a>
+      </td>
+      <td>
+        none
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="http://www.w3.org/TR/css3-box/#min-height">min-width</a>
+      </td>
+      <td>
+        0
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="http://www.w3.org/TR/css3-box/#min-height">min-height</a>
+      </td>
+      <td>
+        0
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="http://www.w3.org/TR/css3-color/#opacity">opacity</a>
+      </td>
+      <td>
+        1
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="http://www.w3.org/TR/css3-box/#overflow0">overflow</a>
+      </td>
+      <td>
+        visible
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="http://www.w3.org/TR/2006/WD-css3-page-20061010/#page-break-inside">page-break-inside</a>
+      </td>
+      <td>
+        auto
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="http://www.w3.org/TR/CSS2/visuren.html#propdef-position">position</a>
+      </td>
+      <td>
+        static (not <code>relative</code>)
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="http://www.w3.org/TR/2011/WD-css3-text-20110215/#text-shadow">text-shadow</a>
+      </td>
+      <td>
+        none
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="http://www.w3.org/TR/2011/WD-css3-text-20110215/#text-transform">text-transform</a>
+      </td>
+      <td>
+        none
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="http://www.w3.org/TR/css3-2d-transforms/#transform-property">transform</a>
+      </td>
+      <td>
+        none
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="http://www.w3.org/TR/css3-transitions/#the-transition-property-property-">transition</a>
+      </td>
+      <td>
+        none
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="http://www.w3.org/TR/CSS21/visudet.html#propdef-vertical-align">vertical-align</a>
+      </td>
+      <td>
+        baseline
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="http://www.w3.org/TR/css3-box/#visibility">visibility</a>
+      </td>
+      <td>
+        visible
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="http://www.w3.org/TR/CSS2/text.html#white-space-prop">white-space</a>
+      </td>
+      <td>
+        normal
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="http://www.w3.org/TR/css3-box/#width">width</a>
+      </td>
+      <td>
+        auto
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="http://www.w3.org/TR/2011/WD-css3-text-20110215/#word-spacing0">word-spacing</a>
+      </td>
+      <td>
+        normal
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="http://www.w3.org/TR/CSS2/visuren.html#z-index">z-index</a>
+      </td>
+      <td>
+        auto (not <code>none</code> or <code>0</code>)
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<p><em>Update:</em> <a href="http://the-echoplex.net">Pete</a> links to this <a href="https://github.com/peteboere/css-crush/blob/master/misc/initial-values.ini">list of initial values</a> he has compiled.</p>
+
+<p><small>Thanks to <a href="http://css-tricks.com">Chris Coyier</a>, <a href="http://www.xanthir.com/blog/">Tab Atkins</a>, <a href="http://leaverou.me">Lea Verou</a>, and <a href="http://nicolasgallagher.com">Nicolas Gallagher</a> for feedback on this post!</small></p>
+
+</div>
+
+  <footer>
+    <p class="meta">This post was posted by 
+  
+
+<a href="/about.html">Divya Manian</a>
+ on 
+
+
+
+
+  
+
+<time datetime="2011-04-13T00:00:00-07:00" pubdate><span class='month'>Apr</span> <span class='day'>13</span> <span class='year'>2011</span></time> in 
+
+<span class="categories">
+  
+    <a class='category' href='/categories/web-development/'>Web Development</a>
+  
+</span>
+
+.  If you would like to update this post, <a href="https://github.com/nimbupani/nimbupani.github.com/blob/source/source/_posts/2011-04-13-safe-css-defaults.md">please send a pull request</a>.       
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+      
+    </div>
+  </div>
+  <aside id="articles">
+    <p><img class="avatar"
+    src="http://a2.twimg.com/profile_images/1696865113/me_normal"
+    height=48> <a href="http://twitter.com/divya">Divya Manian</a> is a Web Developer in Seattle. <a href="/about.html">More about me ❭</a></p>
+    <h2>Posts on Web Development</h2>
+    <ul><li><a href="/some-updates.html">Some Updates</a></li><li><a href="/css-object-model.html">CSS Object Model</a></li><li><a href="/fake-bolding-of-web-fonts.html">Fake Bolding of Web Fonts</a></li><li><a href="/html5please-api.html">Html5please API</a></li><li><a href="/html5please.html">html5please</a></li><li><a href="/mustache.html">mustache, hogan, handlebars</a></li><li><a href="/redesign-notes.html">Redesign Notes</a></li><li><a href="/summary-of-various-exciting-css-drafts-and-proposals.html">Summary of various exciting CSS drafts and proposals</a></li><li><a href="/this-revolution-needs-new-revolutionaries.html">This revolution needs new revolutionaries</a></li><li><a href="/some-css-transition-hacks.html">Some CSS Transition hacks</a></li><li><a href="/safe-css-defaults.html">Safe CSS Defaults</a></li><li><a href="/unplugged-2011.html">Unplugged 2011</a></li><li><a href="/bokeh-with-css3-gradients.html">Bokeh with CSS3 Gradients</a></li><li><a href="/making-pure-css3-demos-better.html">Making "Pure CSS3" demos better</a></li><li><a href="/web-opener-at-opera.html">Web Opener at Opera</a></li><li><a href="/current-color-in-css.html">Current Color in CSS</a></li><li><a href="/css-vocabulary.html">CSS Vocabulary</a></li><li><a href="/active-web-development.html">Active Web Development</a></li><li><a href="/sexy-css3-buttons.html">Sexy CSS3 Buttons</a></li><li><a href="/accessible-css-barcharts.html">Accessible CSS Barcharts</a></li><li><a class="btn" href="/categories/web-development/">More</a></li></ul>
+  </aside>
+  <footer role="contentinfo"><p>
+  Copy to your heart’s content 2012 - Divya Manian -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>  
+</p>
+
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'nimbublog';
+      var disqus_developer = 1;        
+      
+      
+        var disqus_url = 'http://nimbupani.com/safe-css-defaults.html';
+        var disqus_identifier = 'http://nimbupani.com/safe-css-defaults.html';                
+      
+        
+        
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+<script src="/javascripts/octopress.js"></script>
+
+  <script>
+    var _gaq=[['_setAccount','UA-97188-1'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+
+
+
+
+</body>
+</html>

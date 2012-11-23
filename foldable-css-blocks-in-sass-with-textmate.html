@@ -1,0 +1,234 @@
+
+<!doctype html>
+<!--[if lt IE 9]> <html class="no-js oldie" lang="en"> <![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  
+  <title>Foldable CSS blocks in SASS with Textmate | Divya Manian</title>  
+  <meta name="author" content="Divya Manian">
+  
+  <meta name="description" content="I recently started using SASS for my CSS development (thanks to Deepak). SASS is a meta-language that makes developing CSS really easy - provided you &hellip;">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://nimbupani.github.com/foldable-css-blocks-in-sass-with-textmate.html">
+  <link href="/stylesheets/screen.css" rel="stylesheet">
+  <link href="http://feeds.feedburner.com/nimbupani" rel="alternate" title="Subscribe" type="application/atom+xml">
+  <link href="http://feeds.feedburner.com/nimbu" rel="alternate" title="Subscribe to Web Development updates" type="application/atom+xml">    
+  
+</head>
+
+
+<body  >
+  <div class="container">
+    <div class="content">
+      <header role="banner">  <h1><a href="/">Divya Manian</a></h1>
+  
+  <h2><a class="twitter" href="https://twitter.com/divya">twitter</a> <a class="rss" href="http://feeds.feedburner.com/nimbupani">RSS Feed</a> <a class="youtube" href="http://youtube.com/nimbupani">Youtube Channel</a> <a class="github" href="https://github.com/nimbupani">Github</a></h2>
+  
+</header>
+      <nav class="sitenav"><a href="/">Home</a>
+<a href="/archives">Archives</a>
+<a href="/about.html">About</a>
+</nav>    
+      
+  
+
+
+
+  
+
+
+<article>
+  <nav class="article">
+    
+      <a class="previous" href="/analysing-my-information-consumption.html" title="Analysing my Information Consumption">&#x276C;</a>      
+    
+    
+      <a class="next" href="/book-reviews-for-june-2009.html" title="Book Reviews for June 2009">&#x276D;</a>              
+     
+    
+               
+  </nav>
+    <header>
+    
+
+
+
+
+  
+
+<time datetime="2009-06-12T00:00:00-07:00" pubdate><span class='month'>Jun</span> <span class='day'>12</span> <span class='year'>2009</span></time>    
+    
+      <h1 class="entry-title"><a href="/foldable-css-blocks-in-sass-with-textmate.html">Foldable CSS blocks in SASS with Textmate</a></h1>
+    
+    
+    
+    
+  </header>
+<div class="entry-content"><p>I recently started using <a href="http://haml.hamptoncatlin.com/docs/rdoc/classes/Sass.html">SASS</a> for my CSS development (thanks to <a href="http://deepak.jois.name">Deepak</a>). SASS is a meta-language that makes developing CSS really easy - provided you master the syntax. There is a very good <a href="http://github.com/chriseppstein/sass-textmate-bundle/tree/master">textmate bundle</a> which makes it really simple to use on a mac. I will write more about how it has proven useful, but this post is to resolve a problem of developing CSS with SASS.</p>
+
+
+<p>SASS identifies child selectors using indentation. For example:</p>
+
+
+<pre>
+    #parent
+        :font-weight bold
+        
+        #child
+            :font-weight normal             
+</pre>
+
+
+<p>would translate into CSS as:</p>
+
+<pre>
+    #parent { font-weight:bold; }
+    #parent #child { font-weight:normal;}
+</pre>
+
+
+
+
+<p>When I have about 10 child (or sub-child) elements within each parent, tracking down the parent can become tricky. This is where folding CSS groups come in handy:</p>
+
+
+<p><img src="/blog/files/sass-folded.png" alt="Folded CSS Group in action" /></p>
+
+<h3>How did I do it?</h3>
+
+
+<p>First, I found this post on creating <a href="http://css-tricks.com/forums/viewtopic.php?f=8&t=2783&p=13197">foldable CSS groups in textmate</a></p>
+
+
+<p>Here are the steps:</p>
+
+
+<ul>
+    <li>Go to Bundles>Bundle Editor>Edit Languages.</li>
+    <li>Select the SASS > SASS file on the left column.</li>
+    <li>Now you should see the language grammar file for SASS, starting with the line &ldquo;{ scopeName = &#8220;source.css&#8221;&rdquo;
+    find the line &ldquo;foldingStartMarker = &#8221; (line 4)</li>
+    <li>Edit it to:<br/>
+        <pre>
+ foldingStartMarker = '// START |^#|^\*|^\b|^\.';
+        </pre>
+    </li>
+    <li>Edit the foldingEndMarker to:<br/>
+        <pre>
+ foldingStopMarker = '// END |^#|^\*|^\b|^\.';
+        </pre>
+    </li>
+</ul>
+
+
+<p>Tada! Your folding groups are ready! But it is not easy to type in &ldquo;// START&rdquo; and &ldquo;// END&rdquo; every time. So, you can create a snippet to automate it for you:</p>
+
+
+<ul>
+    <li>Go to Bundles>Bundle Editor>Edit Snippets&#8230;</li>
+    <li>Select SASS in the left column and click on the &ldquo;+&rdquo; icon at the bottom of the left column. Name it as you like. </li>
+    <li>Put this snippet on the right column with the snippet name, you created in the previous step, selected.<br/>
+        <pre>
+    // START ${1:name}
+    ${0:$TM_SELECTED_TEXT}
+    // END ${1:name}            
+        </pre>
+    </li>
+    <li>Finally, assign a shortcut (Activation Trigger) that you can type and press tab so that you get access to the above (I used the characters &ldquo;fld&rdquo;).</li> 
+</ul>
+
+
+<p>I have created an issue to add this to the sass-textmate-bundle on Github. <a href="http://github.com/seaofclouds/sass-textmate-bundle/issues#issue/2">Please vote for it, if you would like to see this feature in the bundle.</a></p>
+
+
+<p>Thanks to <a href="http://twitter.com/chriseppstein">Chris Eppstein</a> for nudging me to blog about it!</p>
+
+</div>
+
+  <footer>
+    <p class="meta">This post was posted by 
+  
+
+<a href="/about.html">Divya Manian</a>
+ on 
+
+
+
+
+  
+
+<time datetime="2009-06-12T00:00:00-07:00" pubdate><span class='month'>Jun</span> <span class='day'>12</span> <span class='year'>2009</span></time> in 
+
+<span class="categories">
+  
+    <a class='category' href='/categories/web-development/'>Web Development</a>
+  
+</span>
+
+.  If you would like to update this post, <a href="https://github.com/nimbupani/nimbupani.github.com/blob/source/source/_posts/2009-06-12-foldable-css-blocks-in-sass-with-textmate.md">please send a pull request</a>.       
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+      
+    </div>
+  </div>
+  <aside id="articles">
+    <p><img class="avatar"
+    src="http://a2.twimg.com/profile_images/1696865113/me_normal"
+    height=48> <a href="http://twitter.com/divya">Divya Manian</a> is a Web Developer in Seattle. <a href="/about.html">More about me ❭</a></p>
+    <h2>Posts on Web Development</h2>
+    <ul><li><a href="/some-updates.html">Some Updates</a></li><li><a href="/css-object-model.html">CSS Object Model</a></li><li><a href="/fake-bolding-of-web-fonts.html">Fake Bolding of Web Fonts</a></li><li><a href="/html5please-api.html">Html5please API</a></li><li><a href="/html5please.html">html5please</a></li><li><a href="/mustache.html">mustache, hogan, handlebars</a></li><li><a href="/redesign-notes.html">Redesign Notes</a></li><li><a href="/summary-of-various-exciting-css-drafts-and-proposals.html">Summary of various exciting CSS drafts and proposals</a></li><li><a href="/this-revolution-needs-new-revolutionaries.html">This revolution needs new revolutionaries</a></li><li><a href="/some-css-transition-hacks.html">Some CSS Transition hacks</a></li><li><a href="/safe-css-defaults.html">Safe CSS Defaults</a></li><li><a href="/unplugged-2011.html">Unplugged 2011</a></li><li><a href="/bokeh-with-css3-gradients.html">Bokeh with CSS3 Gradients</a></li><li><a href="/making-pure-css3-demos-better.html">Making "Pure CSS3" demos better</a></li><li><a href="/web-opener-at-opera.html">Web Opener at Opera</a></li><li><a href="/current-color-in-css.html">Current Color in CSS</a></li><li><a href="/css-vocabulary.html">CSS Vocabulary</a></li><li><a href="/active-web-development.html">Active Web Development</a></li><li><a href="/sexy-css3-buttons.html">Sexy CSS3 Buttons</a></li><li><a href="/accessible-css-barcharts.html">Accessible CSS Barcharts</a></li><li><a class="btn" href="/categories/web-development/">More</a></li></ul>
+  </aside>
+  <footer role="contentinfo"><p>
+  Copy to your heart’s content 2012 - Divya Manian -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>  
+</p>
+
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'nimbublog';
+      var disqus_developer = 1;        
+      
+      
+        var disqus_url = 'http://nimbupani.com/foldable-css-blocks-in-sass-with-textmate.html';
+        var disqus_identifier = 'http://nimbupani.com/foldable-css-blocks-in-sass-with-textmate.html';                
+      
+        
+        
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+<script src="/javascripts/octopress.js"></script>
+
+  <script>
+    var _gaq=[['_setAccount','UA-97188-1'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+
+
+
+
+</body>
+</html>

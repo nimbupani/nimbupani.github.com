@@ -1,0 +1,227 @@
+
+<!doctype html>
+<!--[if lt IE 9]> <html class="no-js oldie" lang="en"> <![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  
+  <title>Making "Pure CSS3" demos better | Divya Manian</title>  
+  <meta name="author" content="Divya Manian">
+  
+  <meta name="description" content="I appreciate the effort that goes into creating a pure CSS3/HTML5 demo, but unfortunately many beginners consider these demos as representation of &hellip;">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://nimbupani.github.com/making-pure-css3-demos-better.html">
+  <link href="/stylesheets/screen.css" rel="stylesheet">
+  <link href="http://feeds.feedburner.com/nimbupani" rel="alternate" title="Subscribe" type="application/atom+xml">
+  <link href="http://feeds.feedburner.com/nimbu" rel="alternate" title="Subscribe to Web Development updates" type="application/atom+xml">    
+  
+</head>
+
+
+<body  >
+  <div class="container">
+    <div class="content">
+      <header role="banner">  <h1><a href="/">Divya Manian</a></h1>
+  
+  <h2><a class="twitter" href="https://twitter.com/divya">twitter</a> <a class="rss" href="http://feeds.feedburner.com/nimbupani">RSS Feed</a> <a class="youtube" href="http://youtube.com/nimbupani">Youtube Channel</a> <a class="github" href="https://github.com/nimbupani">Github</a></h2>
+  
+</header>
+      <nav class="sitenav"><a href="/">Home</a>
+<a href="/archives">Archives</a>
+<a href="/about.html">About</a>
+</nav>    
+      
+  
+
+
+
+  
+
+
+<article>
+  <nav class="article">
+    
+      <a class="previous" href="/book-reviews-for-january-and-february-2011.html" title="Book Reviews for January & February 2011">&#x276C;</a>      
+    
+    
+      <a class="next" href="/bokeh-with-css3-gradients.html" title="Bokeh with CSS3 Gradients">&#x276D;</a>              
+     
+    
+               
+  </nav>
+    <header>
+    
+
+
+
+
+  
+
+<time datetime="2011-02-17T00:00:00-08:00" pubdate><span class='month'>Feb</span> <span class='day'>17</span> <span class='year'>2011</span></time>    
+    
+      <h1 class="entry-title"><a href="/making-pure-css3-demos-better.html">Making "Pure CSS3" demos better</a></h1>
+    
+    
+    
+    
+  </header>
+<div class="entry-content"><p>I appreciate the effort that goes into creating a pure CSS3/HTML5 demo, but unfortunately many beginners consider these demos as representation of the best practices in Web Development (many aren&#8217;t). Here is one that got my goat today: A <a href="http://designmadeingermany.de/slideshow/">Pure CSS3 Slideshow</a>.</p>
+
+
+
+
+<p>Here are some reasons why this is not a great example of best practices:</p>
+
+
+<ul>
+  <li>Uses a table for navigation when the semantic nav element (or a simple list) would do.</li>
+  <li>Implements features using <code>-moz</code>, <code>-webkit</code> only prefix. Why not add the standard that they are temporary demonstrations for (and while at it, also support <a href="http://opera.com">other</a> <a href="http://ie.microsoft.com/testdrive/">browsers</a>?)</li>
+  <li><p>This is how it degrades on browsers that do not support CSS3 transitions, and transforms:</p>
+    <p><img src="http://nimbupani.com/files/79e91b32f7713c3a03a5650e476ade27.png" alt="79e91b32f7713c3a03a5650e476ade27.png" border="0" width="600" height="348" /></p>    
+  </li>
+</ul>
+
+
+<p>So, lets fix it! Here is the final result:</p>
+
+
+<p></p>
+
+<iframe style="width: 100%; height: 400px" src="http://jsfiddle.net/nimbu/KEqSF/embedded/result,html,css"></iframe>
+
+
+<h3>Changes:</h3>
+
+
+<ul>
+<li><p>No translateX functions. All we need to do is to animate the <code>left</code> property. So:</p>
+<pre><code>#a1:target .page { -webkit-transform: translateX(-100%); -moz-transform: translateX(-100%); }
+#a2:target .page { -webkit-transform: translateX(-200%); -moz-transform: translateX(-200%); }
+#a3:target .page { -webkit-transform: translateX(-300%); -moz-transform: translateX(-300%); }</code></pre>
+<p>becomes:</p>
+<pre><code>#a1:target .pages { left: 0%; }
+#a2:target .pages { left: -100%; }
+#a3:target .pages { left: -200%; }</code></pre>
+</li>  
+<li>
+  I added a parent <code>div</code> element for all the pages so we just need to animate that element and not each of the 3 page elements.  
+</li>
+<li><p>No tables for nav! Just use the <code>nav</code> element with a set of links:</p>
+<pre>
+  <code>&lt;table&gt; 
+  &lt;tr&gt; 
+   &lt;td&gt;&lt;a href=&quot;#a1&quot; id=&quot;p1&quot;&gt;1&lt;/a&gt;&lt;/td&gt; 
+   &lt;td&gt;&lt;a href=&quot;#a2&quot; id=&quot;p2&quot;&gt;2&lt;/a&gt;&lt;/td&gt; 
+   &lt;td&gt;&lt;a href=&quot;#a3&quot; id=&quot;p3&quot;&gt;3&lt;/a&gt;&lt;/td&gt; 
+  &lt;/tr&gt; 
+&lt;/table&gt;</code>
+</pre>
+<p>becomes: </p>
+<pre><code>&lt;nav&gt;&lt;a href=&quot;#a1&quot;&gt;1&lt;/a&gt;&lt;a href=&quot;#a2&quot;&gt;2&lt;/a&gt;&lt;a href=&quot;#a3&quot;&gt;3&lt;/a&gt;&lt;/nav&gt;</code></pre>
+</li>
+<li>
+<p>In the default view, the first page is positioned outside the viewport:</p>  
+<pre><code>/* Page Positioning */
+#i1 { left: 100%; }
+#i2 { left: 200%; }
+#i3 { left: 300%; }</code></pre>
+<p>This means browsers that do not support transitions effectively see a blank page. We fix this but setting the default position as <code>left: 0</code>, and only adjust the positions for the next 2 slides:</p>
+<pre><code>/* Pages */
+#i2 { left: 100%; }
+#i3 { left: 200%; }  </code></pre>
+</li>
+</ul>
+
+
+<p>There, now we have a neat little slideshow, that doesn&#8217;t degrade too badly on browsers that do not support the target element (accessible via the horizontal scrollbar for IE6, 7). If there are ways to improve this, please fork the fiddle and link in the comments!</p>
+
+
+<p></body></p>
+</div>
+
+  <footer>
+    <p class="meta">This post was posted by 
+  
+
+<a href="/about.html">Divya Manian</a>
+ on 
+
+
+
+
+  
+
+<time datetime="2011-02-17T00:00:00-08:00" pubdate><span class='month'>Feb</span> <span class='day'>17</span> <span class='year'>2011</span></time> in 
+
+<span class="categories">
+  
+    <a class='category' href='/categories/web-development/'>Web Development</a>
+  
+</span>
+
+.  If you would like to update this post, <a href="https://github.com/nimbupani/nimbupani.github.com/blob/source/source/_posts/2011-02-17-making-pure-css3-demos-better.md">please send a pull request</a>.       
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+      
+    </div>
+  </div>
+  <aside id="articles">
+    <p><img class="avatar"
+    src="http://a2.twimg.com/profile_images/1696865113/me_normal"
+    height=48> <a href="http://twitter.com/divya">Divya Manian</a> is a Web Developer in Seattle. <a href="/about.html">More about me ❭</a></p>
+    <h2>Posts on Web Development</h2>
+    <ul><li><a href="/some-updates.html">Some Updates</a></li><li><a href="/css-object-model.html">CSS Object Model</a></li><li><a href="/fake-bolding-of-web-fonts.html">Fake Bolding of Web Fonts</a></li><li><a href="/html5please-api.html">Html5please API</a></li><li><a href="/html5please.html">html5please</a></li><li><a href="/mustache.html">mustache, hogan, handlebars</a></li><li><a href="/redesign-notes.html">Redesign Notes</a></li><li><a href="/summary-of-various-exciting-css-drafts-and-proposals.html">Summary of various exciting CSS drafts and proposals</a></li><li><a href="/this-revolution-needs-new-revolutionaries.html">This revolution needs new revolutionaries</a></li><li><a href="/some-css-transition-hacks.html">Some CSS Transition hacks</a></li><li><a href="/safe-css-defaults.html">Safe CSS Defaults</a></li><li><a href="/unplugged-2011.html">Unplugged 2011</a></li><li><a href="/bokeh-with-css3-gradients.html">Bokeh with CSS3 Gradients</a></li><li><a href="/making-pure-css3-demos-better.html">Making "Pure CSS3" demos better</a></li><li><a href="/web-opener-at-opera.html">Web Opener at Opera</a></li><li><a href="/current-color-in-css.html">Current Color in CSS</a></li><li><a href="/css-vocabulary.html">CSS Vocabulary</a></li><li><a href="/active-web-development.html">Active Web Development</a></li><li><a href="/sexy-css3-buttons.html">Sexy CSS3 Buttons</a></li><li><a href="/accessible-css-barcharts.html">Accessible CSS Barcharts</a></li><li><a class="btn" href="/categories/web-development/">More</a></li></ul>
+  </aside>
+  <footer role="contentinfo"><p>
+  Copy to your heart’s content 2012 - Divya Manian -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>  
+</p>
+
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'nimbublog';
+      var disqus_developer = 1;        
+      
+      
+        var disqus_url = 'http://nimbupani.com/making-pure-css3-demos-better.html';
+        var disqus_identifier = 'http://nimbupani.com/making-pure-css3-demos-better.html';                
+      
+        
+        
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+<script src="/javascripts/octopress.js"></script>
+
+  <script>
+    var _gaq=[['_setAccount','UA-97188-1'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+
+
+
+
+</body>
+</html>
