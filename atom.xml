@@ -4,7 +4,7 @@
   <title><![CDATA[Divya Manian]]></title>
   <link href="http://nimbupani.github.com/atom.xml" rel="self"/>
   <link href="http://nimbupani.github.com/"/>
-  <updated>2012-11-22T20:12:22-08:00</updated>
+  <updated>2012-11-25T17:16:48-08:00</updated>
   <id>http://nimbupani.github.com/</id>
   <author>
     <name><![CDATA[Divya Manian]]></name>
@@ -12,6 +12,27 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Everything is Temporary]]></title>
+    <link href="http://nimbupani.github.com/everything-is-temporary.html"/>
+    <updated>2012-11-25T13:06:00-08:00</updated>
+    <id>http://nimbupani.github.com/everything-is-temporary</id>
+    <content type="html"><![CDATA[<p>I like the concept of impermanence. I first had any inkling of what it means when I was around 7 or 8. My mother threw away my 2 or 3 years old stamp collection as garbage. I remember that day very well. I had never been more crushed, my cherished stamps and hard work at exchanging stamps with friends gone down the drain. I am not sure if that prepared me for the coming years of impermanence but it was the beginning of the knowledge that the world as a stable entity was a myth.</p>
+
+<p>Growing old brings another realisation that most adults actually do not know what the right thing to do is. Even worse, there is no right thing to do, only what society judges as right. The right thing to do these days, seems to be to make sure everything is permanent, always there, forever. A lot of people think the Web Platform is the right technology of the future because it has &#8216;always been there&#8217;. Permanence and stability are features that people want, yet do not find any use for.</p>
+
+<p>There is great respect for people who are old and not dead, or things that have existed for several centuries. There is a mythical belief that just because something exists for a long time, it must be good or valuable.</p>
+
+<p>The option of accepting transience of actions simply does not exist any more. Nobody considers it appropriate for you to delete code you wrote. They encourage you to mark it abandonded, or transfer it to someone else. If you do, then you are called out for <a href="https://twitter.com/valueof/status/272783506109771777">&#8216;fucking your users&#8217;</a> or <a href="http://www.hanselman.com/blog/410GoneThoughtsOnMarkDiveintomarkPilgrimsAndWhysInfosuicides.aspx">schooled on the responsibility we have to projects we create</a>.</p>
+
+<p>Nothing makes me more upset than finding something I love no longer exists. But it makes me question, learn, and create. Impermanence endures and accepting it so gives me space to let go, find new ways of living.</p>
+
+<p>I have attempted my subversion of this want for stability by mostly just restricting my interactions online to Twitter (which seems to be designed to guarantee I wont be able to find a tweet I made yesterday), and by now deleting as much of my code on <a href="https://github.com/nimbupani/">Github</a>.</p>
+
+<p>Maybe it is not right, but it is necessary.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Some Updates]]></title>
@@ -1334,55 +1355,6 @@ Properties defined on <code>.region1-1</code> or <code>.region1-2</code> will no
 
 
 <p></body></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Book Reviews for January & February 2011]]></title>
-    <link href="http://nimbupani.github.com/book-reviews-for-january-and-february-2011.html"/>
-    <updated>2011-02-17T00:00:00-08:00</updated>
-    <id>http://nimbupani.github.com/book-reviews-for-january-and-february-2011</id>
-    <content type="html"><![CDATA[<p>This year started pretty well for my reading schedule. I managed to finish two huge books in January, but am on a particularly slow pace since. It also doesn&#8217;t help that I am in Oslo for the first two weeks of Feb getting to know people in Opera as part of my <a href="http://nimbupani.com/web-opener-at-opera.html">new position</a>. So these are all I am left with: </p>
-
-
-
-
-<H3>The Jewel in the Crown</H3>
-
-
-<p>I was recommended to read this by <a href="http://coldhead.miketaylr.com">Coldhead</a> (warning loud music and visuals). I am usually not a fan of colonialist literature, but <a href="http://www.amazon.com/gp/product/0226743403?ie=UTF8&tag=nimbupani-20&linkCode=as2&camp=1789&creative=390957&creativeASIN=0226743403">The Jewel in the Crown</a> breaks new ground. There are characters of different hues, and the experiences are described vividly, while not portraying a flattering picture of the British Raj. It is very well written and a book (for being so wordy) requires as much to describe the story. I can&#8217;t wait to read the rest of the books in that series.</p>
-
-
-
-
-<h3>Gould&#8217;s Book of Fish</h3>
-
-
-<p>When I was embarking on my first trip to Australia, good old Coldhead, recommended I read <a href="http://www.amazon.com/gp/product/0802139590?ie=UTF8&tag=nimbupani-20&linkCode=as2&camp=1789&creative=390957&creativeASIN=0802139590">Gould&#8217;s Book of Fish</a> in addition to <a href="http://nimbupani.com/book-reviews-for-september.html">Voss</a>. I never got around it, but I finally did! It is incredible (except for the ending). I really cannot describe how amazing it is. I only beg you to read it.</p>
-
-
-
-
-<h3>Tokyo Vice</h3>
-
-
-<p>This is a horribly written book by someone who was one of the very few white reporters for a Japanese newspaper who worked on the Tokyo police beat. There is an incredible amount of information on how Tokyo&#8217;s police/press work, but it is all suppressed by bad writing. <a href="http://www.amazon.com/gp/product/0307378799?ie=UTF8&tag=nimbupani-20&linkCode=as2&camp=1789&creative=390957&creativeASIN=0307378799">Tokyo Vice: An American Reporter on the Police Beat in Japan</a> is definitely not worth your time unless you have a passing interest in Tokyo Crime scenes.</p>
-
-
-
-
-<h3>Ender&#8217;s Game</h3>
-
-
-<p>When I finished <a href="http://www.amazon.com/gp/product/0765342294?ie=UTF8&tag=nimbupani-20&linkCode=as2&camp=1789&creative=390957&creativeASIN=0765342294">Ender&#8217;s Game</a> I thought it was a plot for a bad science fiction movie, but then I realised it was written more than 30 years ago! It is quite a remarkable modern take on alien invasion with more than a thinly veiled support for wars and war games. I suppose the supporters of the book would claim the ending justifies the pacifist motives of the author, but I think it doesn&#8217;t. It is a nice read to escape the tortures of flying, but I don&#8217;t think it does anything more than be a precursor to game strategies outlined in <a href="http://en.wikipedia.org/wiki/Liar's_Poker">Liar&#8217;s Poker</a>.</p>
-
-
-<p></p>
-
-<p>As usual, here is my plea for you to recommend books you liked reading this month!</p>
-
-
-
 ]]></content>
   </entry>
   
