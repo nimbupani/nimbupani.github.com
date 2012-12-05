@@ -127,7 +127,7 @@ My team at Adobe has been working on a [specification and a prototype build](htt
 	blend-mode: difference; 
 }</pre>
 
-[Demo of blend modes](http://adobe.github.com/web-platform/demos/compositing/blend-photogallery/index.html) (_use this [prototype build of Chromium]() to view this_).
+[Demo of blend modes](http://adobe.github.com/web-platform/demos/compositing/blend-photogallery/index.html) (_use this [prototype build of Chromium](https://github.com/downloads/adobe/webkit/PrototypeEnhancementsForChromiumMac-may2012-f2f.zip) to view this_).
 
 ## Responsible Styling
 You must use styles responsibly, especially properties such as flex box which can lead to drastically unreadable results in unsupported browsers. Previously, [Modernizr](http://modernizr.com) came to the rescue. But now, there is a [specification that adds conditional rules natively via `@supports`](http://www.w3.org/TR/css3-conditional/):
