@@ -1,0 +1,364 @@
+
+<!doctype html>
+<!--[if lt IE 9]> <html class="no-js oldie" lang="en"> <![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  
+  <title>JSCamp: CSS Next | Divya Manian</title>  
+  <meta name="author" content="Divya Manian">
+  
+  <meta name="description" content="I talked at JSCamp on 28th November 2012, on some of the newer features of CSS. I gave the talk without slides, so here is a description of all that &hellip;">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://nimbupani.github.com/jscamp-css-next.html">
+  <link href="/stylesheets/screen.css" rel="stylesheet">
+  <link href="http://feeds.feedburner.com/nimbupani" rel="alternate" title="Subscribe" type="application/atom+xml">
+  <link href="http://feeds.feedburner.com/nimbu" rel="alternate" title="Subscribe to Web Development updates" type="application/atom+xml">    
+  
+</head>
+
+
+<body  >
+  <div class="container">
+    <div class="content">
+      <header role="banner">  <h1><a href="/">Divya Manian</a></h1>
+  
+  <h2><a class="twitter" href="https://twitter.com/divya">twitter</a> <a class="rss" href="http://feeds.feedburner.com/nimbupani">RSS Feed</a> <a class="youtube" href="http://youtube.com/nimbupani">Youtube Channel</a> <a class="github" href="https://github.com/nimbupani">Github</a></h2>
+  
+</header>
+      <nav class="sitenav"><a href="/">Home</a>
+<a href="/archives">Archives</a>
+<a href="/about.html">About</a>
+</nav>    
+      
+  
+
+
+
+  
+
+
+<article>
+  <nav class="article">
+    
+      <a class="previous" href="/some-updates.html" title="Some Updates">&#x276C;</a>      
+    
+     
+    
+               
+  </nav>
+    <header>
+    
+
+
+
+
+  
+
+<time datetime="2012-12-01T06:09:00+05:30" pubdate><span class='month'>Dec</span> <span class='day'>01</span> <span class='year'>2012</span></time>    
+    
+      <h1 class="entry-title"><a href="/jscamp-css-next.html">JSCamp: CSS Next</a></h1>
+    
+    
+    
+    
+  </header>
+<div class="entry-content"><p>I talked at <a href="http://jscamp.asia">JSCamp</a> on 28th November 2012, on some of the newer features of CSS. I gave the talk without slides, so here is a description of all that I covered.</p>
+
+<h2>No CSS3 or CSS4</h2>
+
+<p>Before I delve into what the newer features of CSS that I am very interested in are, I want to clarify a myth that keeps persists on how there are varying ‘versions’ of CSS like CSS3 and CSS4. <a href="http://www.xanthir.com/b4Ko0">Tab Atkins wrote in detail about why there is no CSS3</a>. Essentially, work after <a href="http://www.w3.org/TR/CSS21/">CSS 2.1 specification</a> has been split into independent modules that can all reach stability independent of each other, so specifications can become stable and recommendations faster.</p>
+
+<h2>Typography</h2>
+
+<p>The <a href="http://dev.w3.org/csswg/css3-fonts/">Font Module</a> has a couple of interesting features that are worth looking at.</p>
+
+<h3>Open Type Features</h3>
+
+<p><a href="http://timepiece.inostudio.de/"><img src="http://s3.amazonaws.com/Gyazo/1354317414.png" alt="" /></a></p>
+
+<p>Open Type Fonts have a features file that exposes ligatures (and other features) to applications that understand and enable these. Till recently browsers did not have the ability to expose these features that would allow you to use these ligatures from within stylesheets. But now you can.</p>
+
+<p>To do this, you would have to use <code>font-feature-settings</code> like so (you must add the appropriate prefixes <code>-ms</code>, <code>-webkit-</code> &amp; <code>-moz-</code> &amp; <code>-o-</code> when Opera supports it):</p>
+
+<pre>h1 {
+ font-feature-settings: 'liga';
+}</pre>
+
+
+<p>This tells the browser to enable Common Ligatures in the Open Type font.</p>
+
+<p>Georg Seifert of <a href="http://glyphsapp.com">Glyphs</a> has created a very cool font that <a href="http://timepiece.inostudio.de/">exploits these ligatures to create a lovely clock</a>.</p>
+
+<h3>Unicode Range</h3>
+
+<p>Fonts are essentially a table of glyphs that represent each code point. Browsers look up the table for each code point and render that glyph on the screen.</p>
+
+<p>The @font-face rule used to specify web fonts can include a declaration for <a href="http://dev.w3.org/csswg/css3-fonts/#unicode-range-desc"><code>unicode-range</code></a>. When this property is declared, the browser knows that the font specified in the <code>@font-face</code> rule must only be used when that range of <a href="http://www.joelonsoftware.com/articles/Unicode.html">unicode code points</a> are found in text. This way, <a href="http://rishida.net/blog/?p=760">you can control the rendering of English letters when they occur in conjunction with letters of another language</a> instead of defaulting to system fonts. Here is how you would use them:</p>
+
+<pre>@font-face {
+  font-family: myJapanesefont;
+  src: local('Bookman Antiqua');
+  unicode-range: U+41-5A, U+61-7A, U+C0-FF;
+}</pre>
+
+
+
+
+<pre>h1 {
+  font-family: myJapanesefont, MS-Mincho;
+}</pre>
+
+
+<p>But this property is also useful if you want to specify better ampersands or use fonts as icons.</p>
+
+<h3>Better Ampersands</h3>
+
+<p>A few years ago, it was all the rage to use a different font for the ampersands (&amp; symbol) than the current one. The way this was done was to wrap the symbol in a <code>&lt;span class='amp'&gt;</code> and then use a different font-family for the class <code>.amp</code>. With <code>unicode-range property</code>, you could merely use the @font-face rule to specify the font you want to use for that particular character (specified with <code>unicode-range</code>) and not bother at all with adding extra tags.</p>
+
+<p>This method is described in detail by Drew McLellan in his <a href="http://24ways.org/2011/creating-custom-font-stacks-with-unicode-range/">24 Ways article</a>.</p>
+
+<p><a href="http://nimbu.in/jscamp/unicode-range.html">Demo of using Baskerville font for &amp; symbol</a>.</p>
+
+<h3>Font Icons</h3>
+
+<p>The unicode tables have a private-use space allocated that would allow any font creator to use that space to create glpyhs that are not standard (e.g. glyphs that do not represent Latin, or other language characters or standardized symbols). Using this area of the table, you could create icons in a font, and only have these icons render on screen when the font itself is used.</p>
+
+<p>This is what <a href="https://github.com/blog/1135-the-making-of-octicons">GitHub uses</a> for their <a href="https://github.com/styleguide/css/7.0">Octicons</a>.</p>
+
+<h2>Layout</h2>
+
+<h3>Exclusions</h3>
+
+<p><a href="http://dev.w3.org/csswg/css3-exclusions/">Exclusions</a> would allow you to wrap text within a specified shape. Currently an implementation of <code>shape-inside</code> property that would allow text to wrap <em>within</em> a path is available in Chrome Canary. <a href="http://twitter.com/bear_travis">Bear Travis</a> wrote <a href="http://betravis.github.com/shape-tools/polygon-drawing/">a tool for determining polygon shapes</a> that can be used for generating the path. In brief, you would use it as such:</p>
+
+<pre>.crow {
+  shape-inside: polygon(0 0, 0 100%, 100% 100%, 100% 0);
+}</pre>
+
+
+<p><a href="http://nimbu.in/jscamp/shape-inside.html">Demo of shape-inside</a> (<em>turn on &#8216;Enable Experimental WebKit Features&#8217; in chrome:flags in Chrome Canary to see this</em>)</p>
+
+<h3>Regions</h3>
+
+<p><a href="http://dev.w3.org/csswg/css3-regions/">Regions specification</a> has features that allows your content to be separate from the layout structure.</p>
+
+<p>First you declare which elements will be part of the named flow of content:</p>
+
+<pre>.news-items {
+  flow-into: newsflow; /* name of the flow */
+}</pre>
+
+
+<p>Then, you declare which elements will be the recepients of the content within the named flow:</p>
+
+<pre>.news-items-container {
+  flow-from: newsflow; /* name of the flow */
+}</pre>
+
+
+<p>This means, all elements that have the class <code>news-items-container</code> will no longer display content they originally had, but will only display content that flows into them through the named flow called <code>newsflow</code>.</p>
+
+<p>The <a href="http://blogs.adobe.com/webplatform/2012/09/27/web-inspector-support-for-css-regions/">Web Inspector in Chrome Canary</a> has a way to debug which elements are part of a flow and which are recepients of a flow.</p>
+
+<p><a href="http://nimbu.in/jscamp/regions.html">Demo of regions</a> (<em>turn on &#8216;Enable Experimental WebKit features&#8217; in chrome:flags in Chrome Canary to see this</em>)</p>
+
+<h2>Graphics</h2>
+
+<h3>Native Filters</h3>
+
+<p>It is now possible to use image processing functions such as <code>greyscale</code>, <code>sepia</code>, <code>blur</code> on HTML and SVG elements. You can do this by using a CSS property known as <code>filter</code> like so:</p>
+
+<pre>.banner {
+  filter: blur(10px);
+}</pre>
+
+
+<p>These are known as <em>native</em> filters as the functions are provided out of the box by browsers. You can use this feature in Safari 6, Mobile Safari &amp; Chrome.</p>
+
+<p>Here is how blur has been used to <a href="http://codepen.io/vcurd">simulate depth of field</a>.</p>
+
+<h3>Custom Filters</h3>
+
+<p>Instead of using browser-provided filters, you can use your own. To do this, you would use <a href="http://www.w3.org/TR/filter-effects/#feCustomElement">GLSL shaders</a> - that are typically used in WebGL - via custom filter function.</p>
+
+<pre>.banner {
+ filter: custom(url(/path/to/shader.vs));
+}</pre>
+
+
+<p>The above declaration tells the browser to create vertice maps for each element that matches the selector, run them through the shader provided within the custom function and finally render the results on the screen. The interesting thing is these shaders can also take custom arguments that would determine the extent to which you want to apply these shaders.</p>
+
+<p><a href="http://twitter.com/alteredq">Altered Qualia</a> has a <a href="http://alteredqualia.com/css-shaders/article">great in-depth article on how to write and use Shaders for Custom Filtering</a>. You can also play with some of the custom filters on <a href="http://html.adobe.com/webstandards/csscustomfilters/cssfilterlab/">CSS FilterLab</a></p>
+
+<p><a href="http://nimbu.in/jscamp/custom-filters.html">Demo of Custom Filters</a> (<em>turn on &#8216;Enable CSS Shaders&#8217; in chrome:flags in Chrome Canary to see this</em>).</p>
+
+<h3>Blend Modes</h3>
+
+<p>In Photoshop and other Graphic Editing tools, there has always been an option to specify how each layer interacts with other layers below it. This is typically specified using a dropdown of blend modes that have values such as &#8216;overlay&#8217;, &#8216;multiply&#8217;, &#8216;darken&#8217;, &#8216;lighten&#8217;, &#8216;difference&#8217;, etc.</p>
+
+<p>My team at Adobe has been working on a <a href="http://adobe.github.com/web-platform/demos/compositing/">specification and a prototype build</a> out that brings the power of those blend modes to the web via CSS. This would happen via specifying the property <code>blend-mode</code> on the elements you want to target:</p>
+
+<pre>.banner h1 {
+    blend-mode: difference; 
+}</pre>
+
+
+<p><a href="http://adobe.github.com/web-platform/demos/compositing/blend-photogallery/index.html">Demo of blend modes</a> (<em>use this <a href="">prototype build of Chromium</a> to view this</em>).</p>
+
+<h2>Responsible Styling</h2>
+
+<p>You must use styles responsibly, especially properties such as flex box which can lead to drastically unreadable results in unsupported browsers. Previously, <a href="http://modernizr.com">Modernizr</a> came to the rescue. But now, there is a <a href="http://www.w3.org/TR/css3-conditional/">specification that adds conditional rules natively via <code>@supports</code></a>:</p>
+
+<pre>@supports (font-feature-settings: ‘liga’) or
+          (-webkit-font-feature-settings: 'liga') or
+          (-moz-font-feature-settings: 'liga=1') {
+  h1 {
+    font-family: 'A Common Ligatured Font', serif;
+  }
+}</pre>
+
+
+<p>Browsers that understand <code>@supports</code> would then check if any of the declarations (<code>font-feature-settings: 'liga'</code> or <code>-webkit-font-feature-settings: 'liga'</code>) is supported and if so, render the styles for the <code>h1</code> selector within the <code>@supports</code> rule. This way of writing CSS may be familiar to you via Media Queries.</p>
+
+<p>This is a great way to do feature-detection natively and specify different rules when advanced features are supported while providing a basic but readable experience on other browsers. <a href="http://dev.opera.com/articles/view/native-css-feature-detection-via-the-supports-rule/">Chris Mills has written in greater depth about this rule on dev.opera.com</a></p>
+
+<p><code>@supports</code> rule is available in Opera and Firefox (under a flag), and <a href="http://trac.webkit.org/changeset/131783">soon in WebKit</a>.</p>
+
+<p><a href="http://nimbu.in/jscamp/supports.html">Demo of @supports rule</a> (<em>use Opera or Firefox 17+ with &#8216;layout.css.supports-rule.enabled&#8217; set to true in <code>about:config</code></em>).</p>
+
+<h2>Non-standard but interesting</h2>
+
+<h3>Canvas as Background Image</h3>
+
+<p>WebKit browsers have had, for more than 2 years, <a href="https://www.webkit.org/blog/176/css-canvas-drawing/">support for writing to a canvas that is used as a background image for elements</a>. This is specified as such:</p>
+
+<pre>.banner {
+  background-image: canvas(contextForCanvas);
+}</pre>
+
+
+<p>Instead of writing the pixels to the context of a Canvas element, you would write it to the context of that background image (<code>contextForCanvas</code>):</p>
+
+<pre>
+var context = document.getCSSCanvasContext(‘2d’, contextForCanvas, canvasWidth, canvasHeight);
+</pre>
+
+
+<p><a href="http://nimbu.in/jscamp/css-canvas.html">Demo of canvas as <code>background-image</code></a> (<em>please use Safari or Chrome to view this</em>)</p>
+
+<h3>Elements as Background Image</h3>
+
+<p>The use of canvas as a background image is somewhat similar to a <a href="https://hacks.mozilla.org/2010/08/mozelement/">Mozilla proposal to have elements as background images</a>:</p>
+
+<pre>
+.banner {
+  background-image: element(#elementID);
+}</pre>
+
+
+
+
+<pre>
+&lt;div class='banner'&gt;This is a banner&lt;/div&gt;
+&lt;p id='elementID'&gt;This is the element that will be a background.&lt;/p&gt;
+</pre>
+
+
+<p><a href="http://twitter.com/simurai">Simurai</a> created <a href="http://jsfiddle.net/simurai/JKZTu/21/show/">this interesting kalaidescope effect using this property</a>.</p>
+
+<p>Personally, I find the <code>element</code> function confusing and easy to make mistakes with (e.g. adding a twitter widget to a supposedly empty element suddenly has it appear as a background to another element). Hopefully, some middle-ground between canvas as a background image and elements as a background image will be arrived at.</p>
+
+<h2>In Conclusion</h2>
+
+<p>There are lots of new and interesting features out there and it would be <em>awesome</em> if you could take the time to play with them and <a href="http://lists.w3.org/Archives/Public/www-style/">provide feedback</a>. There are plenty of new features I did not cover because I thought I was out of time (I wasn’t!) like <a href="http://css-tricks.com/old-flexbox-and-new-flexbox/">Flexbox</a>, <a href="http://dev.w3.org/csswg/css3-grid-layout/">Grid Layout</a>, <a href="http://css3.bradshawenterprises.com/blog/css-variables/">Variables</a>, <a href="https://developer.mozilla.org/en-US/docs/CSS/calc">Calc()</a>, and more.</p>
+
+<p>My talk was just several browsers each with pinned tabs of each demo. <a href="http://nimbu.in/jscamp/">Here is a list of all of the demos I showed</a>.</p>
+</div>
+
+  <footer>
+    <p class="meta">This post was posted by 
+  
+
+<a href="/about.html">Divya Manian</a>
+ on 
+
+
+
+
+  
+
+<time datetime="2012-12-01T06:09:00+05:30" pubdate><span class='month'>Dec</span> <span class='day'>01</span> <span class='year'>2012</span></time> in 
+
+<span class="categories">
+  
+    <a class='category' href='/categories/web-development/'>Web Development</a>
+  
+</span>
+
+.  If you would like to update this post, <a href="https://github.com/nimbupani/nimbupani.github.com/blob/source/source/_posts/2012-12-01-jscamp-css-next.md">please send a pull request</a>.       
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+      
+    </div>
+  </div>
+  <aside id="articles">
+    <p><img class="avatar"
+    src="http://a2.twimg.com/profile_images/1696865113/me_normal"
+    height=48> <a href="http://twitter.com/divya">Divya Manian</a> is a Web Developer in Seattle. <a href="/about.html">More about me ❭</a></p>
+    <h2>Posts on Web Development</h2>
+    <ul><li><a href="/jscamp-css-next.html">JSCamp: CSS Next</a></li><li><a href="/some-updates.html">Some Updates</a></li><li><a href="/css-object-model.html">CSS Object Model</a></li><li><a href="/fake-bolding-of-web-fonts.html">Fake Bolding of Web Fonts</a></li><li><a href="/html5please-api.html">Html5please API</a></li><li><a href="/html5please.html">html5please</a></li><li><a href="/mustache.html">mustache, hogan, handlebars</a></li><li><a href="/redesign-notes.html">Redesign Notes</a></li><li><a href="/summary-of-various-exciting-css-drafts-and-proposals.html">Summary of various exciting CSS drafts and proposals</a></li><li><a href="/this-revolution-needs-new-revolutionaries.html">This revolution needs new revolutionaries</a></li><li><a href="/some-css-transition-hacks.html">Some CSS Transition hacks</a></li><li><a href="/safe-css-defaults.html">Safe CSS Defaults</a></li><li><a href="/unplugged-2011.html">Unplugged 2011</a></li><li><a href="/bokeh-with-css3-gradients.html">Bokeh with CSS3 Gradients</a></li><li><a href="/making-pure-css3-demos-better.html">Making "Pure CSS3" demos better</a></li><li><a href="/web-opener-at-opera.html">Web Opener at Opera</a></li><li><a href="/current-color-in-css.html">Current Color in CSS</a></li><li><a href="/css-vocabulary.html">CSS Vocabulary</a></li><li><a href="/active-web-development.html">Active Web Development</a></li><li><a href="/sexy-css3-buttons.html">Sexy CSS3 Buttons</a></li><li><a class="btn" href="/categories/web-development/">More</a></li></ul>
+  </aside>
+  <footer role="contentinfo"><p>
+  Copy to your heart’s content 2012 - Divya Manian -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>  
+</p>
+
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'nimbublog';
+      var disqus_developer = 1;        
+      
+      
+        var disqus_url = 'http://nimbupani.com/jscamp-css-next.html';
+        var disqus_identifier = 'http://nimbupani.com/jscamp-css-next.html';                
+      
+        
+        
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+<script src="/javascripts/octopress.js"></script>
+
+  <script>
+    var _gaq=[['_setAccount','UA-97188-1'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+
+
+
+
+</body>
+</html>

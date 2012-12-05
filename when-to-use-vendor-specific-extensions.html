@@ -1,0 +1,196 @@
+
+<!doctype html>
+<!--[if lt IE 9]> <html class="no-js oldie" lang="en"> <![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  
+  <title>When to use Vendor-Specific Extensions | Divya Manian</title>  
+  <meta name="author" content="Divya Manian">
+  
+  <meta name="description" content="What are vendor-specific extensions? There are some CSS properties which are only supported by specific rendering engines, e.g. -webkit-box-shadow, - &hellip;">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://nimbupani.github.com/when-to-use-vendor-specific-extensions.html">
+  <link href="/stylesheets/screen.css" rel="stylesheet">
+  <link href="http://feeds.feedburner.com/nimbupani" rel="alternate" title="Subscribe" type="application/atom+xml">
+  <link href="http://feeds.feedburner.com/nimbu" rel="alternate" title="Subscribe to Web Development updates" type="application/atom+xml">    
+  
+</head>
+
+
+<body  >
+  <div class="container">
+    <div class="content">
+      <header role="banner">  <h1><a href="/">Divya Manian</a></h1>
+  
+  <h2><a class="twitter" href="https://twitter.com/divya">twitter</a> <a class="rss" href="http://feeds.feedburner.com/nimbupani">RSS Feed</a> <a class="youtube" href="http://youtube.com/nimbupani">Youtube Channel</a> <a class="github" href="https://github.com/nimbupani">Github</a></h2>
+  
+</header>
+      <nav class="sitenav"><a href="/">Home</a>
+<a href="/archives">Archives</a>
+<a href="/about.html">About</a>
+</nav>    
+      
+  
+
+
+
+  
+
+
+<article>
+  <nav class="article">
+    
+      <a class="previous" href="/a-decade-in-review.html" title="A Decade in Review">&#x276C;</a>      
+    
+    
+      <a class="next" href="/book-reviews-for-jan-2010-part-1.html" title="Book Reviews for Jan 2010 â Part 1">&#x276D;</a>              
+     
+    
+               
+  </nav>
+    <header>
+    
+
+
+
+
+  
+
+<time datetime="2010-01-01T00:00:00+05:30" pubdate><span class='month'>Jan</span> <span class='day'>01</span> <span class='year'>2010</span></time>    
+    
+      <h1 class="entry-title"><a href="/when-to-use-vendor-specific-extensions.html">When to use Vendor-Specific Extensions</a></h1>
+    
+    
+    
+    
+  </header>
+<div class="entry-content"><h3>What are vendor-specific extensions?</h3>
+
+
+<p>There are some CSS properties which are only supported by specific rendering engines, e.g. <code>-webkit-box-shadow</code>, <code>-moz-border-radius</code>, or <code>-o-transition-property</code>. The post <a href="http://nimbupani.com/css-references-for-mainstream-browsers.html" title="CSS References for Mainstream Browsers | Nimbupani Designs">CSS references for Mainstream browsers</a> has  links which list other vendor specific extensions. </p>
+
+
+
+
+<p><a href="http://www.css3.info/vendor-specific-extensions-to-css3/">Some people</a> assert these properties exist for testing properties described in draft versions of a future standard, but many of these extensions exist to give special functionality available only on a specific rendering engines (e.g iphone web-apps, android web-apps, etc.) Many people, notoriously <a href="http://forabeautifulweb.com/blog/about/you8217re_living_in_a_fantasy_world/" title="You&#8217;re living in a fantasy world | For A Beautiful Web">Andy Clarke</a>, support using vendor-specific extensions as much as possible without mentioning the caveats.</p>
+
+
+
+
+<h3>When should you use vendor-specific extensions? </h3>
+
+
+<ul>
+    <li><p><strong>If your website is ONLY rendered on a specific browser</strong></p>
+    <p>This is not surprising as there are lots of websites that are nothing more than iphone webapps, or those that sell Mac products (or those that support only IE or Opera Mini.) If your website is one of those, use vendor specific extension by all means (while being mindful of the caveat mentioned below.)</p></li>  
+    <li><p><strong>If you have access to your website continuously throughout its existence</strong></p>
+    <p>The disadvantage of using vendor-specific extensions is that they can be deprecated or their usage can change significantly on the whim of the vendor (I am using &#8220;whim&#8221; loosely). So, you need to be able to access the website you are using it on, continuously so that you can update it if that occurs.</p></li>
+<li>
+<p><strong>If it creates subtle enhancements in a browser without significant loss of usability/accessibility in other browsers.</strong></p>
+<p>For example, <code>-border-radius</code> is a popular vendor-specific extension, and by not using it, there is not a significant loss to readers of your website. In contrast, <code>-multiple-column-width</code>, when not supported, will render your text in only one column which might hinder usability of the website on browsers that do not support that extension.</p> 
+</li>                                                         
+<li><p><strong>If it is being discussed to be supported in future versions of CSS.</strong></p>
+<p>Use vendor-specific extensions only if the property exists in a W3C Recommendation or a Working Draft as a supported property (though not necessary if your website needs to work on only one browser). </p></li> 
+</ul>
+
+
+<p></p>
+
+<p>For graceful degradation, you can use <a href="http://www.modernizr.com/" title="Modernizr">Modernizr</a> which outputs a list of supported properties as multiple classes on the body element. You can then use these class selectors and declare vendor-specific extensions for them in your CSS file. </p>
+
+
+
+
+<p>There is a <a href="http://lists.w3.org/Archives/Public/www-style/2009Dec/0130.html" title="Feature queries from fantasai on 2009-12-09 (www-style@w3.org from December 2009)">debate on the W3C mailing list</a> on detecting support for a property without using JavaScript detection like Modernizr. But, I think it is a long way away from being included in any W3C Working Draft.</p>
+
+
+<p></p>
+</div>
+
+  <footer>
+    <p class="meta">This post was posted by 
+  
+
+<a href="/about.html">Divya Manian</a>
+ on 
+
+
+
+
+  
+
+<time datetime="2010-01-01T00:00:00+05:30" pubdate><span class='month'>Jan</span> <span class='day'>01</span> <span class='year'>2010</span></time> in 
+
+<span class="categories">
+  
+    <a class='category' href='/categories/web-development/'>Web Development</a>
+  
+</span>
+
+.  If you would like to update this post, <a href="https://github.com/nimbupani/nimbupani.github.com/blob/source/source/_posts/2010-01-01-when-to-use-vendor-specific-extensions.md">please send a pull request</a>.       
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+      
+    </div>
+  </div>
+  <aside id="articles">
+    <p><img class="avatar"
+    src="http://a2.twimg.com/profile_images/1696865113/me_normal"
+    height=48> <a href="http://twitter.com/divya">Divya Manian</a> is a Web Developer in Seattle. <a href="/about.html">More about me ❭</a></p>
+    <h2>Posts on Web Development</h2>
+    <ul><li><a href="/jscamp-css-next.html">JSCamp: CSS Next</a></li><li><a href="/some-updates.html">Some Updates</a></li><li><a href="/css-object-model.html">CSS Object Model</a></li><li><a href="/fake-bolding-of-web-fonts.html">Fake Bolding of Web Fonts</a></li><li><a href="/html5please-api.html">Html5please API</a></li><li><a href="/html5please.html">html5please</a></li><li><a href="/mustache.html">mustache, hogan, handlebars</a></li><li><a href="/redesign-notes.html">Redesign Notes</a></li><li><a href="/summary-of-various-exciting-css-drafts-and-proposals.html">Summary of various exciting CSS drafts and proposals</a></li><li><a href="/this-revolution-needs-new-revolutionaries.html">This revolution needs new revolutionaries</a></li><li><a href="/some-css-transition-hacks.html">Some CSS Transition hacks</a></li><li><a href="/safe-css-defaults.html">Safe CSS Defaults</a></li><li><a href="/unplugged-2011.html">Unplugged 2011</a></li><li><a href="/bokeh-with-css3-gradients.html">Bokeh with CSS3 Gradients</a></li><li><a href="/making-pure-css3-demos-better.html">Making "Pure CSS3" demos better</a></li><li><a href="/web-opener-at-opera.html">Web Opener at Opera</a></li><li><a href="/current-color-in-css.html">Current Color in CSS</a></li><li><a href="/css-vocabulary.html">CSS Vocabulary</a></li><li><a href="/active-web-development.html">Active Web Development</a></li><li><a href="/sexy-css3-buttons.html">Sexy CSS3 Buttons</a></li><li><a class="btn" href="/categories/web-development/">More</a></li></ul>
+  </aside>
+  <footer role="contentinfo"><p>
+  Copy to your heart’s content 2012 - Divya Manian -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>  
+</p>
+
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'nimbublog';
+      var disqus_developer = 1;        
+      
+      
+        var disqus_url = 'http://nimbupani.com/when-to-use-vendor-specific-extensions.html';
+        var disqus_identifier = 'http://nimbupani.com/when-to-use-vendor-specific-extensions.html';                
+      
+        
+        
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+<script src="/javascripts/octopress.js"></script>
+
+  <script>
+    var _gaq=[['_setAccount','UA-97188-1'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+
+
+
+
+</body>
+</html>

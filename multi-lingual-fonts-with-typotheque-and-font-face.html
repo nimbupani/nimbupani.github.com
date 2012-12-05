@@ -1,0 +1,229 @@
+
+<!doctype html>
+<!--[if lt IE 9]> <html class="no-js oldie" lang="en"> <![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  
+  <title>Multi-Lingual Fonts with Typotheque and Font Face | Divya Manian</title>  
+  <meta name="author" content="Divya Manian">
+  
+  <meta name="description" content="I wrote about the great debate on @font-face, and was pleasantly surprised when Peter Bilak of Typotheque invited me to beta-test their webfont &hellip;">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://nimbupani.github.com/multi-lingual-fonts-with-typotheque-and-font-face.html">
+  <link href="/stylesheets/screen.css" rel="stylesheet">
+  <link href="http://feeds.feedburner.com/nimbupani" rel="alternate" title="Subscribe" type="application/atom+xml">
+  <link href="http://feeds.feedburner.com/nimbu" rel="alternate" title="Subscribe to Web Development updates" type="application/atom+xml">    
+  
+</head>
+
+
+<body  >
+  <div class="container">
+    <div class="content">
+      <header role="banner">  <h1><a href="/">Divya Manian</a></h1>
+  
+  <h2><a class="twitter" href="https://twitter.com/divya">twitter</a> <a class="rss" href="http://feeds.feedburner.com/nimbupani">RSS Feed</a> <a class="youtube" href="http://youtube.com/nimbupani">Youtube Channel</a> <a class="github" href="https://github.com/nimbupani">Github</a></h2>
+  
+</header>
+      <nav class="sitenav"><a href="/">Home</a>
+<a href="/archives">Archives</a>
+<a href="/about.html">About</a>
+</nav>    
+      
+  
+
+
+
+  
+
+
+<article>
+  <nav class="article">
+    
+      <a class="previous" href="/illustration-friday-idle.html" title="Illustration Friday - Idle">&#x276C;</a>      
+    
+    
+      <a class="next" href="/book-reviews-for-august-2009.html" title="Book Reviews for August 2009">&#x276D;</a>              
+     
+    
+               
+  </nav>
+    <header>
+    
+
+
+
+
+  
+
+<time datetime="2009-08-06T00:00:00+05:30" pubdate><span class='month'>Aug</span> <span class='day'>06</span> <span class='year'>2009</span></time>    
+    
+      <h1 class="entry-title"><a href="/multi-lingual-fonts-with-typotheque-and-font-face.html">Multi-Lingual Fonts with Typotheque and Font Face</a></h1>
+    
+    
+    
+    
+  </header>
+<div class="entry-content"><p>I <a href="http://nimbupani.com/blog/font-in-your-face.html" title="Font in your face | Nimbupani Designs">wrote about the great debate on @font-face</a>, and was pleasantly surprised when Peter Bilak of <a href="http://www.typotheque.com/">Typotheque</a> invited me to beta-test their webfont service.</p>
+
+
+<p></p>
+
+<p>The primary advantages of Typotheque&rsquo;s service is ease of use and faster load times (as compared to others). It only uses CSS (not javascript) to generate the font stack. By using font subsetting, the service generates smaller font files.</p>
+
+
+<p></p>
+
+<h3>How to Use Typotheque Webfonts</h3>
+
+
+<p></p>
+
+<ul>  
+<li>Create an account with Typotheque.</li>
+<li>Purchase fonts from a list of available webfonts.</li>
+<li>Create a project on your account. Here you set which fonts you would like to use, the language you will use the font in, and domain it will be used in (you can set multiple domains).</li>
+<li>The service generates a CSS file and gives you the link to it that you just need to add to between <code>&lt;head&gt;&lt;/head&gt;</code> of your HTML page.</li>
+<li>You cannot access the CSS file by loading the url given above directly in your browser. Same is true for the font files as well.</li>
+<li>If you are more street-savy, you might be able to download the font, but you can&rsquo;t install it on your machine as it is not strictly a TrueType font.</li>
+</ul>
+
+
+<p>Typotheque&rsquo;s business model is to charge according to bandwidth usage (which seems fair). The exact prices are not available yet (nor are the EULAs for webfonts) and might just be the deciding factor in how successful this service becomes.</p>
+
+
+<p></p>
+
+<p>If you would like to know how the interface looks like, head over to <a href="http://forabeautifulweb.com/blog/about/testing_typotheque_font-face_embedding/">Andy Clarke&rsquo;s blog post on it</a>. </p>
+
+
+<h3>Multi-Lingual Fonts with @font-face</h3>
+
+
+<p>Here is my <a href="http://nimbupani.com/demo/typotheque/index.html">demo page with Typotheque font faces</a>.</p>
+
+
+<p>As you can see, I have used their first Devanagri webfont &ldquo;Fedra Sans Hindi&rdquo;. It renders beautifully in browsers supporting @font-face on Windows. However, it is a different story on the mac. See the picture below:</p>
+
+
+<p></p>
+
+<p><img src="/files/typotheque-multilingual-demo.png" alt="Typotheque Multilingual Demo" /></p>
+
+
+<p>Apple uses their own proprietary <a href="http://developer.apple.com/textfonts/ttrefman/RM06/Chap6AATIntro.html">Apple Advanced Typography</a> (which is a set of extensions on top of True Type Font) for rendering complex ligatures which are found in Arabic or Devanagari scripts. There is a way to specify fonts such that you can provide the AAT format for Mac OS X and other kinds of fonts for the rest of the browsers:</p>
+
+
+<pre>
+@font-face {
+font-family: Lateef;
+src: url(../fonts/LateefRegAAT.ttf) format(&quot;truetype-aat&quot;), 
+url(../fonts/LateefRegOT.ttf) format(&quot;opentype&quot;);
+}
+</pre>
+
+
+<p></p>
+
+<p>Currently, in the CSS 3 draft, the following font formats can be specified &ndash; True Type (supported by Opera, Safari, Firefox), OpenType (Opera, Safari, Firefox), Embedded OpenType (Internet Explorer), SVG Font (Safari & <a href="http://dev.opera.com/articles/view/standards-support-in-opera-10-beta/#webfontssvg`">Opera</a> &ndash; I cannot confirm if Firefox supports it, IE definitely does not). </p>
+
+
+<p></p>
+
+<p>Unfortunately, Typotheque does not generate the AAT format font for their multi-lingual webfonts (you can see in my demo that the Hindi text is not rendered correctly, in all OS X browsers except Firefox, because of that). Firefox 3.5 on the Mac OS X, interestingly, does not use the font specified in the @font-face if it is not an AAT type of font. <a href="#comment-2942">John Dagett explains it quite well in his comment</a>.</p>
+
+
+<p>They have a point. Recently, Apple started <a href="http://en.wikipedia.org/wiki/OpenType#Advanced_typography">supporting Open Type rendering for Arabic scripts</a> (which means Typotheque&rsquo;s Arabic webfont will be rendered correctly by all browser in Mac OS X 10.5). Typotheque feels that they would expand this to other scripts as well (like Devanagari) in the future. Updating their service to support yet another font format would require weeks of work.</p>
+
+
+<p>On the whole, I think this service has great potential and is a simpler alternative to <a href="http://blog.typekit.com/2009/05/27/introducing-typekit/">Typekit</a> or <a href="http://kernest.com/">Kernest</a>.</p>
+
+</div>
+
+  <footer>
+    <p class="meta">This post was posted by 
+  
+
+<a href="/about.html">Divya Manian</a>
+ on 
+
+
+
+
+  
+
+<time datetime="2009-08-06T00:00:00+05:30" pubdate><span class='month'>Aug</span> <span class='day'>06</span> <span class='year'>2009</span></time> in 
+
+<span class="categories">
+  
+    <a class='category' href='/categories/web-development/'>Web Development</a>
+  
+</span>
+
+.  If you would like to update this post, <a href="https://github.com/nimbupani/nimbupani.github.com/blob/source/source/_posts/2009-08-06-multi-lingual-fonts-with-typotheque-and-font-face.md">please send a pull request</a>.       
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+      
+    </div>
+  </div>
+  <aside id="articles">
+    <p><img class="avatar"
+    src="http://a2.twimg.com/profile_images/1696865113/me_normal"
+    height=48> <a href="http://twitter.com/divya">Divya Manian</a> is a Web Developer in Seattle. <a href="/about.html">More about me ❭</a></p>
+    <h2>Posts on Web Development</h2>
+    <ul><li><a href="/jscamp-css-next.html">JSCamp: CSS Next</a></li><li><a href="/some-updates.html">Some Updates</a></li><li><a href="/css-object-model.html">CSS Object Model</a></li><li><a href="/fake-bolding-of-web-fonts.html">Fake Bolding of Web Fonts</a></li><li><a href="/html5please-api.html">Html5please API</a></li><li><a href="/html5please.html">html5please</a></li><li><a href="/mustache.html">mustache, hogan, handlebars</a></li><li><a href="/redesign-notes.html">Redesign Notes</a></li><li><a href="/summary-of-various-exciting-css-drafts-and-proposals.html">Summary of various exciting CSS drafts and proposals</a></li><li><a href="/this-revolution-needs-new-revolutionaries.html">This revolution needs new revolutionaries</a></li><li><a href="/some-css-transition-hacks.html">Some CSS Transition hacks</a></li><li><a href="/safe-css-defaults.html">Safe CSS Defaults</a></li><li><a href="/unplugged-2011.html">Unplugged 2011</a></li><li><a href="/bokeh-with-css3-gradients.html">Bokeh with CSS3 Gradients</a></li><li><a href="/making-pure-css3-demos-better.html">Making "Pure CSS3" demos better</a></li><li><a href="/web-opener-at-opera.html">Web Opener at Opera</a></li><li><a href="/current-color-in-css.html">Current Color in CSS</a></li><li><a href="/css-vocabulary.html">CSS Vocabulary</a></li><li><a href="/active-web-development.html">Active Web Development</a></li><li><a href="/sexy-css3-buttons.html">Sexy CSS3 Buttons</a></li><li><a class="btn" href="/categories/web-development/">More</a></li></ul>
+  </aside>
+  <footer role="contentinfo"><p>
+  Copy to your heart’s content 2012 - Divya Manian -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>  
+</p>
+
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'nimbublog';
+      var disqus_developer = 1;        
+      
+      
+        var disqus_url = 'http://nimbupani.com/multi-lingual-fonts-with-typotheque-and-font-face.html';
+        var disqus_identifier = 'http://nimbupani.com/multi-lingual-fonts-with-typotheque-and-font-face.html';                
+      
+        
+        
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+<script src="/javascripts/octopress.js"></script>
+
+  <script>
+    var _gaq=[['_setAccount','UA-97188-1'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+
+
+
+
+</body>
+</html>

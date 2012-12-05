@@ -1,0 +1,226 @@
+
+<!doctype html>
+<!--[if lt IE 9]> <html class="no-js oldie" lang="en"> <![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  
+  <title>Bokeh with CSS3 Gradients | Divya Manian</title>  
+  <meta name="author" content="Divya Manian">
+  
+  <meta name="description" content="Ever since Lea Verou mentioned about the possibilities of CSS3 Gradients, I have been using them in various shapes and sizes as a replacement for &hellip;">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://nimbupani.github.com/bokeh-with-css3-gradients.html">
+  <link href="/stylesheets/screen.css" rel="stylesheet">
+  <link href="http://feeds.feedburner.com/nimbupani" rel="alternate" title="Subscribe" type="application/atom+xml">
+  <link href="http://feeds.feedburner.com/nimbu" rel="alternate" title="Subscribe to Web Development updates" type="application/atom+xml">    
+  
+</head>
+
+
+<body  >
+  <div class="container">
+    <div class="content">
+      <header role="banner">  <h1><a href="/">Divya Manian</a></h1>
+  
+  <h2><a class="twitter" href="https://twitter.com/divya">twitter</a> <a class="rss" href="http://feeds.feedburner.com/nimbupani">RSS Feed</a> <a class="youtube" href="http://youtube.com/nimbupani">Youtube Channel</a> <a class="github" href="https://github.com/nimbupani">Github</a></h2>
+  
+</header>
+      <nav class="sitenav"><a href="/">Home</a>
+<a href="/archives">Archives</a>
+<a href="/about.html">About</a>
+</nav>    
+      
+  
+
+
+
+  
+
+
+<article>
+  <nav class="article">
+    
+      <a class="previous" href="/making-pure-css3-demos-better.html" title="Making "Pure CSS3" demos better">&#x276C;</a>      
+    
+    
+      <a class="next" href="/unplugged-2011.html" title="Unplugged 2011">&#x276D;</a>              
+     
+    
+               
+  </nav>
+    <header>
+    
+
+
+
+
+  
+
+<time datetime="2011-02-22T00:00:00+05:30" pubdate><span class='month'>Feb</span> <span class='day'>22</span> <span class='year'>2011</span></time>    
+    
+      <h1 class="entry-title"><a href="/bokeh-with-css3-gradients.html">Bokeh with CSS3 Gradients</a></h1>
+    
+    
+    
+    
+  </header>
+<div class="entry-content"><p>Ever since <a href="http://leaverou.me/2010/12/checkered-stripes-other-background-patterns-with-css3-gradients/">Lea Verou mentioned about the possibilities of CSS3 Gradients</a>, I have been using them in various shapes and sizes as a replacement for background images. I recently worked on a project which uses a bunch of circles as a decorative background. <a href="http://gf3.ca/">gf3</a> suggested that the circles would look much better like <a href="http://en.wikipedia.org/wiki/Bokeh">bokeh</a>. Today, I finally got down to creating them.</p>
+
+
+
+
+<h3>Result</h3>
+
+
+<iframe style="width: 100%; height: 300px" src="http://jsfiddle.net/nimbu/CPCRU/embedded/result,css"></iframe>
+
+
+
+
+<h3>Design of the Bokeh</h3>
+
+
+<p>I referred to some pictures of bokeh, and these were their defining characteristics:</p>
+
+
+<ul>
+  <li>There should be groups of circles with same color (each circle outlined with the more opaque version of the fill). In each group, circles are close to each other.</li>
+  <li>The color transition from one color group to the other can be accomplished with a very blurry second color group radial gradient overlaid on the first group.</li>
+  <li>Each color group needs to have a very blurry large background circle to base the rest of the circles from.</li>
+  <li>Each color group has 2 or more of smaller circles and one big blurry circle as a base.</li>
+  <li>Colors used are almost transparent so that the background color shows through, and the colors mix well when they are overlaid.</li>
+</ul>
+
+
+
+
+<h3>Implementation</h3>
+
+
+<p>Here is how a single &#8220;tile&#8221; looks like:</p>
+
+
+
+
+<p><img src="http://nimbupani.com/files/bokeh-graph.png" alt="bokeh-graph.png" border="0" width="420" height="300"></p>
+
+
+
+
+<p>The black background is the size of the &#8220;tile&#8221;, set by <code>background-size</code> property (the grey area is where our circles spill over). In our demo it is 300px square. Each of these circles is a background image (all gradients are background images), and have a default <code>background-size</code> property set to the top left corner of the tile, which means, the center of each of the circle is at the intersection of the yellow lines in the image above.</p>
+
+
+
+
+<p>Then, we use <code>background-position</code> to offset them into places we want.</p>
+
+
+<p>By tweaking the <code>background-position</code> for each of the gradient images, we also move the center of each of the circle - shown in the image above relatively. Do note that what <em>actually</em> moves is the top left corner, but I find it easier to visualize the positioning of radial gradients in this manner.</p>
+
+
+
+
+<p>By using <code>background-repeat</code>, we can repeat our bokeh across the screen! You can tweak the tile size so you can get some interesting effects.</p>
+
+
+<p></p>
+
+<p>Needless to say, this demo <a href="http://caniuse.com/#feat=css-gradients">only works</a> on Firefox 3.6+, Safari 4+, Chrome 10+ all of which support CSS3 radial gradients as it has been finalized in the <a href="http://www.w3.org/TR/css3-images/#radial-gradients">spec</a> (support is coming soon in Opera 11).</p>
+
+
+
+
+<h3>Update</h3>
+
+
+<p><a href="http://a.deveria.com/">Alexis</a> has kindly <a href="http://nimbupani.com/bokeh-with-css3-gradients.html#comment-3620">provided an SVG</a> that would work as well for browsers that do not support gradients! I have updated the demo to use <a href="http://modernizr.github.com/Modernizr/2.0-beta/#cssgradients">Modernizr</a> to detect for gradients, and serve the SVG version if the browser does not support it. Whee! Thanks Alexis!</p>
+
+</div>
+
+  <footer>
+    <p class="meta">This post was posted by 
+  
+
+<a href="/about.html">Divya Manian</a>
+ on 
+
+
+
+
+  
+
+<time datetime="2011-02-22T00:00:00+05:30" pubdate><span class='month'>Feb</span> <span class='day'>22</span> <span class='year'>2011</span></time> in 
+
+<span class="categories">
+  
+    <a class='category' href='/categories/web-development/'>Web Development</a>
+  
+</span>
+
+.  If you would like to update this post, <a href="https://github.com/nimbupani/nimbupani.github.com/blob/source/source/_posts/2011-02-22-bokeh-with-css3-gradients.md">please send a pull request</a>.       
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+      
+    </div>
+  </div>
+  <aside id="articles">
+    <p><img class="avatar"
+    src="http://a2.twimg.com/profile_images/1696865113/me_normal"
+    height=48> <a href="http://twitter.com/divya">Divya Manian</a> is a Web Developer in Seattle. <a href="/about.html">More about me ❭</a></p>
+    <h2>Posts on Web Development</h2>
+    <ul><li><a href="/jscamp-css-next.html">JSCamp: CSS Next</a></li><li><a href="/some-updates.html">Some Updates</a></li><li><a href="/css-object-model.html">CSS Object Model</a></li><li><a href="/fake-bolding-of-web-fonts.html">Fake Bolding of Web Fonts</a></li><li><a href="/html5please-api.html">Html5please API</a></li><li><a href="/html5please.html">html5please</a></li><li><a href="/mustache.html">mustache, hogan, handlebars</a></li><li><a href="/redesign-notes.html">Redesign Notes</a></li><li><a href="/summary-of-various-exciting-css-drafts-and-proposals.html">Summary of various exciting CSS drafts and proposals</a></li><li><a href="/this-revolution-needs-new-revolutionaries.html">This revolution needs new revolutionaries</a></li><li><a href="/some-css-transition-hacks.html">Some CSS Transition hacks</a></li><li><a href="/safe-css-defaults.html">Safe CSS Defaults</a></li><li><a href="/unplugged-2011.html">Unplugged 2011</a></li><li><a href="/bokeh-with-css3-gradients.html">Bokeh with CSS3 Gradients</a></li><li><a href="/making-pure-css3-demos-better.html">Making "Pure CSS3" demos better</a></li><li><a href="/web-opener-at-opera.html">Web Opener at Opera</a></li><li><a href="/current-color-in-css.html">Current Color in CSS</a></li><li><a href="/css-vocabulary.html">CSS Vocabulary</a></li><li><a href="/active-web-development.html">Active Web Development</a></li><li><a href="/sexy-css3-buttons.html">Sexy CSS3 Buttons</a></li><li><a class="btn" href="/categories/web-development/">More</a></li></ul>
+  </aside>
+  <footer role="contentinfo"><p>
+  Copy to your heart’s content 2012 - Divya Manian -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>  
+</p>
+
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'nimbublog';
+      var disqus_developer = 1;        
+      
+      
+        var disqus_url = 'http://nimbupani.com/bokeh-with-css3-gradients.html';
+        var disqus_identifier = 'http://nimbupani.com/bokeh-with-css3-gradients.html';                
+      
+        
+        
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+<script src="/javascripts/octopress.js"></script>
+
+  <script>
+    var _gaq=[['_setAccount','UA-97188-1'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+
+
+
+
+</body>
+</html>

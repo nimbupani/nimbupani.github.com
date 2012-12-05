@@ -1,0 +1,221 @@
+
+<!doctype html>
+<!--[if lt IE 9]> <html class="no-js oldie" lang="en"> <![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  
+  <title>CSS Object Model | Divya Manian</title>  
+  <meta name="author" content="Divya Manian">
+  
+  <meta name="description" content="Until Test the Web Forward I had just a vague idea of what CSS Object Model does. So, it was awesome to hear from and learn about the CSS Object &hellip;">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://nimbupani.github.com/css-object-model.html">
+  <link href="/stylesheets/screen.css" rel="stylesheet">
+  <link href="http://feeds.feedburner.com/nimbupani" rel="alternate" title="Subscribe" type="application/atom+xml">
+  <link href="http://feeds.feedburner.com/nimbu" rel="alternate" title="Subscribe to Web Development updates" type="application/atom+xml">    
+  
+</head>
+
+
+<body  >
+  <div class="container">
+    <div class="content">
+      <header role="banner">  <h1><a href="/">Divya Manian</a></h1>
+  
+  <h2><a class="twitter" href="https://twitter.com/divya">twitter</a> <a class="rss" href="http://feeds.feedburner.com/nimbupani">RSS Feed</a> <a class="youtube" href="http://youtube.com/nimbupani">Youtube Channel</a> <a class="github" href="https://github.com/nimbupani">Github</a></h2>
+  
+</header>
+      <nav class="sitenav"><a href="/">Home</a>
+<a href="/archives">Archives</a>
+<a href="/about.html">About</a>
+</nav>    
+      
+  
+
+
+
+  
+
+
+<article>
+  <nav class="article">
+    
+      <a class="previous" href="/visualization-lies.html" title="Visualization Lies">&#x276C;</a>      
+    
+    
+      <a class="next" href="/some-updates.html" title="Some Updates">&#x276D;</a>              
+     
+    
+               
+  </nav>
+    <header>
+    
+
+
+
+
+  
+
+<time datetime="2012-06-18T10:48:00+05:30" pubdate><span class='month'>Jun</span> <span class='day'>18</span> <span class='year'>2012</span></time>    
+    
+      <h1 class="entry-title"><a href="/css-object-model.html">CSS Object Model</a></h1>
+    
+    
+    
+    
+  </header>
+<div class="entry-content"><p>Until <a href="http://testthewebforward.org">Test the Web Forward</a> I had just a vague idea of what CSS Object Model does. So, it was awesome to hear from and learn about the <a href="http://dev.w3.org/csswg/cssom/">CSS Object Model</a> from the spec co-editor <a href="https://twitter.com/gasubic/">Glenn Adams</a>.</p>
+
+<h2>What it is</h2>
+
+<p>The CSS Object Model specification provides APIs that allow you to query and manipulate styles once the browser reads and understands the stylesheets and inline styles that are used on the page that is being rendered. An older specification that standardizes this was called DOM Level 2 Style Specification. It was the first specification that provided ability to access and manipulate styles via JavaScript using the DOM API.</p>
+
+<p>The fragmented history of the web sadly means most of these APIs do not quite work the way they are intended to in many browsers. Glenn wrote in to state what the goals of the current specs are, which include:</p>
+
+<ul>
+<li>Fully specify behavior that was left unstated, vague, or ambiguous in DOM-2 Style spec.</li>
+<li>Remove functionality specified in DOM-2 Style that is not widely implemented and not perceived as necessary.</li>
+<li>Add functionality not specified in DOM-2 Style that has been widely implemented and is viewed as sufficiently important.</li>
+</ul>
+
+
+<p>The APIs from the specification that have been implemented so far offer the abilitiy to query rules specified in the stylesheets or a text representation of the styles in a stylesheet or the inline styles of an element within the rendered page. For example, you can get the value of <code>margin</code> of an element by using <code>getComputedStyle('element,optional pseudoElement').margin</code>. You can also get the full style declaration that applies to an element as a string by using <code>getComputedStyle('element,optional pseudoElement').cssText</code>.</p>
+
+<h2>The <code>CSSStyleDeclaration</code> Object</h2>
+
+<p>The <code>getComputedStyle</code> method retuns what is known as a <code>CSSStyleDeclaration</code> object. It enumerates all style properties (&amp; values). This is the object that is returned whenever you query for style information using:</p>
+
+<ul>
+<li><p><code>document.styleSheets[0].cssRules[0].style</code></p></li>
+<li><p><code>Element.style</code></p></li>
+<li><p><code>document.getOverrideStyle</code> (unimplemented in most browsers, but would be useful for <a href="http://stackoverflow.com/questions/9798210/is-there-any-way-to-reset-after-before-css-rules-for-an-element">getting/setting hover, and other pseudo-classes</a>).</p></li>
+<li><p><code>window.getComputedStyle</code></p></li>
+</ul>
+
+
+<p>The returned object itself can be changed (it is <em>mutable</em> which means you can set a style property like <code>Element.style.margin = "20px"</code>) in all cases except the last. If you try to change a property of the object returned by <code>window.getComputedStyle(Element)</code>, you would get an exception.</p>
+
+<h2>CSS Rules</h2>
+
+<p>Rules within stylesheets have an object model too. There are 6 kinds of <a href="http://nimbupani.com/css-vocabulary.html">CSS rules</a> that could apply:</p>
+
+<ul>
+<li>Style rules (e.g <code>h1 {}</code> or <code>#main a {color: red; }</code>)</li>
+<li>@import rules (e.g. <code>@import url(main.css)</code>)</li>
+<li>Page rules (e.g. <code>@page :first {color: red; }</code>)</li>
+<li>@font-face rules (e.g. <code>@font-face {}</code>)</li>
+<li>Namespace rules (e.g. <code>@namespace svg http://svg.org</code>)</li>
+<li>Media rules (e.g. <code>@media (min-width: 200px)</code>)</li>
+</ul>
+
+
+<p>Not only that but you can even access the individual selectors that you specified in your style sheet. The values for properties in selectors are also serialised. How these values are serialised has also been documented in the specification. For example, if an element has a style property set (inline or set from within a stylesheet) like so <code>margin: 20px 20px 20px 20px;</code>, the specification states that when you access the style using <code>cssText</code> it should return <code>margin: 20px;</code>.</p>
+
+<h2>Testing CSS Values</h2>
+
+<p>The above serialization of CSS values seemed trivial and I thought would be a good test to start with. So, I wrote a <a href="https://dl.dropbox.com/u/952/ttwf/index.html">small test</a>. The results were interesting:</p>
+
+<ul>
+<li>Firefox &amp; IE 9 were the only browsers that returned the expected value of <code>"margin: 20px"</code></li>
+<li>Chrome returned <code>"margin: 20px; "</code> (note the whitespace after the semi-colon)</li>
+<li>Opera bizarrely returns <code>"margin-top: 20px; margin-bottom: 20px; margin-left: 20px; margin-right: 20px"</code> (also note the missing last semi-colon).</li>
+<li>Safari returned <code>"margin-top: 20px; margin-right: 20px; margin-bottom: 20px; margin-left: 20px; "</code> (note the space after the last semi-colon).</li>
+</ul>
+
+
+<p>Imagine the frustration of someone trying to write a CSS Style editor and wanting to show CSS style rules correctly! Glenn tells me that radical differences like these exist because the original DOM 2 Style spec did not document the serialization rules (he also pointed to this <a href="http://lists.w3.org/Archives/Public/www-style/2012Jan/1122.html">thread that discusses which properties get serialized or not</a>).</p>
+
+<p>Hopefully, because of Test the Web Forward, we can have more such tests in the future to ensure all browsers implement these APIs and specifications correctly. There are many other APIs available in the CSS OM. Interestingly, I was made aware of the longest property name (proprietary though) in existence: <del><code>-webkit-match-nearest-mail-blockquote-color</code></del> (thanks to <a href="http://twitter.com/awesomekling">Andreas Kling</a> this is <a href="http://trac.webkit.org/changeset/120735">no longer the case</a>, it is now <code>-webkit-border-bottom-right-radius</code>) (I wonder what is the shortest?).</p>
+
+<p>If you are interested in writing and contributing CSS tests, first <a href="https://test.csswg.org/shepherd/register/">make an account</a> (please do make sure to check the box for &#8216;Request Repository Write Access&#8217;) and then follow along with <a href="http://adobe.github.com/web-platform/presentations/test-the-web-forward-tutorial/index.html">this presentation</a> by <a href="http://twitter.com/JacobG415">Jacob Goldstein</a> &amp; <a href="http://twitter.com/RebeccaHauck">Rebecca Hauck</a>.</p>
+
+<p><em>Many thanks to Glenn Adams &amp; Paul Irish for reviewing this post.</em></p>
+</div>
+
+  <footer>
+    <p class="meta">This post was posted by 
+  
+
+<a href="/about.html">Divya Manian</a>
+ on 
+
+
+
+
+  
+
+<time datetime="2012-06-18T10:48:00+05:30" pubdate><span class='month'>Jun</span> <span class='day'>18</span> <span class='year'>2012</span></time> in 
+
+<span class="categories">
+  
+    <a class='category' href='/categories/web-development/'>Web Development</a>
+  
+</span>
+
+.  If you would like to update this post, <a href="https://github.com/nimbupani/nimbupani.github.com/blob/source/source/_posts/2012-06-18-css-object-model.md">please send a pull request</a>.       
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+      
+    </div>
+  </div>
+  <aside id="articles">
+    <p><img class="avatar"
+    src="http://a2.twimg.com/profile_images/1696865113/me_normal"
+    height=48> <a href="http://twitter.com/divya">Divya Manian</a> is a Web Developer in Seattle. <a href="/about.html">More about me ❭</a></p>
+    <h2>Posts on Web Development</h2>
+    <ul><li><a href="/jscamp-css-next.html">JSCamp: CSS Next</a></li><li><a href="/some-updates.html">Some Updates</a></li><li><a href="/css-object-model.html">CSS Object Model</a></li><li><a href="/fake-bolding-of-web-fonts.html">Fake Bolding of Web Fonts</a></li><li><a href="/html5please-api.html">Html5please API</a></li><li><a href="/html5please.html">html5please</a></li><li><a href="/mustache.html">mustache, hogan, handlebars</a></li><li><a href="/redesign-notes.html">Redesign Notes</a></li><li><a href="/summary-of-various-exciting-css-drafts-and-proposals.html">Summary of various exciting CSS drafts and proposals</a></li><li><a href="/this-revolution-needs-new-revolutionaries.html">This revolution needs new revolutionaries</a></li><li><a href="/some-css-transition-hacks.html">Some CSS Transition hacks</a></li><li><a href="/safe-css-defaults.html">Safe CSS Defaults</a></li><li><a href="/unplugged-2011.html">Unplugged 2011</a></li><li><a href="/bokeh-with-css3-gradients.html">Bokeh with CSS3 Gradients</a></li><li><a href="/making-pure-css3-demos-better.html">Making "Pure CSS3" demos better</a></li><li><a href="/web-opener-at-opera.html">Web Opener at Opera</a></li><li><a href="/current-color-in-css.html">Current Color in CSS</a></li><li><a href="/css-vocabulary.html">CSS Vocabulary</a></li><li><a href="/active-web-development.html">Active Web Development</a></li><li><a href="/sexy-css3-buttons.html">Sexy CSS3 Buttons</a></li><li><a class="btn" href="/categories/web-development/">More</a></li></ul>
+  </aside>
+  <footer role="contentinfo"><p>
+  Copy to your heart’s content 2012 - Divya Manian -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>  
+</p>
+
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'nimbublog';
+      var disqus_developer = 1;        
+      
+      
+        var disqus_url = 'http://nimbupani.com/css-object-model.html';
+        var disqus_identifier = 'http://nimbupani.com/css-object-model.html';                
+      
+        
+        
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+<script src="/javascripts/octopress.js"></script>
+
+  <script>
+    var _gaq=[['_setAccount','UA-97188-1'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+
+
+
+
+</body>
+</html>

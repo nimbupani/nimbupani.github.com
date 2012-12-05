@@ -1,0 +1,60 @@
+/* CSS Table Design
+by Divya Manian
+Website: http://nimbupani.com
+E-Mail: divya.manian@gmail.com
+Type: Stylesheet
+Creative Commons Licensed
+*/
+
+div#itsthetable{
+	font-family:		Helvetica, Arial, "Franklin Gothic Medium", sans-serif;
+}
+
+table{
+	border-collapse: collapse;
+	text-align:left;
+}
+caption{
+	text-transform:		uppercase;
+	font-size: 			2em;
+	color:				#000000;
+	text-align:			left;
+	font-weight:		bolder;
+	border-bottom:		6px solid #000;
+}
+
+thead tr th{
+	color:				#0099ff;
+	text-transform:		uppercase;
+	text-align:			center;	
+	padding:			0.4em 0;
+	border-bottom:		3px solid #000;
+}
+
+tfoot th, tfoot td{
+	border-top:			3px solid #000;
+}
+tr td, tr th{
+	border-bottom:		1px solid #000;
+	padding:			0.6em 0.4em;
+	line-height:		1.5em;
+}
+tr.odd td, tr.odd th{
+	background:url(tablebkg.jpg) top left repeat-x;
+}
+
+tbody th a{
+	text-transform:uppercase;
+}
+
+tbody a, tbody a:link{
+	color:			#0099ff;
+	font-weight:	bold;	
+	text-decoration:none;
+}
+
+tbody a:visited{
+	color:			#000;
+}
+
+

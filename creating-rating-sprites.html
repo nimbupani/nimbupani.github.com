@@ -1,0 +1,221 @@
+
+<!doctype html>
+<!--[if lt IE 9]> <html class="no-js oldie" lang="en"> <![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  
+  <title>Creating Rating Sprites | Divya Manian</title>  
+  <meta name="author" content="Divya Manian">
+  
+  <meta name="description" content="I came across this Youtube HTML 5 demo via Laura Carlson and was amazed at their simple sprite solution for static ratings display. Here is how to &hellip;">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://nimbupani.github.com/creating-rating-sprites.html">
+  <link href="/stylesheets/screen.css" rel="stylesheet">
+  <link href="http://feeds.feedburner.com/nimbupani" rel="alternate" title="Subscribe" type="application/atom+xml">
+  <link href="http://feeds.feedburner.com/nimbu" rel="alternate" title="Subscribe to Web Development updates" type="application/atom+xml">    
+  
+</head>
+
+
+<body  >
+  <div class="container">
+    <div class="content">
+      <header role="banner">  <h1><a href="/">Divya Manian</a></h1>
+  
+  <h2><a class="twitter" href="https://twitter.com/divya">twitter</a> <a class="rss" href="http://feeds.feedburner.com/nimbupani">RSS Feed</a> <a class="youtube" href="http://youtube.com/nimbupani">Youtube Channel</a> <a class="github" href="https://github.com/nimbupani">Github</a></h2>
+  
+</header>
+      <nav class="sitenav"><a href="/">Home</a>
+<a href="/archives">Archives</a>
+<a href="/about.html">About</a>
+</nav>    
+      
+  
+
+
+
+  
+
+
+<article>
+  <nav class="article">
+    
+      <a class="previous" href="/book-reviews-for-november-2009-part-1.html" title="Book Reviews for November 2009 â Part 1">&#x276C;</a>      
+    
+    
+      <a class="next" href="/book-reviews-for-november-2009-part-2.html" title="Book Reviews for November 2009 â Part 2">&#x276D;</a>              
+     
+    
+               
+  </nav>
+    <header>
+    
+
+
+
+
+  
+
+<time datetime="2009-11-09T00:00:00+05:30" pubdate><span class='month'>Nov</span> <span class='day'>09</span> <span class='year'>2009</span></time>    
+    
+      <h1 class="entry-title"><a href="/creating-rating-sprites.html">Creating Rating Sprites</a></h1>
+    
+    
+    
+    
+  </header>
+<div class="entry-content"><p>I came across this <a href="http://www.youtube.com/html5">Youtube HTML 5 demo</a> via <a href="http://twitter.com/laura_carlson">Laura Carlson</a> and was amazed at their simple sprite solution for static ratings display. Here is how to create one.</p>
+
+
+<h3>Caveat</h3>
+
+
+<p>This solution is only for displaying a static rating and not an <a href="http://www.learningjquery.com/2007/05/half-star-rating-plugin">animated one</a>.</p>
+
+
+<p>I am using the word &ldquo;star&rdquo; a bit loosely in this post. The &ldquo;star&rdquo; in the sprite below is a circle for the sake of simplicity.
+<h3>Image</h3>
+<p>Create a sprite as shown below. I have created each circle within an imaginary 20px box so that it is easier to style via CSS. You can use my reference <a href="/demo/ratingsprite/stars.psd">Photoshop file</a> where I have used guides to position each circle at intervals of 20px.</p>
+<p><img src="http://www.nimbupani.com/blog/files/stars.png" alt="stars sprite"></p>
+
+<h3>HTML</h3>
+<p>Put this HTML where you want your ratings to appear:</p>
+<pre>&lt;span class=&quot;rating r0&quot;&gt;0/5&lt;/span&gt;</pre>
+<p>The class <code>rating</code> will be used to apply all the common style properties. Classes <code>r0</code> to <code>r5</code> will be used to position the sprite as a background image appropriately.</p>
+
+<h3>CSS</h3>
+<p>In your CSS file, add the following:</p>
+
+<pre>
+span.rating {
+  background:url(&quot;star.png&quot;) top left;  
+  display:inline-block;
+  width:100px; /* width of the set of 5 stars */
+  overflow:hidden;
+  text-indent:-1000em;  
+}                                     
+</pre>
+
+<h3>Creating the rating</h3>
+<p>Now we style each of the <code>r0</code> to <code>r5</code> classes. </p>
+
+<pre>span.r0 {
+  background:-50px 0;
+}</pre>               
+
+<pre>
+span.r1 {             
+   background-position:-60px 0; /* assuming each star is 20px wide */      
+}      
+</pre>
+
+<p>and so on&hellip;</p>
+
+If you use <a href="http://sass-lang.com/">SASS</a> you can add this to your SASS file:
+<pre>
+// 100 is the width of the set of 5 stars and 20 is the width of each 
+// star (including the space to the right, see the Photoshop file
+
+@for !i from 0 through 5
+  span.r#{!i}
+    background-position = &quot;#{-(100 - (20*!i))}px 0&quot; 
+</pre> 
+
+<p>Here is the <a href="http://nimbupani.com/demo/ratingsprite/">demo of the star ratings sprite</a>.</p>
+
+<h3>Advantages</h3>
+<ul>
+    <li>Single image, lesser page requests, faster page load.</li>
+    <li>Small file size</li>
+    <li>Easier maintainance: You only need to edit one image file in case you want to change the graphic.</li>
+</ul>
+
+</div>
+
+  <footer>
+    <p class="meta">This post was posted by 
+  
+
+<a href="/about.html">Divya Manian</a>
+ on 
+
+
+
+
+  
+
+<time datetime="2009-11-09T00:00:00+05:30" pubdate><span class='month'>Nov</span> <span class='day'>09</span> <span class='year'>2009</span></time> in 
+
+<span class="categories">
+  
+    <a class='category' href='/categories/web-development/'>Web Development</a>
+  
+</span>
+
+.  If you would like to update this post, <a href="https://github.com/nimbupani/nimbupani.github.com/blob/source/source/_posts/2009-11-09-creating-rating-sprites.md">please send a pull request</a>.       
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+      
+    </div>
+  </div>
+  <aside id="articles">
+    <p><img class="avatar"
+    src="http://a2.twimg.com/profile_images/1696865113/me_normal"
+    height=48> <a href="http://twitter.com/divya">Divya Manian</a> is a Web Developer in Seattle. <a href="/about.html">More about me ❭</a></p>
+    <h2>Posts on Web Development</h2>
+    <ul><li><a href="/jscamp-css-next.html">JSCamp: CSS Next</a></li><li><a href="/some-updates.html">Some Updates</a></li><li><a href="/css-object-model.html">CSS Object Model</a></li><li><a href="/fake-bolding-of-web-fonts.html">Fake Bolding of Web Fonts</a></li><li><a href="/html5please-api.html">Html5please API</a></li><li><a href="/html5please.html">html5please</a></li><li><a href="/mustache.html">mustache, hogan, handlebars</a></li><li><a href="/redesign-notes.html">Redesign Notes</a></li><li><a href="/summary-of-various-exciting-css-drafts-and-proposals.html">Summary of various exciting CSS drafts and proposals</a></li><li><a href="/this-revolution-needs-new-revolutionaries.html">This revolution needs new revolutionaries</a></li><li><a href="/some-css-transition-hacks.html">Some CSS Transition hacks</a></li><li><a href="/safe-css-defaults.html">Safe CSS Defaults</a></li><li><a href="/unplugged-2011.html">Unplugged 2011</a></li><li><a href="/bokeh-with-css3-gradients.html">Bokeh with CSS3 Gradients</a></li><li><a href="/making-pure-css3-demos-better.html">Making "Pure CSS3" demos better</a></li><li><a href="/web-opener-at-opera.html">Web Opener at Opera</a></li><li><a href="/current-color-in-css.html">Current Color in CSS</a></li><li><a href="/css-vocabulary.html">CSS Vocabulary</a></li><li><a href="/active-web-development.html">Active Web Development</a></li><li><a href="/sexy-css3-buttons.html">Sexy CSS3 Buttons</a></li><li><a class="btn" href="/categories/web-development/">More</a></li></ul>
+  </aside>
+  <footer role="contentinfo"><p>
+  Copy to your heart’s content 2012 - Divya Manian -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>  
+</p>
+
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'nimbublog';
+      var disqus_developer = 1;        
+      
+      
+        var disqus_url = 'http://nimbupani.com/creating-rating-sprites.html';
+        var disqus_identifier = 'http://nimbupani.com/creating-rating-sprites.html';                
+      
+        
+        
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+<script src="/javascripts/octopress.js"></script>
+
+  <script>
+    var _gaq=[['_setAccount','UA-97188-1'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+
+
+
+
+</body>
+</html>

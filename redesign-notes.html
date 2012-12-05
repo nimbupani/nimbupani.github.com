@@ -1,0 +1,239 @@
+
+<!doctype html>
+<!--[if lt IE 9]> <html class="no-js oldie" lang="en"> <![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  
+  <title>Redesign Notes | Divya Manian</title>  
+  <meta name="author" content="Divya Manian">
+  
+  <meta name="description" content="This site sports a refresh. Here is a list of what is different now: Runs on Octopress.
+Hosted on Github.
+Anyone can submit updates for any post with &hellip;">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://nimbupani.github.com/redesign-notes.html">
+  <link href="/stylesheets/screen.css" rel="stylesheet">
+  <link href="http://feeds.feedburner.com/nimbupani" rel="alternate" title="Subscribe" type="application/atom+xml">
+  <link href="http://feeds.feedburner.com/nimbu" rel="alternate" title="Subscribe to Web Development updates" type="application/atom+xml">    
+  
+</head>
+
+
+<body  >
+  <div class="container">
+    <div class="content">
+      <header role="banner">  <h1><a href="/">Divya Manian</a></h1>
+  
+  <h2><a class="twitter" href="https://twitter.com/divya">twitter</a> <a class="rss" href="http://feeds.feedburner.com/nimbupani">RSS Feed</a> <a class="youtube" href="http://youtube.com/nimbupani">Youtube Channel</a> <a class="github" href="https://github.com/nimbupani">Github</a></h2>
+  
+</header>
+      <nav class="sitenav"><a href="/">Home</a>
+<a href="/archives">Archives</a>
+<a href="/about.html">About</a>
+</nav>    
+      
+  
+
+
+
+  
+
+
+<article>
+  <nav class="article">
+    
+      <a class="previous" href="/summary-of-various-exciting-css-drafts-and-proposals.html" title="Summary of various exciting CSS drafts and proposals">&#x276C;</a>      
+    
+    
+      <a class="next" href="/swatchs-now-is-androids-future.html" title="Swatch’s Now is Android’s Future?">&#x276D;</a>              
+     
+    
+               
+  </nav>
+    <header>
+    
+
+
+
+
+  
+
+<time datetime="2011-12-11T04:51:00+05:30" pubdate><span class='month'>Dec</span> <span class='day'>11</span> <span class='year'>2011</span></time>    
+    
+      <h1 class="entry-title"><a href="/redesign-notes.html">Redesign Notes</a></h1>
+    
+    
+    
+    
+  </header>
+<div class="entry-content"><p>This site sports a refresh. Here is a list of what is different now:</p>
+
+<ul>
+<li>Runs on <a href="http://octopress.org">Octopress</a>.</li>
+<li>Hosted on <a href="http://github.com">Github</a>.</li>
+<li>Anyone can submit updates for any post with a pull request.</li>
+<li><a href="http://disqus.com">Disqus</a> comments (with threading!)</li>
+<li>No more categories except <a href="/categories/web-development">Web Development</a>.</li>
+<li>Based on <a href="http://h5bp.com">HTML5Boilerplate</a> (obviously).</li>
+<li>Keyboard navigation! Press left/right arrow for previous/next page.</li>
+</ul>
+
+
+<h3>Why</h3>
+
+<p>I have been wanting to move to a static site for several months because there were several things that annoyed me about Drupal (or any other CMS systems):</p>
+
+<ul>
+<li>Lack of out of the box version control.</li>
+<li>Unnecessary security nightmare with MySQL.</li>
+<li>Loading of needless large resources just because the admin interfaces require it (<code>drupal.js</code> &amp; <code>drupal.css</code> I am looking at you).</li>
+<li>No way to collaborate or have others edit my mistakes (other than in comments).</li>
+<li>Dependence on several modules which go out of date when a new version comes along.</li>
+<li>Ceaseless updating of modules and versions.</li>
+<li>PHP (white screen of death anyone)!?!</li>
+<li>Poor spam filtering.</li>
+<li>Painful backup of database and none for the layout and design.</li>
+<li><code>.htaccess</code> drama</li>
+</ul>
+
+
+<p>It was not until <a href="http://thecssninja.com">Ryan Seddon</a> pointed me to the documentation on <a href="https://github.com/mojombo/jekyll/wiki/blog-migrations">migrating from Drupal</a> that this even became feasible. Sadly, the script does not generate categories for the exported markdown files. Fortunately, I used this opportunity to disband the idea of categories all-together and just manually edit whichever post fitted best into <a href="/categories/web-development/">Web Development</a> as that typically has been what most visitors look for.</p>
+
+<p>Later, <a href="http://rmurphey.com">Rebecca Murphey</a> moved her site to Octopress which seemed to be a nice wrapper around Jekyll and the migration seemed much less work than before. The most tedious process in migrating content from 2003 onwards was the export of the blog posts from Drupal, and making the Disqus comments work.</p>
+
+<h3>Disqus</h3>
+
+<p>Disqus offers a path for Wordpress users though, but for Drupal you would need to provide an XML file to import from. The good news is the new <a href="http://drupal.org/node/1349010#comment-5275640">Disqus module does that exactly</a> (you need to look under <code>Admin/Content Management/Comments</code> to find the export function). You can use any Disqus identifier, but the easiest method seems to be to use the unique url of each post.</p>
+
+<p>The bad news is that unique url that Disqus module uses is the original Drupal path (e.g. <code>node/1</code>) which is useful if you are sticking with Drupal, but useless if you are using another system. Luckily for me, it also includes the path alias of the original post in <code>disqus_url</code> field for each comment, so it would simply be a matter of finding value of <code>disqus_url</code> in each comment, and replace the value of Disqus identifier with it – which is easy to do by executing a regular expression search and replace on the XML file.</p>
+
+<h3>Github Setup</h3>
+
+<p>Source files used to generate the site are stored in a branch called <a href="https://github.com/nimbupani/nimbupani.github.com/blob/source/">source</a> and the generated files are required to be on the master branch. Octopress provides a <a href="http://octopress.org/docs/deploying/github/">rake interface for you to setup your github pages</a> as you wish.</p>
+
+<p>You also need a CNAME record that has the domain name that will point to Github. If it is a top level domain, you need to also set up an A Record on your DNS, otherwise creating a CNAME record on your DNS should be sufficient.</p>
+
+<p>The most annoying thing is I cannot set the default branch for Pull Requests alone on Github (as they need to be made on the source branch), so for now you would have to change the branch of the remote to source manually for the pull request to go through.</p>
+
+<h3>Jekyll</h3>
+
+<p>If you are using Octopress, you most likely needn’t worry about fiddling with Jekyll other than setting variables in <code>_config.yaml</code> file. Any variables you declare there are available for you site-wide for use in your Jekyll templates. So, it was easy to <a href="https://github.com/nimbupani/nimbupani.github.com/blob/source/_config.yml#L45">set a github url</a> to create the &#8216;submit pull request&#8217; url you see below each post.</p>
+
+<p>Jekyll does not, by default, paginate the archives. But the same code used to render pagination on the default home page <a href="https://github.com/nimbupani/nimbupani.github.com/blob/source/source/archives/index.html">can be used to do so</a>. The Category archives page is rendered by an Octopress Jekyll plugin and is not paginated (I am sure it is possible, but slightly more tedious).</p>
+
+<p>Jekyll provides an XML feed at <code>atom.xml</code> and Octopress helpfully provides an XML feed with the categories plugin for your category listing. Octopress also makes it easy for you to set your feed urls to Feedburner. Just remember to point your Feedburner urls to these atom feeds!</p>
+
+<h3>Liquid</h3>
+
+<p><a href="https://github.com/Shopify/liquid">Liquid</a> is the templating engine used by Jekyll. It looks pleasing and has a small set of manipulations you can do with it out of the box. I really like the simple filters that let you <a href="https://github.com/Shopify/liquid/wiki/Liquid-for-Designers">manipulate values by simply piping them through filters</a> (there is a <a href="http://cheat.markdunkley.com/">lovely cheat sheet</a> too). There is no way you can get the filename of the markdown file used to create a post within Jekyll, so I had to recreate it using Liquid filters: <code>"-"</code>.</p>
+
+<p>It is not quite as clean as I thought it would be, to render the latest post on the homepage while reusing the same post template. Basically, each post renders in a page and hence the data is available as <code>page.url</code> or <code>page.date</code>. However, home page is itself a page which renders a list of posts (in this case just one), hence I had to set a variable <code>post</code> and make that point to the latest one (<code>site.posts.latest</code>). This meant, any of the variables need to be rendered irrespective of whether they are <code>post.url</code> or <code>page.url</code>, which meant <a href="https://github.com/nimbupani/nimbupani.github.com/blob/source/source/_includes/post_detail.html">several <code>if/else</code> statements</a>. I think this is better than replicating the same template twice, and having one go out of sync with the other.</p>
+
+<h3>Design</h3>
+
+<p>Octopress offers a base layout/design which I found too complicated to work with. I ended up replacing most of the Sass files (have not indulged my whim on the architecture of the layout templates). I have an <a href="https://github.com/nimbupani/nimbupani.github.com/blob/source/sass/base/_extends.scss"><code>_extends.scss</code></a> to store all <a href="http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#extend">my extend rules</a>, and a <a href="https://github.com/nimbupani/nimbupani.github.com/blob/source/sass/base/_vars.scss"><code>_vars.scss</code></a> to store variables. I had to override a few disqus styles, so they went into their own scss file (with dirty <code>!important</code> at the end of each declaration!)</p>
+
+<p>I was happy with the architecture of the older design, which is why nothing has changed significantly. I did want the previous/next links to be located at a fixed location and provide very basic navigation on top.</p>
+
+<h3>Performance</h3>
+
+<p>Lack of PHP and MySQL has made this page render in about 1s compared to 2.6s previously. I also don&#8217;t have frivolous resources loading which makes it better.</p>
+
+<h3>Complaints</h3>
+
+<p>I am overall very satisfied with Octopress, and am so glad <a href="http://imathis.com">Brandon Mathis</a> created it. Only niggling complaint I have is that the rake deployment script takes <em>years</em> to run. You could use <code>rake isolate[filename]</code> and subsequent <code>rake integrate</code> to make this faster. But I wish it were the case automatically.</p>
+
+<p>Creating a new post is easy, but finding it in the 100s of posts I have to write it is a pain. I suspect I could add a <code>mate &lt;filename&gt;</code> to the <code>rake new_post</code> script which would make that easier.</p>
+
+<h3>Future</h3>
+
+<p>This site is a work in progress. I have some outstanding <a href="https://github.com/nimbupani/nimbupani.github.com/issues/1">to-dos</a> that I hope to get to soon. I do want to use this site to experiment with learning new languages/technologies, so anything you think would be an interesting idea to pursue, please <a href="https://github.com/nimbupani/nimbupani.github.com/issues/new">suggest</a>!</p>
+</div>
+
+  <footer>
+    <p class="meta">This post was posted by 
+  
+
+<a href="/about.html">Divya Manian</a>
+ on 
+
+
+
+
+  
+
+<time datetime="2011-12-11T04:51:00+05:30" pubdate><span class='month'>Dec</span> <span class='day'>11</span> <span class='year'>2011</span></time> in 
+
+<span class="categories">
+  
+    <a class='category' href='/categories/web-development/'>Web Development</a>
+  
+</span>
+
+.  If you would like to update this post, <a href="https://github.com/nimbupani/nimbupani.github.com/blob/source/source/_posts/2011-12-11-redesign-notes.md">please send a pull request</a>.       
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+      
+    </div>
+  </div>
+  <aside id="articles">
+    <p><img class="avatar"
+    src="http://a2.twimg.com/profile_images/1696865113/me_normal"
+    height=48> <a href="http://twitter.com/divya">Divya Manian</a> is a Web Developer in Seattle. <a href="/about.html">More about me ❭</a></p>
+    <h2>Posts on Web Development</h2>
+    <ul><li><a href="/jscamp-css-next.html">JSCamp: CSS Next</a></li><li><a href="/some-updates.html">Some Updates</a></li><li><a href="/css-object-model.html">CSS Object Model</a></li><li><a href="/fake-bolding-of-web-fonts.html">Fake Bolding of Web Fonts</a></li><li><a href="/html5please-api.html">Html5please API</a></li><li><a href="/html5please.html">html5please</a></li><li><a href="/mustache.html">mustache, hogan, handlebars</a></li><li><a href="/redesign-notes.html">Redesign Notes</a></li><li><a href="/summary-of-various-exciting-css-drafts-and-proposals.html">Summary of various exciting CSS drafts and proposals</a></li><li><a href="/this-revolution-needs-new-revolutionaries.html">This revolution needs new revolutionaries</a></li><li><a href="/some-css-transition-hacks.html">Some CSS Transition hacks</a></li><li><a href="/safe-css-defaults.html">Safe CSS Defaults</a></li><li><a href="/unplugged-2011.html">Unplugged 2011</a></li><li><a href="/bokeh-with-css3-gradients.html">Bokeh with CSS3 Gradients</a></li><li><a href="/making-pure-css3-demos-better.html">Making "Pure CSS3" demos better</a></li><li><a href="/web-opener-at-opera.html">Web Opener at Opera</a></li><li><a href="/current-color-in-css.html">Current Color in CSS</a></li><li><a href="/css-vocabulary.html">CSS Vocabulary</a></li><li><a href="/active-web-development.html">Active Web Development</a></li><li><a href="/sexy-css3-buttons.html">Sexy CSS3 Buttons</a></li><li><a class="btn" href="/categories/web-development/">More</a></li></ul>
+  </aside>
+  <footer role="contentinfo"><p>
+  Copy to your heart’s content 2012 - Divya Manian -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>  
+</p>
+
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'nimbublog';
+      var disqus_developer = 1;        
+      
+      
+        var disqus_url = 'http://nimbupani.com/redesign-notes.html';
+        var disqus_identifier = 'http://nimbupani.com/redesign-notes.html';                
+      
+        
+        
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+<script src="/javascripts/octopress.js"></script>
+
+  <script>
+    var _gaq=[['_setAccount','UA-97188-1'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+
+
+
+
+</body>
+</html>

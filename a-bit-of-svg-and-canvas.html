@@ -1,0 +1,227 @@
+
+<!doctype html>
+<!--[if lt IE 9]> <html class="no-js oldie" lang="en"> <![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  
+  <title>A Bit of SVG and Canvas | Divya Manian</title>  
+  <meta name="author" content="Divya Manian">
+  
+  <meta name="description" content="As you might have noticed from my previous writings on HTML 5 and CSS 3, I typically write about topics I wish to know more about, after spending a &hellip;">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://nimbupani.github.com/a-bit-of-svg-and-canvas.html">
+  <link href="/stylesheets/screen.css" rel="stylesheet">
+  <link href="http://feeds.feedburner.com/nimbupani" rel="alternate" title="Subscribe" type="application/atom+xml">
+  <link href="http://feeds.feedburner.com/nimbu" rel="alternate" title="Subscribe to Web Development updates" type="application/atom+xml">    
+  
+</head>
+
+
+<body  >
+  <div class="container">
+    <div class="content">
+      <header role="banner">  <h1><a href="/">Divya Manian</a></h1>
+  
+  <h2><a class="twitter" href="https://twitter.com/divya">twitter</a> <a class="rss" href="http://feeds.feedburner.com/nimbupani">RSS Feed</a> <a class="youtube" href="http://youtube.com/nimbupani">Youtube Channel</a> <a class="github" href="https://github.com/nimbupani">Github</a></h2>
+  
+</header>
+      <nav class="sitenav"><a href="/">Home</a>
+<a href="/archives">Archives</a>
+<a href="/about.html">About</a>
+</nav>    
+      
+  
+
+
+
+  
+
+
+<article>
+  <nav class="article">
+    
+      <a class="previous" href="/stalking-africa-online-part-2.html" title="Stalking Africa Online - Part 2">&#x276C;</a>      
+    
+    
+      <a class="next" href="/anatomy-of-nimbu-in.html" title="Anatomy of nimbu.in">&#x276D;</a>              
+     
+    
+               
+  </nav>
+    <header>
+    
+
+
+
+
+  
+
+<time datetime="2009-08-26T00:00:00+05:30" pubdate><span class='month'>Aug</span> <span class='day'>26</span> <span class='year'>2009</span></time>    
+    
+      <h1 class="entry-title"><a href="/a-bit-of-svg-and-canvas.html">A Bit of SVG and Canvas</a></h1>
+    
+    
+    
+    
+  </header>
+<div class="entry-content"><p>As you might have noticed from <a href="http://nimbupani.com/blog/web-design.html">my previous writings on HTML 5 and CSS 3</a>, I typically write about topics I wish to know more about, after spending a few weeks intensely <span class="strike">googling</span> learning about them. These two weeks, they happen to be SVG and Canvas. The interwebs are heating up with debates about the merits of each, and many are predicting a deathmatch. However, my research convinces me that each has its own purpose, but definitely their time has come.</p>
+
+
+<p></p>
+
+<h3>What is SVG?</h3>
+
+
+<p><abbr title="Scalable Vector Graphics">SVG</abbr> is a language for describing two-dimensional graphics and graphical applications in XML. Some examples of SVG are the <a href="http://upload.wikimedia.org/wikipedia/commons/7/77/Wikipedia_svg_logo.svg">Wikipedia logo</a> and this &ldquo;Hello World&rdquo; of SVG, <a href="http://www.amplesdk.com/examples/svg/tiger/">a Tiger</a>. View the source of those two SVG files to see how SVG looks like.</p>
+
+
+<p></p>
+
+<h3>What is Canvas?</h3>
+
+
+<p></p>
+
+<p>The <a href="http://dev.w3.org/html5/spec/Overview.html#the-canvas-element">HTML 5 spec</a> defines it best: &ldquo;The canvas element represents a resolution-dependent bitmap canvas, which can be used for rendering graphs, game graphics, or other visual images on the fly.&rdquo;</p>
+
+
+<p><a href="http://people.mozilla.com/~vladimir/xtech2006/">This presentation by Mozilla&rsquo;s Vladimir Vuki&#x107;evi&#x107;</a>, created in 2006, has a good explanation of the differences between SVG and Canvas, namely:</p>
+
+
+<ul>
+    <li>SVG is XML based. This means, every element is available within the SVG <abbr title="Document Object Model">DOM</abbr> (useful when you want to attach javascript event handlers for an element &mdash; say you want to make the SVG tiger&rsquo;s muskers twitch if you click on it). Canvas is not XML based.</li>                        
+    <li>Canvas is rendered pixel by pixel. SVG is a bunch of vectors and needs to be manipulated as a group of shapes. An analogy in the Photoshop world would be, creating a rectangle using the &ldquo;shape&rdquo; tool in vs. using paintbrush.</li>
+</ul>
+
+
+<p></p>
+
+<h3>Who Will Win?</h3>
+
+
+<p>Even though they are quite different in nature and purpose, there are several things that can be done using both Canvas and SVG. The recent popularity of the Canvas element seems to make some people sound the death knell for SVG. But, from what I have gathered, this is far from the truth.</p>
+
+
+<p></p>
+
+<p>Canvas is as good as an image — except it can be manipulated pixel by pixel. Right now, Canvas element cannot support event handlers (e.g. have a 20x20px wide rectangle within a canvas be clickable). SVG does.</p>
+
+
+<p></p>
+
+<p>Canvas, in its current state is not accessible. SVG however is <a href="http://www.iheni.com/just-how-accessible-is-svg/">quite accessible</a>.</p>
+
+
+<p></p>
+
+<p>All this might change, as there is a task force that is looking into a <a href="http://dev.w3.org/html5/canvas-api/canvas-2d-api.html">Canvas 2D API</a>. The very changes that might apply to Canvas might even get applied to the image element in future versions of SVG &mdash; which would a big win.</p>
+
+
+<p>There are, however, <a href="http://www.borismus.com/canvas-vs-svg-performance/">significant performance differences between Canvas and SVG</a>. The outcome of the experiment described in the previous link is that, Canvas is more suitable for a graphics-intensive game where many objects are redrawn frequently (like this <a href="http://blog.nihilogic.dk/2008/04/super-mario-in-14kb-javascript.html">Super Mario game</a>), while SVG is best for applications that involve large rendering areas (like Google Maps).</p>
+
+
+<p></p>
+
+<h3>Can I use them now?</h3>
+
+
+<p>Yes, you can. There are many initiatives to enable browsers which don&rsquo;t  support SVG or Canvas to render them using other means. Google has an impressive <a href="http://code.google.com/p/svgweb/">SVG Web</a> project that uses Flash to render SVG in browsers that do not support SVG natively. <a href="http://raphaeljs.com/">Raphael</a> renders content into SVG or VML using javascript (it is NOT a javascript API for SVG or VML). For Canvas, Google has an <a href="http://code.google.com/p/explorercanvas/">explorecanvas</a> library that uses VML (or Silverlight) to render Canvas elements (you simply need to include the excanvas.js file, and it should work) in Internet Explorer.  Do note that IE9 now supports both <a href="http://ie.microsoft.com/testdrive/info/ReleaseNotes/Default.html">SVG and Canvas</a>.</p>
+
+
+<p>Mark Pilgrim, as usual, has written an excellent article on how to use <a href="http://diveintohtml5.org/canvas.html">Canvas</a> element, which is part of <a href="http://diveintohtml5.org/">his book on HTML 5</a>.</p>
+
+
+<h3>So, really, who wins?</h3>
+
+
+<p>Both. These are exciting times for SVG and Canvas. We finally have a native alternative to Flash for basic animation needs. Keep your eyes peeled on the <a href="http://lists.w3.org/Archives/Public/public-html/">HTML mailing list</a> for breaking news. Or you can hear about them a few seconds later on my <a href="http://twitter.com/nimbuin">Web Development Twitter Stream</a>.</p>
+
+</div>
+
+  <footer>
+    <p class="meta">This post was posted by 
+  
+
+<a href="/about.html">Divya Manian</a>
+ on 
+
+
+
+
+  
+
+<time datetime="2009-08-26T00:00:00+05:30" pubdate><span class='month'>Aug</span> <span class='day'>26</span> <span class='year'>2009</span></time> in 
+
+<span class="categories">
+  
+    <a class='category' href='/categories/web-development/'>Web Development</a>
+  
+</span>
+
+.  If you would like to update this post, <a href="https://github.com/nimbupani/nimbupani.github.com/blob/source/source/_posts/2009-08-26-a-bit-of-svg-and-canvas.md">please send a pull request</a>.       
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+      
+    </div>
+  </div>
+  <aside id="articles">
+    <p><img class="avatar"
+    src="http://a2.twimg.com/profile_images/1696865113/me_normal"
+    height=48> <a href="http://twitter.com/divya">Divya Manian</a> is a Web Developer in Seattle. <a href="/about.html">More about me ❭</a></p>
+    <h2>Posts on Web Development</h2>
+    <ul><li><a href="/jscamp-css-next.html">JSCamp: CSS Next</a></li><li><a href="/some-updates.html">Some Updates</a></li><li><a href="/css-object-model.html">CSS Object Model</a></li><li><a href="/fake-bolding-of-web-fonts.html">Fake Bolding of Web Fonts</a></li><li><a href="/html5please-api.html">Html5please API</a></li><li><a href="/html5please.html">html5please</a></li><li><a href="/mustache.html">mustache, hogan, handlebars</a></li><li><a href="/redesign-notes.html">Redesign Notes</a></li><li><a href="/summary-of-various-exciting-css-drafts-and-proposals.html">Summary of various exciting CSS drafts and proposals</a></li><li><a href="/this-revolution-needs-new-revolutionaries.html">This revolution needs new revolutionaries</a></li><li><a href="/some-css-transition-hacks.html">Some CSS Transition hacks</a></li><li><a href="/safe-css-defaults.html">Safe CSS Defaults</a></li><li><a href="/unplugged-2011.html">Unplugged 2011</a></li><li><a href="/bokeh-with-css3-gradients.html">Bokeh with CSS3 Gradients</a></li><li><a href="/making-pure-css3-demos-better.html">Making "Pure CSS3" demos better</a></li><li><a href="/web-opener-at-opera.html">Web Opener at Opera</a></li><li><a href="/current-color-in-css.html">Current Color in CSS</a></li><li><a href="/css-vocabulary.html">CSS Vocabulary</a></li><li><a href="/active-web-development.html">Active Web Development</a></li><li><a href="/sexy-css3-buttons.html">Sexy CSS3 Buttons</a></li><li><a class="btn" href="/categories/web-development/">More</a></li></ul>
+  </aside>
+  <footer role="contentinfo"><p>
+  Copy to your heart’s content 2012 - Divya Manian -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>  
+</p>
+
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'nimbublog';
+      var disqus_developer = 1;        
+      
+      
+        var disqus_url = 'http://nimbupani.com/a-bit-of-svg-and-canvas.html';
+        var disqus_identifier = 'http://nimbupani.com/a-bit-of-svg-and-canvas.html';                
+      
+        
+        
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+<script src="/javascripts/octopress.js"></script>
+
+  <script>
+    var _gaq=[['_setAccount','UA-97188-1'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+
+
+
+
+</body>
+</html>

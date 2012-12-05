@@ -1,0 +1,202 @@
+
+<!doctype html>
+<!--[if lt IE 9]> <html class="no-js oldie" lang="en"> <![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  
+  <title>Accessible CSS Barcharts | Divya Manian</title>  
+  <meta name="author" content="Divya Manian">
+  
+  <meta name="description" content="Update: I am now hosting the bar charts for posterity :) You can also fork it on Github. When I worked on the design for HTML5Readiness, I felt &hellip;">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://nimbupani.github.com/accessible-css-barcharts.html">
+  <link href="/stylesheets/screen.css" rel="stylesheet">
+  <link href="http://feeds.feedburner.com/nimbupani" rel="alternate" title="Subscribe" type="application/atom+xml">
+  <link href="http://feeds.feedburner.com/nimbu" rel="alternate" title="Subscribe to Web Development updates" type="application/atom+xml">    
+  
+</head>
+
+
+<body  >
+  <div class="container">
+    <div class="content">
+      <header role="banner">  <h1><a href="/">Divya Manian</a></h1>
+  
+  <h2><a class="twitter" href="https://twitter.com/divya">twitter</a> <a class="rss" href="http://feeds.feedburner.com/nimbupani">RSS Feed</a> <a class="youtube" href="http://youtube.com/nimbupani">Youtube Channel</a> <a class="github" href="https://github.com/nimbupani">Github</a></h2>
+  
+</header>
+      <nav class="sitenav"><a href="/">Home</a>
+<a href="/archives">Archives</a>
+<a href="/about.html">About</a>
+</nav>    
+      
+  
+
+
+
+  
+
+
+<article>
+  <nav class="article">
+    
+      <a class="previous" href="/book-reviews-for-july-part-2.html" title="Book Reviews for July - Part 2">&#x276C;</a>      
+    
+    
+      <a class="next" href="/sexy-css3-buttons.html" title="Sexy CSS3 Buttons">&#x276D;</a>              
+     
+    
+               
+  </nav>
+    <header>
+    
+
+
+
+
+  
+
+<time datetime="2010-08-16T00:00:00+05:30" pubdate><span class='month'>Aug</span> <span class='day'>16</span> <span class='year'>2010</span></time>    
+    
+      <h1 class="entry-title"><a href="/accessible-css-barcharts.html">Accessible CSS Barcharts</a></h1>
+    
+    
+    
+    
+  </header>
+<div class="entry-content"><p><b>Update:</b> I am now <a href="http://nimbu.in/accessible-bar-charts/">hosting the bar charts</a> for posterity :)  You can also <a href="http://github.com/nimbupani/table-bar-chart">fork it on Github</a>.</p>
+
+
+<p><a href="http://nimbu.in/accessible-bar-charts/"><img src="http://nimbupani.com/files/10kbarchart.png" alt="10kbarchart.png" border="0" width="600" height="409"></a></p>
+
+
+
+
+<p>When I worked on the design for <a href="http://html5readiness.com">HTML5Readiness</a>, I felt guilty for not using a table to represent the data. So, when the 10K competition came along and I thought it would be a good idea to come up with an accessible and ready-to-use CSS bar-chart. </p>
+
+
+
+
+<p>I initially thought of asking user for the data and then rendering the chart along with code for the HTML and CSS. But, it did not seem very intuitive (especially expecting the user to imagine the relationship between the data and the graph). I recalled <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/editing.html#attr-contenteditable">contentEditable</a> was now available in almost all browsers and decided to use that to let the users update the chart with names and values they wanted. As soon as the user finishes editing one of the chart values, the Textarea below updates to show the HTML markup they can copy to use on their own website.</p>
+
+
+
+
+<p>It was not a very difficult application to develop (given that I could already use jQuery in addition to my 10K of files). Most of my time was spent thinking of how to update the length of the bars dynamically when the user tabs or moves focus from one <code>contenteditable</code> area to the other. I also inlined the edit and delete icons using data URLs and used CSS3 transitions to position the vertical axis and its label. All the text within the barchart is editable, and the bars alter when the value of one is significantly altered from its original value.</p>
+
+
+
+
+<p>I was pretty pleased with the app: it seemed to work on Opera 10.6,  Safari 5, and Firefox 3.6.8. But, you must have guessed it by now, it did not work on IE9. Why, you ask? IE9 does not allow HTML Table elements to be styled with the <code>display</code> property (here is <a href="https://connect.microsoft.com/IE/feedback/details/556576/html-table-elements-cant-be-styled-using-display?wa=wsignin1.0">the bug report</a>, warning: MSN Passport required to view). The bug has been closed with a note stating it is &ldquo;by design&rdquo;. </p>
+
+
+
+
+<p>No version of IE9 will ever support tables to be styled as anything other than a table. It boggles me that IE 9 team cannot even be bothered to answer why it is &ldquo;by design&rdquo;, given that almost every other browser on the market seems to support it? There are <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/tabular-data.html#the-table-element">no restrictions from the HTML5 standard either</a>.</p>
+
+
+
+
+<p>Anyway, I had to alter the markup, so  a <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/grouping-content.html#the-dl-element">name-value pair</a> seemed to be the best alternative. So, now it works on <a href="http://10k.aneventapart.com/">all the browsers that the contest mandates it should work on</a>!</p>
+
+
+
+
+<p>Some people have reported they are unable to edit the data in Firefox on Linux, which seems strange given that it works on Firefox 3.6 on a Mac and PC. I have no Linux machine to test on, but I hope some of those who are reading this can help me with that!</p>
+
+
+
+
+<p><span class=strike>Meanwhile, if this application seems useful, do <a href="http://10k.aneventapart.com/entry/details/102">vote</a>!</span> The results are out, and I did not win :(</p>
+
+
+
+</div>
+
+  <footer>
+    <p class="meta">This post was posted by 
+  
+
+<a href="/about.html">Divya Manian</a>
+ on 
+
+
+
+
+  
+
+<time datetime="2010-08-16T00:00:00+05:30" pubdate><span class='month'>Aug</span> <span class='day'>16</span> <span class='year'>2010</span></time> in 
+
+<span class="categories">
+  
+    <a class='category' href='/categories/web-development/'>Web Development</a>
+  
+</span>
+
+.  If you would like to update this post, <a href="https://github.com/nimbupani/nimbupani.github.com/blob/source/source/_posts/2010-08-16-accessible-css-barcharts.md">please send a pull request</a>.       
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+      
+    </div>
+  </div>
+  <aside id="articles">
+    <p><img class="avatar"
+    src="http://a2.twimg.com/profile_images/1696865113/me_normal"
+    height=48> <a href="http://twitter.com/divya">Divya Manian</a> is a Web Developer in Seattle. <a href="/about.html">More about me ❭</a></p>
+    <h2>Posts on Web Development</h2>
+    <ul><li><a href="/jscamp-css-next.html">JSCamp: CSS Next</a></li><li><a href="/some-updates.html">Some Updates</a></li><li><a href="/css-object-model.html">CSS Object Model</a></li><li><a href="/fake-bolding-of-web-fonts.html">Fake Bolding of Web Fonts</a></li><li><a href="/html5please-api.html">Html5please API</a></li><li><a href="/html5please.html">html5please</a></li><li><a href="/mustache.html">mustache, hogan, handlebars</a></li><li><a href="/redesign-notes.html">Redesign Notes</a></li><li><a href="/summary-of-various-exciting-css-drafts-and-proposals.html">Summary of various exciting CSS drafts and proposals</a></li><li><a href="/this-revolution-needs-new-revolutionaries.html">This revolution needs new revolutionaries</a></li><li><a href="/some-css-transition-hacks.html">Some CSS Transition hacks</a></li><li><a href="/safe-css-defaults.html">Safe CSS Defaults</a></li><li><a href="/unplugged-2011.html">Unplugged 2011</a></li><li><a href="/bokeh-with-css3-gradients.html">Bokeh with CSS3 Gradients</a></li><li><a href="/making-pure-css3-demos-better.html">Making "Pure CSS3" demos better</a></li><li><a href="/web-opener-at-opera.html">Web Opener at Opera</a></li><li><a href="/current-color-in-css.html">Current Color in CSS</a></li><li><a href="/css-vocabulary.html">CSS Vocabulary</a></li><li><a href="/active-web-development.html">Active Web Development</a></li><li><a href="/sexy-css3-buttons.html">Sexy CSS3 Buttons</a></li><li><a class="btn" href="/categories/web-development/">More</a></li></ul>
+  </aside>
+  <footer role="contentinfo"><p>
+  Copy to your heart’s content 2012 - Divya Manian -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>  
+</p>
+
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'nimbublog';
+      var disqus_developer = 1;        
+      
+      
+        var disqus_url = 'http://nimbupani.com/accessible-css-barcharts.html';
+        var disqus_identifier = 'http://nimbupani.com/accessible-css-barcharts.html';                
+      
+        
+        
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+<script src="/javascripts/octopress.js"></script>
+
+  <script>
+    var _gaq=[['_setAccount','UA-97188-1'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+
+
+
+
+</body>
+</html>

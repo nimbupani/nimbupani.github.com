@@ -1,0 +1,211 @@
+
+<!doctype html>
+<!--[if lt IE 9]> <html class="no-js oldie" lang="en"> <![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  
+  <title>Drop Shadows with CSS3 | Divya Manian</title>  
+  <meta name="author" content="Divya Manian">
+  
+  <meta name="description" content="Paul Irish showed me this implementation of CSS3 drop-shadows. The demo only works for webkit based browsers (though it will work on Firefox if the &hellip;">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://nimbupani.github.com/drop-shadows-with-css3.html">
+  <link href="/stylesheets/screen.css" rel="stylesheet">
+  <link href="http://feeds.feedburner.com/nimbupani" rel="alternate" title="Subscribe" type="application/atom+xml">
+  <link href="http://feeds.feedburner.com/nimbu" rel="alternate" title="Subscribe to Web Development updates" type="application/atom+xml">    
+  
+</head>
+
+
+<body  >
+  <div class="container">
+    <div class="content">
+      <header role="banner">  <h1><a href="/">Divya Manian</a></h1>
+  
+  <h2><a class="twitter" href="https://twitter.com/divya">twitter</a> <a class="rss" href="http://feeds.feedburner.com/nimbupani">RSS Feed</a> <a class="youtube" href="http://youtube.com/nimbupani">Youtube Channel</a> <a class="github" href="https://github.com/nimbupani">Github</a></h2>
+  
+</header>
+      <nav class="sitenav"><a href="/">Home</a>
+<a href="/archives">Archives</a>
+<a href="/about.html">About</a>
+</nav>    
+      
+  
+
+
+
+  
+
+
+<article>
+  <nav class="article">
+    
+      <a class="previous" href="/book-reviews-for-june-2010-part-1.html" title="Book Reviews for June 2010 - Part 1">&#x276C;</a>      
+    
+    
+      <a class="next" href="/mblax.html" title="Mblax">&#x276D;</a>              
+     
+    
+               
+  </nav>
+    <header>
+    
+
+
+
+
+  
+
+<time datetime="2010-06-23T00:00:00+05:30" pubdate><span class='month'>Jun</span> <span class='day'>23</span> <span class='year'>2010</span></time>    
+    
+      <h1 class="entry-title"><a href="/drop-shadows-with-css3.html">Drop Shadows with CSS3</a></h1>
+    
+    
+    
+    
+  </header>
+<div class="entry-content"><p><a href="http://paulirish.com">Paul Irish</a> showed me <a href="http://dev.ajcates.com/tests/wrap-shadow/test.php">this implementation of CSS3 drop-shadows</a>. The demo only works for webkit based browsers (though it will work on Firefox if the appropriate vendor-prefixes are added to the stylesheet). </p>
+
+
+
+
+<p><a href="http://nimbupani.com/demo/css3-drop-shadows.html"><img src="http://nimbupani.com/files/drop-shadow_1.png" alt="drop-shadow.png" border="0" width="501" height="262" ></a></p>
+
+
+
+
+<p>I first noticed this kind of drop-shadow on <a href="http://aspire2enquire.typepad.com/aspire_to_enquire/2009/08/mike-matas.html">Mike Matas&#8217;s old website</a>. Looking at the CSS for the CSS3 implementation of the drop-shadow (uses box-shadows to avoid the use of an image), there were a number of things that I found missing: </p>
+
+
+
+
+<ol>
+    <li>The <code>article</code> is absolutely positioned. It will not work in Firefox if it is not so (the simple fix is to add <code>display: block;</code> to the style of the <code>article</code> element). </li> 
+    <li>The method requires a block element within article to render correctly. The CSS for the block element has a lot of styles that I think are unnecessary and complicated.</li> 
+    <li>The stylesheet was longer and more complicated than necessary.</li>
+</ol>
+
+
+<p>As an attempt to try a simpler version of it, I came up with <a href="http://nimbupani.com/demo/css3-drop-shadows.html">this implementation of CSS3 Drop-shadows</a>. This is what I did: </p>
+
+
+<ol>
+    <li><span class="strike">Add a wrapper around the container that needs shadows. Position it relatively</span>. Position the element that needs the drop shadows relatively.</li>   
+    <li><p>Absolute position the pseudo-elements like the demonstration above, except position them behind the main content with <code>z-index: -1</code>, like so:</p>
+        <pre><code>article:before, article:after {
+  -webkit-box-shadow: 0 15px 10px rgba(0,0,0, .7);
+  -moz-box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);
+  -webkit-transform: rotate(-3deg);
+  -moz-transform: rotate(-3deg);
+  -o-transform: rotate(-3deg);
+  position: absolute;
+  left: 10px;
+  bottom: 15px;
+  z-index: -1;
+  width: 50%;
+  max-width: 300px;
+  height: 20%;
+  content: "";
+}
+</code></pre> <p><small>Thanks <a href="http://simurai.com/">simurai</a> for better box-shadow values, <a href="http://nicolasgallagher.com/">Nicolas Gallagher</a> for fluid-layout fixes and further refinement, and <a href="http://twitter.com/seutje">seutje</a> for suggesting the removal of background color on pseudo-elements!</small> </p></li>
+    <li><em>Fin</em>. This is 44 lines of code as compared to 84 lines of code in the original demo and works on all the latest versions of Opera, Chrome, Safari and Firefox. But, Opera&rsquo;s, and Firefox&rsquo;s implementation of transforms are not as good as Webkit&rsquo;s. </li>
+</ol>
+
+
+<p>It is interesting to attempt it for fun, but this is definitely not ready for production use!</p>
+
+
+<p>Nicolas Gallagher&#8217;s explanation of his fixes is a <a href="http://nicolasgallagher.com/css-drop-shadows-without-images/">good read</a>.</p>
+
+
+
+</div>
+
+  <footer>
+    <p class="meta">This post was posted by 
+  
+
+<a href="/about.html">Divya Manian</a>
+ on 
+
+
+
+
+  
+
+<time datetime="2010-06-23T00:00:00+05:30" pubdate><span class='month'>Jun</span> <span class='day'>23</span> <span class='year'>2010</span></time> in 
+
+<span class="categories">
+  
+    <a class='category' href='/categories/web-development/'>Web Development</a>
+  
+</span>
+
+.  If you would like to update this post, <a href="https://github.com/nimbupani/nimbupani.github.com/blob/source/source/_posts/2010-06-23-drop-shadows-with-css3.md">please send a pull request</a>.       
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+      
+    </div>
+  </div>
+  <aside id="articles">
+    <p><img class="avatar"
+    src="http://a2.twimg.com/profile_images/1696865113/me_normal"
+    height=48> <a href="http://twitter.com/divya">Divya Manian</a> is a Web Developer in Seattle. <a href="/about.html">More about me ❭</a></p>
+    <h2>Posts on Web Development</h2>
+    <ul><li><a href="/jscamp-css-next.html">JSCamp: CSS Next</a></li><li><a href="/some-updates.html">Some Updates</a></li><li><a href="/css-object-model.html">CSS Object Model</a></li><li><a href="/fake-bolding-of-web-fonts.html">Fake Bolding of Web Fonts</a></li><li><a href="/html5please-api.html">Html5please API</a></li><li><a href="/html5please.html">html5please</a></li><li><a href="/mustache.html">mustache, hogan, handlebars</a></li><li><a href="/redesign-notes.html">Redesign Notes</a></li><li><a href="/summary-of-various-exciting-css-drafts-and-proposals.html">Summary of various exciting CSS drafts and proposals</a></li><li><a href="/this-revolution-needs-new-revolutionaries.html">This revolution needs new revolutionaries</a></li><li><a href="/some-css-transition-hacks.html">Some CSS Transition hacks</a></li><li><a href="/safe-css-defaults.html">Safe CSS Defaults</a></li><li><a href="/unplugged-2011.html">Unplugged 2011</a></li><li><a href="/bokeh-with-css3-gradients.html">Bokeh with CSS3 Gradients</a></li><li><a href="/making-pure-css3-demos-better.html">Making "Pure CSS3" demos better</a></li><li><a href="/web-opener-at-opera.html">Web Opener at Opera</a></li><li><a href="/current-color-in-css.html">Current Color in CSS</a></li><li><a href="/css-vocabulary.html">CSS Vocabulary</a></li><li><a href="/active-web-development.html">Active Web Development</a></li><li><a href="/sexy-css3-buttons.html">Sexy CSS3 Buttons</a></li><li><a class="btn" href="/categories/web-development/">More</a></li></ul>
+  </aside>
+  <footer role="contentinfo"><p>
+  Copy to your heart’s content 2012 - Divya Manian -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>  
+</p>
+
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'nimbublog';
+      var disqus_developer = 1;        
+      
+      
+        var disqus_url = 'http://nimbupani.com/drop-shadows-with-css3.html';
+        var disqus_identifier = 'http://nimbupani.com/drop-shadows-with-css3.html';                
+      
+        
+        
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+<script src="/javascripts/octopress.js"></script>
+
+  <script>
+    var _gaq=[['_setAccount','UA-97188-1'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+
+
+
+
+</body>
+</html>

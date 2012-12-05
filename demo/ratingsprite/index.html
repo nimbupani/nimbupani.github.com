@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Demo of Ratings Sprite</title>
+	<meta name="generator" content="TextMate http://macromates.com/">
+	<meta name="author" content="Divya">
+	<style type="text/css" media="screen">
+		body{
+			font-family:helvetica, arial, sans-serif;
+			font-style:.75em;
+			line-height:1.5;
+			padding:2em;
+		}            
+				
+		span.rating {
+		  background:url("stars.png") top left;  
+		  display:inline-block;  
+			height:20px;
+		  width:100px; /* width of the set of 5 stars */
+		  overflow:hidden;
+		  text-indent:-1000em;  
+		}
+		
+		span.r0 {
+		  background-position:-100px 0;
+		}
+		span.r1 {             
+		   background-position:-80px 0; /* assuming the width assigned to each star is 20px including the space on the right */      
+		}
+		
+		span.r2 {
+		  background-position:-60px 0;
+		}
+		span.r3 {             
+		   background-position:-40px 0; 
+		}					 
+		span.r4 {
+		  background-position:-20px 0;
+		}                          
+		span.r5 {
+		  background-position:0 0;			
+		}
+	</style>
+	<!-- Date: 2009-11-09 -->
+</head>
+<body>     
+	<h1>Demo of Ratings Sprite</h1>
+	<p>To know more, see my blog post on <a href="http://nimbupani.com/blog/creating-rating-sprites.html">Creating Rating Sprites</a></p>
+  <p><span class="rating r0">0/5</span> 0 rated</p>
+  <p><span class="rating r4">1/5</span> 1 rated</p>
+</body>
+</html>
