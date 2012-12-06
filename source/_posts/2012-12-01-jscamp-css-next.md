@@ -10,7 +10,7 @@ I talked at [JSCamp](http://jscamp.asia) on 28th November 2012, on some of the n
 
 ## No CSS3 or CSS4
 
-Before I delve into what the newer features of CSS that I am very interested in are, I want to clarify a myth that keeps persists on how there are varying ‘versions’ of CSS like CSS3 and CSS4. [Tab Atkins wrote in detail about why there is no CSS3](http://www.xanthir.com/b4Ko0). Essentially, work after [CSS 2.1 specification](http://www.w3.org/TR/CSS21/) has been split into independent modules that can all reach stability independent of each other, so specifications can become stable and recommendations faster.
+Before I delve into what the newer features of CSS that I am very interested in are, I want to clarify a myth that persists on how there are varying ‘versions’ of CSS like CSS3 and CSS4. [Tab Atkins wrote in detail about why there is no CSS3](http://www.xanthir.com/b4Ko0). Essentially, work after [CSS 2.1 specification](http://www.w3.org/TR/CSS21/) has been split into independent modules that can all reach stability independent of each other, so specifications can become stable and recommendations faster.
 
 ## Typography
 The [Font Module](http://dev.w3.org/csswg/css3-fonts/) has a couple of interesting features that are worth looking at.
