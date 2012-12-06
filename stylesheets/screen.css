@@ -646,7 +646,7 @@ article footer::before {
 }
 
 article footer::before {
-  content: "❮ ❤ ❯";
+  content: "❮\00A0❤\00A0❯";
   background: #fff;
   border-radius: 3em;
   left: 50%;

@@ -4,7 +4,7 @@
   <title><![CDATA[Divya Manian]]></title>
   <link href="http://nimbupani.github.com/atom.xml" rel="self"/>
   <link href="http://nimbupani.github.com/"/>
-  <updated>2012-12-05T09:43:15+05:30</updated>
+  <updated>2012-12-06T20:56:11+05:30</updated>
   <id>http://nimbupani.github.com/</id>
   <author>
     <name><![CDATA[Divya Manian]]></name>
@@ -159,7 +159,7 @@
 }</pre>
 
 
-<p><a href="http://adobe.github.com/web-platform/demos/compositing/blend-photogallery/index.html">Demo of blend modes</a> (<em>use this <a href="">prototype build of Chromium</a> to view this</em>).</p>
+<p><a href="http://adobe.github.com/web-platform/demos/compositing/blend-photogallery/index.html">Demo of blend modes</a> (<em>use this <a href="https://github.com/adobe/webkit/downloads">prototype build of Chromium</a> to view this</em>).</p>
 
 <h2>Responsible Styling</h2>
 
