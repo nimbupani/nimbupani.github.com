@@ -6,7 +6,7 @@ comments: true
 category: "Web Development"
 ---
 
-I talked at [JSCamp](http://jscamp.asia) on 28th November 2012, on some of the newer features of CSS. I gave the talk without slides, so here is a description of all that I covered.
+I talked at [JSCamp](http://jscamp.asia) on 28th November 2012, on some of the newer features of CSS. I gave the talk without slides, so here is a description of all that I covered. 
 
 ## No CSS3 or CSS4
 
