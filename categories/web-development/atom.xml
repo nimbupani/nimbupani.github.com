@@ -4,7 +4,7 @@
   <title><![CDATA[Web Development | Divya Manian]]></title>
   <link href="http://nimbupani.github.com/categories/web-development/atom.xml" rel="self"/>
   <link href="http://nimbupani.github.com/"/>
-  <updated>2012-12-23T21:00:32+05:30</updated>
+  <updated>2012-12-25T19:33:48+05:30</updated>
   <id>http://nimbupani.github.com/</id>
   <author>
     <name><![CDATA[Divya Manian]]></name>
@@ -12,6 +12,125 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Markup-free icon fonts using unicode-range]]></title>
+    <link href="http://nimbupani.github.com/markup-free-icon-fonts-with-unicode-range.html"/>
+    <updated>2012-12-25T08:58:00+05:30</updated>
+    <id>http://nimbupani.github.com/markup-free-icon-fonts-with-unicode-range</id>
+    <content type="html"><![CDATA[<p>I used icon fonts extensively while designing <a href="http://fripfrap.io">fripfrap.io</a>. Unfortunately, icon fonts require tags wrapped around where they should be placed, and I went on a quest to find out if we can adaptively render icon fonts without any extra markup.</p>
+
+<h2>Icon Fonts</h2>
+
+<p>Icon fonts are easy clean way to render icons across all sizes of text. The other advantage is you can apply all the text controls that are available including <code>text-shadow</code>, <code>vertical-align</code>, <code>font-size</code> to tweak the output as you like, instead of fiddling around in SVG or with image sprites (<a href="http://blog.pictonic.co/post/32869817328/svgs-are-cool-but-icon-fonts-are-just-10-of-their">here are more details on why icon fonts are better</a>). The typical usage of icon fonts as pioneered by <a href="http://lab.simurai.com/buttons/">@simurai</a> is:</p>
+
+<pre>[data-icon]::before {
+    content: attr(data-icon);
+}</pre>
+
+
+<p>Then, when you generate custom icon fonts using services like <a href="http://icomoon.io/app">icomoon</a>, you can specify a character that will be used to represent that icon and use that as the value of the icon in the mark-up. For example, to render the twitter icon, I select the Twitter icon from one of the various free icons available on icomoon, and then set the character to be 't' in the app, and download the font:</p>
+
+<p><img src="http://s3.amazonaws.com/Gyazo/1356408460.png" alt="" /></p>
+
+<p>In your markup, you declare:</p>
+
+<pre>&lt;b data-icon=t>subscribe on twitter&lt;/b>
+</pre>
+
+
+<p>This markup in combination with the CSS we declared earlier, would <a href="http://codepen.io/nimbupani/pen/fdlLe">render the twitter icon like so</a>:</p>
+
+<p><img src="http://s3.amazonaws.com/Gyazo/1356408772.png" alt="" /></p>
+
+<h2>Problem with Using Icon Fonts via Generated Content</h2>
+
+<p>The first problem with this technique is Screen readers would read the alphabet used for the property <code>content</code>. This means, a person who uses a screen reader to navigate would hear 't twitter' rather than just 'twitter'. This obviously is not so fun.</p>
+
+<h2>Using Private Use Area for Icon Fonts</h2>
+
+<p>Fonts are basically key value pairs, with the key being the character and the value a glyph (a path representation). For example, you see these letters in this post because the browser comes across a character, looks up the table for the font specified, &amp; uses that glyph to render that character (e.g. 'a' or 'b' or '.'). The universal standard that is being increasingly adopted is called <a href="http://www.joelonsoftware.com/articles/Unicode.html">Unicode</a>.</p>
+
+<p>There is a whole range of key-value pairs within the Unicode table that are deliberately empty and that range is called Private Use Area (PUA).</p>
+
+<p>We can use this area to reference icon fonts. Using <a href="http://icomoon.io/app">Icomoon's icon font generator</a>, you can specify your icon as the glyph to represent a character from this PUA range:</p>
+
+<p><img src="http://s3.amazonaws.com/Gyazo/1356429440.png" alt="" /></p>
+
+<p><a href="http://icomoon.io/#docs#screenreaders">Icomoon's documentation covers more details on how to use this</a>. Essentially, it is as simple as specifying the character used for the icon to be one from the Private Use Area (PUA) and using the HTML entity equivalent as a value for the <code>data-icon</code> attribute:</p>
+
+<pre>&lt;b data-icon='&amp;#xe000;'>subscribe to twitter&lt;/b></pre>
+
+
+<p>This would solve the problem of having screen readers read out icon fonts incorrectly, but it still leaves us with an extra set of tags, attribute (<code>data-icon</code>) &amp; associated style that I think we could do without. This we can do with the CSS property called <code>unicode-range</code>.</p>
+
+<h2>Unicode Range</h2>
+
+<p>I previously mentioned <code>unicode-range</code> in my <a href="http://nimbupani.com/jscamp-css-next.html">round-up of what is new in CSS</a>, &amp; how it can be used to <a href="http://24ways.org/2011/creating-custom-font-stacks-with-unicode-range/">enhance an existing ampersand</a>. I also have been wondering if unicode-range in combination with icon fonts set in Private Use Area could be used to render icons.</p>
+
+<p>The markup then would merely be:</p>
+
+<pre>&amp;#xe000; subscribe to twitter</pre>
+
+
+<p>While the font-face declaration would change to:</p>
+
+<pre>@font-face {
+    font-family: 'icons';
+    src: url(path/to/font.woff) format('woff');
+    <b>unicode-range: U+E000-U+E005;</b>
+}</pre>
+
+
+<p>Then, when you define the base font:</p>
+
+<pre>body {
+   font-family: <b>icons</b>, sans-serif;
+}</pre>
+
+
+<p>This would render the icons inline with no other additions. This is nice, but previously with the <code>data-icon</code> process we could very easily hide or show icons based on Media/Feature queries by simply doing:</p>
+
+<pre>@media (max-width: 400px) {
+    [data-icon]::before { content: none; }
+}</pre>
+
+
+<p>But with inline icons, removing the font from the <code>font-family</code> would leave you with the empty rectangular glyph ():</p>
+
+<p><img src="http://s3.amazonaws.com/Gyazo/1356426010.png" alt="" /></p>
+
+<p>Does this mean, using unicode-range for fonts is a bust? Do we still need markup around these icons? There is a way out!</p>
+
+<h2>Layout Font to the Rescue</h2>
+
+<p>When I was wondering how to prevent this on Twitter, <a href="http://twitter.com/derschepp">Christian Schaefer</a> suggested the use of <a href="https://github.com/jonathantneal/layout-webfont">Layout Font</a> (a font that <a href="http://www.jonathantneal.com/">Jonathan Neal</a> invented to solve the problem of white-space impacting layouts using <code>display: inline-block</code> in CSS). The layout font merely replaces every glyph with what appears to be a "no space" in the font table. This will mean browsers when using this font would represent white space effectively as no space.</p>
+
+<p>Now I was trying to figure out how to transform this font into one that would have this same "no space" as the value for all unicode characters. At this juncture, <a href="http://twitter.com/keyamoon">Keyamoon</a> came to the rescue by creating a <a href="http://codepen.io/Keyamoon/pen/bnwDL">base-64 encoded version of the layout font</a>.</p>
+
+<p>And so, we are satisfied! Here is an example of how to use icon fonts with <code>unicode-range</code> but with a graceful fallback in case we do not want to render these icons any more.</p>
+
+<pre>@font-face {
+    font-family: space;
+    src: url(data:application/x-font-woff;charset=utf-8;base64,d09GRk9UVE8AAAOYAAsAAAAABUwAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABDRkYgAAABCAAAAIQAAACQ1P+0gUZGVE0AAAGMAAAAGgAAABxjhaFsR0RFRgAAAagAAAAbAAAAIAAvAARPUy8yAAABxAAAAEsAAABgP9zcNGNtYXAAAAIQAAAAOgAAAUrgERK3aGVhZAAAAkwAAAAuAAAANvsbcvdoaGVhAAACfAAAAB0AAAAkBBD942htdHgAAAKcAAAACAAAAAgAAAAAbWF4cAAAAqQAAAAGAAAABgACUABuYW1lAAACrAAAAN4AAAGJ242MgnBvc3QAAAOMAAAADAAAACAAAwAAeJw9zUEKwjAQRuF/kkhKDa2WKgqjZ8gJXHoBj+CqSJtNK3gCkdnmsLMQFEHdvdX3CM6BiIrunPqUBpAB4aBsdGd14yRYCW5fYntqXiL/CF4umnWcMa41AwvGbcnwjEcD+zEK1FhPQ3eMMX7x3wOgOwyRmVc6umfW7CtpZSWhfANCyyLweJxjYGBgZACCk535hiD6zD9JWRgNAEIVBfQAAHicY2BkYGDgA2IJBhBgYmCEQhYwjwEABFUANAB4nGNgZvzCOIGBlYGD0YcxjYGBwR1Kf2WQZGhhYGBiYGVmgAMBBJMhIM01hcHhA8MHBsYH/x8w6DE+YFBoYGBghCtQAEJGAGqIDSIAeJxjYGBgZoBgGQZGBhBwAfIYwXwWBg0gzQakGRmYGBg+MPz/D1IAoQUYoeqBgJGNAcEZoQAAbecGtwAAeJxjYGRgYADiTz08rvH8Nl8ZuJkYQODMP0lZBP3/ARMD4wMgl4MBLA0AIQUKSgAAeJxjYGRgYHzw/wGDHgMQ/GNgAnIZUAETAG2yA/MAAAAAAAAAAAAAAAAAUAAAAgAAeJx1jjFOAzEQRd8mmyAUhKgQpQsKml3ZVqocYEVNkT6KrNVKSSw5SZOD0HIESo7BATgCl+DHcUMRSyM/f/+ZP8Ad71ScT8UND4VH4pfCY545Fa6lfxaeMOO78FT6r5xVfSvlPnedeSR+KjzmFVu4lv5ReMIjX4Wn0n8YWBPZqiI7GNZxG6PgjUDPkQ0rkp6hP25Wgi77DvlOcgQMnlZphoXq/7yL5pnT4HQ3KpuJLu4OXUx9ML61ZmFKssjPG+cbb51c19ZbKjix1/8lxuUVWIa0HzTEtfZq7x+jCTpIAAB4nGNgZsALAAB9AAQ=) format('woff');
+}
+
+body { font-family: <b>icons</b>, sans-serif; }
+
+@media (max-width: 400px) {
+    body { font-family: <b>space</b>, sans-serif; }
+}</pre>
+
+
+<p>You can see this <a href="http://nimbu.in/private-use-unicode">adaptive icon font in action here</a>.</p>
+
+<h2>Browser Support</h2>
+
+<p>Why do you trouble me with reality? :| I previously erroneously stated that <code>unicode-range</code> is supported amongst all browsers, but this is not the case. It is only supported in Safari &amp; Chrome.</p>
+
+<p>This method maybe useful when <code>unicode-range</code> is more widely supported, but all I wanted to do was to find new ways to kill fluffy markup.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[JSCamp: CSS Next]]></title>
@@ -422,55 +541,6 @@ h1 {
 <p>In any case, if you can avoid exposing your users to horrific fake bolding, you should. And that is the point of this post: to remind myself to never ever have browsers fake the weights of web fonts.</p>
 
 <p>Note: <a href="http://css-tricks.com/watch-your-font-weight/">Here is Chris Coyier's take on it</a>.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Html5please API]]></title>
-    <link href="http://nimbupani.github.com/html5please-api.html"/>
-    <updated>2012-02-26T17:24:00+05:30</updated>
-    <id>http://nimbupani.github.com/html5please-api</id>
-    <content type="html"><![CDATA[<p><a href="http://api.html5please.com"><img src="http://cache.gyazo.com/88b8a0680005a6f09584510034f2b847.png" alt="" /></a></p>
-
-<p>Some time ago, I noticed that many <a href="http://static.echonest.com/MidemMusicMachine/index.html">webGL demos</a> had a nice browser prompt:</p>
-
-<p><img src="http://cache.gyazo.com/57a9e37c0c425c458978f0ce335bd18f.png" alt="" /></p>
-
-<p>If your browser did not support webGL, you got a little link to <a href="http://get.webgl.org">get.webgl.org</a> which uses UA detection to tell you what browser to view webGL with. If there was a newer version of your browser that supported webGL, then it would link to that browser. If not, it would link to all the other browsers that support webGL:</p>
-
-<p><img src="http://cache.gyazo.com/f0a80983ca4e1a8e1cebb72a66077b33.png" alt="getWebGL messaging" /></p>
-
-<p>Instead of forcing people to choose a browser arbitrarily due to a developer's whims and fancies, it provides you with an optimal recommendation based on your (viewer's) defaults.</p>
-
-<p>I wanted to see if we could do so with all the other HTML5 features. This way, there would be less of "download webkit browsers now" and more smart browser recommendations based on actual feature support.</p>
-
-<p>You also won't have to see antiquated messaging like "Download Opera 9.5" or "Download Chrome 8", but get an up-to-date browser support information depending on the features that are requested:</p>
-
-<p><img src="http://cache.gyazo.com/f49245b9418ab7069cf754436b079ea3.png" alt="Screenshot of browser support message" /></p>
-
-<p>If a newer version of your browser supports the required features, it would ask you to view the page in that browser and not in random other browsers:</p>
-
-<p><img src="http://cache.gyazo.com/45d07becc1f74d9c9544a120821652cd.png" alt="Screenshow of newer browser message" /></p>
-
-<p>I broached the idea <a href="https://github.com/paulirish/lazyweb-requests/issues/39">here</a> and then less than a month ago, <a href="http://twitter.com/jon_neal">Jonathan Neal</a> produced a full working implementation of how such a service would look like. I worked with Jon, <a href="http://twitter.com/fyrd">Alexis Deveria</a>, <a href="http://twitter.com/paul_irish">Paul Irish</a>, <a href="http://twitter.com/drublic">Hans Christian Reinl</a>, <a href="http://twitter.com/aaronlayton">Aaron Layton</a> and <a href="https://github.com/h5bp/html5please-api/contributors">many more</a> to create what is now <a href="http://api.html5please.com">HTML5Please API</a>.</p>
-
-<p>In brief, this service looks up the data used to render <a href="http://caniuse.com">When can I use</a> tables and match it to the user's UA. Depending on the match, and the required features, it would either tell the user that they have a browser that is missing critical features required on the page or it would get out of the way and not render anything.</p>
-
-<p>Here is how it looks like on a browser that supports all the required features:
-<img src="http://h5bp.github.com/html5please-api/site/with-support.png" alt="A page on a browser supporting Drag and Drop" /></p>
-
-<p>Here is how it looks like when a browser does not:
-<img src="http://h5bp.github.com/html5please-api/site/without-support.png" alt="A page on a browser that does not support Drag and Drop" /></p>
-
-<p>Even if the service fails to return anything (say network failure), there is no terrible disruption, the user can use the site as it is.</p>
-
-<p>Ideally, you would want to provide all critical actions on the user's browser based on what is available. If you absolutely must need certain features to enhance the experience, you can use this service to let the user know which browsers would offer that.</p>
-
-<p><a href="http://twitter.com/simurai">Simurai</a> has some creative uses of this service in his projects <a href="http://lab.simurai.com/carveme/">Carveme</a> and <a href="http://lab.simurai.com/flashlight/">Flash Light</a>. What more, this API has even been <a href="https://github.com/gf3/protobot/blob/master/protobot.js#L447">integrated into an IRC bot</a>!</p>
-
-<p>The <a href="https://github.com/h5bp/html5please-api/wiki/">Wiki pages</a> have much more in-depth information on all the possible options you can use with this API.</p>
-
-<p>Let us know your suggestions and bug reports on the <a href="http://github.com/h5bp/html5please-api/issues/">Github Issue Tracker</a>.</p>
 ]]></content>
   </entry>
   
