@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Adaptive Design Using Unicode Private Use Area for Icon Fonts"
+title: "Markup-free icon fonts using unicode-range"
 date: 2012-12-25 08:58
 comments: true
 category: "Web Development"
