@@ -42,7 +42,7 @@ A talk on how to use the Shadow DOM with some new exciting CSS Specifications al
 I will be giving a talk on what's next for CSS at [jscamp.asia](http://jscamp.asia). There is a good mix of interesting people coming by, so if you are in that region, please do come to the conference!
 
 ## Dotfiles
-I finally found the time to customize my dotfiles! I started with [Mathias Bynens's dotfiles](https://github.com/mathiasbynens/dotfiles) as was recommended on [Github](http://dotfiles.github.com) and then went over to the others. But finally ended up on [Nicolas Gallagher's dotfiles](http://github.com/necolas/dotfiles) as they were most well-organized & written. I added an AWS CLI as I upload my screen captures to AWS S3 bucket and some other tiny aliases that I thought was useful. [Here are my dotfiles](http://github.com/nimbupani/dotfiles).
+I finally found the time to customize my dotfiles! I started with [Mathias Bynens's dotfiles](https://github.com/mathiasbynens/dotfiles) as was recommended on [Github](http://dotfiles.github.com) and then went over to the others. But finally ended up on [Nicolas Gallagher's dotfiles](http://github.com/necolas/dotfiles) as they were most well-organized & written. I added an AWS CLI as I upload my screen captures to AWS S3 bucket and some other tiny aliases that I thought was useful.
 
 I hope to spend my vacation writing my own website generator as one is bound to do and get rid of Octopress monolith! I hope you have a great holiday season!
 
