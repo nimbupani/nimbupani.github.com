@@ -116,7 +116,7 @@ article footer::before {
 
 article footer::before {
   @extend .larger-focus;  
-  content: "❮ ❤ ❯";
+  content: "❮\00A0❤\00A0❯";
   background: #fff;
   border-radius: 3em;
   left: 50%;
