@@ -4,7 +4,7 @@
   <title><![CDATA[Divya Manian]]></title>
   <link href="http://nimbupani.github.com/atom.xml" rel="self"/>
   <link href="http://nimbupani.github.com/"/>
-  <updated>2012-12-30T07:42:27+05:30</updated>
+  <updated>2013-05-09T17:23:49-07:00</updated>
   <id>http://nimbupani.github.com/</id>
   <author>
     <name><![CDATA[Divya Manian]]></name>
@@ -14,9 +14,68 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Diversity in Conferences]]></title>
+    <link href="http://nimbupani.github.com/diversity-in-conferences.html"/>
+    <updated>2013-05-09T16:54:00-07:00</updated>
+    <id>http://nimbupani.github.com/diversity-in-conferences</id>
+    <content type="html"><![CDATA[<p>I have resisted the urge to contribute my thoughts every time drama around women and  minorities in technology occurs. I thought instead I would share with you some of the actions I have taken in various roles to try to make diversity more visible in conferences around web technology.</p>
+
+<h1>As a Conference Organizer</h1>
+
+<p>It was only when I took responsibility of selecting speakers for W3Conf that I realised how many of my first choices were just names I had heard of. It became very clear that merit played almost no part in the speaker selection: visibility did.</p>
+
+<p>I also noticed my initial reluctance to choose first-time speakers as I didn&#8217;t want my conference to &#8220;fail&#8221; (I am guessing this is fairly a common concern), and hence tried to select popular speakers. This does help drive some registrations from those who want to see such speakers in person. But then again, having only 1 or 2 of them would suffice.</p>
+
+<p>If you are looking for these popular speakers to promote your event and boost the registrations through such promotions, you can forget that. Unless each speaker tirelessly blogs, tweets, and talks about your event at regular intervals, the impact of them talking about your event is fairly minimal. If this was a reason for you to choose only popular speakers, then you should probably try another tactic.</p>
+
+<p>Many conference organizers also fear having speakers who are boring or who might get stage fright and hence are very cautious in only chosing those who have proven themselves worthy as speakers. For W3Conf, I was confident that getting speakers who were interesting and worked on interesting projects was more important than their ability to speak or present.</p>
+
+<p>I was very happy to see this was validated as the passion of each of the speakers came across as a far more compelling force than their articulation or their ability to punctuate their words with pauses.</p>
+
+<h2>Where to find these people?</h2>
+
+<p>I am very lucky to be in a place (metaphorically and physically) that puts me in touch with interesting people on a fairly regular basis without even trying to find them. Even then, I blanked when I was starting with who to select for the speakers for W3Conf.</p>
+
+<p>One of the tricks I employed was to find an acknowledged expert in a field I was looking for a speaker in, and trawl the list of people <strong><em>they</em></strong> follow. I followed links to open-source projects and then reached out to them via email or Twitter.</p>
+
+<p>I also asked people I trusted for names of people who were not well known but worked on interesting projects.</p>
+
+<h2>What about diversity?</h2>
+
+<p>It was always at the back of my mind to make this conference as diverse as possible. I didn&#8217;t set out wanting to tick off a quota, but rather having a healthy mix of people from various backgrounds working on interesting stuff.</p>
+
+<h2>What about quotas for conferences?</h2>
+
+<p>I have come across conference organizers having a check list (&#8220;we hope to have 2 women speakers in our conference&#8221;). While it would be a good success metric, I do not think having it as the only factor helps anyone. People who are requested to speak at conferences in that manner get disgusted at being token speakers.</p>
+
+<p>If you are a conference organizer, don&#8217;t reach out to people suggesting they have been contacted only because you are obligated to fill your quota.</p>
+
+<h2>What about reverse call for speakers?</h2>
+
+<p>The idea looks great at first glance, but I am afraid the same challenge of only recalling popular names that had impressed the conference organizers would manifest itself even more significantly in the audience. Most of them wouldn&#8217;t know which speaker would be worth listening to because they would have even less of an opportunity to come across people working on interesting projects. I also think one of the primary reasons people attend conferences is to find out about what interesting projects exist.</p>
+
+<h1>As a Speaker</h1>
+
+<p>Over the last two years I have given more than 20 talks, which has given me some level of visibility/name recognition in web technology. This means I get asked to speak many times at conferences most of which I have to decline because of work schedule conflicts.</p>
+
+<p>I also know from my experience how much effort it is to select speakers, so I always ask the organizers if they would like some suggestions on who would be good speakers for their conference. Almost always they welcome suggestions and I send a list of those who I think should be heard from more. Invariably they are a mix of people who are less-prominent, but do exceptional work. Diversity is at the heart of such lists.</p>
+
+<h1>As an Employee of a Company that Sponsors Events</h1>
+
+<p>I work at Adobe which sponsors many events. I am also in a position to recommend events to sponsor. I try to recommend relevant events that may not be prominent but work on having as many people as possible from diverse backgrounds to attend or speak. They may or may not have charters that state their commitment to diversity, but nevertheless their actions speak louder than words.</p>
+
+<p>I am also trying to push for sponsorships of events that show clear commitment to diversity in their speakers and/or attendance profiles. One thing I have learnt over the course of working at American companies is your views are most often heard, and while immediate actions may not be possible, the more people who strongly present the case, the earlier shifts can happen. So, if you think you are a mere cog in the wheel of a large corporation, think again. You have more power than you think.</p>
+
+<p>It always helps when reaching out to the people who actually sponsor events at your company to make a strong case based on facts instead of complaining about the lack of diversity in sponsored events of the past.</p>
+
+<p>If you find yourself in one of these roles, and want to showcase the diversity in our web world, please do try out these and let me know how they worked for you.</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Markup-free icon fonts using unicode-range]]></title>
     <link href="http://nimbupani.github.com/markup-free-icon-fonts-with-unicode-range.html"/>
-    <updated>2012-12-25T08:58:00+05:30</updated>
+    <updated>2012-12-25T08:58:00-08:00</updated>
     <id>http://nimbupani.github.com/markup-free-icon-fonts-with-unicode-range</id>
     <content type="html"><![CDATA[<p>I used icon fonts extensively while designing <a href="http://fripfrap.io">fripfrap.io</a>. Unfortunately, icon fonts require tags wrapped around where they should be placed, and I went on a quest to find out if we can adaptively render icon fonts without any extra markup.</p>
 
@@ -135,7 +194,7 @@ body { font-family: <b>icons</b>, sans-serif; }
   <entry>
     <title type="html"><![CDATA[Book Reviews for 2012]]></title>
     <link href="http://nimbupani.github.com/book-reviews-for-december-2012.html"/>
-    <updated>2012-12-23T18:50:00+05:30</updated>
+    <updated>2012-12-23T18:50:00-08:00</updated>
     <id>http://nimbupani.github.com/book-reviews-for-december-2012</id>
     <content type="html"><![CDATA[<p>I had almost stopped reading books, till I picked up <a href="http://www.worldcat.org/title/savage-detectives/oclc/70265594">Savage Detectives</a> about 3 months ago. I have since spent more time reading books, and this month has been the most I have read in this year. Here are reviews of some books I have been reading.</p>
 
@@ -222,7 +281,7 @@ body { font-family: <b>icons</b>, sans-serif; }
   <entry>
     <title type="html"><![CDATA[JSCamp: CSS Next]]></title>
     <link href="http://nimbupani.github.com/jscamp-css-next.html"/>
-    <updated>2012-12-01T06:09:00+05:30</updated>
+    <updated>2012-12-01T06:09:00-08:00</updated>
     <id>http://nimbupani.github.com/jscamp-css-next</id>
     <content type="html"><![CDATA[<p>I talked at <a href="http://jscamp.asia">JSCamp</a> on 28th November 2012, on some of the newer features of CSS. I gave the talk without slides, so here is a description of all that I covered.</p>
 
@@ -441,7 +500,7 @@ var context = document.getCSSCanvasContext(‘2d’, contextForCanvas, canvasWid
   <entry>
     <title type="html"><![CDATA[Some Updates]]></title>
     <link href="http://nimbupani.github.com/some-updates.html"/>
-    <updated>2012-11-22T17:43:00+05:30</updated>
+    <updated>2012-11-22T17:43:00-08:00</updated>
     <id>http://nimbupani.github.com/some-updates</id>
     <content type="html"><![CDATA[<p>While this website has been lying dormant, I have been doing many things that are more actively tracked on <a href="http://twitter.com/divya">twitter</a>. Here are some of the highlights of what I have been up to.</p>
 
@@ -499,7 +558,7 @@ var context = document.getCSSCanvasContext(‘2d’, contextForCanvas, canvasWid
   <entry>
     <title type="html"><![CDATA[CSS Object Model]]></title>
     <link href="http://nimbupani.github.com/css-object-model.html"/>
-    <updated>2012-06-18T10:48:00+05:30</updated>
+    <updated>2012-06-18T10:48:00-07:00</updated>
     <id>http://nimbupani.github.com/css-object-model</id>
     <content type="html"><![CDATA[<p>Until <a href="http://testthewebforward.org">Test the Web Forward</a> I had just a vague idea of what CSS Object Model does. So, it was awesome to hear from and learn about the <a href="http://dev.w3.org/csswg/cssom/">CSS Object Model</a> from the spec co-editor <a href="https://twitter.com/gasubic/">Glenn Adams</a>.</p>
 
@@ -573,7 +632,7 @@ var context = document.getCSSCanvasContext(‘2d’, contextForCanvas, canvasWid
   <entry>
     <title type="html"><![CDATA[Visualization Lies]]></title>
     <link href="http://nimbupani.github.com/visualization-lies.html"/>
-    <updated>2012-06-02T13:51:00+05:30</updated>
+    <updated>2012-06-02T13:51:00-07:00</updated>
     <id>http://nimbupani.github.com/visualization-lies</id>
     <content type="html"><![CDATA[<p>I fell in love with this bar chart <a href="http://www.theatlantic.com/business/archive/2012/05/this-graph-is-disastrous-for-print-and-great-for-facebook-or-the-opposite/257857/">as soon as I saw it</a>:</p>
 
@@ -598,7 +657,7 @@ var context = document.getCSSCanvasContext(‘2d’, contextForCanvas, canvasWid
   <entry>
     <title type="html"><![CDATA[Moving to SF]]></title>
     <link href="http://nimbupani.github.com/moving-to-sf.html"/>
-    <updated>2012-03-27T08:18:00+05:30</updated>
+    <updated>2012-03-27T08:18:00-07:00</updated>
     <id>http://nimbupani.github.com/moving-to-sf</id>
     <content type="html"><![CDATA[<p>As of today, I am no longer an employee of Opera.</p>
 
@@ -617,7 +676,7 @@ var context = document.getCSSCanvasContext(‘2d’, contextForCanvas, canvasWid
   <entry>
     <title type="html"><![CDATA[Fake Bolding of Web Fonts]]></title>
     <link href="http://nimbupani.github.com/fake-bolding-of-web-fonts.html"/>
-    <updated>2012-03-02T11:26:00+05:30</updated>
+    <updated>2012-03-02T11:26:00-08:00</updated>
     <id>http://nimbupani.github.com/fake-bolding-of-web-fonts</id>
     <content type="html"><![CDATA[<p>If you are like me, you would have been (ab)using <a href="">Google Web Fonts</a> for your custom font needs. In which case, you most certainly would have tripped on this problem: Faux Font bolding.</p>
 
@@ -678,7 +737,7 @@ h1 {
   <entry>
     <title type="html"><![CDATA[Html5please API]]></title>
     <link href="http://nimbupani.github.com/html5please-api.html"/>
-    <updated>2012-02-26T17:24:00+05:30</updated>
+    <updated>2012-02-26T17:24:00-08:00</updated>
     <id>http://nimbupani.github.com/html5please-api</id>
     <content type="html"><![CDATA[<p><a href="http://api.html5please.com"><img src="http://cache.gyazo.com/88b8a0680005a6f09584510034f2b847.png" alt="" /></a></p>
 
@@ -727,7 +786,7 @@ h1 {
   <entry>
     <title type="html"><![CDATA[html5please]]></title>
     <link href="http://nimbupani.github.com/html5please.html"/>
-    <updated>2012-01-22T17:11:00+05:30</updated>
+    <updated>2012-01-22T17:11:00-08:00</updated>
     <id>http://nimbupani.github.com/html5please</id>
     <content type="html"><![CDATA[<p><a href="http://html5please.us"><img src="http://cache.gyazo.com/c5d6f648394681c59d93c487b8347cf5.png" alt="" /></a></p>
 
@@ -764,7 +823,7 @@ h1 {
   <entry>
     <title type="html"><![CDATA[desirable]]></title>
     <link href="http://nimbupani.github.com/desirable.html"/>
-    <updated>2012-01-21T07:22:00+05:30</updated>
+    <updated>2012-01-21T07:22:00-08:00</updated>
     <id>http://nimbupani.github.com/desirable</id>
     <content type="html"><![CDATA[<p>I never gave a thought to products I considered desirable, till I saw this ad for OP-1:</p>
 
@@ -799,7 +858,7 @@ h1 {
   <entry>
     <title type="html"><![CDATA[mustache, hogan, handlebars]]></title>
     <link href="http://nimbupani.github.com/mustache.html"/>
-    <updated>2012-01-01T10:05:00+05:30</updated>
+    <updated>2012-01-01T10:05:00-08:00</updated>
     <id>http://nimbupani.github.com/mustache</id>
     <content type="html"><![CDATA[<p>I have been working quite a bit with <a href="http://nodejs.org">node</a> and have had a chance to use <a href="http://handlebarsjs.com">Handlebars</a> quite frequently. While it is an implementation of <a href="http://mustache.github.com">Mustache</a>, it goes a bit further in providing some helpers like <code>if</code>/<code>each</code>/<code>list</code>/<code>with</code> etc along with the ability to register custom helpers you need. Since then, I have heard about <a href="http://twitter.github.com/hogan.js/">Hogan</a> which is almost equivalent but not. I wanted to just write down what I have discovered while investigating these.</p>
 
@@ -847,7 +906,7 @@ h1 {
   <entry>
     <title type="html"><![CDATA[Twittering with D3]]></title>
     <link href="http://nimbupani.github.com/twittering-with-d3.html"/>
-    <updated>2011-12-23T20:08:00+05:30</updated>
+    <updated>2011-12-23T20:08:00-08:00</updated>
     <id>http://nimbupani.github.com/twittering-with-d3</id>
     <content type="html"><![CDATA[<p>What you see above is something I had been thinking of doing since the obsession of a redesign hit my head: rendering visual snippets of my latest tracked actions as pretty and useless graphics. Hopefully this is the first of many.</p>
 
@@ -882,7 +941,7 @@ h1 {
   <entry>
     <title type="html"><![CDATA[Swatch’s Now is Android’s Future?]]></title>
     <link href="http://nimbupani.github.com/swatchs-now-is-androids-future.html"/>
-    <updated>2011-12-11T07:04:00+05:30</updated>
+    <updated>2011-12-11T07:04:00-08:00</updated>
     <id>http://nimbupani.github.com/swatchs-now-is-androids-future</id>
     <content type="html"><![CDATA[<p>This weekend, I chanced upon this article on the <a href="http://www.nytimes.com/2011/12/10/business/swatch-group-to-trim-sales-of-watch-parts-to-rivals.html">woes of Swatch’s rivals in the New York Times</a>. It is an interesting read throughout.</p>
 
@@ -909,7 +968,7 @@ h1 {
   <entry>
     <title type="html"><![CDATA[Redesign Notes]]></title>
     <link href="http://nimbupani.github.com/redesign-notes.html"/>
-    <updated>2011-12-11T04:51:00+05:30</updated>
+    <updated>2011-12-11T04:51:00-08:00</updated>
     <id>http://nimbupani.github.com/redesign-notes</id>
     <content type="html"><![CDATA[<p>This site sports a refresh. Here is a list of what is different now:</p>
 
@@ -999,7 +1058,7 @@ h1 {
   <entry>
     <title type="html"><![CDATA[Summary of various exciting CSS drafts and proposals]]></title>
     <link href="http://nimbupani.github.com/summary-of-various-exciting-css-drafts-and-proposals.html"/>
-    <updated>2011-12-10T18:51:00+05:30</updated>
+    <updated>2011-12-10T18:51:00-08:00</updated>
     <id>http://nimbupani.github.com/summary-of-various-exciting-css-drafts-and-proposals</id>
     <content type="html"><![CDATA[<p>I will be attending my first ever <a href="http://lists.w3.org/Archives/Public/www-style/2011Jun/0593.html">CSS</a> Working Group Face to Face Meeting starting this Sunday, and I wanted to be at least up-to-speed on all the drafts that will be up for discussion. So, in the interest of not letting a few hours spent understanding some of them go to waste, here is a brief summary of each of these drafts and some of the concerns that will be discussed during the meeting.</p>
 
@@ -1099,7 +1158,7 @@ Properties defined on <code>.region1-1</code> or <code>.region1-2</code> will no
   <entry>
     <title type="html"><![CDATA[This revolution needs new revolutionaries]]></title>
     <link href="http://nimbupani.github.com/this-revolution-needs-new-revolutionaries.html"/>
-    <updated>2011-05-21T00:00:00+05:30</updated>
+    <updated>2011-05-21T00:00:00-07:00</updated>
     <id>http://nimbupani.github.com/this-revolution-needs-new-revolutionaries</id>
     <content type="html"><![CDATA[<p>In early 2000s, when the web was in its infancy, a great number of committed activists made Open Web Standards possible. They advocated, wrote the specifications, explained them to the masses, and contributed to the revolution of using W3C Specs on the web. I owe each of them my career as a Web Designer/developer.</p>
 
@@ -1185,7 +1244,7 @@ Properties defined on <code>.region1-1</code> or <code>.region1-2</code> will no
   <entry>
     <title type="html"><![CDATA[Some CSS Transition hacks]]></title>
     <link href="http://nimbupani.github.com/some-css-transition-hacks.html"/>
-    <updated>2011-05-17T00:00:00+05:30</updated>
+    <updated>2011-05-17T00:00:00-07:00</updated>
     <id>http://nimbupani.github.com/some-css-transition-hacks</id>
     <content type="html"><![CDATA[<p>I am speaking at <a href="http://unplugged11.webdirections.org/program/design#creative-css3">some</a> <a href="http://2011.texasjavascript.com/">events</a> which means I have to write a few demos. You can find some <a href="http://nimbu.in/unplugged/demos/">here</a>, and I am in the process of creating more. While doing so, I have come across two new (to me), ways of applying transitions.  This only works for the conditions stated here, and you should think carefully before trying to expand these to be used elsewhere.</p>
 
@@ -1252,7 +1311,7 @@ Properties defined on <code>.region1-1</code> or <code>.region1-2</code> will no
   <entry>
     <title type="html"><![CDATA[Safe CSS Defaults]]></title>
     <link href="http://nimbupani.github.com/safe-css-defaults.html"/>
-    <updated>2011-04-13T00:00:00+05:30</updated>
+    <updated>2011-04-13T00:00:00-07:00</updated>
     <id>http://nimbupani.github.com/safe-css-defaults</id>
     <content type="html"><![CDATA[<p>You know those nights when you race towards a deadline, banging out the CSS as fast as you can, there comes a moment when you pause…wondering what keyword would get rid of that z-index on that anchor, then you make the best guess you can, and type:</p>
 
@@ -1581,25 +1640,6 @@ Properties defined on <code>.region1-1</code> or <code>.region1-2</code> will no
 
 <p><small>Thanks to <a href="http://css-tricks.com">Chris Coyier</a>, <a href="http://www.xanthir.com/blog/">Tab Atkins</a>, <a href="http://leaverou.me">Lea Verou</a>, and <a href="http://nicolasgallagher.com">Nicolas Gallagher</a> for feedback on this post!</small></p>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Unplugged 2011]]></title>
-    <link href="http://nimbupani.github.com/unplugged-2011.html"/>
-    <updated>2011-03-04T00:00:00+05:30</updated>
-    <id>http://nimbupani.github.com/unplugged-2011</id>
-    <content type="html"><![CDATA[<p>I gave my first ever big talk at <a href="http://south10.webdirections.org/program/w3c#active-web-development">Web Directions South in Sydney</a> last year. This May, I will be speaking at <a href="http://unplugged11.webdirections.org">Unplugged</a> in Seattle!</p>
-
-<p>It is going to be a different talk this time, — less on the activism and more on <a href="http://unplugged11.webdirections.org/program/design/#creative-css3">maximizing the cool on your web app styles</a>.</p>
-
-<p>As a front-end firefighter, I have learnt about the pain of working with a team, each with their own style and philosophy on what constitutes good markup, style, and script. While working on <a href="http://html5boilerplate.com">HTML5 Boilerplate</a> (and the website), a different layer of complexity showed up - managing styles/markup for different languages, choosing what to add or remove from the templates that have become the default choice of several front-end developers.</p>
-
-<p>Unplugged is where I hope to share some of the lessons learned and how to push the boundaries with browsers that can, while providing what can be managed best on browsers that can&#8217;t and introduce some tools to make your front-end development far more easier.</p>
-
-<p>The event is on <a href="http://unplugged11.webdirections.org/program/">12-13th May in The Conference Center</a>. Knowing the Web Directions folks, I know it would be a super smooth and well organized event, so you should be there. There is even a discount code - <em>WDMANIAN</em> - you can use to take $50 off the regular price.</p>
-
-<p>See you there!</p>
 ]]></content>
   </entry>
   

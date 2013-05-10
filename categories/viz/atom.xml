@@ -4,7 +4,7 @@
   <title><![CDATA[viz | Divya Manian]]></title>
   <link href="http://nimbupani.github.com/categories/viz/atom.xml" rel="self"/>
   <link href="http://nimbupani.github.com/"/>
-  <updated>2012-12-30T07:42:27+05:30</updated>
+  <updated>2013-05-09T17:23:49-07:00</updated>
   <id>http://nimbupani.github.com/</id>
   <author>
     <name><![CDATA[Divya Manian]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Twittering with D3]]></title>
     <link href="http://nimbupani.github.com/twittering-with-d3.html"/>
-    <updated>2011-12-23T20:08:00+05:30</updated>
+    <updated>2011-12-23T20:08:00-08:00</updated>
     <id>http://nimbupani.github.com/twittering-with-d3</id>
     <content type="html"><![CDATA[<p>What you see above is something I had been thinking of doing since the obsession of a redesign hit my head: rendering visual snippets of my latest tracked actions as pretty and useless graphics. Hopefully this is the first of many.</p>
 
