@@ -4,7 +4,7 @@
   <title><![CDATA[Divya Manian]]></title>
   <link href="http://nimbupani.github.com/atom.xml" rel="self"/>
   <link href="http://nimbupani.github.com/"/>
-  <updated>2013-05-09T17:23:49-07:00</updated>
+  <updated>2013-05-10T12:47:41-07:00</updated>
   <id>http://nimbupani.github.com/</id>
   <author>
     <name><![CDATA[Divya Manian]]></name>
@@ -69,6 +69,227 @@
 <p>It always helps when reaching out to the people who actually sponsor events at your company to make a strong case based on facts instead of complaining about the lack of diversity in sponsored events of the past.</p>
 
 <p>If you find yourself in one of these roles, and want to showcase the diversity in our web world, please do try out these and let me know how they worked for you.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Using decimal percentage values in responsive design]]></title>
+    <link href="http://nimbupani.github.com/using-decimal-percentage-values-in-responsive-design.html"/>
+    <updated>2013-03-26T04:24:00-07:00</updated>
+    <id>http://nimbupani.github.com/using-decimal-percentage-values-in-responsive-design</id>
+    <content type="html"><![CDATA[<p>At work I get many samples of code to be reviewed, most of them with a warning &#8216;only works in Chrome&#8217;. Nevertheless, I open these pages in Safari &amp; mostly they work. Yesterday I came across something that didn&#8217;t. This post is a result of that investigation.</p>
+
+<p>The page layout was broken in Safari and as I turned on the Inspector, I noticed the way the values were being specified:</p>
+
+<pre>
+margin: 0 0 0 6.3124621208203820812122%;
+width: 48.121212121212121212121212%
+</pre>
+
+
+<p>(The values are not the same as the ones I saw in the code, but the number of decimals used is similar)</p>
+
+<p>I was stupified.</p>
+
+<h2>Unreadable Code</h2>
+
+<p>When values are so large, it becomes really hard to actually understand the exact round number equivalent. It took me a while to realise that the margin was supposed to be approx. 6% of the (pause) 48% width. I know I am not that bad at calculating numbers in my head!</p>
+
+<p>Over-preciseness never worked in WebKit until very recently. WebKit <a href="http://trac.webkit.org/wiki/LayoutUnit">recently enabled subpixel units</a> that would allow the painting of half a pixel. So what are these precise decimals doing?</p>
+
+<h2>History</h2>
+
+<p>I expressed <a href="https://twitter.com/divya/status/316284818675625985">my disappointment at having such unreadable code</a> on twitter (where else do you rant?!), and I received feedback that this is how &#8216;responsive design&#8217; is done, and for pointers linked to the <a href="http://alistapart.com/article/responsive-web-design">original article by Ethan Marcotte</a> who pointed to <a href="http://alistapart.com/article/fluidgrids">initial post on fluid design</a>.</p>
+
+<p>The use of percentages stem from the Fluid Grids post, where it has been argued:</p>
+
+<pre>
+(target pixel value / context pixel value) * 100 = length value in percentage
+</pre>
+
+
+<p>This percentage value is typically pasted to the whole 10 decimal places (or more!) that you get when you use a calculator in typical &#8216;responsive&#8217; websites.</p>
+
+<h2>Why we do it</h2>
+
+<p>The article has a footnote on rounding that states that, by over-specifying the values you avoid Rounding errors because you give sufficient information to the browser to round up or down.</p>
+
+<p>All browsers have since fixed the rounding issue, so this may no longer apply. Even discounting that fact, let us see how many decimal values you need for the errors to be significant enough to cause layout errors. Given the previous math, the target pixel size becomes:</p>
+
+<pre>
+target pixel value = length value in percentage * context pixel value
+</pre>
+
+
+<p>Lets calculate what the target pixel width would be with just 2 decimal places, when the context is 1000px &amp; 5000px respectively. 5000px is an outlier given even <a href="http://en.wikipedia.org/wiki/Retina_Display">Retina Display resoution does not exceed 2560 pixels</a>:</p>
+
+<pre>
+16.67% * 1000px = 166.7px
+16.67% * 5000px = 833.5px
+</pre>
+
+
+<p>Let us try to calculate the same result with 3 decimal places:</p>
+
+<pre>
+16.667% * 1000px = 166.67px (-0.03 from previous value)
+16.667% * 5000px = 833.35px (-0.15 from previous value)
+</pre>
+
+
+<p>How about for 4 decimal places?</p>
+
+<pre>
+16.6667% * 1000px = 166.667px (-0.003 from previous value)
+16.6667% * 5000px = 833.335px (-0.015 from previous value)
+</pre>
+
+
+<p>While the difference in the approximation seems significant enough to consider using 3 decimal places, the move to 4 decimals or more seems irrelevant. The values are fairly trivial even for impossible pixel widths.</p>
+
+<h2>How should we do it?</h2>
+
+<p>If your intent is to inform the browser to take accurate action based on a fraction. Why not provide that fraction? CSS provides a handy <code>calc</code> function that allows you to pass in any calculation, and the browser will calculate appropriately. This would result in:</p>
+
+<pre>
+h1 {
+ width: calc(1/6 * 100%);
+}
+</pre>
+
+
+<p>Do note <a href="http://caniuse.com/calc"><code>calc</code> is supported in most browsers</a> except Opera (which will soon when it switches to WebKit) or older iOS or Android browsers.</p>
+
+<p>But in the interest of graceful degredation, we can always provide:</p>
+
+<pre>
+h1 {
+ width: 16.667%;
+ width: calc(1/6 * 100%);
+}
+</pre>
+
+
+<h2>A note about ems</h2>
+
+<p>As <a href="https://twitter.com/scottjehl/status/316350378809647105">Scott Jehl pointed out</a> the decimal values raise in significance as soon as you start using them directly on em units like so:</p>
+
+<pre>
+h1 {
+ font-size: 36em;
+ margin: 0 0 0 0.009em;
+}
+</pre>
+
+
+<p>I would only want you to consider using <code>rem</code> as a unit instead, &amp; avoiding confusing complicated scenarios ems bring with them.</p>
+
+<h2>Think before you use!</h2>
+
+<p>In HTML5 Boilerplate, most of the code we add or delete have valid proven reasons for their existence or non-existence, so to see something be accepted as common methodology without scrutiny was disconcerting. Many have suggested they have previously come across problems with smaller decimal values, but there is no reproducable test case.</p>
+
+<p>If you have one, please do <a href="http://twitter.com/divya">let me know on twitter</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Using background clip for text with CSS fallback]]></title>
+    <link href="http://nimbupani.github.com/using-background-clip-for-text-with-css-fallback.html"/>
+    <updated>2013-02-02T14:25:00-08:00</updated>
+    <id>http://nimbupani.github.com/using-background-clip-for-text-with-css-fallback</id>
+    <content type="html"><![CDATA[<p>I was looking at the lovely design of <a href="http://polygon.com">polygon</a> when their use of <code>background-clip</code> &amp; <code>background: linear-gradient(…)</code> immediately suggested a JS-free fallback for using the non-standard <code>background-clip: text</code>.</p>
+
+<h2>What it is</h2>
+
+<p><code>background-clip</code> is a CSS property that was <a href="https://www.webkit.org/blog/164/background-clip-text/">originally introduced in WebKit (in 2008)</a> that allows backgrounds specified on elements to clip to the text content of the element like so:</p>
+
+<p><img src="http://s3.amazonaws.com/nimbublips/1359844612.png" alt="" /></p>
+
+<p>by merely using the following code:</p>
+
+<pre>body{
+ color: transparent;
+ background: url(path/to/bg/image) repeat;
+ -webkit-background-clip: text;
+}
+</pre>
+
+
+<p>However, <code>background-clip: text</code> is not part of any standard yet – but <a href="http://dev.w3.org/csswg/css3-background/#the-background-clip">other values such as <code>border-box</code> or <code>content-box</code> are</a>.</p>
+
+<h2>The Problem</h2>
+
+<p>It is no surprise to find people using non-standard properties in HTML, and it is no big deal if it fails gracefully in other browsers. Unfortunately, <code>background-clip: text</code> fails rather spectacularly in non-WebKit browsers:</p>
+
+<p><img src="http://s3.amazonaws.com/nimbublips/1359844975.png" alt="" /></p>
+
+<p>The above is how it appears (when you use <a href="http://placekitten.com">placekitten</a> to generate the background image) in Firefox. You cannot even read the text! This is clearly a disastrous situation.</p>
+
+<h2>Current Solutions</h2>
+
+<p>The most commonly used solution is to use <a href="http://modernizr.com">Modernizr</a> to detect if <code>background-clip: text</code> is available, and then use a class <code>backgroundcliptext</code> to apply <code>background-clip:text</code> selectively – <a href="http://polygon.com">Polygon</a> does this too.</p>
+
+<h2>Purely CSS solution</h2>
+
+<p>While looking at the code, I suddenly realized that if you use only the <code>-webkit-</code> prefixed value for <code>background</code> property, then <code>background-clip: text</code> would only apply when <code>-webkit-</code> prefixed values are supported in browsers – effectively curtailing its use to WebKit browsers:</p>
+
+<pre>body {
+ color: transparent;
+ background: -webkit-linear-gradient(transparent, transparent),
+             url(path/to/bg/image) repeat;
+ -webkit-background-clip: text;
+}</pre>
+
+
+<p>Hurray! We are almost there! The background no longer appears in non-WebKit browsers:</p>
+
+<p><img src="http://s3.amazonaws.com/nimbublips/1359845371.png" alt="" /></p>
+
+<p>…until you test in Opera, which also <a href="http://my.opera.com/ODIN/blog/opera-12-10-is-out">supports <code>-webkit-</code> prefixes for site compatibility</a>. But, it is easy to solve for by merely adding <code>-o-</code> prefixed background value:</p>
+
+<pre>body {
+ color: transparent;
+ background: -webkit-linear-gradient(transparent, transparent),
+             url(path/to/bg/image) repeat;
+ background: -o-linear-gradient(transparent, transparent);
+ -webkit-background-clip: text;
+}</pre>
+
+
+<p>But, wait, the <code>color: transparent</code> would make the text invisible in all browsers! Let us change that to a readable color:</p>
+
+<pre>body {
+ color: red;
+ background: -webkit-linear-gradient(transparent, transparent),
+             url(path/to/bg/image) repeat;
+ background: -o-linear-gradient(transparent, transparent);
+ -webkit-background-clip: text;
+}</pre>
+
+
+<p>But now the color fills the text, and the clipped background is no longer shown in WebKit browsers :(</p>
+
+<p><img src="http://s3.amazonaws.com/nimbublips/1359845928.png" alt="" /></p>
+
+<h2><code>text-fill-color</code> to the rescue</h2>
+
+<p><a href="https://www.webkit.org/blog/85/introducing-text-stroke/"><code>text-fill-color</code> (introduced in 2006)</a> fills text with a color when used in conjunction with a <code>text-stroke</code>. It behaves exactly like <code>color</code> except we now have the advantage of having it apply only to WebKit browsers! Nirvana!</p>
+
+<pre>body {
+ color: red;
+ -webkit-text-fill-color: transparent;
+ background: -webkit-linear-gradient(transparent, transparent),
+             url(path/to/bg/image) repeat;
+ background: -o-linear-gradient(transparent, transparent);
+ -webkit-background-clip: text;
+}</pre>
+
+
+<p>Here is how it appears in WebKit browsers and non-WebKit browsers respectively:</p>
+
+<p><img src="http://s3.amazonaws.com/nimbublips/1359846393.png" alt="" /></p>
+
+<p>You only have to use 2 extra css properties, to make it fail-safe in all browsers and need not run a feature-detection script. Currently, only Opera requires the background reset using the <code>-o-</code> prefix, but if more browsers start supporting <code>-webkit-</code> prefix then each of those browsers need a reset (e.g. <code>background: -moz-linear-gradient(transparent, transparent);</code>). But I don&#8217;t think this will happen.</p>
 ]]></content>
   </entry>
   
@@ -1237,408 +1458,6 @@ Properties defined on <code>.region1-1</code> or <code>.region1-2</code> will no
 
 
 <p>The old revolution is dead, long live the revolution.</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Some CSS Transition hacks]]></title>
-    <link href="http://nimbupani.github.com/some-css-transition-hacks.html"/>
-    <updated>2011-05-17T00:00:00-07:00</updated>
-    <id>http://nimbupani.github.com/some-css-transition-hacks</id>
-    <content type="html"><![CDATA[<p>I am speaking at <a href="http://unplugged11.webdirections.org/program/design#creative-css3">some</a> <a href="http://2011.texasjavascript.com/">events</a> which means I have to write a few demos. You can find some <a href="http://nimbu.in/unplugged/demos/">here</a>, and I am in the process of creating more. While doing so, I have come across two new (to me), ways of applying transitions.  This only works for the conditions stated here, and you should think carefully before trying to expand these to be used elsewhere.</p>
-
-
-
-
-<h2>Fake Transitions on Gradients</h2>
-
-
-<p>As you know, no browser supports transitions in CSS gradients (yet). But, we have two tools to fake this: transitions that work on background colors, and multiple backgrounds. Given transitions can interpolate colors, we simply transition the background color and apply a gradient image on top of it which fades to transparent value (giving the illusion of an transitioning gradient). </p>
-
-
-<p>Here is a demo:</p>
-
-
-<iframe style="width: 100%; height: 300px" src="http://jsfiddle.net/nimbu/zuNbj/embedded/result,css"></iframe>
-
-
-<h3>Caveat</h3>
-
-
-<ul><li>This works great on simple gradients. You probably do not want to use this with multiple backgrounds as it would be a terrible pain to manage the right backgrounds to change.</li></ul>
-
-
-
-
-<h2>Animate elements with just font-size</h2>
-
-
-<p>Transitions can be applied on CSS transforms, so if you wish to scale an element on hover, it would be a matter of applying the right prefixed transition on the right prefixed transform and writing the vendor-prefixed scale transform 5 times on hover.</p>
-
-
-<p></p>
-
-<p>I am lazy, and I like to avoid typing if I can. So, given we can use <code>em</code> as a unit for width, height, line-height and border-radius would be something we can take advantage of. What this unit means is each of these properties are now relative to the <code>font-size</code> we set on the element.</p>
-
-
-<p>Now all we need to do is transition the font-size, and we get bonus transitions on width, height, line-height and border-radius! Now you can be carefully choose which elements should use em units depending on which properties (that use em unit values) you want transitioned.</p>
-
-
-<p>Don&#8217;t be so quick to gloat though. Webkit does not transition width, height, line-height if you only transition the font-size, so you would need to set <code>-webkit-transition: all 1s;</code> to get it to work on webkit.</p>
-
-
-
-
-<iframe style="width: 100%; height: 300px" src="http://jsfiddle.net/nimbu/86kET/embedded/result,css"></iframe>
-
-
-<h3>Caveats</h3>
-
-
-<ul>
-<li>The element expands in area - unlike a scale transform which expands without nudging other elements out of the way. This means elements adjacent to this element will move unless they are all positioned absolutely. You can also position the element to which transition is being applied absolutely so as to not impact rest of them.</li>
-<li>This only works for properties you want to transform that accept length units. </li>
-<li>If you do not want the text within the transformed element to also transform, using this method would be easier. When using transforms, you would need to reset the transform on the wrapper around the text so as to prevent text from transforming. In the above demo, the blue disc has considerably more rules and declarations to prevent scaling of text as compared to transforming the font size.</li>
-</ul>
-
-
-<p>If you know of a snappier way to do these, please fork the fiddles and link to your forks in the comments.</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Safe CSS Defaults]]></title>
-    <link href="http://nimbupani.github.com/safe-css-defaults.html"/>
-    <updated>2011-04-13T00:00:00-07:00</updated>
-    <id>http://nimbupani.github.com/safe-css-defaults</id>
-    <content type="html"><![CDATA[<p>You know those nights when you race towards a deadline, banging out the CSS as fast as you can, there comes a moment when you pause…wondering what keyword would get rid of that z-index on that anchor, then you make the best guess you can, and type:</p>
-
-
-
-
-<pre><code>z-index: none;</code></pre>
-
-
-
-
-<p>Then go on in life, as it “renders” like you wanted it, it works, no big deal. </p>
-
-
-
-
-<p>But it is. Specifying incorrect values might inject behaviour that you did not expect. It is quite possible that the currently incorrect value might be, in the future, used for a valid value which would distort the design you so carefully did (and how often do we revisit a client’s website to update? :).</p>
-
-
-
-
-<h3>Initial Values</h3>
-
-
-<p>The spec defines a value that will be the <em>initial</em> value for a property when it is not declared in any stylesheets - either the user agent stylesheet (look at <a href="http://www.iecss.com/">iecss.com</a> for stylesheets of IE, <a href="http://www.iecss.com/opera-10.51.css">Opera</a>, <a href="http://www.iecss.com/firefox-3.6.3.css">Firefox</a>, <a href="http://www.iecss.com/webkit-r61376.css">Webkit</a>) or the ones you write.</p>
-
-
-
-
-<p>Now, user agents assign values to CSS properties too. For example, when you do not declare margins on <code>h1</code>, the user agents have an initial value for margins. IE sets this to be <code>14pt</code>, Firefox, Opera sets this to <code>0.67em</code>, etc. This is not defined by the specifications and there is no keyword to obtain the values set by user agents.</p>
-
-
-
-
-<p>Initial values are different from inherited values. All properties accept a keyword <code>inherit</code>. When you use the keyword <code>inherit</code> on a property, the browser applies the value that it finds on its parent element. On <code>html</code> element if you use the value <code>inherit</code>, it applies the initial value. </p>
-
-
-
-
-<h3>Good News!</h3>
-
-
-<p><a href="http://leaverou.me">Lea Verou</a> alerted me to the CSS3 keyword <a href="http://www.w3.org/TR/css3-values/#keywords"><code>initial</code> which will set the CSS3 property to the initial value as defined in the spec</a>. Sadly, the only browsers that supports this seems to be <a href="http://jsfiddle.net/nimbu/CgRAZ/10/show/">Firefox</a> (with a <code>-moz-</code> prefix) and Webkit&#8217;s Safari and Chrome (yay!).</p>
-
-
-
-
-<p>So until full support lands on all browsers for this amazing keyword and we don&#8217;t have to support browsers that do not recognize that keyword, here are some of the ways you can reset some CSS properties to their initial values:</p>
-
-
-
-
-<table>
-  <thead>
-    <tr>
-      <th>
-        Property
-      </th>
-      <th>
-        Value
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        <a href="http://www.w3.org/TR/css3-background/#background">background</a>
-      </td>
-      <td>
-        transparent (<code>transparent</code> stands for <a href="http://www.w3.org/TR/css3-color/#transparent-def">rgba(0, 0, 0, 0)</a>) or <code>none</code> or <code>0 0</code>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="http://www.w3.org/TR/css3-background/#ltborder-widthgt">border</a>
-      </td>
-      <td>
-        none or 0
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="http://www.w3.org/TR/css3-background/#border-image-source">border-image</a>
-      </td>
-      <td>
-        none
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="http://www.w3.org/TR/css3-background/#the-border-radius">border-radius</a>
-      </td>
-      <td>
-        0
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="http://www.w3.org/TR/css3-background/#the-box-shadow">box-shadow</a>
-      </td>
-      <td>
-       none
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="http://www.w3.org/TR/css3-box/#clear">clear</a>
-      </td>
-      <td>
-        none
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="http://www.w3.org/TR/css3-color/#foreground">color</a>
-      </td>
-      <td>
-        No value, so best option is to use <code>inherit</code> to cascade from a parent element&#8217;s color value.
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="http://www.w3.org/TR/css3-content/#content">content</a>
-      </td>
-      <td>
-        normal
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="http://www.w3.org/TR/css3-box/#display">display</a>
-      </td>
-      <td>
-        inline
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="http://www.w3.org/TR/css3-box/#the-lsquo1">float</a>
-      </td>
-      <td>
-        none
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="http://www.w3.org/TR/2011/WD-css3-fonts-20110324/#descdef-font-style">font</a>
-      </td>
-      <td>
-        normal
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="http://www.w3.org/TR/css3-box/#height">height</a>
-      </td>
-      <td>
-        auto
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="http://www.w3.org/TR/2011/WD-css3-text-20110215/#letter-spacing0">letter-spacing</a>
-      </td>
-      <td>
-        normal
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="http://www.w3.org/TR/css3-linebox/#InlineBoxHeight">line-height</a>
-      </td>
-      <td>
-        normal
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="http://www.w3.org/TR/css3-box/#max-width">max-width</a>
-      </td>
-      <td>
-        none
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="http://www.w3.org/TR/css3-box/#max-width">max-height</a>
-      </td>
-      <td>
-        none
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="http://www.w3.org/TR/css3-box/#min-height">min-width</a>
-      </td>
-      <td>
-        0
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="http://www.w3.org/TR/css3-box/#min-height">min-height</a>
-      </td>
-      <td>
-        0
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="http://www.w3.org/TR/css3-color/#opacity">opacity</a>
-      </td>
-      <td>
-        1
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="http://www.w3.org/TR/css3-box/#overflow0">overflow</a>
-      </td>
-      <td>
-        visible
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="http://www.w3.org/TR/2006/WD-css3-page-20061010/#page-break-inside">page-break-inside</a>
-      </td>
-      <td>
-        auto
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="http://www.w3.org/TR/CSS2/visuren.html#propdef-position">position</a>
-      </td>
-      <td>
-        static (not <code>relative</code>)
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="http://www.w3.org/TR/2011/WD-css3-text-20110215/#text-shadow">text-shadow</a>
-      </td>
-      <td>
-        none
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="http://www.w3.org/TR/2011/WD-css3-text-20110215/#text-transform">text-transform</a>
-      </td>
-      <td>
-        none
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="http://www.w3.org/TR/css3-2d-transforms/#transform-property">transform</a>
-      </td>
-      <td>
-        none
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="http://www.w3.org/TR/css3-transitions/#the-transition-property-property-">transition</a>
-      </td>
-      <td>
-        none
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="http://www.w3.org/TR/CSS21/visudet.html#propdef-vertical-align">vertical-align</a>
-      </td>
-      <td>
-        baseline
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="http://www.w3.org/TR/css3-box/#visibility">visibility</a>
-      </td>
-      <td>
-        visible
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="http://www.w3.org/TR/CSS2/text.html#white-space-prop">white-space</a>
-      </td>
-      <td>
-        normal
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="http://www.w3.org/TR/css3-box/#width">width</a>
-      </td>
-      <td>
-        auto
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="http://www.w3.org/TR/2011/WD-css3-text-20110215/#word-spacing0">word-spacing</a>
-      </td>
-      <td>
-        normal
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="http://www.w3.org/TR/CSS2/visuren.html#z-index">z-index</a>
-      </td>
-      <td>
-        auto (not <code>none</code> or <code>0</code>)
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-
-<p><em>Update:</em> <a href="http://the-echoplex.net">Pete</a> links to this <a href="https://github.com/peteboere/css-crush/blob/master/misc/initial-values.ini">list of initial values</a> he has compiled.</p>
-
-<p><small>Thanks to <a href="http://css-tricks.com">Chris Coyier</a>, <a href="http://www.xanthir.com/blog/">Tab Atkins</a>, <a href="http://leaverou.me">Lea Verou</a>, and <a href="http://nicolasgallagher.com">Nicolas Gallagher</a> for feedback on this post!</small></p>
 
 ]]></content>
   </entry>

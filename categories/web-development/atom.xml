@@ -4,7 +4,7 @@
   <title><![CDATA[Web Development | Divya Manian]]></title>
   <link href="http://nimbupani.github.com/categories/web-development/atom.xml" rel="self"/>
   <link href="http://nimbupani.github.com/"/>
-  <updated>2013-05-09T17:23:49-07:00</updated>
+  <updated>2013-05-10T12:47:41-07:00</updated>
   <id>http://nimbupani.github.com/</id>
   <author>
     <name><![CDATA[Divya Manian]]></name>
@@ -69,6 +69,227 @@
 <p>It always helps when reaching out to the people who actually sponsor events at your company to make a strong case based on facts instead of complaining about the lack of diversity in sponsored events of the past.</p>
 
 <p>If you find yourself in one of these roles, and want to showcase the diversity in our web world, please do try out these and let me know how they worked for you.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Using decimal percentage values in responsive design]]></title>
+    <link href="http://nimbupani.github.com/using-decimal-percentage-values-in-responsive-design.html"/>
+    <updated>2013-03-26T04:24:00-07:00</updated>
+    <id>http://nimbupani.github.com/using-decimal-percentage-values-in-responsive-design</id>
+    <content type="html"><![CDATA[<p>At work I get many samples of code to be reviewed, most of them with a warning 'only works in Chrome'. Nevertheless, I open these pages in Safari &amp; mostly they work. Yesterday I came across something that didn't. This post is a result of that investigation.</p>
+
+<p>The page layout was broken in Safari and as I turned on the Inspector, I noticed the way the values were being specified:</p>
+
+<pre>
+margin: 0 0 0 6.3124621208203820812122%;
+width: 48.121212121212121212121212%
+</pre>
+
+
+<p>(The values are not the same as the ones I saw in the code, but the number of decimals used is similar)</p>
+
+<p>I was stupified.</p>
+
+<h2>Unreadable Code</h2>
+
+<p>When values are so large, it becomes really hard to actually understand the exact round number equivalent. It took me a while to realise that the margin was supposed to be approx. 6% of the (pause) 48% width. I know I am not that bad at calculating numbers in my head!</p>
+
+<p>Over-preciseness never worked in WebKit until very recently. WebKit <a href="http://trac.webkit.org/wiki/LayoutUnit">recently enabled subpixel units</a> that would allow the painting of half a pixel. So what are these precise decimals doing?</p>
+
+<h2>History</h2>
+
+<p>I expressed <a href="https://twitter.com/divya/status/316284818675625985">my disappointment at having such unreadable code</a> on twitter (where else do you rant?!), and I received feedback that this is how 'responsive design' is done, and for pointers linked to the <a href="http://alistapart.com/article/responsive-web-design">original article by Ethan Marcotte</a> who pointed to <a href="http://alistapart.com/article/fluidgrids">initial post on fluid design</a>.</p>
+
+<p>The use of percentages stem from the Fluid Grids post, where it has been argued:</p>
+
+<pre>
+(target pixel value / context pixel value) * 100 = length value in percentage
+</pre>
+
+
+<p>This percentage value is typically pasted to the whole 10 decimal places (or more!) that you get when you use a calculator in typical 'responsive' websites.</p>
+
+<h2>Why we do it</h2>
+
+<p>The article has a footnote on rounding that states that, by over-specifying the values you avoid Rounding errors because you give sufficient information to the browser to round up or down.</p>
+
+<p>All browsers have since fixed the rounding issue, so this may no longer apply. Even discounting that fact, let us see how many decimal values you need for the errors to be significant enough to cause layout errors. Given the previous math, the target pixel size becomes:</p>
+
+<pre>
+target pixel value = length value in percentage * context pixel value
+</pre>
+
+
+<p>Lets calculate what the target pixel width would be with just 2 decimal places, when the context is 1000px &amp; 5000px respectively. 5000px is an outlier given even <a href="http://en.wikipedia.org/wiki/Retina_Display">Retina Display resoution does not exceed 2560 pixels</a>:</p>
+
+<pre>
+16.67% * 1000px = 166.7px
+16.67% * 5000px = 833.5px
+</pre>
+
+
+<p>Let us try to calculate the same result with 3 decimal places:</p>
+
+<pre>
+16.667% * 1000px = 166.67px (-0.03 from previous value)
+16.667% * 5000px = 833.35px (-0.15 from previous value)
+</pre>
+
+
+<p>How about for 4 decimal places?</p>
+
+<pre>
+16.6667% * 1000px = 166.667px (-0.003 from previous value)
+16.6667% * 5000px = 833.335px (-0.015 from previous value)
+</pre>
+
+
+<p>While the difference in the approximation seems significant enough to consider using 3 decimal places, the move to 4 decimals or more seems irrelevant. The values are fairly trivial even for impossible pixel widths.</p>
+
+<h2>How should we do it?</h2>
+
+<p>If your intent is to inform the browser to take accurate action based on a fraction. Why not provide that fraction? CSS provides a handy <code>calc</code> function that allows you to pass in any calculation, and the browser will calculate appropriately. This would result in:</p>
+
+<pre>
+h1 {
+ width: calc(1/6 * 100%);
+}
+</pre>
+
+
+<p>Do note <a href="http://caniuse.com/calc"><code>calc</code> is supported in most browsers</a> except Opera (which will soon when it switches to WebKit) or older iOS or Android browsers.</p>
+
+<p>But in the interest of graceful degredation, we can always provide:</p>
+
+<pre>
+h1 {
+ width: 16.667%;
+ width: calc(1/6 * 100%);
+}
+</pre>
+
+
+<h2>A note about ems</h2>
+
+<p>As <a href="https://twitter.com/scottjehl/status/316350378809647105">Scott Jehl pointed out</a> the decimal values raise in significance as soon as you start using them directly on em units like so:</p>
+
+<pre>
+h1 {
+ font-size: 36em;
+ margin: 0 0 0 0.009em;
+}
+</pre>
+
+
+<p>I would only want you to consider using <code>rem</code> as a unit instead, &amp; avoiding confusing complicated scenarios ems bring with them.</p>
+
+<h2>Think before you use!</h2>
+
+<p>In HTML5 Boilerplate, most of the code we add or delete have valid proven reasons for their existence or non-existence, so to see something be accepted as common methodology without scrutiny was disconcerting. Many have suggested they have previously come across problems with smaller decimal values, but there is no reproducable test case.</p>
+
+<p>If you have one, please do <a href="http://twitter.com/divya">let me know on twitter</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Using background clip for text with CSS fallback]]></title>
+    <link href="http://nimbupani.github.com/using-background-clip-for-text-with-css-fallback.html"/>
+    <updated>2013-02-02T14:25:00-08:00</updated>
+    <id>http://nimbupani.github.com/using-background-clip-for-text-with-css-fallback</id>
+    <content type="html"><![CDATA[<p>I was looking at the lovely design of <a href="http://polygon.com">polygon</a> when their use of <code>background-clip</code> &amp; <code>background: linear-gradient(…)</code> immediately suggested a JS-free fallback for using the non-standard <code>background-clip: text</code>.</p>
+
+<h2>What it is</h2>
+
+<p><code>background-clip</code> is a CSS property that was <a href="https://www.webkit.org/blog/164/background-clip-text/">originally introduced in WebKit (in 2008)</a> that allows backgrounds specified on elements to clip to the text content of the element like so:</p>
+
+<p><img src="http://s3.amazonaws.com/nimbublips/1359844612.png" alt="" /></p>
+
+<p>by merely using the following code:</p>
+
+<pre>body{
+ color: transparent;
+ background: url(path/to/bg/image) repeat;
+ -webkit-background-clip: text;
+}
+</pre>
+
+
+<p>However, <code>background-clip: text</code> is not part of any standard yet – but <a href="http://dev.w3.org/csswg/css3-background/#the-background-clip">other values such as <code>border-box</code> or <code>content-box</code> are</a>.</p>
+
+<h2>The Problem</h2>
+
+<p>It is no surprise to find people using non-standard properties in HTML, and it is no big deal if it fails gracefully in other browsers. Unfortunately, <code>background-clip: text</code> fails rather spectacularly in non-WebKit browsers:</p>
+
+<p><img src="http://s3.amazonaws.com/nimbublips/1359844975.png" alt="" /></p>
+
+<p>The above is how it appears (when you use <a href="http://placekitten.com">placekitten</a> to generate the background image) in Firefox. You cannot even read the text! This is clearly a disastrous situation.</p>
+
+<h2>Current Solutions</h2>
+
+<p>The most commonly used solution is to use <a href="http://modernizr.com">Modernizr</a> to detect if <code>background-clip: text</code> is available, and then use a class <code>backgroundcliptext</code> to apply <code>background-clip:text</code> selectively – <a href="http://polygon.com">Polygon</a> does this too.</p>
+
+<h2>Purely CSS solution</h2>
+
+<p>While looking at the code, I suddenly realized that if you use only the <code>-webkit-</code> prefixed value for <code>background</code> property, then <code>background-clip: text</code> would only apply when <code>-webkit-</code> prefixed values are supported in browsers – effectively curtailing its use to WebKit browsers:</p>
+
+<pre>body {
+ color: transparent;
+ background: -webkit-linear-gradient(transparent, transparent),
+             url(path/to/bg/image) repeat;
+ -webkit-background-clip: text;
+}</pre>
+
+
+<p>Hurray! We are almost there! The background no longer appears in non-WebKit browsers:</p>
+
+<p><img src="http://s3.amazonaws.com/nimbublips/1359845371.png" alt="" /></p>
+
+<p>…until you test in Opera, which also <a href="http://my.opera.com/ODIN/blog/opera-12-10-is-out">supports <code>-webkit-</code> prefixes for site compatibility</a>. But, it is easy to solve for by merely adding <code>-o-</code> prefixed background value:</p>
+
+<pre>body {
+ color: transparent;
+ background: -webkit-linear-gradient(transparent, transparent),
+             url(path/to/bg/image) repeat;
+ background: -o-linear-gradient(transparent, transparent);
+ -webkit-background-clip: text;
+}</pre>
+
+
+<p>But, wait, the <code>color: transparent</code> would make the text invisible in all browsers! Let us change that to a readable color:</p>
+
+<pre>body {
+ color: red;
+ background: -webkit-linear-gradient(transparent, transparent),
+             url(path/to/bg/image) repeat;
+ background: -o-linear-gradient(transparent, transparent);
+ -webkit-background-clip: text;
+}</pre>
+
+
+<p>But now the color fills the text, and the clipped background is no longer shown in WebKit browsers :(</p>
+
+<p><img src="http://s3.amazonaws.com/nimbublips/1359845928.png" alt="" /></p>
+
+<h2><code>text-fill-color</code> to the rescue</h2>
+
+<p><a href="https://www.webkit.org/blog/85/introducing-text-stroke/"><code>text-fill-color</code> (introduced in 2006)</a> fills text with a color when used in conjunction with a <code>text-stroke</code>. It behaves exactly like <code>color</code> except we now have the advantage of having it apply only to WebKit browsers! Nirvana!</p>
+
+<pre>body {
+ color: red;
+ -webkit-text-fill-color: transparent;
+ background: -webkit-linear-gradient(transparent, transparent),
+             url(path/to/bg/image) repeat;
+ background: -o-linear-gradient(transparent, transparent);
+ -webkit-background-clip: text;
+}</pre>
+
+
+<p>Here is how it appears in WebKit browsers and non-WebKit browsers respectively:</p>
+
+<p><img src="http://s3.amazonaws.com/nimbublips/1359846393.png" alt="" /></p>
+
+<p>You only have to use 2 extra css properties, to make it fail-safe in all browsers and need not run a feature-detection script. Currently, only Opera requires the background reset using the <code>-o-</code> prefix, but if more browsers start supporting <code>-webkit-</code> prefix then each of those browsers need a reset (e.g. <code>background: -moz-linear-gradient(transparent, transparent);</code>). But I don't think this will happen.</p>
 ]]></content>
   </entry>
   
@@ -407,138 +628,6 @@ var context = document.getCSSCanvasContext(‘2d’, contextForCanvas, canvasWid
 <p>There are lots of new and interesting features out there and it would be <em>awesome</em> if you could take the time to play with them and <a href="http://lists.w3.org/Archives/Public/www-style/">provide feedback</a>. There are plenty of new features I did not cover because I thought I was out of time (I wasn’t!) like <a href="http://css-tricks.com/old-flexbox-and-new-flexbox/">Flexbox</a>, <a href="http://dev.w3.org/csswg/css3-grid-layout/">Grid Layout</a>, <a href="http://css3.bradshawenterprises.com/blog/css-variables/">Variables</a>, <a href="https://developer.mozilla.org/en-US/docs/CSS/calc">Calc()</a>, and more.</p>
 
 <p>My talk was just several browsers each with pinned tabs of each demo. <a href="http://nimbu.in/jscamp/">Here is a list of all of the demos I showed</a>.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Some Updates]]></title>
-    <link href="http://nimbupani.github.com/some-updates.html"/>
-    <updated>2012-11-22T17:43:00-08:00</updated>
-    <id>http://nimbupani.github.com/some-updates</id>
-    <content type="html"><![CDATA[<p>While this website has been lying dormant, I have been doing many things that are more actively tracked on <a href="http://twitter.com/divya">twitter</a>. Here are some of the highlights of what I have been up to.</p>
-
-<h2>Adobe</h2>
-
-<p>Some of you know I now work at Adobe. But I have since June been the Product Manager for the Web Engine team! I had not previously lived a life of a Product Manager, but for every programmer out there who thinks it is a better life, think again! I find it easier to program than to convince humans.</p>
-
-<h2>Fripfrap</h2>
-
-<p>So <a href="http://twitter.com/garannm">Garann</a> and I have a regular podcast/video stream going on. We didn't speak about it much because we were not sure if we really wanted to do it. But, after recording 3 episodes, I think it is worth your while to spend 20 minutes of your life on :) <a href="http://fripfrap.io">Check it out</a>!</p>
-
-<h2>Book</h2>
-
-<p>I have also been up to my gills writing a book on HTML5 Boilerplate. The toughest part of writing a technical book is how often code changes. <a href="http://twitter.com/necolas">Nicolas Gallagher</a> has been doing such an excellent job of maintaining <a href="http://html5boilerplate.com">HTML5 Boilerplate</a> that it was many times I had to rewrite a lot of chapters based on newer updates. Nevertheless, I <strong>still</strong> need to write more errata as there are already updates while the book went out to print!</p>
-
-<p>You can <a href="http://www.packtpub.com/html5-boilerplate-web-development/book">purchase the book at Packt</a> or get a <a href="http://www.amazon.com/HTML5-Boilerplate-Web-Development-ebook/dp/B009RR0IFE">Kindle version on Amazon</a>. If you have already got your copy, please let me know if you have any feedback!</p>
-
-<p>The money I earn on this book goes to <a href="http://www.givewell.org/international/top-charities/AMF">Against Malaria Foundation</a> which consistantly is lauded for its effective aid programmes.</p>
-
-<h2>Talks</h2>
-
-<p>I have been giving several talks over the few months in Australia, New Zealand, France, Germany, UK and in US. I thought I would round up the major topic areas and link to videos of the talks as they exist:</p>
-
-<h3>Designing in the browser</h3>
-
-<iframe width="560" height="315" src="http://www.youtube.com/embed/h52uumn3sZc?rel=0" frameborder="0" allowfullscreen></iframe>
-
-
-<p>I posit that modern web technologies require designers to use the medium to design for it. <a href="http://nimbu.in/codemelb">Slides for Designing in the Browser</a></p>
-
-<h3>Pushing the cutting edge forward</h3>
-
-<iframe src="http://player.vimeo.com/video/49730056?badge=0" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-
-
-<p>A talk on what standards are, how they are created and how to effectively contribute to shaping how standards evolve without losing your mind. I gave the same talk @ SF HTML5 Meetup, which has the more up to date content. <a href="http://nimbu.in/sfhtml5/">Slides for Pushing the Cutting Edge Forward</a></p>
-
-<h3>Web Components with your favourite CSS Specs</h3>
-
-<iframe width="560" height="315" src="http://www.youtube.com/embed/FO3hTypPB1U?rel=0" frameborder="0" allowfullscreen></iframe>
-
-
-<p>A talk on how to use the Shadow DOM with some new exciting CSS Specifications along with some important things to note while using these specs in tandem. <a href="http://nimbu.in/jsconfeu/">Slides for Web Components with your favourite CSS Specs</a></p>
-
-<p>I will be giving a talk on what's next for CSS at <a href="http://jscamp.asia">jscamp.asia</a>. There is a good mix of interesting people coming by, so if you are in that region, please do come to the conference!</p>
-
-<h2>Dotfiles</h2>
-
-<p>I finally found the time to customize my dotfiles! I started with <a href="https://github.com/mathiasbynens/dotfiles">Mathias Bynens's dotfiles</a> as was recommended on <a href="http://dotfiles.github.com">Github</a> and then went over to the others. But finally ended up on <a href="http://github.com/necolas/dotfiles">Nicolas Gallagher's dotfiles</a> as they were most well-organized &amp; written. I added an AWS CLI as I upload my screen captures to AWS S3 bucket and some other tiny aliases that I thought was useful.</p>
-
-<p>I hope to spend my vacation writing my own website generator as one is bound to do and get rid of Octopress monolith! I hope you have a great holiday season!</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[CSS Object Model]]></title>
-    <link href="http://nimbupani.github.com/css-object-model.html"/>
-    <updated>2012-06-18T10:48:00-07:00</updated>
-    <id>http://nimbupani.github.com/css-object-model</id>
-    <content type="html"><![CDATA[<p>Until <a href="http://testthewebforward.org">Test the Web Forward</a> I had just a vague idea of what CSS Object Model does. So, it was awesome to hear from and learn about the <a href="http://dev.w3.org/csswg/cssom/">CSS Object Model</a> from the spec co-editor <a href="https://twitter.com/gasubic/">Glenn Adams</a>.</p>
-
-<h2>What it is</h2>
-
-<p>The CSS Object Model specification provides APIs that allow you to query and manipulate styles once the browser reads and understands the stylesheets and inline styles that are used on the page that is being rendered. An older specification that standardizes this was called DOM Level 2 Style Specification. It was the first specification that provided ability to access and manipulate styles via JavaScript using the DOM API.</p>
-
-<p>The fragmented history of the web sadly means most of these APIs do not quite work the way they are intended to in many browsers. Glenn wrote in to state what the goals of the current specs are, which include:</p>
-
-<ul>
-<li>Fully specify behavior that was left unstated, vague, or ambiguous in DOM-2 Style spec.</li>
-<li>Remove functionality specified in DOM-2 Style that is not widely implemented and not perceived as necessary.</li>
-<li>Add functionality not specified in DOM-2 Style that has been widely implemented and is viewed as sufficiently important.</li>
-</ul>
-
-
-<p>The APIs from the specification that have been implemented so far offer the abilitiy to query rules specified in the stylesheets or a text representation of the styles in a stylesheet or the inline styles of an element within the rendered page. For example, you can get the value of <code>margin</code> of an element by using <code>getComputedStyle('element,optional pseudoElement').margin</code>. You can also get the full style declaration that applies to an element as a string by using <code>getComputedStyle('element,optional pseudoElement').cssText</code>.</p>
-
-<h2>The <code>CSSStyleDeclaration</code> Object</h2>
-
-<p>The <code>getComputedStyle</code> method retuns what is known as a <code>CSSStyleDeclaration</code> object. It enumerates all style properties (&amp; values). This is the object that is returned whenever you query for style information using:</p>
-
-<ul>
-<li><p><code>document.styleSheets[0].cssRules[0].style</code></p></li>
-<li><p><code>Element.style</code></p></li>
-<li><p><code>document.getOverrideStyle</code> (unimplemented in most browsers, but would be useful for <a href="http://stackoverflow.com/questions/9798210/is-there-any-way-to-reset-after-before-css-rules-for-an-element">getting/setting hover, and other pseudo-classes</a>).</p></li>
-<li><p><code>window.getComputedStyle</code></p></li>
-</ul>
-
-
-<p>The returned object itself can be changed (it is <em>mutable</em> which means you can set a style property like <code>Element.style.margin = "20px"</code>) in all cases except the last. If you try to change a property of the object returned by <code>window.getComputedStyle(Element)</code>, you would get an exception.</p>
-
-<h2>CSS Rules</h2>
-
-<p>Rules within stylesheets have an object model too. There are 6 kinds of <a href="http://nimbupani.com/css-vocabulary.html">CSS rules</a> that could apply:</p>
-
-<ul>
-<li>Style rules (e.g <code>h1 {}</code> or <code>#main a {color: red; }</code>)</li>
-<li>@import rules (e.g. <code>@import url(main.css)</code>)</li>
-<li>Page rules (e.g. <code>@page :first {color: red; }</code>)</li>
-<li>@font-face rules (e.g. <code>@font-face {}</code>)</li>
-<li>Namespace rules (e.g. <code>@namespace svg http://svg.org</code>)</li>
-<li>Media rules (e.g. <code>@media (min-width: 200px)</code>)</li>
-</ul>
-
-
-<p>Not only that but you can even access the individual selectors that you specified in your style sheet. The values for properties in selectors are also serialised. How these values are serialised has also been documented in the specification. For example, if an element has a style property set (inline or set from within a stylesheet) like so <code>margin: 20px 20px 20px 20px;</code>, the specification states that when you access the style using <code>cssText</code> it should return <code>margin: 20px;</code>.</p>
-
-<h2>Testing CSS Values</h2>
-
-<p>The above serialization of CSS values seemed trivial and I thought would be a good test to start with. So, I wrote a <a href="https://dl.dropbox.com/u/952/ttwf/index.html">small test</a>. The results were interesting:</p>
-
-<ul>
-<li>Firefox &amp; IE 9 were the only browsers that returned the expected value of <code>"margin: 20px"</code></li>
-<li>Chrome returned <code>"margin: 20px; "</code> (note the whitespace after the semi-colon)</li>
-<li>Opera bizarrely returns <code>"margin-top: 20px; margin-bottom: 20px; margin-left: 20px; margin-right: 20px"</code> (also note the missing last semi-colon).</li>
-<li>Safari returned <code>"margin-top: 20px; margin-right: 20px; margin-bottom: 20px; margin-left: 20px; "</code> (note the space after the last semi-colon).</li>
-</ul>
-
-
-<p>Imagine the frustration of someone trying to write a CSS Style editor and wanting to show CSS style rules correctly! Glenn tells me that radical differences like these exist because the original DOM 2 Style spec did not document the serialization rules (he also pointed to this <a href="http://lists.w3.org/Archives/Public/www-style/2012Jan/1122.html">thread that discusses which properties get serialized or not</a>).</p>
-
-<p>Hopefully, because of Test the Web Forward, we can have more such tests in the future to ensure all browsers implement these APIs and specifications correctly. There are many other APIs available in the CSS OM. Interestingly, I was made aware of the longest property name (proprietary though) in existence: <del><code>-webkit-match-nearest-mail-blockquote-color</code></del> (thanks to <a href="http://twitter.com/awesomekling">Andreas Kling</a> this is <a href="http://trac.webkit.org/changeset/120735">no longer the case</a>, it is now <code>-webkit-border-bottom-right-radius</code>) (I wonder what is the shortest?).</p>
-
-<p>If you are interested in writing and contributing CSS tests, first <a href="https://test.csswg.org/shepherd/register/">make an account</a> (please do make sure to check the box for 'Request Repository Write Access') and then follow along with <a href="http://adobe.github.com/web-platform/presentations/test-the-web-forward-tutorial/index.html">this presentation</a> by <a href="http://twitter.com/JacobG415">Jacob Goldstein</a> &amp; <a href="http://twitter.com/RebeccaHauck">Rebecca Hauck</a>.</p>
-
-<p><em>Many thanks to Glenn Adams &amp; Paul Irish for reviewing this post.</em></p>
 ]]></content>
   </entry>
   

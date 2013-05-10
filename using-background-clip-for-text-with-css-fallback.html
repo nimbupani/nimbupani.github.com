@@ -1,0 +1,246 @@
+
+<!doctype html>
+<!--[if lt IE 9]> <html class="no-js oldie" lang="en"> <![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  
+  <title>Using background clip for text with CSS fallback | Divya Manian</title>  
+  <meta name="author" content="Divya Manian">
+  
+  <meta name="description" content="I was looking at the lovely design of polygon when their use of background-clip &amp; background: linear-gradient(…) immediately suggested a JS-free &hellip;">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://nimbupani.github.com/using-background-clip-for-text-with-css-fallback.html">
+  <link href="/stylesheets/screen.css" rel="stylesheet">
+  <link href="http://feeds.feedburner.com/nimbupani" rel="alternate" title="Subscribe" type="application/atom+xml">
+  <link href="http://feeds.feedburner.com/nimbu" rel="alternate" title="Subscribe to Web Development updates" type="application/atom+xml">    
+  
+</head>
+
+
+<body  >
+  <div class="container">
+    <div class="content">
+      <header role="banner">  <h1><a href="/">Divya Manian</a></h1>
+  
+  <h2><a class="twitter" href="https://twitter.com/divya">twitter</a> <a class="rss" href="http://feeds.feedburner.com/nimbupani">RSS Feed</a> <a class="youtube" href="http://youtube.com/nimbupani">Youtube Channel</a> <a class="github" href="https://github.com/nimbupani">Github</a></h2>
+  
+</header>
+      <nav class="sitenav"><a href="/">Home</a>
+<a href="/archives">Archives</a>
+<a href="/about.html">About</a>
+</nav>
+      
+  
+
+
+
+  
+
+
+<article>
+  <nav class="article">
+    
+      <a class="previous" href="/markup-free-icon-fonts-with-unicode-range.html" title="Markup-free icon fonts using unicode-range">&#x276C;</a>      
+    
+    
+      <a class="next" href="/using-decimal-percentage-values-in-responsive-design.html" title="Using decimal percentage values in responsive design">&#x276D;</a>              
+     
+    
+               
+  </nav>
+    <header>
+    
+
+
+
+
+  
+
+<time datetime="2013-02-02T14:25:00-08:00" pubdate><span class='month'>Feb</span> <span class='day'>02</span> <span class='year'>2013</span></time>    
+    
+      <h1 class="entry-title"><a href="/using-background-clip-for-text-with-css-fallback.html">Using background clip for text with CSS fallback</a></h1>
+    
+    
+    
+    
+  </header>
+<div class="entry-content"><p>I was looking at the lovely design of <a href="http://polygon.com">polygon</a> when their use of <code>background-clip</code> &amp; <code>background: linear-gradient(…)</code> immediately suggested a JS-free fallback for using the non-standard <code>background-clip: text</code>.</p>
+
+<h2>What it is</h2>
+
+<p><code>background-clip</code> is a CSS property that was <a href="https://www.webkit.org/blog/164/background-clip-text/">originally introduced in WebKit (in 2008)</a> that allows backgrounds specified on elements to clip to the text content of the element like so:</p>
+
+<p><img src="http://s3.amazonaws.com/nimbublips/1359844612.png" alt="" /></p>
+
+<p>by merely using the following code:</p>
+
+<pre>body{
+ color: transparent;
+ background: url(path/to/bg/image) repeat;
+ -webkit-background-clip: text;
+}
+</pre>
+
+
+<p>However, <code>background-clip: text</code> is not part of any standard yet – but <a href="http://dev.w3.org/csswg/css3-background/#the-background-clip">other values such as <code>border-box</code> or <code>content-box</code> are</a>.</p>
+
+<h2>The Problem</h2>
+
+<p>It is no surprise to find people using non-standard properties in HTML, and it is no big deal if it fails gracefully in other browsers. Unfortunately, <code>background-clip: text</code> fails rather spectacularly in non-WebKit browsers:</p>
+
+<p><img src="http://s3.amazonaws.com/nimbublips/1359844975.png" alt="" /></p>
+
+<p>The above is how it appears (when you use <a href="http://placekitten.com">placekitten</a> to generate the background image) in Firefox. You cannot even read the text! This is clearly a disastrous situation.</p>
+
+<h2>Current Solutions</h2>
+
+<p>The most commonly used solution is to use <a href="http://modernizr.com">Modernizr</a> to detect if <code>background-clip: text</code> is available, and then use a class <code>backgroundcliptext</code> to apply <code>background-clip:text</code> selectively – <a href="http://polygon.com">Polygon</a> does this too.</p>
+
+<h2>Purely CSS solution</h2>
+
+<p>While looking at the code, I suddenly realized that if you use only the <code>-webkit-</code> prefixed value for <code>background</code> property, then <code>background-clip: text</code> would only apply when <code>-webkit-</code> prefixed values are supported in browsers – effectively curtailing its use to WebKit browsers:</p>
+
+<pre>body {
+ color: transparent;
+ background: -webkit-linear-gradient(transparent, transparent),
+             url(path/to/bg/image) repeat;
+ -webkit-background-clip: text;
+}</pre>
+
+
+<p>Hurray! We are almost there! The background no longer appears in non-WebKit browsers:</p>
+
+<p><img src="http://s3.amazonaws.com/nimbublips/1359845371.png" alt="" /></p>
+
+<p>…until you test in Opera, which also <a href="http://my.opera.com/ODIN/blog/opera-12-10-is-out">supports <code>-webkit-</code> prefixes for site compatibility</a>. But, it is easy to solve for by merely adding <code>-o-</code> prefixed background value:</p>
+
+<pre>body {
+ color: transparent;
+ background: -webkit-linear-gradient(transparent, transparent),
+             url(path/to/bg/image) repeat;
+ background: -o-linear-gradient(transparent, transparent);
+ -webkit-background-clip: text;
+}</pre>
+
+
+<p>But, wait, the <code>color: transparent</code> would make the text invisible in all browsers! Let us change that to a readable color:</p>
+
+<pre>body {
+ color: red;
+ background: -webkit-linear-gradient(transparent, transparent),
+             url(path/to/bg/image) repeat;
+ background: -o-linear-gradient(transparent, transparent);
+ -webkit-background-clip: text;
+}</pre>
+
+
+<p>But now the color fills the text, and the clipped background is no longer shown in WebKit browsers :(</p>
+
+<p><img src="http://s3.amazonaws.com/nimbublips/1359845928.png" alt="" /></p>
+
+<h2><code>text-fill-color</code> to the rescue</h2>
+
+<p><a href="https://www.webkit.org/blog/85/introducing-text-stroke/"><code>text-fill-color</code> (introduced in 2006)</a> fills text with a color when used in conjunction with a <code>text-stroke</code>. It behaves exactly like <code>color</code> except we now have the advantage of having it apply only to WebKit browsers! Nirvana!</p>
+
+<pre>body {
+ color: red;
+ -webkit-text-fill-color: transparent;
+ background: -webkit-linear-gradient(transparent, transparent),
+             url(path/to/bg/image) repeat;
+ background: -o-linear-gradient(transparent, transparent);
+ -webkit-background-clip: text;
+}</pre>
+
+
+<p>Here is how it appears in WebKit browsers and non-WebKit browsers respectively:</p>
+
+<p><img src="http://s3.amazonaws.com/nimbublips/1359846393.png" alt="" /></p>
+
+<p>You only have to use 2 extra css properties, to make it fail-safe in all browsers and need not run a feature-detection script. Currently, only Opera requires the background reset using the <code>-o-</code> prefix, but if more browsers start supporting <code>-webkit-</code> prefix then each of those browsers need a reset (e.g. <code>background: -moz-linear-gradient(transparent, transparent);</code>). But I don&#8217;t think this will happen.</p>
+</div>
+
+  <footer>
+    <p class="meta">This post was posted by 
+  
+
+<a href="/about.html">Divya Manian</a>
+ on 
+
+
+
+
+  
+
+<time datetime="2013-02-02T14:25:00-08:00" pubdate><span class='month'>Feb</span> <span class='day'>02</span> <span class='year'>2013</span></time> in 
+
+<span class="categories">
+  
+    <a class='category' href='/categories/web-development/'>Web Development</a>
+  
+</span>
+
+.  If you would like to update this post, <a href="https://github.com/nimbupani/nimbupani.github.com/blob/source/source/_posts/2013-02-02-using-background-clip-for-text-with-css-fallback.md">please send a pull request</a>.       
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+
+    </div>
+  </div>
+  <aside id="articles">
+    <p><img class="avatar" src="http://a2.twimg.com/profile_images/1696865113/me_normal" height=48> <a href="http://twitter.com/divya">Divya Manian</a> is a Web Developer in SF. <a href="/about.html">More about me ❭</a></p>
+    <h2>Posts on Web Development</h2>
+    <ul><li><a href="/diversity-in-conferences.html">Diversity in Conferences</a></li><li><a href="/using-decimal-percentage-values-in-responsive-design.html">Using decimal percentage values in responsive design</a></li><li><a href="/using-background-clip-for-text-with-css-fallback.html">Using background clip for text with CSS fallback</a></li><li><a href="/markup-free-icon-fonts-with-unicode-range.html">Markup-free icon fonts using unicode-range</a></li><li><a href="/jscamp-css-next.html">JSCamp: CSS Next</a></li><li><a href="/some-updates.html">Some Updates</a></li><li><a href="/css-object-model.html">CSS Object Model</a></li><li><a href="/fake-bolding-of-web-fonts.html">Fake Bolding of Web Fonts</a></li><li><a href="/html5please-api.html">Html5please API</a></li><li><a href="/html5please.html">html5please</a></li><li><a href="/mustache.html">mustache, hogan, handlebars</a></li><li><a href="/redesign-notes.html">Redesign Notes</a></li><li><a href="/summary-of-various-exciting-css-drafts-and-proposals.html">Summary of various exciting CSS drafts and proposals</a></li><li><a href="/this-revolution-needs-new-revolutionaries.html">This revolution needs new revolutionaries</a></li><li><a href="/some-css-transition-hacks.html">Some CSS Transition hacks</a></li><li><a href="/safe-css-defaults.html">Safe CSS Defaults</a></li><li><a href="/unplugged-2011.html">Unplugged 2011</a></li><li><a href="/bokeh-with-css3-gradients.html">Bokeh with CSS3 Gradients</a></li><li><a href="/making-pure-css3-demos-better.html">Making "Pure CSS3" demos better</a></li><li><a href="/web-opener-at-opera.html">Web Opener at Opera</a></li><li><a class="btn" href="/categories/web-development/">More</a></li></ul>
+  </aside>
+  <footer role="contentinfo"><p>
+  Copy to your heart’s content 2013 - Divya Manian -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>  
+</p>
+
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'nimbublog';
+      var disqus_developer = 1;        
+      
+      
+        var disqus_url = 'http://nimbupani.com/using-background-clip-for-text-with-css-fallback.html';
+        var disqus_identifier = 'http://nimbupani.com/using-background-clip-for-text-with-css-fallback.html';                
+      
+        
+        
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+<script src="/javascripts/octopress.js"></script>
+
+  <script>
+    var _gaq=[['_setAccount','UA-97188-1'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+
+
+
+
+</body>
+</html>
