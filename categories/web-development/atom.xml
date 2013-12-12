@@ -4,7 +4,7 @@
   <title><![CDATA[Web Development | Divya Manian]]></title>
   <link href="http://nimbupani.github.com/categories/web-development/atom.xml" rel="self"/>
   <link href="http://nimbupani.github.com/"/>
-  <updated>2013-05-10T12:47:41-07:00</updated>
+  <updated>2013-12-12T19:27:38+05:30</updated>
   <id>http://nimbupani.github.com/</id>
   <author>
     <name><![CDATA[Divya Manian]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Diversity in Conferences]]></title>
     <link href="http://nimbupani.github.com/diversity-in-conferences.html"/>
-    <updated>2013-05-09T16:54:00-07:00</updated>
+    <updated>2013-05-09T16:54:00+05:30</updated>
     <id>http://nimbupani.github.com/diversity-in-conferences</id>
     <content type="html"><![CDATA[<p>I have resisted the urge to contribute my thoughts every time drama around women and  minorities in technology occurs. I thought instead I would share with you some of the actions I have taken in various roles to try to make diversity more visible in conferences around web technology.</p>
 
@@ -75,7 +75,7 @@
   <entry>
     <title type="html"><![CDATA[Using decimal percentage values in responsive design]]></title>
     <link href="http://nimbupani.github.com/using-decimal-percentage-values-in-responsive-design.html"/>
-    <updated>2013-03-26T04:24:00-07:00</updated>
+    <updated>2013-03-26T04:24:00+05:30</updated>
     <id>http://nimbupani.github.com/using-decimal-percentage-values-in-responsive-design</id>
     <content type="html"><![CDATA[<p>At work I get many samples of code to be reviewed, most of them with a warning 'only works in Chrome'. Nevertheless, I open these pages in Safari &amp; mostly they work. Yesterday I came across something that didn't. This post is a result of that investigation.</p>
 
@@ -195,7 +195,7 @@ h1 {
   <entry>
     <title type="html"><![CDATA[Using background clip for text with CSS fallback]]></title>
     <link href="http://nimbupani.github.com/using-background-clip-for-text-with-css-fallback.html"/>
-    <updated>2013-02-02T14:25:00-08:00</updated>
+    <updated>2013-02-02T14:25:00+05:30</updated>
     <id>http://nimbupani.github.com/using-background-clip-for-text-with-css-fallback</id>
     <content type="html"><![CDATA[<p>I was looking at the lovely design of <a href="http://polygon.com">polygon</a> when their use of <code>background-clip</code> &amp; <code>background: linear-gradient(…)</code> immediately suggested a JS-free fallback for using the non-standard <code>background-clip: text</code>.</p>
 
@@ -296,7 +296,7 @@ h1 {
   <entry>
     <title type="html"><![CDATA[Markup-free icon fonts using unicode-range]]></title>
     <link href="http://nimbupani.github.com/markup-free-icon-fonts-with-unicode-range.html"/>
-    <updated>2012-12-25T08:58:00-08:00</updated>
+    <updated>2012-12-25T08:58:00+05:30</updated>
     <id>http://nimbupani.github.com/markup-free-icon-fonts-with-unicode-range</id>
     <content type="html"><![CDATA[<p>I used icon fonts extensively while designing <a href="http://fripfrap.io">fripfrap.io</a>. Unfortunately, icon fonts require tags wrapped around where they should be placed, and I went on a quest to find out if we can adaptively render icon fonts without any extra markup.</p>
 
@@ -415,7 +415,7 @@ body { font-family: <b>icons</b>, sans-serif; }
   <entry>
     <title type="html"><![CDATA[JSCamp: CSS Next]]></title>
     <link href="http://nimbupani.github.com/jscamp-css-next.html"/>
-    <updated>2012-12-01T06:09:00-08:00</updated>
+    <updated>2012-12-01T06:09:00+05:30</updated>
     <id>http://nimbupani.github.com/jscamp-css-next</id>
     <content type="html"><![CDATA[<p>I talked at <a href="http://jscamp.asia">JSCamp</a> on 28th November 2012, on some of the newer features of CSS. I gave the talk without slides, so here is a description of all that I covered.</p>
 

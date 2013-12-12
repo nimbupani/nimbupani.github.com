@@ -4,7 +4,7 @@
   <title><![CDATA[Divya Manian]]></title>
   <link href="http://nimbupani.github.com/atom.xml" rel="self"/>
   <link href="http://nimbupani.github.com/"/>
-  <updated>2013-05-10T12:47:41-07:00</updated>
+  <updated>2013-12-12T19:27:38+05:30</updated>
   <id>http://nimbupani.github.com/</id>
   <author>
     <name><![CDATA[Divya Manian]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Diversity in Conferences]]></title>
     <link href="http://nimbupani.github.com/diversity-in-conferences.html"/>
-    <updated>2013-05-09T16:54:00-07:00</updated>
+    <updated>2013-05-09T16:54:00+05:30</updated>
     <id>http://nimbupani.github.com/diversity-in-conferences</id>
     <content type="html"><![CDATA[<p>I have resisted the urge to contribute my thoughts every time drama around women and  minorities in technology occurs. I thought instead I would share with you some of the actions I have taken in various roles to try to make diversity more visible in conferences around web technology.</p>
 
@@ -75,7 +75,7 @@
   <entry>
     <title type="html"><![CDATA[Using decimal percentage values in responsive design]]></title>
     <link href="http://nimbupani.github.com/using-decimal-percentage-values-in-responsive-design.html"/>
-    <updated>2013-03-26T04:24:00-07:00</updated>
+    <updated>2013-03-26T04:24:00+05:30</updated>
     <id>http://nimbupani.github.com/using-decimal-percentage-values-in-responsive-design</id>
     <content type="html"><![CDATA[<p>At work I get many samples of code to be reviewed, most of them with a warning &#8216;only works in Chrome&#8217;. Nevertheless, I open these pages in Safari &amp; mostly they work. Yesterday I came across something that didn&#8217;t. This post is a result of that investigation.</p>
 
@@ -195,7 +195,7 @@ h1 {
   <entry>
     <title type="html"><![CDATA[Using background clip for text with CSS fallback]]></title>
     <link href="http://nimbupani.github.com/using-background-clip-for-text-with-css-fallback.html"/>
-    <updated>2013-02-02T14:25:00-08:00</updated>
+    <updated>2013-02-02T14:25:00+05:30</updated>
     <id>http://nimbupani.github.com/using-background-clip-for-text-with-css-fallback</id>
     <content type="html"><![CDATA[<p>I was looking at the lovely design of <a href="http://polygon.com">polygon</a> when their use of <code>background-clip</code> &amp; <code>background: linear-gradient(…)</code> immediately suggested a JS-free fallback for using the non-standard <code>background-clip: text</code>.</p>
 
@@ -296,7 +296,7 @@ h1 {
   <entry>
     <title type="html"><![CDATA[Markup-free icon fonts using unicode-range]]></title>
     <link href="http://nimbupani.github.com/markup-free-icon-fonts-with-unicode-range.html"/>
-    <updated>2012-12-25T08:58:00-08:00</updated>
+    <updated>2012-12-25T08:58:00+05:30</updated>
     <id>http://nimbupani.github.com/markup-free-icon-fonts-with-unicode-range</id>
     <content type="html"><![CDATA[<p>I used icon fonts extensively while designing <a href="http://fripfrap.io">fripfrap.io</a>. Unfortunately, icon fonts require tags wrapped around where they should be placed, and I went on a quest to find out if we can adaptively render icon fonts without any extra markup.</p>
 
@@ -415,7 +415,7 @@ body { font-family: <b>icons</b>, sans-serif; }
   <entry>
     <title type="html"><![CDATA[Book Reviews for 2012]]></title>
     <link href="http://nimbupani.github.com/book-reviews-for-december-2012.html"/>
-    <updated>2012-12-23T18:50:00-08:00</updated>
+    <updated>2012-12-23T18:50:00+05:30</updated>
     <id>http://nimbupani.github.com/book-reviews-for-december-2012</id>
     <content type="html"><![CDATA[<p>I had almost stopped reading books, till I picked up <a href="http://www.worldcat.org/title/savage-detectives/oclc/70265594">Savage Detectives</a> about 3 months ago. I have since spent more time reading books, and this month has been the most I have read in this year. Here are reviews of some books I have been reading.</p>
 
@@ -502,7 +502,7 @@ body { font-family: <b>icons</b>, sans-serif; }
   <entry>
     <title type="html"><![CDATA[JSCamp: CSS Next]]></title>
     <link href="http://nimbupani.github.com/jscamp-css-next.html"/>
-    <updated>2012-12-01T06:09:00-08:00</updated>
+    <updated>2012-12-01T06:09:00+05:30</updated>
     <id>http://nimbupani.github.com/jscamp-css-next</id>
     <content type="html"><![CDATA[<p>I talked at <a href="http://jscamp.asia">JSCamp</a> on 28th November 2012, on some of the newer features of CSS. I gave the talk without slides, so here is a description of all that I covered.</p>
 
@@ -721,7 +721,7 @@ var context = document.getCSSCanvasContext(‘2d’, contextForCanvas, canvasWid
   <entry>
     <title type="html"><![CDATA[Some Updates]]></title>
     <link href="http://nimbupani.github.com/some-updates.html"/>
-    <updated>2012-11-22T17:43:00-08:00</updated>
+    <updated>2012-11-22T17:43:00+05:30</updated>
     <id>http://nimbupani.github.com/some-updates</id>
     <content type="html"><![CDATA[<p>While this website has been lying dormant, I have been doing many things that are more actively tracked on <a href="http://twitter.com/divya">twitter</a>. Here are some of the highlights of what I have been up to.</p>
 
@@ -779,7 +779,7 @@ var context = document.getCSSCanvasContext(‘2d’, contextForCanvas, canvasWid
   <entry>
     <title type="html"><![CDATA[CSS Object Model]]></title>
     <link href="http://nimbupani.github.com/css-object-model.html"/>
-    <updated>2012-06-18T10:48:00-07:00</updated>
+    <updated>2012-06-18T10:48:00+05:30</updated>
     <id>http://nimbupani.github.com/css-object-model</id>
     <content type="html"><![CDATA[<p>Until <a href="http://testthewebforward.org">Test the Web Forward</a> I had just a vague idea of what CSS Object Model does. So, it was awesome to hear from and learn about the <a href="http://dev.w3.org/csswg/cssom/">CSS Object Model</a> from the spec co-editor <a href="https://twitter.com/gasubic/">Glenn Adams</a>.</p>
 
@@ -853,7 +853,7 @@ var context = document.getCSSCanvasContext(‘2d’, contextForCanvas, canvasWid
   <entry>
     <title type="html"><![CDATA[Visualization Lies]]></title>
     <link href="http://nimbupani.github.com/visualization-lies.html"/>
-    <updated>2012-06-02T13:51:00-07:00</updated>
+    <updated>2012-06-02T13:51:00+05:30</updated>
     <id>http://nimbupani.github.com/visualization-lies</id>
     <content type="html"><![CDATA[<p>I fell in love with this bar chart <a href="http://www.theatlantic.com/business/archive/2012/05/this-graph-is-disastrous-for-print-and-great-for-facebook-or-the-opposite/257857/">as soon as I saw it</a>:</p>
 
@@ -878,7 +878,7 @@ var context = document.getCSSCanvasContext(‘2d’, contextForCanvas, canvasWid
   <entry>
     <title type="html"><![CDATA[Moving to SF]]></title>
     <link href="http://nimbupani.github.com/moving-to-sf.html"/>
-    <updated>2012-03-27T08:18:00-07:00</updated>
+    <updated>2012-03-27T08:18:00+05:30</updated>
     <id>http://nimbupani.github.com/moving-to-sf</id>
     <content type="html"><![CDATA[<p>As of today, I am no longer an employee of Opera.</p>
 
@@ -897,7 +897,7 @@ var context = document.getCSSCanvasContext(‘2d’, contextForCanvas, canvasWid
   <entry>
     <title type="html"><![CDATA[Fake Bolding of Web Fonts]]></title>
     <link href="http://nimbupani.github.com/fake-bolding-of-web-fonts.html"/>
-    <updated>2012-03-02T11:26:00-08:00</updated>
+    <updated>2012-03-02T11:26:00+05:30</updated>
     <id>http://nimbupani.github.com/fake-bolding-of-web-fonts</id>
     <content type="html"><![CDATA[<p>If you are like me, you would have been (ab)using <a href="">Google Web Fonts</a> for your custom font needs. In which case, you most certainly would have tripped on this problem: Faux Font bolding.</p>
 
@@ -958,7 +958,7 @@ h1 {
   <entry>
     <title type="html"><![CDATA[Html5please API]]></title>
     <link href="http://nimbupani.github.com/html5please-api.html"/>
-    <updated>2012-02-26T17:24:00-08:00</updated>
+    <updated>2012-02-26T17:24:00+05:30</updated>
     <id>http://nimbupani.github.com/html5please-api</id>
     <content type="html"><![CDATA[<p><a href="http://api.html5please.com"><img src="http://cache.gyazo.com/88b8a0680005a6f09584510034f2b847.png" alt="" /></a></p>
 
@@ -1007,7 +1007,7 @@ h1 {
   <entry>
     <title type="html"><![CDATA[html5please]]></title>
     <link href="http://nimbupani.github.com/html5please.html"/>
-    <updated>2012-01-22T17:11:00-08:00</updated>
+    <updated>2012-01-22T17:11:00+05:30</updated>
     <id>http://nimbupani.github.com/html5please</id>
     <content type="html"><![CDATA[<p><a href="http://html5please.us"><img src="http://cache.gyazo.com/c5d6f648394681c59d93c487b8347cf5.png" alt="" /></a></p>
 
@@ -1044,7 +1044,7 @@ h1 {
   <entry>
     <title type="html"><![CDATA[desirable]]></title>
     <link href="http://nimbupani.github.com/desirable.html"/>
-    <updated>2012-01-21T07:22:00-08:00</updated>
+    <updated>2012-01-21T07:22:00+05:30</updated>
     <id>http://nimbupani.github.com/desirable</id>
     <content type="html"><![CDATA[<p>I never gave a thought to products I considered desirable, till I saw this ad for OP-1:</p>
 
@@ -1079,7 +1079,7 @@ h1 {
   <entry>
     <title type="html"><![CDATA[mustache, hogan, handlebars]]></title>
     <link href="http://nimbupani.github.com/mustache.html"/>
-    <updated>2012-01-01T10:05:00-08:00</updated>
+    <updated>2012-01-01T10:05:00+05:30</updated>
     <id>http://nimbupani.github.com/mustache</id>
     <content type="html"><![CDATA[<p>I have been working quite a bit with <a href="http://nodejs.org">node</a> and have had a chance to use <a href="http://handlebarsjs.com">Handlebars</a> quite frequently. While it is an implementation of <a href="http://mustache.github.com">Mustache</a>, it goes a bit further in providing some helpers like <code>if</code>/<code>each</code>/<code>list</code>/<code>with</code> etc along with the ability to register custom helpers you need. Since then, I have heard about <a href="http://twitter.github.com/hogan.js/">Hogan</a> which is almost equivalent but not. I wanted to just write down what I have discovered while investigating these.</p>
 
@@ -1127,7 +1127,7 @@ h1 {
   <entry>
     <title type="html"><![CDATA[Twittering with D3]]></title>
     <link href="http://nimbupani.github.com/twittering-with-d3.html"/>
-    <updated>2011-12-23T20:08:00-08:00</updated>
+    <updated>2011-12-23T20:08:00+05:30</updated>
     <id>http://nimbupani.github.com/twittering-with-d3</id>
     <content type="html"><![CDATA[<p>What you see above is something I had been thinking of doing since the obsession of a redesign hit my head: rendering visual snippets of my latest tracked actions as pretty and useless graphics. Hopefully this is the first of many.</p>
 
@@ -1162,7 +1162,7 @@ h1 {
   <entry>
     <title type="html"><![CDATA[Swatch’s Now is Android’s Future?]]></title>
     <link href="http://nimbupani.github.com/swatchs-now-is-androids-future.html"/>
-    <updated>2011-12-11T07:04:00-08:00</updated>
+    <updated>2011-12-11T07:04:00+05:30</updated>
     <id>http://nimbupani.github.com/swatchs-now-is-androids-future</id>
     <content type="html"><![CDATA[<p>This weekend, I chanced upon this article on the <a href="http://www.nytimes.com/2011/12/10/business/swatch-group-to-trim-sales-of-watch-parts-to-rivals.html">woes of Swatch’s rivals in the New York Times</a>. It is an interesting read throughout.</p>
 
@@ -1189,7 +1189,7 @@ h1 {
   <entry>
     <title type="html"><![CDATA[Redesign Notes]]></title>
     <link href="http://nimbupani.github.com/redesign-notes.html"/>
-    <updated>2011-12-11T04:51:00-08:00</updated>
+    <updated>2011-12-11T04:51:00+05:30</updated>
     <id>http://nimbupani.github.com/redesign-notes</id>
     <content type="html"><![CDATA[<p>This site sports a refresh. Here is a list of what is different now:</p>
 
@@ -1279,7 +1279,7 @@ h1 {
   <entry>
     <title type="html"><![CDATA[Summary of various exciting CSS drafts and proposals]]></title>
     <link href="http://nimbupani.github.com/summary-of-various-exciting-css-drafts-and-proposals.html"/>
-    <updated>2011-12-10T18:51:00-08:00</updated>
+    <updated>2011-12-10T18:51:00+05:30</updated>
     <id>http://nimbupani.github.com/summary-of-various-exciting-css-drafts-and-proposals</id>
     <content type="html"><![CDATA[<p>I will be attending my first ever <a href="http://lists.w3.org/Archives/Public/www-style/2011Jun/0593.html">CSS</a> Working Group Face to Face Meeting starting this Sunday, and I wanted to be at least up-to-speed on all the drafts that will be up for discussion. So, in the interest of not letting a few hours spent understanding some of them go to waste, here is a brief summary of each of these drafts and some of the concerns that will be discussed during the meeting.</p>
 
@@ -1379,7 +1379,7 @@ Properties defined on <code>.region1-1</code> or <code>.region1-2</code> will no
   <entry>
     <title type="html"><![CDATA[This revolution needs new revolutionaries]]></title>
     <link href="http://nimbupani.github.com/this-revolution-needs-new-revolutionaries.html"/>
-    <updated>2011-05-21T00:00:00-07:00</updated>
+    <updated>2011-05-21T00:00:00+05:30</updated>
     <id>http://nimbupani.github.com/this-revolution-needs-new-revolutionaries</id>
     <content type="html"><![CDATA[<p>In early 2000s, when the web was in its infancy, a great number of committed activists made Open Web Standards possible. They advocated, wrote the specifications, explained them to the masses, and contributed to the revolution of using W3C Specs on the web. I owe each of them my career as a Web Designer/developer.</p>
 
