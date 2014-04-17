@@ -8,7 +8,10 @@ category: "Web Development"
 
 <p><a href="http://nimbupani.com/demo/css3-drop-shadows.html"><img src="http://nimbupani.com/files/drop-shadow_1.png" alt="drop-shadow.png" border="0" width="501" height="262" ></a></p>
 
-<p>I first noticed this kind of drop-shadow on <a href="http://aspire2enquire.typepad.com/aspire_to_enquire/2009/08/mike-matas.html">Mike Matas's old website</a>. Looking at the CSS for the CSS3 implementation of the drop-shadow (uses box-shadows to avoid the use of an image), there were a number of things that I found missing: </p>
+<p>I first noticed this kind of drop-shadow on Mike Matas's old website.</p>
+<p><img src="https://i.cloudup.com/eDC4Tadwj2-2000x2000.png"></p>
+
+<p>Looking at the CSS for the CSS3 implementation of the drop-shadow (uses box-shadows to avoid the use of an image), there were a number of things that I found missing: </p>
 
 <ol>
 	<li>The <code>article</code> is absolutely positioned. It will not work in Firefox if it is not so (the simple fix is to add <code>display: block;</code> to the style of the <code>article</code> element). </li> 
