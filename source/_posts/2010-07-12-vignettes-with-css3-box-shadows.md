@@ -23,21 +23,28 @@ category: "Web Development"
 	<pre><code>p.vignette {
   position: relative;
 }
-p.vignette img {
- display: block;
+p.vignette {
+  position: relative;
 }
-p.vignette:after {
- -moz-box-shadow: inset 0 0 10em #666;  
- -webkit-box-shadow: inset 0 0 10em #666;   
- box-shadow: inset 0 0 10em #666;
- position: absolute;
- top: 0;
- left: 0;
- width: 100%;
- height: 100%;
- z-index: 2;
- content: "";
-}</code></pre>
+
+p.vignette img {
+  display: block;
+}
+
+body {
+  -moz-box-shadow: inset 0 0 10em #000;
+  -webkit-box-shadow: inset 0 0 10em #000;
+  box-shadow: inset 0 0 10em #000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0%;
+  z-index: 2;
+  content: "";
+}
+</code></pre>
 <p>The <code>content: ""</code> is essential to <a href="http://www.w3.org/TR/CSS2/generate.html#content">make sure the pseudo-element is generated</a>. <code>z-index</code> positions the pseudo-element above the image.</p> 
 </li>
 <li>
